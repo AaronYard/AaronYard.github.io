@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aaronyard.github.io/"/>
-  <updated>2019-11-24T11:20:46.195Z</updated>
+  <updated>2019-11-24T15:57:20.879Z</updated>
   <id>https://aaronyard.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>3D游戏引擎初探（一）</title>
+    <link href="https://aaronyard.github.io/2019/11/24/3D-Engine-1/"/>
+    <id>https://aaronyard.github.io/2019/11/24/3D-Engine-1/</id>
+    <published>2019-11-24T15:52:45.000Z</published>
+    <updated>2019-11-24T15:57:20.879Z</updated>
+    
+    <content type="html"><![CDATA[<p>前阵子，我用C++编写的3D游戏引擎成功的运行了一个小游戏demo，在此将会分享我的学习与搭建历程。</p><p>未完待续……</p>]]></content>
+    
+    <summary type="html">
+    
+      带领你了解我的3D游戏引擎搭建全过程
+    
+    </summary>
+    
+    
+      <category term="技术探索" scheme="https://aaronyard.github.io/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="3D Engine" scheme="https://aaronyard.github.io/tags/3D-Engine/"/>
+    
+  </entry>
   
   <entry>
     <title>博客建站</title>
