@@ -23,7 +23,7 @@
     
         <link rel="icon" href="/css/images/avatar.png" />
     
-
+	
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/libs/open-sans/styles.css">
     <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
@@ -43,6 +43,7 @@
     
 
 
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
 </head>
 
 <body>
@@ -149,7 +150,7 @@
 
 <aside id="profile" class="profile-fixed">
     <div class="inner profile-inner">
-        <div class="base-info profile-block">
+		    <div class="base-info profile-block">
             <img id="avatar" src="/css/images/avatar.png" />
             <h2 id="name">汪震</h2>
             <h3 id="title">IT技术工程狮</h3>
@@ -230,6 +231,49 @@
 
         
         </div>
+		
+		<! -- 添加捐赠图标 -->
+<div class ="post-donate">
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" target="_blank" rel="noopener" title="打赏"></a>
+        <span class="donate_txt">
+           ↑<br>
+           欣赏此文？求鼓励，求支持！
+        </span>
+        <br>
+      </div>  
+    <div id="donate_guide" class="donate_bar center hidden" >
+        <!-- 方式一： 
+            ![](/img/Alipay.jpg)
+            ![](/img/WeChatpay.jpg)
+        -->
+        <!-- 方式二；
+            step1：在_config.yml中添加配置
+                Alipay: /img/Alipay.jpg
+                WeChatpay: /img/WeChatpay.jpg
+            step2：此处两张图片的路径分别设置为如下
+                <img src=""
+                <img src=""
+        -->
+		<span class="donate_txt2">
+           ↓<br>
+           支付宝或微信打赏
+        </span>
+        <br>
+        <!-- 支付宝打赏图案 -->
+        <img src="/css/images/alipay.png" alt="支付宝打赏">
+        <!-- 微信打赏图案 -->
+        <img src="/css/images/wechatpay.png" alt="微信打赏">
+    </div>
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function(){
+            $('#donate_board').addClass('hidden');
+            $('#donate_guide').removeClass('hidden');
+        }
+    </script>
+</div>
+<! -- 添加捐赠图标 -->
+		
         <footer class="article-footer">
             <div class="share-container">
 
@@ -237,7 +281,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/about/index.html" data-id="ck3curoog00065kudb7qhe58w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/about/index.html" data-id="ck3d682fa0003sgud72p15x23" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -366,7 +410,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a></p>
-                            <p class="item-title"><a href="/2019/11/23/MyHexo/" class="title">&#39;我的个人博客开通啦&#39;</a></p>
+                            <p class="item-title"><a href="/2019/11/23/MyHexo/" class="title">我的个人博客开通啦</a></p>
                             <p class="item-date"><time datetime="2019-11-23T14:44:14.000Z" itemprop="datePublished">2019-11-23</time></p>
                         </div>
                     </li>
