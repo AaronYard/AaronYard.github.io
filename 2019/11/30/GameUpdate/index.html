@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>游戏项目中的热更新机制 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="带领你了解已上线的3D游戏项目">
+<meta name="keywords" content="3D Client">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏项目中的热更新机制">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2019&#x2F;11&#x2F;30&#x2F;GameUpdate&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="带领你了解已上线的3D游戏项目">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-30T14:13:23.436Z">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/avatar.png" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                7
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                5
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-GameUpdate" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            游戏项目中的热更新机制
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/11/30/GameUpdate/">
+            <time datetime="2019-11-30T13:51:31.000Z" itemprop="datePublished">2019-11-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/3D-Client/" rel="tag">3D Client</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2.3k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈8分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="项目中的热更新机制"><a href="#项目中的热更新机制" class="headerlink" title="项目中的热更新机制"></a>项目中的热更新机制</h2><p>热更新技术是指可以在不关闭游戏客户端的情况下，动态的更新游戏本身的资源。类似的服务器硬盘的“热插拔”。</p>
+<p>目前市面上的绝大部分游戏客户端都启用了热更新技术，热更新的好处是玩家不必重新下载完整的安装包也能体验到官方的新版本资料片，减少了用户流失。</p>
+<p>项目中安卓系统与苹果系统在热更新的机制上有一个明显的差异：苹果系统不能热更C#代码。</p>
+<p>同样都可以进行热更新的是：AssetBundle（prefab预制体和UI界面图集等）、Table（文本，项目中的excel表格转成的二进制文件）、Lua（Lua脚本语言）、Mapfile（场景地图文件，关卡编辑器生成，项目中独有的）。</p>
+<p>通过校验本地文件的MD5与拉取到的MD5是否一样来进行热更。</p>
+<a id="more"></a>
+<p>代码热更新实现方式：</p>
+<p>1、使用Lua脚本编写游戏的UI或者其他逻辑，Lua是一个精悍小巧的脚本语言，可以跨平台运行解析，而且不需要编译过程。（热更lua）</p>
+<p>2、使用C#Light（热更L#）</p>
+<p>3、使用C#反射技术（热更DLL）</p>
+<h2 id="热更C-代码（DLL）"><a href="#热更C-代码（DLL）" class="headerlink" title="热更C#代码（DLL）"></a>热更C#代码（DLL）</h2><p>针对C#代码热更新的机制做一个简单的概述，在安卓上可以通过C#的语言特性——反射机制实现动态代码加载从而实现热更新。</p>
+<p>具体做法是：将需要频繁更改的逻辑部分独立出来做成DLL，在主模块调用这些DLL，主模块代码是不修改的，只有作为业务（逻辑）模块的DLL部分需要修改。游戏运行时通过反射机制加载这些DLL就实现了热更新。注：将这部分dll改个名字放在安卓包体中，可以防止一些别有用心的人做一些别有用心的事情。</p>
+<p>但苹果对反射机制有限制，不能实现这样的热更。为什么限制反射机制？安全起见，不能给程序太强的能力，因为反射机制实在太过强大，会给系统带来安全隐患。</p>
+<p>关于C#在苹果系统上热更新的思考可以参考<a href="https://blog.csdn.net/zrf2112/article/details/79393282" target="_blank" rel="noopener">此处</a>。</p>
+<h2 id="Lua热更新"><a href="#Lua热更新" class="headerlink" title="Lua热更新"></a>Lua热更新</h2><p>项目中使用的是ulua更新框架，不仅支持热更lua，还支持热更C#Light（L#），之所以把这两者放在一起讲是因为他们都支持安卓与苹果系统的热更新。</p>
+<p>Lua热更新的原理：在客户端可以编写Lua的解析器，通过这个解析器，可以运行最新的Lua脚本，后期可以把控制游戏逻辑的代码都写成Lua脚本。</p>
+<p>C#和lua中的类型可以一一对应。</p>
+<h4 id="Lua-和-C-中类型的对应"><a href="#Lua-和-C-中类型的对应" class="headerlink" title="Lua 和 C#中类型的对应"></a>Lua 和 C#中类型的对应</h4><p>nil               null</p>
+<p>String         System.String</p>
+<p>number      System.Double</p>
+<p>boolean     System.Boolean</p>
+<p>table          Lualnterface.LuaTable</p>
+<p>function     LuaInterface.LuaTable</p>
+<h4 id="Lua中通过表来实现面向对象的一个小例子"><a href="#Lua中通过表来实现面向对象的一个小例子" class="headerlink" title="Lua中通过表来实现面向对象的一个小例子"></a>Lua中通过表来实现面向对象的一个小例子</h4><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Enemy = &#123;&#125; <span class="comment">--申明对象</span></span><br><span class="line"></span><br><span class="line">loacal this = Enemy <span class="comment">--申明this关键字代表当前对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--定义并声明对象中的属性</span></span><br><span class="line"></span><br><span class="line">Enemy.hp=<span class="number">100</span></span><br><span class="line"></span><br><span class="line">Enemy.speed=<span class="number">12</span></span><br><span class="line"></span><br><span class="line">-定义并声明对象中的方法</span><br><span class="line"></span><br><span class="line">Enemy.Move = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"移动"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Enemy.Attact</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">print</span>(this.hp,<span class="string">"攻击"</span>)</span><br><span class="line"></span><br><span class="line">	this.Move()</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--执行</span></span><br><span class="line"></span><br><span class="line">Enemy.Attact()</span><br></pre></td></tr></table></figure>
+
+<h4 id="Lua解析器示例"><a href="#Lua解析器示例" class="headerlink" title="Lua解析器示例"></a>Lua解析器示例</h4><h5 id="在C-中执行访问Lua代码"><a href="#在C-中执行访问Lua代码" class="headerlink" title="在C#中执行访问Lua代码"></a>在C#中执行访问Lua代码</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Lua lua = <span class="keyword">new</span> Lua(); <span class="comment">//创建Lua解析器</span></span><br><span class="line"></span><br><span class="line">lua[<span class="string">"num"</span>] = <span class="number">5</span>; <span class="comment">//定义一个 num</span></span><br><span class="line"></span><br><span class="line">lua[<span class="string">"str"</span>] = <span class="string">"a string"</span>; <span class="comment">//定义一个字符串</span></span><br><span class="line"></span><br><span class="line">lua.newTable(<span class="string">"tab"</span>); <span class="comment">//创建一个表 tab=&#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//取得Lua环境中的变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> num = (<span class="keyword">double</span>)lua[<span class="string">"num"</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">string</span> str = (<span class="keyword">string</span>)lua[<span class="string">"str"</span>];</span><br></pre></td></tr></table></figure>
+<h5 id="在C-脚本中执行Lua脚本文件，或者脚本字符串"><a href="#在C-脚本中执行Lua脚本文件，或者脚本字符串" class="headerlink" title="在C#脚本中执行Lua脚本文件，或者脚本字符串"></a>在C#脚本中执行Lua脚本文件，或者脚本字符串</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lua.DoFile(<span class="string">"script.lua"</span>);<span class="comment">//执行script.lua脚本</span></span><br><span class="line"></span><br><span class="line">lua.DoString(<span class="string">"num = 2"</span>);<span class="comment">//执行lua代码</span></span><br><span class="line"></span><br><span class="line">lua.DoString(<span class="string">"str = 'a string'"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">object</span>[] retVals = lua.DoString(<span class="string">"return num,str"</span>);</span><br></pre></td></tr></table></figure>
+<p>在热更新中，只需要写好解析Lua脚本的代码，然后C#代码不需要变动，只需要修改lua脚本就好，通过lua脚本控制游戏逻辑。</p>
+<h5 id="把一个C-方法注册进Lua的一个全局方法"><a href="#把一个C-方法注册进Lua的一个全局方法" class="headerlink" title="把一个C#方法注册进Lua的一个全局方法"></a>把一个C#方法注册进Lua的一个全局方法</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把一个类中的普通方法注册进去</span></span><br><span class="line"></span><br><span class="line">Lua.RegisterFunction(<span class="string">"NormalMethod"</span>,obj,obj.GetType().GetMethod(<span class="string">"NormalMethod"</span>))</span><br><span class="line"></span><br><span class="line">lua.DoString(<span class="string">"NormalMethod()"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">//把一个类的静态方法注册进去</span></span><br><span class="line"></span><br><span class="line">lua.RegisterFunction(<span class="string">"StaticMethod"</span>,<span class="literal">null</span>,<span class="keyword">typeof</span>(ClassName).GetMethod(<span class="string">"StaticMethod"</span>))</span><br><span class="line"></span><br><span class="line">lua.DoString(<span class="string">"StaticMethod()"</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="在Lua中使用C-脚本"><a href="#在Lua中使用C-脚本" class="headerlink" title="在Lua中使用C#脚本"></a>在Lua中使用C#脚本</h5><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span> <span class="string">"luanet"</span> <span class="comment">--引入库，相当于 import</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--加载CLR的类型、实例化CLR对象</span></span><br><span class="line"></span><br><span class="line">luanet.load_assembly(<span class="string">"System.Windows.Forms"</span>)</span><br><span class="line"></span><br><span class="line">luanet.load_assembly(<span class="string">"System.Drawing"</span>) <span class="comment">--表示加载了一个dll，理解为加载了system.drawing的命名空间</span></span><br><span class="line"></span><br><span class="line">Form = luanet.import_type(<span class="string">"System.Windows.Forms.Form"</span>) <span class="comment">--表示引入了System.Windows.Forms下的一个类Form</span></span><br><span class="line"></span><br><span class="line">StartPosition = luanet.import_type(<span class="string">"System.Windows.Forms.FormStartPosition"</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(Form)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(StartPosition)</span><br></pre></td></tr></table></figure>
+<p>在Lua中使用C#中的类创建对象的时候，会自动匹配最合适的构造方法。</p>
+<h5 id="在Lua中访问C-中的属性和方法"><a href="#在Lua中访问C-中的属性和方法" class="headerlink" title="在Lua中访问C#中的属性和方法"></a>在Lua中访问C#中的属性和方法</h5><p>Lua代码中，访问C#对象的属性的方法和访问table的键索引一样，比如obj.name 或者 obj[“name”]</p>
+<p>Lua代码中，访问C#对象的普通函数的方式和调用table的函数一样，如：obj:method()</p>
+<p>注：在Lua中访问C#中的方法 - 特殊情况</p>
+<p>当函数中有out或者ref参数时，out参数和ref参数和函数的返回值一起返回，并且调用的时候，out参数不需要传参。</p>
+<h2 id="AssetBundle热更新"><a href="#AssetBundle热更新" class="headerlink" title="AssetBundle热更新"></a>AssetBundle热更新</h2><p>AssetBundle是一个特定于平台的资产压缩包，资产包括Models、Textures、Prefabs、Audio clips等，每个不同的平台打包出来的AssetBundle不同。AssetBundle的热更新是unity官方支持的。</p>
+<p>选择需要打包的资源，在inspector视图底部，找到AssetBundle选项，默认是None，选项卡选择NEW，输入自定义的AssetBundle名称，后面第二个选项卡是AssetBundle的后缀名，可选可不选，如果你使用了后缀，那么加载AssetBundle的时候需要带上后缀名。如果创建的标签是window标签，那么所有window标签的资源会打到一起window AssetBundle。也就是说，Unity会自动把相同标签的资源打包成一个整体。</p>
+<p>使用官方提供的API打AB以及加载AB，BuildPipeline.BuildAssetBundles这个API，参数一是打包后AssetBundle的存放路径，参数二是压缩方式，参数三是打包的平台。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AssetBundleManifest <span class="title">BuildAssetBundles</span>(<span class="params"><span class="keyword">string</span> outputPath, BuildAssetBundleOptions assetBundleOptions, BuildTarget targetPlatform</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>本地加载，如果你设置的AssertBundle有后缀名，比如后缀是unity3d，则AssertBundle名需要加后缀，如Capsule.unity3d</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AssetBundle ab = AssetBundle.LoadFromFile(<span class="string">"Assets/AssetBundles/Android/cube"</span>);</span><br><span class="line"><span class="keyword">if</span>(ab != <span class="literal">null</span>)&#123;</span><br><span class="line">    Instantiate(ab.LoadAsset&lt;GameObject&gt;(cube))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>网络加载</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">InstantiateObject</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">string</span> uri = <span class="string">"file:///"</span> + Application.dataPath + <span class="string">"/AssetBundles/"</span> + assetBundleName;        </span><br><span class="line">  UnityEngine.Networking.UnityWebRequest request = UnityEngine.Networking.UnityWebRequest.GetAssetBundle(uri, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">yield</span> <span class="keyword">return</span> request.Send();</span><br><span class="line">  AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);</span><br><span class="line">  GameObject cube = bundle.LoadAsset&lt;GameObject&gt;(<span class="string">"Cube"</span>);</span><br><span class="line">  GameObject sprite = bundle.LoadAsset&lt;GameObject&gt;(<span class="string">"Sprite"</span>);</span><br><span class="line">  Instantiate(cube);</span><br><span class="line">  Instantiate(sprite);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>动态load资源的几种途径</strong>：</p>
+<ul>
+<li><p>通过Resources模块，调用它的load函数：可以直接load并返回某个类型的Object，前提是要把这个资源放在Resource命名的文件夹下，Unity不关有没有场景引用，都会将其全部打入到安装包中。</p>
+</li>
+<li><p>通过bundle的形式：即将资源打成 AssetBundle 放在服务器或本地磁盘，然后使用WWW模块get 下来，然后从这个bundle中load某个object。（AssetBundle热更的前提和基础）</p>
+</li>
+<li><p>通过AssetDatabase.loadasset ：这种方式只在editor范围内有效，游戏运行时没有这个函数，它通常是在开发中调试用的。</p>
+</li>
+</ul>
+<p><strong>关于AssetBundle的分组</strong>，有必要仔细思考一下，在这里分享下之前公司经历过的一个项目的真实案例。在项目开发的前期，没有注意AssetBundle的分组策略，采用的是一个UI界面一个AssetBundle，在项目的后期却怎么也打不出来包，折腾了一两天之后才终于发现这是unity官方的bug，AssetBundle包有一个数量上的限制，不能突破这个限制，于是我们修改了AssetBundle的分组策略，改为了所有UI界面一个包才最终规避了这个问题。</p>
+<p>可以参考官方提供的分组策略：</p>
+<ul>
+<li>逻辑实体分组：<br> 一个UI界面或者所有UI界面一个包；<br> 一个角色或者所有角色一个包；<br> 所有场景所共享的部分一个包。</li>
+<li>类型分组：比如Models一个包、Audio clips一个包等。</li>
+<li>使用分组：<br> 把在某一时间内使用的所有资源打成一个包；<br> 把同一关卡的所有资源打成一个包；<br> 一个场景一个包。</li>
+<li>原则<br> 经常更新的资源与不经常更新的资源拆分离为两个包；<br> 把需要同时加载的资源放在同一个包；<br> 把其他包共享的资源放在一个单独的包里面；<br> 把一些需要同时加载的小资源打包成一个包；<br> 如果对于同一个资源有两个版本，可以考虑通过后缀来区分。</li>
+</ul>
+<h2 id="热更文本（项目中的表格、json文件等）"><a href="#热更文本（项目中的表格、json文件等）" class="headerlink" title="热更文本（项目中的表格、json文件等）"></a>热更文本（项目中的表格、json文件等）</h2><p>一般的项目中，为了方便配置控制游戏中的数值以及文本，会使用excel表格填写数据，利用python脚本将其转换成json或者二进制文件供客户端读取。文本不需要编译过程，如果遇到了相关数据的改动，更新相关文件即可。</p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2019/11/30/GameUpdate/" data-id="ck3ln3ytj0000wwud56ocaksx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/11/28/History-of-quantum-physics-1/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">上帝掷骰子吗？（一）</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/30/GameUpdate/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2019/11/30/GameUpdate/" class="title">游戏项目中的热更新机制</a></p>
+                            <p class="item-date"><time datetime="2019-11-30T13:51:31.000Z" itemprop="datePublished">2019-11-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/28/History-of-quantum-physics-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a></p>
+                            <p class="item-title"><a href="/2019/11/28/History-of-quantum-physics-1/" class="title">上帝掷骰子吗？（一）</a></p>
+                            <p class="item-date"><time datetime="2019-11-28T14:53:10.000Z" itemprop="datePublished">2019-11-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/28/3D-Engine-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2019/11/28/3D-Engine-3/" class="title">3D游戏引擎初探（三）</a></p>
+                            <p class="item-date"><time datetime="2019-11-28T14:11:31.000Z" itemprop="datePublished">2019-11-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/27/3D-Engine-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2019/11/27/3D-Engine-2/" class="title">3D游戏引擎初探（二）</a></p>
+                            <p class="item-date"><time datetime="2019-11-27T14:29:36.000Z" itemprop="datePublished">2019-11-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/24/3D-Engine-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2019/11/24/3D-Engine-1/" class="title">3D游戏引擎初探（一）</a></p>
+                            <p class="item-date"><time datetime="2019-11-24T15:52:45.000Z" itemprop="datePublished">2019-11-24</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 10px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 20px;">3D Engine</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '游戏项目中的热更新机制',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
