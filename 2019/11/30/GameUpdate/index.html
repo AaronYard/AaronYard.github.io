@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="汪震|个人博客">
 <meta property="og:description" content="带领你了解已上线的3D游戏项目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-30T14:13:23.436Z">
+<meta property="og:updated_time" content="2020-04-05T12:18:12.934Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -159,7 +159,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                7
+                8
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -255,7 +255,7 @@
 <p>boolean     System.Boolean</p>
 <p>table          Lualnterface.LuaTable</p>
 <p>function     LuaInterface.LuaTable</p>
-<h4 id="Lua中通过表来实现面向对象的一个小例子"><a href="#Lua中通过表来实现面向对象的一个小例子" class="headerlink" title="Lua中通过表来实现面向对象的一个小例子"></a>Lua中通过表来实现面向对象的一个小例子</h4><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Enemy = &#123;&#125; <span class="comment">--申明对象</span></span><br><span class="line"></span><br><span class="line">loacal this = Enemy <span class="comment">--申明this关键字代表当前对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--定义并声明对象中的属性</span></span><br><span class="line"></span><br><span class="line">Enemy.hp=<span class="number">100</span></span><br><span class="line"></span><br><span class="line">Enemy.speed=<span class="number">12</span></span><br><span class="line"></span><br><span class="line">-定义并声明对象中的方法</span><br><span class="line"></span><br><span class="line">Enemy.Move = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"移动"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Enemy.Attact</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">print</span>(this.hp,<span class="string">"攻击"</span>)</span><br><span class="line"></span><br><span class="line">	this.Move()</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--执行</span></span><br><span class="line"></span><br><span class="line">Enemy.Attact()</span><br></pre></td></tr></table></figure>
+<h4 id="Lua中通过表来实现面向对象的一个小例子"><a href="#Lua中通过表来实现面向对象的一个小例子" class="headerlink" title="Lua中通过表来实现面向对象的一个小例子"></a>Lua中通过表来实现面向对象的一个小例子</h4><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Enemy = &#123;&#125; <span class="comment">--申明对象</span></span><br><span class="line"></span><br><span class="line">loacal this = Enemy <span class="comment">--申明this关键字代表当前对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--定义并声明对象中的属性</span></span><br><span class="line"></span><br><span class="line">Enemy.hp=<span class="number">100</span></span><br><span class="line"></span><br><span class="line">Enemy.speed=<span class="number">12</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--定义并声明对象中的方法</span></span><br><span class="line"></span><br><span class="line">Enemy.Move = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">"移动"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Enemy.Attact</span><span class="params">()</span></span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">print</span>(this.hp,<span class="string">"攻击"</span>)</span><br><span class="line"></span><br><span class="line">	this.Move()</span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--执行</span></span><br><span class="line"></span><br><span class="line">Enemy.Attact()</span><br></pre></td></tr></table></figure>
 
 <h4 id="Lua解析器示例"><a href="#Lua解析器示例" class="headerlink" title="Lua解析器示例"></a>Lua解析器示例</h4><h5 id="在C-中执行访问Lua代码"><a href="#在C-中执行访问Lua代码" class="headerlink" title="在C#中执行访问Lua代码"></a>在C#中执行访问Lua代码</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Lua lua = <span class="keyword">new</span> Lua(); <span class="comment">//创建Lua解析器</span></span><br><span class="line"></span><br><span class="line">lua[<span class="string">"num"</span>] = <span class="number">5</span>; <span class="comment">//定义一个 num</span></span><br><span class="line"></span><br><span class="line">lua[<span class="string">"str"</span>] = <span class="string">"a string"</span>; <span class="comment">//定义一个字符串</span></span><br><span class="line"></span><br><span class="line">lua.newTable(<span class="string">"tab"</span>); <span class="comment">//创建一个表 tab=&#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//取得Lua环境中的变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> num = (<span class="keyword">double</span>)lua[<span class="string">"num"</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">string</span> str = (<span class="keyword">string</span>)lua[<span class="string">"str"</span>];</span><br></pre></td></tr></table></figure>
 <h5 id="在C-脚本中执行Lua脚本文件，或者脚本字符串"><a href="#在C-脚本中执行Lua脚本文件，或者脚本字符串" class="headerlink" title="在C#脚本中执行Lua脚本文件，或者脚本字符串"></a>在C#脚本中执行Lua脚本文件，或者脚本字符串</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lua.DoFile(<span class="string">"script.lua"</span>);<span class="comment">//执行script.lua脚本</span></span><br><span class="line"></span><br><span class="line">lua.DoString(<span class="string">"num = 2"</span>);<span class="comment">//执行lua代码</span></span><br><span class="line"></span><br><span class="line">lua.DoString(<span class="string">"str = 'a string'"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">object</span>[] retVals = lua.DoString(<span class="string">"return num,str"</span>);</span><br></pre></td></tr></table></figure>
@@ -306,7 +306,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/30/GameUpdate/" data-id="ck3ln3ytj0000wwud56ocaksx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2019/11/30/GameUpdate/" data-id="ck8o2ua0y000dy0udhm1baioz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -381,6 +381,15 @@
         
 <nav id="article-nav">
     
+        <a href="/2020/04/05/AssetsPackage/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    游戏项目中的小包更新机制
+                
+            </div>
+        </a>
+    
     
         <a href="/2019/11/28/History-of-quantum-physics-1/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
@@ -411,6 +420,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/05/AssetsPackage/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/05/AssetsPackage/" class="title">游戏项目中的小包更新机制</a></p>
+                            <p class="item-date"><time datetime="2020-04-05T12:21:28.000Z" itemprop="datePublished">2020-04-05</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -488,25 +516,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <!-- <div class="item-thumbnail">
-                            <a href="/2019/11/24/3D-Engine-1/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div> -->
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
-                            <p class="item-title"><a href="/2019/11/24/3D-Engine-1/" class="title">3D游戏引擎初探（一）</a></p>
-                            <p class="item-date"><time datetime="2019-11-24T15:52:45.000Z" itemprop="datePublished">2019-11-24</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -516,7 +525,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -525,7 +534,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -534,7 +543,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -543,7 +552,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/3D-Client/" style="font-size: 10px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 20px;">3D Engine</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
+            <a href="/tags/3D-Client/" style="font-size: 15px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 20px;">3D Engine</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
         </div>
     </div>
 
@@ -580,7 +589,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2019 汪震<br>
+            &copy; 2020 汪震<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
         </div>
     </div>

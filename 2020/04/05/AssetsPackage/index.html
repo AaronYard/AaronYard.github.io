@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>游戏项目中的小包更新机制 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="带领你了解已上线的3D游戏项目">
+<meta name="keywords" content="3D Client">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏项目中的小包更新机制">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;04&#x2F;05&#x2F;AssetsPackage&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="带领你了解已上线的3D游戏项目">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-05T14:42:25.809Z">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/avatar.png" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                8
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                5
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-AssetsPackage" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            游戏项目中的小包更新机制
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/04/05/AssetsPackage/">
+            <time datetime="2020-04-05T12:21:28.000Z" itemprop="datePublished">2020-04-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/3D-Client/" rel="tag">3D Client</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.8k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈7分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="项目中的小包更新机制"><a href="#项目中的小包更新机制" class="headerlink" title="项目中的小包更新机制"></a>项目中的小包更新机制</h2><p>大部分成熟的线上的MMORPG项目，其包括的特效、图集、预制等资源的体积大小必定是庞大臃肿的，这个在业界也是公认的。</p>
+<p>如果有打过安卓谷歌包的，想必都清楚谷歌有一个明文规定，上传至谷歌开发者后台的包体大小不能大于100M。对于包体大小大于100M的项目，Google官方也提供了一个方案，Google官方提供了Jobb工具用来生成obb文件，工具可以在 Android\sdk\tools\bin文件夹下找到，生成后于apk文件一起上传至开发者后台，待审核通过发布后供玩家下载。</p>
+<p>另一方面，经过调查，国内玩家在下载游戏的时候更偏向于包体偏小的apk。这个时候，另辟蹊径的方案诞生了，以我经历的两款成熟的线上项目为案例，有两个方案供大家参考：</p>
+<a id="more"></a>
+
+<p>###方案一</p>
+<p>没有一个官方的名字，姑且叫它强制小包法叭。</p>
+<p>在打apk的时候，将游戏用到的代码、闪屏图、loading图、主场景、登录场景、表格、开场动画等最基本的资源提前准备好，在打包时替换进去，这样包体不会很大，玩家所需的拓展资源则通过项目里的热更新机制加载。</p>
+<p>这个方法有一个缺点，由于包体内所携带的资源并不完整，只能保证游戏可以运行不会崩溃，更多的功能资源包则需要在登录游戏之前下载。若热更新较大则会“吓跑”一些新玩家（不成文规定：新发布游戏的热更新包体宜小于30M），为了减少这一影响，第二种补充方案应运而生了。</p>
+<p>###方案二</p>
+<p>游戏内小包资源法，作为方案一的补充，它对玩家更友好。</p>
+<p>将项目内容分为必须功能和非必须功能，如玩家信息系统、公告系统、技能系统、排行榜系统、基本的新手任务系统以及主城场景等游戏正常运行所必须的或占资源不多的功能系统可以统一将预制图集资源打进包里。但是类似宠物系统、武将系统、野怪系统等占用较多预制资源分类打进AB小包中，用一个json文件来管理资源列表。</p>
+<p>在loading主场景的时候，异步检测线上小包资源的json配置是否存在，若存在且为wifi环境则异步下载资源并解压预加载，主界面也会显示相应的窗口。若玩家当前网络环境不满足下载资源的要求，则会在非必须的功能入口处做出限制，告知需要加载资源包才能体验完整的游戏功能，并且会在加载完毕资源后给予一定的奖励。</p>
+<p>这样玩家在初始阶段流失的相应较少，体验更佳，对玩家更为友好。</p>
+<h2 id="热更新机制"><a href="#热更新机制" class="headerlink" title="热更新机制"></a>热更新机制</h2><p>热更新机制已经在另一篇文章中详细阐述了，再此就不重复介绍了。</p>
+<h2 id="游戏内小包资源法"><a href="#游戏内小包资源法" class="headerlink" title="游戏内小包资源法"></a>游戏内小包资源法</h2><p>1、小包有对应的资源版本号，在游戏打包前设定相应的资源版本号，而在拉取小包资源的时候也是以资源版本号作为索引去寻找相应的json配置文件。</p>
+<p>2、商业游戏最重要的是游戏安全，可以在写入json配置文件列表的脚本中加入相应的文件大小及MD5等信息作为校验，这样就不会轻易被第三方非法修改。</p>
+<p>3、在小包解压时，有概率会出现一些文件解压失败，损失一部分资源，或者玩家不小心删掉了一些资源文件，这个时候在重新下载所有小包资源就不明智了。在游戏中给玩家提供一个主动校验资源的功能，根据现有资源文件名遍历json配置资源列表来寻找需要缺失的文件，异步下载并解压。</p>
+<p>4、游戏内小包资源法与热更新机制在本质上是一样的，都是通过unity的AssetBundle加载机制来实现的。</p>
+<h4 id="小包资源的加载状态"><a href="#小包资源的加载状态" class="headerlink" title="小包资源的加载状态"></a>小包资源的加载状态</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> AssetsPackageState</span><br><span class="line">&#123;</span><br><span class="line">    None,<span class="comment">//初始状态，最初的未加载状态</span></span><br><span class="line">    ReadFileEnd,<span class="comment">//读取完json配置文件</span></span><br><span class="line">    DownLoadStart,<span class="comment">//开始下载josn文件列表中的小包资源文件</span></span><br><span class="line">    DownLoadStop,<span class="comment">//暂停下载josn文件列表中的小包资源文件，并保存当前的下载进度</span></span><br><span class="line">    DownLoadComplete,<span class="comment">//小包资源下载完成</span></span><br><span class="line">    DecompressStart,<span class="comment">//小包资源开始解压</span></span><br><span class="line">    DecompresFail,<span class="comment">//小包资源解压失败</span></span><br><span class="line">    AssetsReady,<span class="comment">//资源校验已准备好</span></span><br><span class="line">    AssetsCheck,<span class="comment">//资源校验中（成功时会通过回调告知玩家校验结果）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="无感知下载小包资源"><a href="#无感知下载小包资源" class="headerlink" title="无感知下载小包资源"></a>无感知下载小包资源</h4><p>在加载进入主主场景时，检测是否需要加载资源，根据网络环境并自动加载,代码流程大致如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化检测功能</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">CheckInitDownLoad</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (m_curAssetsPackageState != AssetsPackageState.None)<span class="comment">//不是初始化状态，说明进入主场景后已经检查过了，不必再走下面的逻辑</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (IsAssetsPackageReady())</span><br><span class="line">	&#123;</span><br><span class="line">		m_isDecompressSuc = <span class="literal">true</span>;</span><br><span class="line">		m_isDownLoadSuc = <span class="literal">true</span>;</span><br><span class="line">		m_curAssetsPackageState = AssetsPackageState.AssetsReady;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (m_curAssetsPackageState == AssetsPackageState.None)</span><br><span class="line">		&#123;</span><br><span class="line">			LoginCheckDownLoadInfo();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  资源包是否下载解压好</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">bool</span> <span class="title">IsAssetsPackageReady</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(m_data.assetPackage != <span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> m_data.assetPackage.isAssetsPackageReady;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用于登录检查下载资源</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">LoginCheckDownLoadInfo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="comment">//创建下载目录</span></span><br><span class="line">	m_availablePath = GetPathForPlatform(platform, TargetAssetsBundlPath);</span><br><span class="line">	<span class="keyword">if</span> (!Directory.Exists(m_availablePath))</span><br><span class="line">	&#123;</span><br><span class="line">		Directory.CreateDirectory(m_availablePath);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (m_updateStruct == <span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		GetUpdateStructForSvr(InitUpateFileInfo);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		InitUpateFileInfo();</span><br><span class="line">	&#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//拉取下载文件清单信息</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">GetUpdateStructForSvr</span>(<span class="params">Action succCB = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> url = <span class="string">"...."</span>;<span class="comment">//json文件的url</span></span><br><span class="line">	DownloadSmallFileTask(url, (<span class="keyword">string</span> text) =&gt;<span class="comment">//下载并解析json文件</span></span><br><span class="line">	&#123;</span><br><span class="line">		m_updateStruct = JsonMapper.ToObject&lt;UpdateStruct&gt;(text);<span class="comment">//将json数据转为C#结构</span></span><br><span class="line">		<span class="keyword">if</span> (m_updateStruct != <span class="literal">null</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (succCB != <span class="literal">null</span>)</span><br><span class="line">				succCB();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="comment">//succCB批次任务执行成功回调,failCB批次任务执行失败回调,netConnectCheckCB网络连接检查回调,tryTimeLimit任务失败后尝试次数上限,value=0默认没有上限，不为0时，超过上限后结束任务执行</span></span><br><span class="line">	StartDownloadSmallFile(succCB, failCB, netConnectCheckCB, tryTimeLimit);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UpdateInfo</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">string</span> name;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> size;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">string</span> md5;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> desize;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">string</span> demd5;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">UpdateInfo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">		name = <span class="string">""</span>;</span><br><span class="line">		size = <span class="number">0</span>;</span><br><span class="line">		md5 = <span class="string">""</span>;</span><br><span class="line">		desize = <span class="number">0</span>;</span><br><span class="line">		demd5 = <span class="string">""</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化更新文件信息</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">InitUpateFileInfo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//遍历json中的下载信息，统计已下载，总下载，初始化需要下载文件列表</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m_updateInfo.Count; i++)<span class="comment">//遍历json数据转换后的list</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">var</span> updateInfo = m_updateInfo[i];</span><br><span class="line">		InitFileReadTask(m_updateInfo[i], m_availablePath);<span class="comment">//添加异步下载任务</span></span><br><span class="line">		m_needDeleteFileList.Add(m_availablePath + m_updateInfo[i].name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化文件读取任务</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">InitFileReadTask</span>(<span class="params">UpdateInfo updateInfo, <span class="keyword">string</span> path</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">string</span> fileName = <span class="string">"ABC.ab"</span>;</span><br><span class="line">	<span class="keyword">string</span> url = <span class="string">"https://www.AAA.com/ABC.ab"</span>;</span><br><span class="line">	<span class="keyword">string</span> decompressFileName = <span class="string">"abc"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//下载文件读取</span></span><br><span class="line">	m_totalSize += updateInfo.size;</span><br><span class="line">	AddReadFileTask(fileName, updateInfo.md5, updateInfo.size,</span><br><span class="line">		<span class="comment">//读取成功回调</span></span><br><span class="line">		() =&gt;</span><br><span class="line">		&#123;</span><br><span class="line">			m_curSize += updateInfo.size;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="comment">//读取失败回调</span></span><br><span class="line">		(TaskWorkStatus status) =&gt;</span><br><span class="line">		&#123;</span><br><span class="line"></span><br><span class="line">			AddDownloadBigFileTask(fileName, url, updateInfo.md5,</span><br><span class="line">				updateInfo.size,</span><br><span class="line">				() =&gt;</span><br><span class="line">				&#123;</span><br><span class="line">					m_childDownSize = <span class="number">0</span>;</span><br><span class="line">					m_curSize += updateInfo.size;</span><br><span class="line">				&#125;, </span><br><span class="line">				(TaskWorkStatus downStatus) =&gt;</span><br><span class="line">				&#123;</span><br><span class="line">					m_childDownSize = <span class="number">0</span>;</span><br><span class="line">				&#125;, </span><br><span class="line">				(<span class="keyword">long</span> curSize) =&gt;</span><br><span class="line">				&#123;</span><br><span class="line">					m_childDownSize = curSize;</span><br><span class="line">				&#125;</span><br><span class="line">				);</span><br><span class="line">		&#125;</span><br><span class="line">		);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//解压后文件读取</span></span><br><span class="line">	<span class="keyword">var</span> unDecompressFile = <span class="keyword">new</span> CUnzipFile(fileName, decompressFileName, updateInfo.desize);</span><br><span class="line">	m_totalDecompressSize += updateInfo.desize;</span><br><span class="line"></span><br><span class="line">	AddReadFileTask(decompressFileName, updateInfo.demd5, updateInfo.desize,</span><br><span class="line">		() =&gt;</span><br><span class="line">		&#123;</span><br><span class="line">			m_curDecompressSize += updateInfo.desize;</span><br><span class="line">		&#125;, </span><br><span class="line">		(TaskWorkStatus status) =&gt;</span><br><span class="line">		&#123;</span><br><span class="line">			AddDecompressFileTask(decompressFileName, updateInfo.demd5, </span><br><span class="line">			updateInfo.desize, unDecompressFile, </span><br><span class="line">			() =&gt;</span><br><span class="line">			&#123;</span><br><span class="line">				m_curDecompressSize += updateInfo.desize;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/04/05/AssetsPackage/" data-id="ck8o2ua0r0006y0udgjrcau4c" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/11/30/GameUpdate/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">游戏项目中的热更新机制</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/05/AssetsPackage/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/05/AssetsPackage/" class="title">游戏项目中的小包更新机制</a></p>
+                            <p class="item-date"><time datetime="2020-04-05T12:21:28.000Z" itemprop="datePublished">2020-04-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/30/GameUpdate/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2019/11/30/GameUpdate/" class="title">游戏项目中的热更新机制</a></p>
+                            <p class="item-date"><time datetime="2019-11-30T13:51:31.000Z" itemprop="datePublished">2019-11-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/28/History-of-quantum-physics-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a></p>
+                            <p class="item-title"><a href="/2019/11/28/History-of-quantum-physics-1/" class="title">上帝掷骰子吗？（一）</a></p>
+                            <p class="item-date"><time datetime="2019-11-28T14:53:10.000Z" itemprop="datePublished">2019-11-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/28/3D-Engine-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2019/11/28/3D-Engine-3/" class="title">3D游戏引擎初探（三）</a></p>
+                            <p class="item-date"><time datetime="2019-11-28T14:11:31.000Z" itemprop="datePublished">2019-11-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2019/11/27/3D-Engine-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2019/11/27/3D-Engine-2/" class="title">3D游戏引擎初探（二）</a></p>
+                            <p class="item-date"><time datetime="2019-11-27T14:29:36.000Z" itemprop="datePublished">2019-11-27</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 15px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 20px;">3D Engine</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '游戏项目中的小包更新机制',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
