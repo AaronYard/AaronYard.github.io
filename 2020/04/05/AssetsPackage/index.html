@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="汪震|个人博客">
 <meta property="og:description" content="带领你了解已上线的3D游戏项目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-06T06:42:42.897Z">
+<meta property="og:updated_time" content="2020-04-06T06:48:10.793Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -237,10 +237,10 @@
 <p>另一方面，经过调查，国内玩家在下载游戏的时候更偏向于包体偏小的apk。这个时候，另辟蹊径的方案诞生了，以我经历的两款成熟的线上项目为案例，有两个方案供大家参考：</p>
 <a id="more"></a>
 
-<h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><p>没有一个官方的名字，姑且叫它强制小包法叭。</p>
+<h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h4><p>没有一个官方的名字，姑且叫它强制小包法叭。</p>
 <p>在打apk的时候，将游戏用到的代码、闪屏图、loading图、主场景、登录场景、表格、开场动画等最基本的资源提前准备好，在打包时替换进去，这样包体不会很大，玩家所需的拓展资源则通过项目里的热更新机制加载。</p>
 <p>这个方法有一个缺点，由于包体内所携带的资源并不完整，只能保证游戏可以运行不会崩溃，更多的功能资源包则需要在登录游戏之前下载。若热更新较大则会“吓跑”一些新玩家（不成文规定：新发布游戏的热更新包体宜小于30M），为了减少这一影响，第二种补充方案应运而生了。</p>
-<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><p>游戏内小包资源法，作为方案一的补充，它对玩家更友好。</p>
+<h4 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h4><p>游戏内小包资源法，作为方案一的补充，它对玩家更友好。</p>
 <p>将项目内容分为必须功能和非必须功能，如玩家信息系统、公告系统、技能系统、排行榜系统、基本的新手任务系统以及主城场景等游戏正常运行所必须的或占资源不多的功能系统可以统一将预制图集资源打进包里。但是类似宠物系统、武将系统、野怪系统等占用较多预制资源分类打进AB小包中，用一个json文件来管理资源列表。</p>
 <p>在loading主场景的时候，异步检测线上小包资源的json配置是否存在，若存在且为wifi环境则异步下载资源并解压预加载，主界面也会显示相应的窗口。若玩家当前网络环境不满足下载资源的要求，则会在非必须的功能入口处做出限制，告知需要加载资源包才能体验完整的游戏功能，并且会在加载完毕资源后给予一定的奖励。</p>
 <p>这样玩家在初始阶段流失的相应较少，体验更佳，对玩家更为友好。</p>
@@ -265,7 +265,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/04/05/AssetsPackage/" data-id="ck8o2ua0r0006y0udgjrcau4c" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/04/05/AssetsPackage/" data-id="ck8o45pkv0006poud0nyb4lyp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
