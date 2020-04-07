@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="汪震|个人博客">
 <meta property="og:description" content="带领你了解已上线的3D游戏项目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-07T03:17:30.765Z">
+<meta property="og:updated_time" content="2020-04-07T04:21:52.782Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -244,7 +244,7 @@
 <p>将项目内容分为必须功能和非必须功能，如玩家信息系统、公告系统、技能系统、排行榜系统、基本的新手任务系统以及主城场景等游戏正常运行所必须的或占资源不多的功能系统可以统一将预制图集资源打进包里。但是类似宠物系统、武将系统、野怪系统等占用较多预制资源分类打进AB小包中，用一个json文件来管理资源列表。</p>
 <p>在loading主场景的时候，异步检测线上小包资源的json配置是否存在，若存在且为wifi环境则异步下载资源并解压预加载，主界面也会显示相应的窗口。若玩家当前网络环境不满足下载资源的要求，则会在非必须的功能入口处做出限制，告知需要加载资源包才能体验完整的游戏功能，并且会在加载完毕资源后给予一定的奖励。</p>
 <p>这样玩家在初始阶段流失的相应较少，体验更佳，对玩家更为友好。</p>
-<h2 id="热更新机制"><a href="#热更新机制" class="headerlink" title="热更新机制"></a>热更新机制</h2><p>热更新机制已经在另一篇文章中详细阐述了，再此就不重复介绍了。<a href="https://www.aaronyard.top/2019/11/30/GameUpdate/" target="_blank" rel="noopener">热更新机制</a></p>
+<h2 id="热更新机制"><a href="#热更新机制" class="headerlink" title="热更新机制"></a>热更新机制</h2><p>热更新机制已经在另一篇文章中详细阐述了，再此就不重复介绍了。–&gt;<a href="https://www.aaronyard.top/2019/11/30/GameUpdate/" target="_blank" rel="noopener">热更新机制</a></p>
 <h2 id="游戏内小包资源法"><a href="#游戏内小包资源法" class="headerlink" title="游戏内小包资源法"></a>游戏内小包资源法</h2><p>1、小包有对应的资源版本号，在游戏打包前设定相应的资源版本号，而在拉取小包资源的时候也是以资源版本号作为索引去寻找相应的json配置文件。</p>
 <p>2、商业游戏最重要的是游戏安全，可以在写入json配置文件列表的脚本中加入相应的文件大小及MD5等信息作为校验，这样就不会轻易被第三方非法修改。</p>
 <p>3、在小包解压时，有概率会出现一些文件解压失败，损失一部分资源，或者玩家不小心删掉了一些资源文件，这个时候在重新下载所有小包资源就不明智了。在游戏中给玩家提供一个主动校验资源的功能，根据现有资源文件名遍历json配置资源列表来寻找需要缺失的文件，异步下载并解压。</p>
@@ -265,7 +265,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/04/05/AssetsPackage/" data-id="ck8pc2fsz0003asud6sufez6x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/04/05/AssetsPackage/" data-id="ck8peedc50005a8udcoe23tno" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
