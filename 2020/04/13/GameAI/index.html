@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="汪震|个人博客">
 <meta property="og:description" content="带领你了解已上线的3D游戏项目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-13T11:13:41.871Z">
+<meta property="og:updated_time" content="2020-07-05T02:02:04.062Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -159,7 +159,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                12
+                13
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -223,8 +223,8 @@
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=9字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈1分钟</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2.7k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈9分钟</span></font>
                 
             </header>
         
@@ -232,9 +232,83 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h2 id="项目中的AI"><a href="#项目中的AI" class="headerlink" title="项目中的AI"></a>项目中的AI</h2><a id="more"></a>
+            <h2 id="项目中的AI"><a href="#项目中的AI" class="headerlink" title="项目中的AI"></a>项目中的AI</h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在游戏开发中实现怪物AI逻辑的主要技术有两种：1、状态机 2、行为树。他们两者的实现机制不一样，其中状态机是“事件”机制，行为树是“轮询”机制。在项目开发中可以根据具体情况合理的选择两者来处理AI编写问题。</p>
+<p>接下来将分两个部分对游戏中的AI进行讲解，1、状态机，2、行为树。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>开发游戏AI的目标之一就是要找到一个简单，可扩展的编辑逻辑的方案，从而加速游戏开发的迭代速度。在“行为系统图”中，行为系统（Behavior System）响应游戏中的各种信息，进行决策以挑选接下来将要执行的行动并且监控该行动的执行。</p>
+<p>知识模型（Knowledge Model）是对游戏世界中各种信息的抽象。</p>
+<a id="more"></a>
 
-<p>未完待续。。。</p>
+<p>在行为系统中，有限状态机（FSM，Finite State Machine）最为经典，FSM模型的优势之一是简单。但是FSMs需要用转换（Transition）连接状态（State），因此，状态（State）失去了模块性（Modularity）。</p>
+<p>行为树，英文是Behavior Tree，简称BT，是由行为节点组成的树状结构：</p>
+<p>对于FSM，每个节点表示一个状态，而对于BT，每个节点表示一个行为。同样是由节点连接而成，BT有什么优势呢？</p>
+<p>在BT中，节点是有层次（Hierarchical）的，子节点由其父节点来控制。每个节点的执行都有一个结果（成功Success，失败Failure或运行Running），该节点的执行结果都由其父节点来管理，从而决定接下来做什么，父节点的类型决定了不同的控制类型。节点不需要维护向其他节点的转换，节点的模块性（Modularity）被大大增强了。实际上，在BT里，由于节点不再有转换，它们不再是状态（State），而是行为（Behavior）。</p>
+<h3 id="第一种-有限状态机"><a href="#第一种-有限状态机" class="headerlink" title="第一种-有限状态机"></a>第一种-有限状态机</h3><p>1、有限状态机（FSM）的实现方式有三种：</p>
+<p>面向过程的方式的if else<br>用枚举配合switch case语句。<br>用多态与虚函数（也就是状态模式）</p>
+<p>2、状态模式的经典定义：允许对象在当内部状态改变是改变其行为，就好像对象改变了自己的类一样。</p>
+<p>3、状态模式的实现分为三个要点：</p>
+<ul>
+<li>为状态定义一个接口</li>
+<li>为每个状态定义一个类</li>
+<li>恰当地进行状态委托</li>
+</ul>
+<p>4、通常来说，状态模式中状态对象的存放有两种实现存放思路:</p>
+<p>静态状态。初始化时把所有可能的状态都new好，状态切换时通过赋值改变当前的状态<br>实例化状态。每次切换状态时动态new出新的状态。</p>
+<p>关于FSM的具体案例如下：</p>
+<p>1、Unity的Mecanim动画系统就是通过状态模式来实现的</p>
+<p>2、下图是一个简单的战斗过程的状态机，如果用状态模式实现他的攻击逻辑就非常的方便，而且支持后期状态的扩展。</p>
+<p>总结：状态模式暂时没有找到好的开源框架，但是状态模式不仅仅在AI方面使用，在游戏的框架中也被广泛使用，比如：UI框架，游戏主逻辑状态框架等等。</p>
+<h3 id="第二种-行为树"><a href="#第二种-行为树" class="headerlink" title="第二种-行为树"></a>第二种-行为树</h3><h4 id="什么是行为树"><a href="#什么是行为树" class="headerlink" title="什么是行为树"></a>什么是行为树</h4><p>如果了解过状态机，会知道在行为树之前，在实现AI用得比较多的技术是状态机，状态机理解起来是比较简单的，即一个状态过渡到另一个状态，通过判断将角色的状态改变即可，如果学习过Unity的Mecanim动画系统，会更加直观的理解。但是状态机在状态较多的情况下会使状态之间的切换变得异常繁琐，同时状态之间很难复用。在这种情况下，行为树被发明出来，行为树的优点如下：</p>
+<p>1、行为树提供大量的流程控制方法，使得状态之间的改变更加直观；</p>
+<p>2、整个游戏AI使用树型结构，方便查看与编辑；</p>
+<p>3、方便调试和代码编写；</p>
+<p>4、更好的封装性和模块性，让游戏逻辑更直观，开发者不会被那些复杂的连线绕晕。</p>
+<p>5、最重要的：行为树方便制作编辑器，可以交由策划人员使用；</p>
+<h4 id="行为树的基本概念："><a href="#行为树的基本概念：" class="headerlink" title="行为树的基本概念："></a>行为树的基本概念：</h4><p>1、执行每个节点都会有一个结果（成功，失败或运行）</p>
+<p>2、子节点的执行结果由其父节点控制和管理</p>
+<p>3、返回运行结果的节点被视作处于运行状态，处于运行状态的节点将被持续执行一直到其返回结束（成功或失败）。在其结束前，其父节点不会把控制转移到后续节点。</p>
+<h4 id="行为树原理"><a href="#行为树原理" class="headerlink" title="行为树原理"></a>行为树原理</h4><p>行为树是一种树形结构，所以其可以分成3种节点类型：</p>
+<p>1、红色的节点：根节点，没有父节点的节点；</p>
+<p>2、蓝色的节点：组合节点，有父节点和子节点的节点；</p>
+<p>3、白色的节点：叶节点，没有子节点的节点；</p>
+<h4 id="节点的返回"><a href="#节点的返回" class="headerlink" title="节点的返回"></a>节点的返回</h4><p>每个节点都会有一个返回值，可能出现的返回值有3个，如下：</p>
+<p>1、运行中：表示当前节点还在运行中，下一次调用行为树时任然运行当前节点；</p>
+<p>2、失败：表示当前节点运行失败；</p>
+<p>3、成功：表示当前节点运行成功；</p>
+<p>下面我们来细说一下这几个节点：</p>
+<h5 id="根节点"><a href="#根节点" class="headerlink" title="根节点"></a>根节点</h5><p>行为树的入口节点，可以是任意类型的节点；</p>
+<h5 id="组合节点"><a href="#组合节点" class="headerlink" title="组合节点"></a>组合节点</h5><p>行为树的组合节点是由下面几种类型来组成的：</p>
+<h6 id="1、选择节点-优先选择节点（Selector）"><a href="#1、选择节点-优先选择节点（Selector）" class="headerlink" title="1、选择节点/优先选择节点（Selector）"></a>1、选择节点/优先选择节点（Selector）</h6><p>该节点会从左到右的依次执行其子节点，只要子节点返回“失败”，就继续执行后面的节点，直到有一个节点返回“运行中”或“成功”时，会停止后续节点的运行，并且向父节点返回“运行中”或“成功”，如果所有子节点都返回“失败”则向父节点返回“失败”。</p>
+<h6 id="2、随机选择节点（Random-Selector）"><a href="#2、随机选择节点（Random-Selector）" class="headerlink" title="2、随机选择节点（Random Selector）"></a>2、随机选择节点（Random Selector）</h6><p>之前的选择节点是有优先级顺序的，而随机选择节点的执行顺序是随机的。但每个节点只会执行一次，比如包含子节点：A、B、C、D、E；使用随机选择节点，执行顺序可能是：D、E、A、C、B或其他组合。其它规则同选择节点一致。</p>
+<h6 id="3、顺序节点（Sequence）"><a href="#3、顺序节点（Sequence）" class="headerlink" title="3、顺序节点（Sequence）"></a>3、顺序节点（Sequence）</h6><p>该节点会从左到右的依次执行其子节点，只要子节点返回“成功”，就继续执行后面的节点，直到有一个节点返回“运行中”或“失败”时，会停止后续节点的运行，并且向父节点返回“运行中”或“失败”，如果所有子节点都返回“成功”则向父节点返回“成功”。</p>
+<h6 id="4、修饰节点（Decorator）"><a href="#4、修饰节点（Decorator）" class="headerlink" title="4、修饰节点（Decorator）"></a>4、修饰节点（Decorator）</h6><p>修饰节点只包含一个子节点，用来以某种方式来改变这个子节点的行为。修饰节点的类型比较多，这里我们说一些比较常见的修饰节点：</p>
+<p>① Until Success和Until Failure</p>
+<p>循环执行子节点，直到返回“成功”或“失败”为止。</p>
+<p>比如Until Success在子节点返回“运行中”和“失败”时都会向父节点返回“运行中”，返回“成功”时向父节点返回“成功”。</p>
+<p>Until Failure在子节点返回“运行中”和“成功”时都会向父节点返回“运行中”，返回“失败”时向父节点返回“成功”。</p>
+<p>② Limit</p>
+<p>执行子节点一定次数后强制返回“失败”。当子节点运行指定次数后还没有返回“失败”则该节点向父节点返回失败。</p>
+<p>③ Timer</p>
+<p>子节点不会立即执行，而会在指定的时间到达后才开始执行。</p>
+<p>④ TimeLimit</p>
+<p>指定子节点的最长运行时间，如果子节点在指定时间到达后还在运行则强制返回“失败”。</p>
+<p>⑤ Invert</p>
+<p>对子节点的返回结果取“非”，即子节点返回“成功”则该节点返回“失败”，子节点返回“失败”则该节点返回成功。</p>
+<h6 id="5、并行节点（Parallel）"><a href="#5、并行节点（Parallel）" class="headerlink" title="5、并行节点（Parallel）"></a>5、并行节点（Parallel）</h6><p>不同于选择和顺序节点依次执行每个节点，并行节点是“同时”执行所有的节点，然后根据所有节点的返回值判断最终返回的结果。</p>
+<p>这里的“同时”会迷惑住不少人，实际上，行为树是运行在单一线程上的，并不会在并行节点上开多个线程来进行真正的同时执行，那么“同时”的含义是什么？</p>
+<p>我们知道选择或顺序节点会依次执行所有的子节点，当子节点返回“成功”或“失败”后就会停止后续节点的执行，而并行节点也会依次执行所有的子节点，无论子节点返回“成功”或“失败”都会继续运行后续节点，保证所有子节点都得到运行后在根据每个子节点的返回值来确定最终的返回结果。</p>
+<p>并行节点一般可以设定退出该节点的条件，比如：</p>
+<p>1、当全部节点都返回成功时退出；</p>
+<p>2、当某一个节点返回成功时退出；</p>
+<p>3、当全部节点都返回成功或失败时退出；</p>
+<p>4、当某一个节点返回成功或失败时退出；</p>
+<p>5、当全部节点都返回失败时退出；</p>
+<p>6、当某一个节点返回失败时退出；</p>
+<h4 id="叶节点"><a href="#叶节点" class="headerlink" title="叶节点"></a>叶节点</h4><h5 id="1、条件节点（Condition）"><a href="#1、条件节点（Condition）" class="headerlink" title="1、条件节点（Condition）"></a>1、条件节点（Condition）</h5><p>条件节点可以理解为一个if判断语句，当条件的测试结果为true时向父节点传递success，结果为false时向父节点传递failure；</p>
+<p>该节点搭配一些组合节点可以完成各种判断跳转，比如搭配顺序节点，可以做出“是否看见敌人”-&gt;“向敌人开火”的AI；</p>
+<h5 id="2、行为节点（Action）"><a href="#2、行为节点（Action）" class="headerlink" title="2、行为节点（Action）"></a>2、行为节点（Action）</h5><p>行为节点用来完成具体的操作，比如，移动到目标点，执行开火等代码逻辑，多种情况下行为节点会返回running和success；行为节点也可能会使用多帧来完成；</p>
+<h4 id="子树的复用"><a href="#子树的复用" class="headerlink" title="子树的复用"></a>子树的复用</h4><p>我们设计好的行为树可以在其他树中作为一颗子树来进行使用，最大可能的复用子树可以减少开发量。</p>
+<p>总结：行为树的框架，网上有比较好的案例，如腾讯开源的behaviac。</p>
+<p>Github地址：github.com/Tencent/beha</p>
 
         
         </div>
@@ -246,7 +320,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/04/13/GameAI/" data-id="ck8ydqllq0009koudch0k3wji" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/04/13/GameAI/" data-id="ck8yg06gl000658udhqop8azk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -465,7 +539,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 

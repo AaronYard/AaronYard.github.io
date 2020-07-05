@@ -155,7 +155,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                12
+                13
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -220,15 +220,18 @@
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=9字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈1分钟</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2.7k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈9分钟</span></font>
                 
             </header>
         
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h2 id="项目中的AI"><a href="#项目中的AI" class="headerlink" title="项目中的AI"></a>项目中的AI</h2></p>
+            <p><h2 id="项目中的AI"><a href="#项目中的AI" class="headerlink" title="项目中的AI"></a>项目中的AI</h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在游戏开发中实现怪物AI逻辑的主要技术有两种：1、状态机 2、行为树。他们两者的实现机制不一样，其中状态机是“事件”机制，行为树是“轮询”机制。在项目开发中可以根据具体情况合理的选择两者来处理AI编写问题。</p>
+<p>接下来将分两个部分对游戏中的AI进行讲解，1、状态机，2、行为树。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>开发游戏AI的目标之一就是要找到一个简单，可扩展的编辑逻辑的方案，从而加速游戏开发的迭代速度。在“行为系统图”中，行为系统（Behavior System）响应游戏中的各种信息，进行决策以挑选接下来将要执行的行动并且监控该行动的执行。</p>
+<p>知识模型（Knowledge Model）是对游戏世界中各种信息的抽象。</p></p>
             <p class="article-more-link">
                 <a href="/2020/04/13/GameAI/#more">查看更多</a>
             </p>
@@ -242,7 +245,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/04/13/GameAI/" data-id="ck8ydqllq0009koudch0k3wji" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/04/13/GameAI/" data-id="ck8yg06gl000658udhqop8azk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -385,7 +388,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/04/11/GameEventSys/" data-id="ck8ydqllv000dkoud9nkq75yi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/04/11/GameEventSys/" data-id="ck8yg06gn000858ud7vol5rss" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -522,7 +525,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/04/06/AutomaticPackaging/" data-id="ck8ydqllx000ekoudh6hs66gx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/04/06/AutomaticPackaging/" data-id="ck8yg06gv000f58ud2lhy7k2l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -658,7 +661,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/04/05/AssetsPackage/" data-id="ck8ydqllo0008koud3blfh68x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/04/05/AssetsPackage/" data-id="ck8yg06gt000d58ud5xgu7n8w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -795,7 +798,133 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/03/06/GameSecurity/" data-id="ck8ydqlm9000rkoud76dx0l59" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/03/06/GameSecurity/" data-id="ck8yg06h2000m58uddqvsg6ob" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-GameChangeClothe" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2019/12/05/GameChangeClothe/">GameChangeClothe</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/12/05/GameChangeClothe/">
+            <time datetime="2019-12-05T05:29:09.000Z" itemprop="datePublished">2019-12-05</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=281字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈1分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="换装系统"><a href="#换装系统" class="headerlink" title="换装系统"></a>换装系统</h2><p>游戏项目中一般都会有玩家人物的换装系统，玩家也愿意为好看的时装皮肤付款。但在我眼中时装皮肤就是一串数据，所以不会为这串数据流而花钱，接下来就解密换装系统的奥秘。</p>
+<h3 id="时装"><a href="#时装" class="headerlink" title="时装"></a>时装</h3><p>换装系统换的是什么？时装。</p>
+<p>时装的别名也可叫皮肤，那他们的本质是什么呢？</p>
+<p>首先介绍一下玩家在游戏中所操控的玩家人物，在大部分MMORPG游戏中，玩家人物亦是一个人物对象。所谓换汤不换药，如果把一个玩家拆分一下，即可分为骨骼以及蒙皮模型。也就是说一套骨骼可以对应多个服装模型。换装实际上就是将相应的身体部分进行更换，比如要换一套衣服，就是将新的服装与身体上除了服装覆盖的模型再进行一次网格合并，换句话说，更换身体的某一个部位就是更新了整个角色模型。</p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2019/12/05/GameChangeClothe/" data-id="ckc8fluzr0000ngud7fvv53c1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -933,7 +1062,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/30/GameUpdate/" data-id="ck8ydqlm4000lkoudbaah66qo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2019/11/30/GameUpdate/" data-id="ck8yg06h7000s58udc5qc6g32" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1070,7 +1199,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/28/History-of-quantum-physics-1/" data-id="ck8ydqlm7000pkoud6ou4c31t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2019/11/28/History-of-quantum-physics-1/" data-id="ck8yg06h4000p58ud4nqpcp7t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1205,7 +1334,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/28/3D-Engine-3/" data-id="ck8ydqllb0002koudfnwaatn7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2019/11/28/3D-Engine-3/" data-id="ck8yg06ge000258ud71ae7ft4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1341,144 +1470,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/27/3D-Engine-2/" data-id="ck8ydqllj0006koudgkbt8ydp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-3D-Engine-1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/24/3D-Engine-1/">3D游戏引擎初探（一）</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2019/11/24/3D-Engine-1/">
-            <time datetime="2019-11-24T15:52:45.000Z" itemprop="datePublished">2019-11-24</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a>
-    </div>
-
-                    </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=466字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈1分钟</span></font>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>前阵子，我用C++编写的3D游戏引擎成功的运行了一个小游戏demo，在此将会分享我的学习与搭建历程。</p>
-<p>该3D引擎是跟着书籍《手把手教你架构3D游戏引擎》学习搭建的，由浅入深的讲解以及范例，令我受益匪浅。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>底层运用c++编写，图形接口为GDI（windows下的图形接口，不可跨平台。），模型材质运用的3D max制作，用通用的shader语法解析模型，渲染管线的一些列流程利用了矩阵的数学知识。</p>
-<p>项目结构分为三部分：ECore核心模块，EEngine功能模块，EGame游戏模块。</p></p>
-            <p class="article-more-link">
-                <a href="/2019/11/24/3D-Engine-1/#more">查看更多</a>
-            </p>
-        
-        </div>
-		
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://aaronyard.github.io/2019/11/24/3D-Engine-1/" data-id="ck8ydqlks0000koudhcief75l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2019/11/27/3D-Engine-2/" data-id="ck8yg06gp000958udc89agpg1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1681,7 +1673,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
