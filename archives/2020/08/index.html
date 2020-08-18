@@ -3,17 +3,13 @@
 <head>
     <meta charset="utf-8">
     
-    <title>3D游戏引擎初探（三） | 汪震|个人博客</title>
+    <title>归档: 2020/8 | 汪震|个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="带领你了解我的3D游戏引擎搭建全过程">
-<meta name="keywords" content="3D Engine">
-<meta property="og:type" content="article">
-<meta property="og:title" content="3D游戏引擎初探（三）">
-<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;3D-Engine-3&#x2F;index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="汪震|个人博客">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;archives&#x2F;2020&#x2F;08&#x2F;index.html">
 <meta property="og:site_name" content="汪震|个人博客">
-<meta property="og:description" content="带领你了解我的3D游戏引擎搭建全过程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-28T14:14:25.908Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -199,179 +195,50 @@
 </aside>
 
             
-            <section id="main"><article id="post-3D-Engine-3" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+            <section id="main"><div class="timeline timeline-wrap">
+    
+            <div class="timeline-row timeline-row-major">
+                <span class="node"><i class="fa fa-calendar"></i></span>
+                <h1 class="title">2020</h1>
+            </div>
         
-        
-            <header class="article-header">
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            3D游戏引擎初探（三）
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2020/08/17/ConclusionAndProspect/">自省和展望</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/11/28/3D-Engine-3/">
-            <time datetime="2019-11-28T14:11:31.000Z" itemprop="datePublished">2019-11-28</time>
+        <a href="/2020/08/17/ConclusionAndProspect/">
+            <time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time>
         </a>
     </div>
 
 
-                        
+                    
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+        <a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a>
     </div>
 
-                        
+                    
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a>
+        <a class="tag-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a>
     </div>
 
-                    </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=789字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈2分钟</span></font>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="数学相关知识"><a href="#数学相关知识" class="headerlink" title="数学相关知识"></a>数学相关知识</h1><p>在3D游戏引擎中会涉及到数学的相关知识，具体可以划分到线性代数：向量、矩阵、齐次坐标系、四元数。</p>
-<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p>假设大家都已经对向量最基本的加法、减法、点乘、叉乘、单位化都是有了解的，简单介绍一下这些基础计算在游戏引擎中是如何应用的。</p>
-<a id="more"></a>
-<h3 id="向量的加法"><a href="#向量的加法" class="headerlink" title="向量的加法"></a>向量的加法</h3><p>在最开始学向量的时候大家已经知道，向量的加法遵循三角形法则和平行四边形法则，在构建游戏世界的过程中用到了向量加法的几何意义。比如游戏中怪物追击玩家的AI中，怪物知道玩家的位置，需要时时刻刻朝向玩家移动，就会在每帧运用向量的加法向玩家移动。</p>
-<h3 id="向量的减法"><a href="#向量的减法" class="headerlink" title="向量的减法"></a>向量的减法</h3><p>向量的减法作为加法的你逆运算，集合意义也是可以用在方向的计算上，另外它还能判断两个物体之间的距离。比如游戏中怪物的追击机制有一个判断条件，那就是距离玩家大于一定的距离后才会进行追击，小于一定距离之后就不再朝向玩家移动，这是就用到了向量的减法。</p>
-<h3 id="向量的点乘"><a href="#向量的点乘" class="headerlink" title="向量的点乘"></a>向量的点乘</h3><p>点乘主要用在了角度的计算和材质的渲染， 判断目标在自己的<strong>前后</strong>方位 。还是以怪物追击玩家为例子，刚刚只说了追击过程中的位置移动，但是怪物和玩家都是有正面朝向的，不然玩家看到怪物背对着玩家人物进行追击会觉得怪怪的，这时就需要怪物将自己的正面转向玩家。转的角度是多少呢？此时就需要用到向量的点乘进行计算了。 也能用来判断两个向量是否垂直、计算一个向量在另一个向量上的投影分量大小  。再说材质的光照渲染，通俗意义上讲就是光线照射后的明暗效果。现实世界中不规则的材质表面接受光线照射后是有不同的表现的，从数学的几何角度上来解释就是：在shader中，当材质表面的顶点法向量与光线向量的角度（即两个向量的点积）大于90度时就不接受光线的渲染，反之亦然。</p>
-<h3 id="向量的叉乘"><a href="#向量的叉乘" class="headerlink" title="向量的叉乘"></a>向量的叉乘</h3><p>1、叉乘可以用来判断两个向量是否平行或相交。返回值为0，则平行。</p>
-<p>2、用于求平面法线（叉乘的几何意义：absinθ）</p>
-<p>3、计算两个物体之间形成四边形的面积（|a||b|sinθ）</p>
-<p>4、 判断目标在自己的<strong>左右</strong>方位 </p>
-<p>关于向量的点乘和叉乘容易混淆的问题，可以这么理解： <strong>点乘判断角度，叉乘判断方向。</strong></p>
-<h3 id="向量的单位化"><a href="#向量的单位化" class="headerlink" title="向量的单位化"></a>向量的单位化</h3><p>向量的单位化计算的是物体间的距离，这个就不必多做介绍了。</p>
-<h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><p>未完待续。。。</p>
-
-        
-        </div>
-		
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://aaronyard.github.io/2019/11/28/3D-Engine-3/" data-id="ckdz6jwmx0008ocud8hyq384e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2019/11/28/History-of-quantum-physics-1/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    上帝掷骰子吗？（一）
-                
+                </div>
             </div>
-        </a>
+        </div>
     
-    
-        <a href="/2019/11/27/3D-Engine-2/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">3D游戏引擎初探（二）</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    
-        <section id="comments">
-	<div id="commentContainer"></div>
-</section>
-    
-
+</div>
 </section>
             
                 
@@ -562,7 +429,7 @@
 	<script src="https://billts.site/js/gitment.js"></script>
 	<script>
 		var gitment = new Gitment({
-			id: '3D游戏引擎初探（三）',
+			id: '',
 			owner: 'AaronYard',
 			repo: 'AaronYard.github.io',
 			oauth: {

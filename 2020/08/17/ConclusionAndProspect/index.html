@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
     
-    <title>3D游戏引擎初探（三） | 汪震|个人博客</title>
+    <title>自省和展望 | 汪震|个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="带领你了解我的3D游戏引擎搭建全过程">
-<meta name="keywords" content="3D Engine">
+    <meta name="description" content="老生常谈：自我反省和展望未来。">
+<meta name="keywords" content="个人发展">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3D游戏引擎初探（三）">
-<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2019&#x2F;11&#x2F;28&#x2F;3D-Engine-3&#x2F;index.html">
+<meta property="og:title" content="自省和展望">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;08&#x2F;17&#x2F;ConclusionAndProspect&#x2F;index.html">
 <meta property="og:site_name" content="汪震|个人博客">
-<meta property="og:description" content="带领你了解我的3D游戏引擎搭建全过程">
+<meta property="og:description" content="老生常谈：自我反省和展望未来。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-28T14:14:25.908Z">
+<meta property="og:updated_time" content="2020-08-17T23:54:14.978Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -199,7 +199,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-3D-Engine-3" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-ConclusionAndProspect" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -207,7 +207,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            3D游戏引擎初探（三）
+            自省和展望
         </h1>
     
 
@@ -216,8 +216,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/11/28/3D-Engine-3/">
-            <time datetime="2019-11-28T14:11:31.000Z" itemprop="datePublished">2019-11-28</time>
+        <a href="/2020/08/17/ConclusionAndProspect/">
+            <time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time>
         </a>
     </div>
 
@@ -225,18 +225,18 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+        <a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a>
+        <a class="tag-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a>
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=789字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈2分钟</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=313字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈1分钟</span></font>
                 
             </header>
         
@@ -244,19 +244,25 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h1 id="数学相关知识"><a href="#数学相关知识" class="headerlink" title="数学相关知识"></a>数学相关知识</h1><p>在3D游戏引擎中会涉及到数学的相关知识，具体可以划分到线性代数：向量、矩阵、齐次坐标系、四元数。</p>
-<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p>假设大家都已经对向量最基本的加法、减法、点乘、叉乘、单位化都是有了解的，简单介绍一下这些基础计算在游戏引擎中是如何应用的。</p>
+            <h1 id="算法题"><a href="#算法题" class="headerlink" title="算法题"></a>算法题</h1><h2 id="链表的存储反转"><a href="#链表的存储反转" class="headerlink" title="链表的存储反转"></a>链表的存储反转</h2><p>定义一个方法（函数），实现输入一个链表的头结点，然后可以反转这个链表的方向，并输出反转之后的链表的头结点。</p>
+<h2 id="链表结点的结构："><a href="#链表结点的结构：" class="headerlink" title="链表结点的结构："></a>链表结点的结构：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    Node *next;</span><br><span class="line">&#125; Node, *List;</span><br></pre></td></tr></table></figure>
+
+<p>两种方法：遍历法、递归法</p>
 <a id="more"></a>
-<h3 id="向量的加法"><a href="#向量的加法" class="headerlink" title="向量的加法"></a>向量的加法</h3><p>在最开始学向量的时候大家已经知道，向量的加法遵循三角形法则和平行四边形法则，在构建游戏世界的过程中用到了向量加法的几何意义。比如游戏中怪物追击玩家的AI中，怪物知道玩家的位置，需要时时刻刻朝向玩家移动，就会在每帧运用向量的加法向玩家移动。</p>
-<h3 id="向量的减法"><a href="#向量的减法" class="headerlink" title="向量的减法"></a>向量的减法</h3><p>向量的减法作为加法的你逆运算，集合意义也是可以用在方向的计算上，另外它还能判断两个物体之间的距离。比如游戏中怪物的追击机制有一个判断条件，那就是距离玩家大于一定的距离后才会进行追击，小于一定距离之后就不再朝向玩家移动，这是就用到了向量的减法。</p>
-<h3 id="向量的点乘"><a href="#向量的点乘" class="headerlink" title="向量的点乘"></a>向量的点乘</h3><p>点乘主要用在了角度的计算和材质的渲染， 判断目标在自己的<strong>前后</strong>方位 。还是以怪物追击玩家为例子，刚刚只说了追击过程中的位置移动，但是怪物和玩家都是有正面朝向的，不然玩家看到怪物背对着玩家人物进行追击会觉得怪怪的，这时就需要怪物将自己的正面转向玩家。转的角度是多少呢？此时就需要用到向量的点乘进行计算了。 也能用来判断两个向量是否垂直、计算一个向量在另一个向量上的投影分量大小  。再说材质的光照渲染，通俗意义上讲就是光线照射后的明暗效果。现实世界中不规则的材质表面接受光线照射后是有不同的表现的，从数学的几何角度上来解释就是：在shader中，当材质表面的顶点法向量与光线向量的角度（即两个向量的点积）大于90度时就不接受光线的渲染，反之亦然。</p>
-<h3 id="向量的叉乘"><a href="#向量的叉乘" class="headerlink" title="向量的叉乘"></a>向量的叉乘</h3><p>1、叉乘可以用来判断两个向量是否平行或相交。返回值为0，则平行。</p>
-<p>2、用于求平面法线（叉乘的几何意义：absinθ）</p>
-<p>3、计算两个物体之间形成四边形的面积（|a||b|sinθ）</p>
-<p>4、 判断目标在自己的<strong>左右</strong>方位 </p>
-<p>关于向量的点乘和叉乘容易混淆的问题，可以这么理解： <strong>点乘判断角度，叉乘判断方向。</strong></p>
-<h3 id="向量的单位化"><a href="#向量的单位化" class="headerlink" title="向量的单位化"></a>向量的单位化</h3><p>向量的单位化计算的是物体间的距离，这个就不必多做介绍了。</p>
-<h2 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h2><p>未完待续。。。</p>
+
+<h2 id="遍历法"><a href="#遍历法" class="headerlink" title="遍历法"></a>遍历法</h2><h3 id="主要包括如下4步："><a href="#主要包括如下4步：" class="headerlink" title="主要包括如下4步："></a>主要包括如下4步：</h3><p>1）如果head为空，或者只有head这一个节点，return head即可；</p>
+<p>2）从头到尾遍历链表，把reversedHead赋值给当前节点的next；</p>
+<p>3）当前节点赋值给reversedHead；</p>
+<p>4）遍历结束，return reversedHead。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node* <span class="title">reverseList</span><span class="params">(Node* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    Node* reversedHead = <span class="literal">NULL</span>;</span><br><span class="line">    Node* p = head;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span>(p != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Node* q = p;</span><br><span class="line">        q-&gt;next = reversedHead;</span><br><span class="line">        reversedHead = q;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> reversedHead;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="递归法："><a href="#递归法：" class="headerlink" title="递归法："></a>递归法：</h2><h3 id="递归的实现方式主要有4步："><a href="#递归的实现方式主要有4步：" class="headerlink" title="递归的实现方式主要有4步："></a>递归的实现方式主要有4步：</h3><p>1）如果head为空，或者只有head这一个节点，return head即可；</p>
+<p>2）先遍历head-&gt;next为首的链表，得到一个头结点newHead；</p>
+<p>3）把head赋值给head-&gt;next-&gt;next， head-&gt;next为空；</p>
+<p>4）返回newHead。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">reverseList2</span><span class="params">(node* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">     </span><br><span class="line">    node* newHead = reversedList2(head-&gt;next);</span><br><span class="line">    head-&gt;next-&gt;next = head;</span><br><span class="line">    head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> newHead;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="开放题"><a href="#开放题" class="headerlink" title="开放题"></a>开放题</h1><h2 id="高楼扔鸡蛋"><a href="#高楼扔鸡蛋" class="headerlink" title="高楼扔鸡蛋"></a>高楼扔鸡蛋</h2><p><a href="https://www.pianshen.com/article/5717909966/" target="_blank" rel="noopener">https://www.pianshen.com/article/5717909966/</a></p>
 
         
         </div>
@@ -268,7 +274,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/28/3D-Engine-3/" data-id="ckdz6jwmx0008ocud8hyq384e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/08/17/ConclusionAndProspect/" data-id="ckdz6jwmv0006ocud4q692gil" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -343,19 +349,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2019/11/28/History-of-quantum-physics-1/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    上帝掷骰子吗？（一）
-                
-            </div>
-        </a>
     
-    
-        <a href="/2019/11/27/3D-Engine-2/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/07/08/LeetCode-3/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">3D游戏引擎初探（二）</div>
+            <div class="article-nav-title">LeetCode刷题（三）</div>
         </a>
     
 </nav>
@@ -562,7 +559,7 @@
 	<script src="https://billts.site/js/gitment.js"></script>
 	<script>
 		var gitment = new Gitment({
-			id: '3D游戏引擎初探（三）',
+			id: '自省和展望',
 			owner: 'AaronYard',
 			repo: 'AaronYard.github.io',
 			oauth: {

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aaronyard.github.io/"/>
-  <updated>2020-07-08T16:16:31.458Z</updated>
+  <updated>2020-08-17T23:54:14.978Z</updated>
   <id>https://aaronyard.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自省和展望</title>
+    <link href="https://aaronyard.github.io/2020/08/17/ConclusionAndProspect/"/>
+    <id>https://aaronyard.github.io/2020/08/17/ConclusionAndProspect/</id>
+    <published>2020-08-17T14:40:27.000Z</published>
+    <updated>2020-08-17T23:54:14.978Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="算法题"><a href="#算法题" class="headerlink" title="算法题"></a>算法题</h1><h2 id="链表的存储反转"><a href="#链表的存储反转" class="headerlink" title="链表的存储反转"></a>链表的存储反转</h2><p>定义一个方法（函数），实现输入一个链表的头结点，然后可以反转这个链表的方向，并输出反转之后的链表的头结点。</p><h2 id="链表结点的结构："><a href="#链表结点的结构：" class="headerlink" title="链表结点的结构："></a>链表结点的结构：</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    Node *next;</span><br><span class="line">&#125; Node, *List;</span><br></pre></td></tr></table></figure><p>两种方法：遍历法、递归法</p><a id="more"></a><h2 id="遍历法"><a href="#遍历法" class="headerlink" title="遍历法"></a>遍历法</h2><h3 id="主要包括如下4步："><a href="#主要包括如下4步：" class="headerlink" title="主要包括如下4步："></a>主要包括如下4步：</h3><p>1）如果head为空，或者只有head这一个节点，return head即可；</p><p>2）从头到尾遍历链表，把reversedHead赋值给当前节点的next；</p><p>3）当前节点赋值给reversedHead；</p><p>4）遍历结束，return reversedHead。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node* <span class="title">reverseList</span><span class="params">(Node* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    Node* reversedHead = <span class="literal">NULL</span>;</span><br><span class="line">    Node* p = head;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span>(p != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Node* q = p;</span><br><span class="line">        q-&gt;next = reversedHead;</span><br><span class="line">        reversedHead = q;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> reversedHead;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="递归法："><a href="#递归法：" class="headerlink" title="递归法："></a>递归法：</h2><h3 id="递归的实现方式主要有4步："><a href="#递归的实现方式主要有4步：" class="headerlink" title="递归的实现方式主要有4步："></a>递归的实现方式主要有4步：</h3><p>1）如果head为空，或者只有head这一个节点，return head即可；</p><p>2）先遍历head-&gt;next为首的链表，得到一个头结点newHead；</p><p>3）把head赋值给head-&gt;next-&gt;next， head-&gt;next为空；</p><p>4）返回newHead。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">reverseList2</span><span class="params">(node* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">     </span><br><span class="line">    node* newHead = reversedList2(head-&gt;next);</span><br><span class="line">    head-&gt;next-&gt;next = head;</span><br><span class="line">    head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> newHead;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="开放题"><a href="#开放题" class="headerlink" title="开放题"></a>开放题</h1><h2 id="高楼扔鸡蛋"><a href="#高楼扔鸡蛋" class="headerlink" title="高楼扔鸡蛋"></a>高楼扔鸡蛋</h2><p><a href="https://www.pianshen.com/article/5717909966/" target="_blank" rel="noopener">https://www.pianshen.com/article/5717909966/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      老生常谈：自我反省和展望未来。
+    
+    </summary>
+    
+    
+      <category term="自我提升" scheme="https://aaronyard.github.io/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/"/>
+    
+    
+      <category term="个人发展" scheme="https://aaronyard.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode刷题（三）</title>
