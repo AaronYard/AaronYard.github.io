@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>��ϵ���ݿ��׼����SQL | 汪震|个人博客</title>
+    <title>关系数据库标准语言SQL | 汪震|个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="3-��ϵ���ݿ��׼����SQL">
-<meta name="keywords" content="���ݿ�">
+    <meta name="description" content="3-关系数据库标准语言SQL">
+<meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="��ϵ���ݿ��׼����SQL">
+<meta property="og:title" content="关系数据库标准语言SQL">
 <meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;03&#x2F;23&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93&#x2F;3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL&#x2F;index.html">
 <meta property="og:site_name" content="汪震|个人博客">
-<meta property="og:description" content="3-��ϵ���ݿ��׼����SQL">
+<meta property="og:description" content="3-关系数据库标准语言SQL">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200417172352.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200417164206.png">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200418102146.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200418113215.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200417155118.png">
-<meta property="og:updated_time" content="2020-09-04T15:50:53.493Z">
+<meta property="og:updated_time" content="2020-09-04T16:01:02.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200417172352.png">
     
@@ -177,7 +177,7 @@
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                14
+                13
                 <span>标签</span>
             </div>
         </div>
@@ -221,7 +221,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            ��ϵ���ݿ��׼����SQL
+            关系数据库标准语言SQL
         </h1>
     
 
@@ -239,17 +239,17 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=4.8k字</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=4.9k字</span></font>
 					<font color="#E56048"><span class="post-count">⏳阅读时长≈19分钟</span></font>
                 
             </header>
@@ -258,41 +258,42 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h1 id="一、数据定�"><a href="#一、数据定�" class="headerlink" title="一、数据定�?"></a>一、数据定�?</h1><p>关系数据库系统支持三级模式结构，其模式，外模式，内模式中的基本对象有模式、表、视图和索引，所以SQL的数据定义功能包括模式定义、表定义、视图和索引的定�?</p>
-<h2 id="1-模式的定义与删除"><a href="#1-模式的定义与删除" class="headerlink" title="1. 模式的定义与删除"></a>1. 模式的定义与删除</h2><h3 id="�-模式定义"><a href="#�-模式定义" class="headerlink" title="�?模式定义"></a>�?模式定义</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> 模式�?authorization 用户�?</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><em>*示例�?</em></p>
-<p>为用户WANG定义一�?学生-课程 模式 S-T</p>
+            <h1 id="一、数据定义"><a href="#一、数据定义" class="headerlink" title="一、数据定义"></a>一、数据定义</h1><p>关系数据库系统支持三级模式结构，其模式，外模式，内模式中的基本对象有模式、表、视图和索引，所以SQL的数据定义功能包括模式定义、表定义、视图和索引的定义</p>
+<h2 id="1-模式的定义与删除"><a href="#1-模式的定义与删除" class="headerlink" title="1. 模式的定义与删除"></a>1. 模式的定义与删除</h2><h3 id="①-模式定义"><a href="#①-模式定义" class="headerlink" title="① 模式定义"></a>① 模式定义</h3><a id="more"></a>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> 模式名 authorization 用户名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong></p>
+<p>为用户WANG定义一个 学生-课程 模式 S-T</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> <span class="string">"S-T"</span> authorization WANG;</span><br></pre></td></tr></table></figure>
 
 
 
-<p>定义模式实际上就是定义了一个命名空间，可以在这个空间的基础上进一步定义数据库对象，基本表，视图，索引�?</p>
-<p><em>*示例�?</em></p>
-<p>为用�?ZHANG 创建一个模�?TEST，并且在其中定义一个表 table1</p>
+<p>定义模式实际上就是定义了一个命名空间，可以在这个空间的基础上进一步定义数据库对象，基本表，视图，索引等</p>
+<p><strong>示例：</strong></p>
+<p>为用户 ZHANG 创建一个模式 TEST，并且在其中定义一个表 table1</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> <span class="string">"TEST"</span> authorization ZHANG</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> table1(col1 <span class="built_in">smallint</span>,</span><br><span class="line">                   col2 <span class="built_in">int</span>,</span><br><span class="line">                   col3 <span class="built_in">char</span>(<span class="number">20</span>)</span><br><span class="line">                   );</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-删除模式"><a href="#�-删除模式" class="headerlink" title="�?删除模式"></a>�?删除模式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">schema</span> 模式�?<span class="keyword">CASCADE</span> | RESTRICT</span><br></pre></td></tr></table></figure>
+<h3 id="②-删除模式"><a href="#②-删除模式" class="headerlink" title="② 删除模式"></a>② 删除模式</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">schema</span> 模式名 <span class="keyword">CASCADE</span> | RESTRICT</span><br></pre></td></tr></table></figure>
 
 <p>CASCADE | RESTRICT 必选其一</p>
 <ul>
 <li><code>CASCADE</code>表示删除模式的同时会删除该模式下的所有数据库对象</li>
 <li><code>RESTRICT</code> 表示若该模式下存在数据库对象，则拒绝执行删除操作</li>
 </ul>
-<h2 id="2-基本表的定义、删除、修�"><a href="#2-基本表的定义、删除、修�" class="headerlink" title="2. 基本表的定义、删除、修�?"></a>2. 基本表的定义、删除、修�?</h2><blockquote>
+<h2 id="2-基本表的定义、删除、修改"><a href="#2-基本表的定义、删除、修改" class="headerlink" title="2. 基本表的定义、删除、修改"></a>2. 基本表的定义、删除、修改</h2><blockquote>
 <p>数据库的创建和使用：</p>
 <p>CREATE DATABASE test;<br>USE test;</p>
 </blockquote>
-<h3 id="�-定义基本�-CREATE"><a href="#�-定义基本�-CREATE" class="headerlink" title="�?定义基本�?CREATE"></a>�?定义基本�?CREATE</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417172352.png" alt=""></p>
-<p><em>*示例�?</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (</span><br><span class="line">  <span class="comment"># int 类型，不为空，自�?</span></span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="comment"># int 类型，不可为空，默认值为 1，不为空</span></span><br><span class="line">  col1 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>,</span><br><span class="line">  <span class="comment"># 变长字符串类型，最长为 45 个字符，可以为空</span></span><br><span class="line">  col2 <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="literal">NULL</span>,</span><br><span class="line">  <span class="comment"># 日期类型，可为空</span></span><br><span class="line">  col3 <span class="built_in">DATE</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="comment"># 设置主键�?id</span></span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">  <span class="comment"># 定义外键,被参照表是mytable2</span></span><br><span class="line">  <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(col1) <span class="keyword">REFERENCES</span> mytable2(col1)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="①-定义基本表-CREATE"><a href="#①-定义基本表-CREATE" class="headerlink" title="① 定义基本表 CREATE"></a>① 定义基本表 CREATE</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417172352.png" alt=""></p>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (</span><br><span class="line">  <span class="comment"># int 类型，不为空，自增</span></span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="comment"># int 类型，不可为空，默认值为 1，不为空</span></span><br><span class="line">  col1 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>,</span><br><span class="line">  <span class="comment"># 变长字符串类型，最长为 45 个字符，可以为空</span></span><br><span class="line">  col2 <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="literal">NULL</span>,</span><br><span class="line">  <span class="comment"># 日期类型，可为空</span></span><br><span class="line">  col3 <span class="built_in">DATE</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="comment"># 设置主键为 id</span></span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">  <span class="comment"># 定义外键,被参照表是mytable2</span></span><br><span class="line">  <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(col1) <span class="keyword">REFERENCES</span> mytable2(col1)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>SQL标准支持多种数据类型�?</p>
+<p>SQL标准支持多种数据类型：</p>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417164206.png" alt=""></p>
-<h3 id="�-修改基本�-ALTER"><a href="#�-修改基本�-ALTER" class="headerlink" title="�?修改基本�?ALTER"></a>�?修改基本�?ALTER</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417172557.png" alt=""></p>
-<p><em>*示例�?</em></p>
+<h3 id="②-修改基本表-ALTER"><a href="#②-修改基本表-ALTER" class="headerlink" title="② 修改基本表 ALTER"></a>② 修改基本表 ALTER</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417172557.png" alt=""></p>
+<p><strong>示例：</strong></p>
 <ul>
-<li><p>向Student表中添加入学时间�?</p>
+<li><p>向Student表中添加入学时间列</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student <span class="keyword">add</span> entrance_date <span class="built_in">DATE</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将年龄的数据类型由字符型转为整数</p>
@@ -303,95 +304,95 @@
 
 </li>
 </ul>
-<h3 id="�-删除基本�"><a href="#�-删除基本�" class="headerlink" title="�?删除基本�?"></a>�?删除基本�?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> 表名 [RESTRICT | <span class="keyword">CASCADE</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="③-删除基本表"><a href="#③-删除基本表" class="headerlink" title="③ 删除基本表"></a>③ 删除基本表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> 表名 [RESTRICT | <span class="keyword">CASCADE</span>];</span><br></pre></td></tr></table></figure>
 
-<p>默认�?RESTRICT</p>
-<h2 id="3-索引的建立和删除"><a href="#3-索引的建立和删除" class="headerlink" title="3. 索引的建立和删除"></a>3. 索引的建立和删除</h2><h3 id="�-建议索引"><a href="#�-建议索引" class="headerlink" title="�?建议索引"></a>�?建议索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">unique</span>][cluster] <span class="keyword">index</span> 索引�?</span><br><span class="line"><span class="keyword">on</span> 表名 (列名[次序]，列名[次序]...)</span><br></pre></td></tr></table></figure>
+<p>默认是 RESTRICT</p>
+<h2 id="3-索引的建立和删除"><a href="#3-索引的建立和删除" class="headerlink" title="3. 索引的建立和删除"></a>3. 索引的建立和删除</h2><h3 id="①-建议索引"><a href="#①-建议索引" class="headerlink" title="① 建议索引"></a>① 建议索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">unique</span>][cluster] <span class="keyword">index</span> 索引名</span><br><span class="line"><span class="keyword">on</span> 表名 (列名[次序]，列名[次序]...)</span><br></pre></td></tr></table></figure>
 
-<p>unique 表示此索引的每一个索引值只对应唯一的数据记�?</p>
-<p>cluster 表示该索引是聚集索引，详�?后序 <strong>面试指南 - 索引</strong> 章节相关内容</p>
-<p>示例�?</p>
+<p>unique 表示此索引的每一个索引值只对应唯一的数据记录</p>
+<p>cluster 表示该索引是聚集索引，详见 后序 <strong>面试指南 - 索引</strong> 章节相关内容</p>
+<p>示例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> <span class="keyword">index</span> sno_index <span class="keyword">on</span> student(sno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> <span class="keyword">index</span> cno_index <span class="keyword">on</span> cource(cno);</span><br><span class="line"><span class="comment"># sc表按学号升序和课程号降序建立唯一索引</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> <span class="keyword">index</span> sc_index <span class="keyword">on</span> sc(sno <span class="keyword">asc</span>, cno <span class="keyword">desc</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-修改索引"><a href="#�-修改索引" class="headerlink" title="�?修改索引"></a>�?修改索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">index</span> 旧索引名 <span class="keyword">rename</span> <span class="keyword">to</span> 新索引名</span><br></pre></td></tr></table></figure>
+<h3 id="②-修改索引"><a href="#②-修改索引" class="headerlink" title="② 修改索引"></a>② 修改索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">index</span> 旧索引名 <span class="keyword">rename</span> <span class="keyword">to</span> 新索引名</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-删除索引"><a href="#�-删除索引" class="headerlink" title="�?删除索引"></a>�?删除索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> 索引�?</span><br></pre></td></tr></table></figure>
+<h3 id="③-删除索引"><a href="#③-删除索引" class="headerlink" title="③ 删除索引"></a>③ 删除索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> 索引名</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-数据字典"><a href="#4-数据字典" class="headerlink" title="4. 数据字典"></a>4. 数据字典</h2><p>数据字典是关系数据库管理系统内部的一组系统表，它<strong>记录了数据库中所有的定义信息</strong>，包括关系模式定义、视图定义、索引定义、完整性约束定义、各类用户对数据库的操作权限、统计信息等�?<em>关系数据库管理系统在执行SQL的数据定义语句时，实际上就是在更新数据字典中的相应信�?</em></p>
+<h2 id="4-数据字典"><a href="#4-数据字典" class="headerlink" title="4. 数据字典"></a>4. 数据字典</h2><p>数据字典是关系数据库管理系统内部的一组系统表，它<strong>记录了数据库中所有的定义信息</strong>，包括关系模式定义、视图定义、索引定义、完整性约束定义、各类用户对数据库的操作权限、统计信息等。<strong>关系数据库管理系统在执行SQL的数据定义语句时，实际上就是在更新数据字典中的相应信息</strong></p>
 <br>
 
 
 
-<h1 id="二、数据查�"><a href="#二、数据查�" class="headerlink" title="二、数据查�?"></a>二、数据查�?</h1><p><strong>select 语句的一般格式：</strong></p>
+<h1 id="二、数据查询"><a href="#二、数据查询" class="headerlink" title="二、数据查询"></a>二、数据查询</h1><p><strong>select 语句的一般格式：</strong></p>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417173332.png" alt=""></p>
 <blockquote>
 <p>以下所有示例全都使用下述三个表</p>
 <ul>
-<li>Student(Sno,Sname, Sage, SDept) 学生�?</li>
-<li>Cource (Cno, Cname) 课程�?</li>
-<li>SC(Sno,Cno,Grade) 选修�?</li>
+<li>Student(Sno,Sname, Sage, SDept) 学生表</li>
+<li>Cource (Cno, Cname) 课程表</li>
+<li>SC(Sno,Cno,Grade) 选修表</li>
 </ul>
 </blockquote>
-<h2 id="1-单表查询"><a href="#1-单表查询" class="headerlink" title="1. 单表查询"></a>1. 单表查询</h2><p>单表查询是指仅涉及一个表的查�?</p>
-<h3 id="�-查询表中的若干列"><a href="#�-查询表中的若干列" class="headerlink" title="�?查询表中的若干列"></a>�?查询表中的若干列</h3><p>查询全体学生的学号和姓名</p>
+<h2 id="1-单表查询"><a href="#1-单表查询" class="headerlink" title="1. 单表查询"></a>1. 单表查询</h2><p>单表查询是指仅涉及一个表的查询</p>
+<h3 id="①-查询表中的若干列"><a href="#①-查询表中的若干列" class="headerlink" title="① 查询表中的若干列"></a>① 查询表中的若干列</h3><p>查询全体学生的学号和姓名</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno, Sname</span><br><span class="line"><span class="keyword">from</span> Student;</span><br></pre></td></tr></table></figure>
 
-<p>目标列表达式 也可以是表达�?</p>
+<p>目标列表达式 也可以是表达式</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname, <span class="number">2020</span> - age</span><br><span class="line"><span class="keyword">from</span> Student;</span><br></pre></td></tr></table></figure>
 
-<p>用户可以为查询的列定义别�?</p>
+<p>用户可以为查询的列定义别名</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname, <span class="number">2020</span> - age Birthday</span><br><span class="line"><span class="keyword">from</span> Student;</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-选择表中的若干元�"><a href="#�-选择表中的若干元�" class="headerlink" title="�?选择表中的若干元�?"></a>�?选择表中的若干元�?</h3><h4 id="消除取值重复的�-distinct"><a href="#消除取值重复的�-distinct" class="headerlink" title="消除取值重复的�?distinct"></a>消除取值重复的�?distinct</h4><p>使用 distinct 关键�?去除重复记录</p>
+<h3 id="②-选择表中的若干元组"><a href="#②-选择表中的若干元组" class="headerlink" title="② 选择表中的若干元组"></a>② 选择表中的若干元组</h3><h4 id="消除取值重复的行-distinct"><a href="#消除取值重复的行-distinct" class="headerlink" title="消除取值重复的行 distinct"></a>消除取值重复的行 distinct</h4><p>使用 distinct 关键字 去除重复记录</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> Sno</span><br><span class="line"><span class="keyword">from</span> SC;</span><br></pre></td></tr></table></figure>
 
-<h4 id="查询满足条件的行"><a href="#查询满足条件的行" class="headerlink" title="查询满足条件的行"></a>查询满足条件的行</h4><p>使用 where 子句，常用的查询条件如下�?</p>
+<h4 id="查询满足条件的行"><a href="#查询满足条件的行" class="headerlink" title="查询满足条件的行"></a>查询满足条件的行</h4><p>使用 where 子句，常用的查询条件如下：</p>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417174019.png" alt=""></p>
 <ul>
 <li><p><strong>比较</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sname</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age &lt;= <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>确定范围</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询年龄�?0-33岁之间的学生姓名和年�?</span></span><br><span class="line"><span class="keyword">select</span> sname,age</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age <span class="keyword">between</span> <span class="number">20</span> <span class="keyword">and</span> <span class="number">33</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询年龄在20-33岁之间的学生姓名和年龄</span></span><br><span class="line"><span class="keyword">select</span> sname,age</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age <span class="keyword">between</span> <span class="number">20</span> <span class="keyword">and</span> <span class="number">33</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>确定集合</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询计算机系和数据系的学生姓名和性别</span></span><br><span class="line"><span class="keyword">select</span> sname,gender</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> dept <span class="keyword">in</span> (<span class="string">'CS'</span>,<span class="string">'Math'</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>字符匹配</strong></p>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417174828.png" alt=""></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询姓欧阳且全名为三个汉字的学生的姓�?</span></span><br><span class="line"><span class="keyword">select</span> sname </span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sname <span class="keyword">like</span> <span class="string">'欧阳_'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询姓欧阳且全名为三个汉字的学生的姓名</span></span><br><span class="line"><span class="keyword">select</span> sname </span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sname <span class="keyword">like</span> <span class="string">'欧阳_'</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>涉及空值的查询</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询所有有成绩的学生姓�?</span></span><br><span class="line"><span class="keyword">select</span> sname</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> grade <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询所有有成绩的学生姓名</span></span><br><span class="line"><span class="keyword">select</span> sname</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> grade <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>多重条件查询</strong></p>
-<p>and �?or 可用来连接多个查询条件，and 的优先级高于 or，不过可以用 括号来改变优先级</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询计算机系年龄20以下的学生姓�?</span></span><br><span class="line"><span class="keyword">select</span> sname </span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sdept = <span class="string">'CS'</span> <span class="keyword">and</span> sage &lt; <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<p>and 和 or 可用来连接多个查询条件，and 的优先级高于 or，不过可以用 括号来改变优先级</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询计算机系年龄20以下的学生姓名</span></span><br><span class="line"><span class="keyword">select</span> sname </span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sdept = <span class="string">'CS'</span> <span class="keyword">and</span> sage &lt; <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h3 id="�-order-by-子句"><a href="#�-order-by-子句" class="headerlink" title="�?order by 子句"></a>�?order by 子句</h3><ul>
+<h3 id="③-order-by-子句"><a href="#③-order-by-子句" class="headerlink" title="③ order by 子句"></a>③ order by 子句</h3><ul>
 <li>desc 降序 </li>
 <li>asc 升序 默认</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 院系按升序排，年龄按降序�?</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sdept,sage <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 院系按升序排，年龄按降序排</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sdept,sage <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-top"><a href="#�-top" class="headerlink" title="�?top"></a>�?top</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询成绩第一的学生姓�?</span></span><br><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sgrade = (</span><br><span class="line">	<span class="keyword">select</span> top <span class="number">1</span> Sgrade </span><br><span class="line">    <span class="keyword">from</span> Student</span><br><span class="line">    <span class="keyword">order</span> <span class="keyword">by</span> Sgrade <span class="keyword">desc</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="④-top"><a href="#④-top" class="headerlink" title="④ top"></a>④ top</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询成绩第一的学生姓名</span></span><br><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sgrade = (</span><br><span class="line">	<span class="keyword">select</span> top <span class="number">1</span> Sgrade </span><br><span class="line">    <span class="keyword">from</span> Student</span><br><span class="line">    <span class="keyword">order</span> <span class="keyword">by</span> Sgrade <span class="keyword">desc</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询�?1-30行的数据，id主键自增，但可能不连�?</span></span><br><span class="line"><span class="comment"># 先查询出�?0行的数据，后查询去除�?0行的10行数�?</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">10</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">not</span> <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> top <span class="number">20</span> <span class="keyword">id</span></span><br><span class="line">    <span class="keyword">from</span> student</span><br><span class="line">    <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询第21-30行的数据，id主键自增，但可能不连续</span></span><br><span class="line"><span class="comment"># 先查询出前20行的数据，后查询去除这20行的10行数据</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">10</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">not</span> <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> top <span class="number">20</span> <span class="keyword">id</span></span><br><span class="line">    <span class="keyword">from</span> student</span><br><span class="line">    <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span>;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="�-聚集函数"><a href="#�-聚集函数" class="headerlink" title="�?聚集函数"></a>�?聚集函数</h3><table>
+<h3 id="⑤-聚集函数"><a href="#⑤-聚集函数" class="headerlink" title="⑤ 聚集函数"></a>⑤ 聚集函数</h3><table>
 <thead>
 <tr>
-<th align="center">函数�?</th>
+<th align="center">函数名</th>
 <th align="center">功能</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">COUNT</td>
-<td align="center">对元组计�?</td>
+<td align="center">对元组计数</td>
 </tr>
 <tr>
 <td align="center">TOTAL</td>
@@ -399,257 +400,257 @@
 </tr>
 <tr>
 <td align="center">MAX</td>
-<td align="center">求最大�?</td>
+<td align="center">求最大值</td>
 </tr>
 <tr>
 <td align="center">MIN</td>
-<td align="center">求最小�?</td>
+<td align="center">求最小值</td>
 </tr>
 <tr>
 <td align="center">AVG</td>
-<td align="center">求平均�?</td>
+<td align="center">求平均值</td>
 </tr>
 </tbody></table>
-<p>示例�?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询学生总人�?</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*)</span><br><span class="line"><span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询选修了课程的学生人数(学生每选一门可都会在选修表中有记�?</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> Sno) <span class="keyword">as</span> numbers</span><br><span class="line"><span class="keyword">from</span> sc;</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询学生总人数</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*)</span><br><span class="line"><span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询选修了课程的学生人数(学生每选一门可都会在选修表中有记录)</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">distinct</span> Sno) <span class="keyword">as</span> numbers</span><br><span class="line"><span class="keyword">from</span> sc;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>🚨 起别�?as 可写可不�?</p>
+<p>🚨 起别名 as 可写可不写</p>
 </blockquote>
-<h3 id="�-group-by-子句"><a href="#�-group-by-子句" class="headerlink" title="�?group by 子句"></a>�?group by 子句</h3><p>group by 分组：把具有相同的数据值的行放在同一组中�?</p>
-<p><em>*分组后聚集函数将作用于每一组，即每一组都有一个聚集函数�?</em></p>
-<p><em>*示例�?</em></p>
+<h3 id="⑥-group-by-子句"><a href="#⑥-group-by-子句" class="headerlink" title="⑥ group by 子句"></a>⑥ group by 子句</h3><p>group by 分组：把具有相同的数据值的行放在同一组中。</p>
+<p><strong>分组后聚集函数将作用于每一组，即每一组都有一个聚集函数值</strong></p>
+<p><strong>示例：</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 求各个课程号及相应的选课人数</span></span><br><span class="line"><span class="keyword">select</span> Cno, <span class="keyword">count</span>(Sno)</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Cno;</span><br></pre></td></tr></table></figure>
 
-<p>如果分组后还需要对这些组进行过滤，则使�?<code>HAVING</code> 短语</p>
+<p>如果分组后还需要对这些组进行过滤，则使用 <code>HAVING</code> 短语</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询选修了三门以上课程的学生学号</span></span><br><span class="line"><span class="keyword">select</span> Sno</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> sno</span><br><span class="line"><span class="keyword">having</span> <span class="keyword">count</span>(*) &gt; <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 有两个表Study(sno,cno)和Student(sno,sname)，查询选修�?�?门课的学�?</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> Student s</span><br><span class="line"><span class="keyword">where</span> s.sno <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> stu.sno <span class="keyword">from</span> Studty stu</span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> stu.sno </span><br><span class="line">    <span class="keyword">having</span> <span class="keyword">count</span>(*) &gt;= <span class="number">2</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 有两个表Study(sno,cno)和Student(sno,sname)，查询选修了2或3门课的学生</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> Student s</span><br><span class="line"><span class="keyword">where</span> s.sno <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> stu.sno <span class="keyword">from</span> Studty stu</span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> stu.sno </span><br><span class="line">    <span class="keyword">having</span> <span class="keyword">count</span>(*) &gt;= <span class="number">2</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <br>
 
 
 
-<p><em>*<code>WHERE</code> 过滤行，<code>HAVING</code> 过滤分组，行过滤应当先于分组过滤�?</em></p>
+<p><strong><code>WHERE</code> 过滤行，<code>HAVING</code> 过滤分组，行过滤应当先于分组过滤。</strong></p>
 <blockquote>
-<p>having �?where 功能、用法相同，<strong>执行时机不同</strong>�?</p>
-<p>where 在开始时执行检测数据，对原数据进行过滤�?</p>
-<p>*<em>having 对筛选出的结果再次进行过�?</em>�?</p>
-<p>having 字段必须是查询出来的，where 字段必须是数据表存在的�?</p>
-<p><em>*where 不可以使用字段的别名，having 可以。因为执�?WHERE 代码时，可能尚未确定列值�?</em></p>
+<p>having 与 where 功能、用法相同，<strong>执行时机不同</strong>。</p>
+<p>where 在开始时执行检测数据，对原数据进行过滤。</p>
+<p><strong>having 对筛选出的结果再次进行过滤</strong>。</p>
+<p>having 字段必须是查询出来的，where 字段必须是数据表存在的。</p>
+<p><strong>where 不可以使用字段的别名，having 可以。因为执行 WHERE 代码时，可能尚未确定列值。</strong></p>
 <p>where 不可以使用聚集函数。一般需用聚集函数才会用 having</p>
-<p>SQL标准要求<code>HAVING 必须引用 GROUP BY 子句中的列或用于合计函数中的列</code>�?</p>
+<p>SQL标准要求<code>HAVING 必须引用 GROUP BY 子句中的列或用于合计函数中的列</code>。</p>
 </blockquote>
-<p>�?<strong>GROUP BY 子句出现�?WHERE 子句之后，ORDER BY 子句之前</strong></p>
+<p>⚠ <strong>GROUP BY 子句出现在 WHERE 子句之后，ORDER BY 子句之前</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">col</span>, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">num</span></span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">col</span> &gt; <span class="number">2</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">col</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">num</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-连接查询"><a href="#2-连接查询" class="headerlink" title="2. 连接查询"></a>2. 连接查询</h2><p>若一个查询同时涉及两个以上的表，则称为连接查�?</p>
-<h3 id="�-等值与非等值连接查�"><a href="#�-等值与非等值连接查�" class="headerlink" title="�?等值与非等值连接查�?"></a>�?等值与非等值连接查�?</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417180939.png" alt=""></p>
-<p><em>*示例�?</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查序每个学生及选修课的情况</span></span><br><span class="line"><span class="keyword">select</span> Student.*, SC.*</span><br><span class="line"><span class="keyword">from</span> Student, SC</span><br><span class="line"><span class="keyword">where</span> Student.sno = SC.sno;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询选修2号课程且成绩�?0分以上的所有学生的学号和姓�?</span></span><br><span class="line"><span class="keyword">select</span> Student.sno,sname</span><br><span class="line"><span class="keyword">from</span> Student,SC</span><br><span class="line"><span class="keyword">where</span> Student.sno = SC.sno <span class="keyword">and</span></span><br><span class="line">	SC.cno = <span class="number">2</span> <span class="keyword">and</span></span><br><span class="line">	SC.grade &gt; <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="2-连接查询"><a href="#2-连接查询" class="headerlink" title="2. 连接查询"></a>2. 连接查询</h2><p>若一个查询同时涉及两个以上的表，则称为连接查询</p>
+<h3 id="①-等值与非等值连接查询"><a href="#①-等值与非等值连接查询" class="headerlink" title="① 等值与非等值连接查询"></a>① 等值与非等值连接查询</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417180939.png" alt=""></p>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查序每个学生及选修课的情况</span></span><br><span class="line"><span class="keyword">select</span> Student.*, SC.*</span><br><span class="line"><span class="keyword">from</span> Student, SC</span><br><span class="line"><span class="keyword">where</span> Student.sno = SC.sno;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询选修2号课程且成绩在90分以上的所有学生的学号和姓名</span></span><br><span class="line"><span class="keyword">select</span> Student.sno,sname</span><br><span class="line"><span class="keyword">from</span> Student,SC</span><br><span class="line"><span class="keyword">where</span> Student.sno = SC.sno <span class="keyword">and</span></span><br><span class="line">	SC.cno = <span class="number">2</span> <span class="keyword">and</span></span><br><span class="line">	SC.grade &gt; <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-自身连接"><a href="#�-自身连接" class="headerlink" title="�?自身连接"></a>�?自身连接</h3><p>一个表与自己进行连�?</p>
-<p><em>*示例�?</em></p>
+<h3 id="②-自身连接"><a href="#②-自身连接" class="headerlink" title="② 自身连接"></a>② 自身连接</h3><p>一个表与自己进行连接</p>
+<p><strong>示例：</strong></p>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417181712.png" alt=""></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> FIRST.Cno,SECOND.Cpno</span><br><span class="line"><span class="keyword">from</span> Cource <span class="keyword">FIRST</span>, Cource <span class="keyword">Second</span></span><br><span class="line"><span class="keyword">where</span> FIRST.Cpno = SECOND.Cno;</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-外连�"><a href="#�-外连�" class="headerlink" title="�?外连�?"></a>�?外连�?</h3><p>保存悬浮元组（即不满足条件的元组也保存下来）上一节已经讲�?</p>
+<h3 id="③-外连接"><a href="#③-外连接" class="headerlink" title="③ 外连接"></a>③ 外连接</h3><p>保存悬浮元组（即不满足条件的元组也保存下来）上一节已经讲过</p>
 <ul>
 <li>OUTER JOIN</li>
 <li>LEFT OUTER JOIN</li>
 <li>RIGHT OUTER JOIN</li>
 </ul>
-<h3 id="�-多表连接"><a href="#�-多表连接" class="headerlink" title="�?多表连接"></a>�?多表连接</h3><p>两个以上的表进行连接</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询每个学生的学号，姓名，选修的课程名即成�?</span></span><br><span class="line"><span class="keyword">select</span> Student.Sno,Sname,Cname,Grade</span><br><span class="line"><span class="keyword">from</span> Student,Cource,SC</span><br><span class="line"><span class="keyword">where</span> Student.Sno = SC.Sno <span class="keyword">AND</span></span><br><span class="line">	SC.Cno = Cource.Cno;</span><br></pre></td></tr></table></figure>
+<h3 id="④-多表连接"><a href="#④-多表连接" class="headerlink" title="④ 多表连接"></a>④ 多表连接</h3><p>两个以上的表进行连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询每个学生的学号，姓名，选修的课程名即成绩</span></span><br><span class="line"><span class="keyword">select</span> Student.Sno,Sname,Cname,Grade</span><br><span class="line"><span class="keyword">from</span> Student,Cource,SC</span><br><span class="line"><span class="keyword">where</span> Student.Sno = SC.Sno <span class="keyword">AND</span></span><br><span class="line">	SC.Cno = Cource.Cno;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-嵌套查询"><a href="#3-嵌套查询" class="headerlink" title="3. 嵌套查询"></a>3. 嵌套查询</h2><p>�?SQL 语言中，一�?select-from-where 语句称为一个查询块�?</p>
-<p>将一个查询块套在另一个查询块�?where 子句�?HAVING 短语的条件中的查询称为嵌套查�?</p>
-<h3 id="�-带有-in-谓词的子查询"><a href="#�-带有-in-谓词的子查询" class="headerlink" title="�?带有 in 谓词的子查询"></a>�?带有 in 谓词的子查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找与小明所在同一个系的学�?</span></span><br><span class="line"><span class="keyword">select</span> Sno,Sname,Sdept</span><br><span class="line"><span class="keyword">from</span>  Student</span><br><span class="line"><span class="keyword">where</span> Sdept <span class="keyword">in</span></span><br><span class="line">	(<span class="keyword">Select</span> Sdept</span><br><span class="line">	<span class="keyword">From</span> Student</span><br><span class="line">	<span class="keyword">Where</span> Sname = <span class="string">"小明"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="3-嵌套查询"><a href="#3-嵌套查询" class="headerlink" title="3. 嵌套查询"></a>3. 嵌套查询</h2><p>在 SQL 语言中，一个 select-from-where 语句称为一个查询块。</p>
+<p>将一个查询块套在另一个查询块的 where 子句或 HAVING 短语的条件中的查询称为嵌套查询</p>
+<h3 id="①-带有-in-谓词的子查询"><a href="#①-带有-in-谓词的子查询" class="headerlink" title="① 带有 in 谓词的子查询"></a>① 带有 in 谓词的子查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找与小明所在同一个系的学生</span></span><br><span class="line"><span class="keyword">select</span> Sno,Sname,Sdept</span><br><span class="line"><span class="keyword">from</span>  Student</span><br><span class="line"><span class="keyword">where</span> Sdept <span class="keyword">in</span></span><br><span class="line">	(<span class="keyword">Select</span> Sdept</span><br><span class="line">	<span class="keyword">From</span> Student</span><br><span class="line">	<span class="keyword">Where</span> Sname = <span class="string">"小明"</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-带有比较运算符的子查�"><a href="#�-带有比较运算符的子查�" class="headerlink" title="�?带有比较运算符的子查�?"></a>�?带有比较运算符的子查�?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找出每个学生超过他自己选修课程平均成绩的课程号</span></span><br><span class="line"><span class="keyword">select</span> Sno,Cno</span><br><span class="line"><span class="keyword">from</span> SC x</span><br><span class="line"><span class="keyword">where</span> grade &gt;= (<span class="keyword">select</span> <span class="keyword">AVG</span>(grade)</span><br><span class="line">               <span class="keyword">from</span> Sc y</span><br><span class="line">               <span class="keyword">where</span> y.Sno = x.Sno);</span><br></pre></td></tr></table></figure>
+<h3 id="②-带有比较运算符的子查询"><a href="#②-带有比较运算符的子查询" class="headerlink" title="② 带有比较运算符的子查询"></a>② 带有比较运算符的子查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找出每个学生超过他自己选修课程平均成绩的课程号</span></span><br><span class="line"><span class="keyword">select</span> Sno,Cno</span><br><span class="line"><span class="keyword">from</span> SC x</span><br><span class="line"><span class="keyword">where</span> grade &gt;= (<span class="keyword">select</span> <span class="keyword">AVG</span>(grade)</span><br><span class="line">               <span class="keyword">from</span> Sc y</span><br><span class="line">               <span class="keyword">where</span> y.Sno = x.Sno);</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-带有-ANY-SOME-�-ALL-谓词的子查询"><a href="#�-带有-ANY-SOME-�-ALL-谓词的子查询" class="headerlink" title="�?带有 ANY(SOME)�?ALL 谓词的子查询"></a>�?带有 ANY(SOME)�?ALL 谓词的子查询</h3><p>子查询返回单值时可以用比较运算符，但返回多值时要用 ANY（有的系统用SOME）或 ALL 谓词修饰符。而使用ANY �?ALL谓词时必须同时使用比较运算符�?</p>
+<h3 id="③-带有-ANY-SOME-或-ALL-谓词的子查询"><a href="#③-带有-ANY-SOME-或-ALL-谓词的子查询" class="headerlink" title="③ 带有 ANY(SOME)或 ALL 谓词的子查询"></a>③ 带有 ANY(SOME)或 ALL 谓词的子查询</h3><p>子查询返回单值时可以用比较运算符，但返回多值时要用 ANY（有的系统用SOME）或 ALL 谓词修饰符。而使用ANY 或 ALL谓词时必须同时使用比较运算符。</p>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417195212.png" alt=""></p>
-<p><em>*示例�?</em></p>
+<p><strong>示例：</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询非计算机科学系中比计算机科学系任意一个学生年龄小的学生姓名和年龄</span></span><br><span class="line"><span class="keyword">select</span> Sname,Sage</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage &lt; <span class="keyword">ANY</span>(<span class="keyword">select</span> Sage</span><br><span class="line">                <span class="keyword">from</span> Student</span><br><span class="line">                <span class="keyword">where</span> Sdept = <span class="string">'CS'</span>)</span><br><span class="line">      <span class="keyword">and</span> </span><br><span class="line">      Sdept &lt;&gt; ‘CS<span class="string">';</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="�-带有-EXISTS-谓词的子查询"><a href="#�-带有-EXISTS-谓词的子查询" class="headerlink" title="�?带有 EXISTS 谓词的子查询"></a>�?带有 EXISTS 谓词的子查询</h3><p><code>EXISTS</code> 代表存在，带有该谓词的子查询不返回任何数据，只产生逻辑真�?true 或逻辑假�?false</p>
+<h3 id="④-带有-EXISTS-谓词的子查询"><a href="#④-带有-EXISTS-谓词的子查询" class="headerlink" title="④ 带有 EXISTS 谓词的子查询"></a>④ 带有 EXISTS 谓词的子查询</h3><p><code>EXISTS</code> 代表存在，带有该谓词的子查询不返回任何数据，只产生逻辑真值 true 或逻辑假值 false</p>
 <ul>
-<li><p>exists 引导的内层查询如�?能查出数据，则继续外层查�?</p>
+<li><p>exists 引导的内层查询如果 能查出数据，则继续外层查询</p>
 </li>
-<li><p>not exists 引导的内层查询如�?查不出数据，则继续外层查�?</p>
+<li><p>not exists 引导的内层查询如果 查不出数据，则继续外层查询</p>
 </li>
 </ul>
 <blockquote>
-<p>*<em>exists 的查询步骤是顺序执行，并不会先做子查�?</em>，与 in 相反�?</p>
+<p><strong>exists 的查询步骤是顺序执行，并不会先做子查询</strong>，与 in 相反。</p>
 <p>顺序执行，如果exists 的查询结果为真，则将最外层的查询结果添加进最终结果集。对外表进行循环</p>
 </blockquote>
-<p><em>*示例�?</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询所有选修�?号课程的学生姓名</span></span><br><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">exists</span>(</span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">    <span class="keyword">from</span> SC</span><br><span class="line">    <span class="keyword">where</span> Sno = Student.Sno</span><br><span class="line">    <span class="keyword">and</span> Cno = <span class="number">1</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询所有选修了1号课程的学生姓名</span></span><br><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">exists</span>(</span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">    <span class="keyword">from</span> SC</span><br><span class="line">    <span class="keyword">where</span> Sno = Student.Sno</span><br><span class="line">    <span class="keyword">and</span> Cno = <span class="number">1</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>由exists引出的子查询，其目标列表达式通常都用 * ，因为该子查询只返回 true �?false，给出列名无实际意义</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询选修了全部课程的学生姓名</span></span><br><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span>(</span><br><span class="line">    <span class="comment"># 首先我们要直到一共有哪些课程</span></span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">	<span class="keyword">from</span> Cource </span><br><span class="line">	<span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span>(</span><br><span class="line">        <span class="comment"># 其次，我们需要统计选修了所有课程的学生�?</span></span><br><span class="line">		<span class="keyword">select</span> * </span><br><span class="line">		<span class="keyword">from</span> SC</span><br><span class="line">		<span class="keyword">where</span> Sno = Student.Sno</span><br><span class="line">		<span class="keyword">and</span></span><br><span class="line">		Cno = Cource.Cno</span><br><span class="line">	)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>由exists引出的子查询，其目标列表达式通常都用 * ，因为该子查询只返回 true 或 false，给出列名无实际意义</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询选修了全部课程的学生姓名</span></span><br><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span>(</span><br><span class="line">    <span class="comment"># 首先我们要直到一共有哪些课程</span></span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">	<span class="keyword">from</span> Cource </span><br><span class="line">	<span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span>(</span><br><span class="line">        <span class="comment"># 其次，我们需要统计选修了所有课程的学生号</span></span><br><span class="line">		<span class="keyword">select</span> * </span><br><span class="line">		<span class="keyword">from</span> SC</span><br><span class="line">		<span class="keyword">where</span> Sno = Student.Sno</span><br><span class="line">		<span class="keyword">and</span></span><br><span class="line">		Cno = Cource.Cno</span><br><span class="line">	)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>由于没有全程量词，可将题目的意思转化为 没有一门课程是他不选修�?</p>
-<p>exists 可以理解为一个循�?</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(循环从Student表拿一行学生数�?&#123;</span><br><span class="line">　　<span class="keyword">for</span>(循环从Course表拿一行课程信�?&#123;</span><br><span class="line">　　　　<span class="keyword">for</span>(循环在SC表拿一行进行比�?&#123;</span><br><span class="line">　　　　　　SC表中的这条数据判断：</span><br><span class="line">　　　　　   SC.Sno == Student.Sno �?SC.Cno == Course.Cno;</span><br><span class="line">　　　　　　<span class="comment">/*是否SC表中的学�?= Student表中的学�?�?</span></span><br><span class="line"><span class="comment">　　　　　　　SC表中的Cno = Course表中的Cno*/</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于没有全程量词，可将题目的意思转化为 没有一门课程是他不选修的</p>
+<p>exists 可以理解为一个循环</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(循环从Student表拿一行学生数据)&#123;</span><br><span class="line">　　<span class="keyword">for</span>(循环从Course表拿一行课程信息)&#123;</span><br><span class="line">　　　　<span class="keyword">for</span>(循环在SC表拿一行进行比对)&#123;</span><br><span class="line">　　　　　　SC表中的这条数据判断：</span><br><span class="line">　　　　　   SC.Sno == Student.Sno ， SC.Cno == Course.Cno;</span><br><span class="line">　　　　　　<span class="comment">/*是否SC表中的学号 = Student表中的学号 且</span></span><br><span class="line"><span class="comment">　　　　　　　SC表中的Cno = Course表中的Cno*/</span></span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询至少选修了学�?01选修的全部课程的学生号码</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> Sno</span><br><span class="line"><span class="comment"># 代表学生X的表</span></span><br><span class="line"><span class="keyword">from</span> SC SCX</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span>(</span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">    <span class="keyword">from</span> SC SCY</span><br><span class="line">    <span class="keyword">where</span> SCY.Sno = <span class="string">'001'</span></span><br><span class="line">    <span class="keyword">and</span></span><br><span class="line">    <span class="keyword">not</span> <span class="keyword">exists</span>(</span><br><span class="line">    	<span class="keyword">select</span> * </span><br><span class="line">        <span class="keyword">from</span> SC SCZ</span><br><span class="line">        <span class="comment"># 匹配学号</span></span><br><span class="line">        <span class="keyword">where</span> SCZ.Sno = SCX.Sno</span><br><span class="line">        <span class="keyword">and</span></span><br><span class="line">        <span class="comment"># 001选修了该课程</span></span><br><span class="line">        SCZ.Cno = SCY.Cno</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询至少选修了学生001选修的全部课程的学生号码</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> Sno</span><br><span class="line"><span class="comment"># 代表学生X的表</span></span><br><span class="line"><span class="keyword">from</span> SC SCX</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span>(</span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">    <span class="keyword">from</span> SC SCY</span><br><span class="line">    <span class="keyword">where</span> SCY.Sno = <span class="string">'001'</span></span><br><span class="line">    <span class="keyword">and</span></span><br><span class="line">    <span class="keyword">not</span> <span class="keyword">exists</span>(</span><br><span class="line">    	<span class="keyword">select</span> * </span><br><span class="line">        <span class="keyword">from</span> SC SCZ</span><br><span class="line">        <span class="comment"># 匹配学号</span></span><br><span class="line">        <span class="keyword">where</span> SCZ.Sno = SCX.Sno</span><br><span class="line">        <span class="keyword">and</span></span><br><span class="line">        <span class="comment"># 001选修了该课程</span></span><br><span class="line">        SCZ.Cno = SCY.Cno</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>翻译为：不存在这样的课程y�?01选修了，而学生x没有选修</p>
+<p>翻译为：不存在这样的课程y，001选修了，而学生x没有选修</p>
 <blockquote>
-<p>exists �?in 的区别：</p>
-<p>例如�?</p>
+<p>exists 和 in 的区别：</p>
+<p>例如：</p>
 <p>select * from A<br>where id in(select id from B)</p>
-<p><em>*exists()适合B表比A表数据大的情�?</em></p>
-<p><strong>当A表数据与B表数据一样大�? in与exists效率差不�?可任选一个使�?</strong></p>
+<p><strong>exists()适合B表比A表数据大的情况</strong></p>
+<p><strong>当A表数据与B表数据一样大时, in与exists效率差不多,可任选一个使用.</strong></p>
 <p>详细可参考：👉 <a href="https://www.cnblogs.com/emilyyoucan/p/7833769.html" target="_blank" rel="noopener">SQL语句中exists和in的区别</a></p>
 </blockquote>
-<h2 id="4-集合查询"><a href="#4-集合查询" class="headerlink" title="4. 集合查询"></a>4. 集合查询</h2><p>select 语句的查询结果是元组的集合，所以多个select语句的结果可进行集合操作。集合操作主要包�?</p>
+<h2 id="4-集合查询"><a href="#4-集合查询" class="headerlink" title="4. 集合查询"></a>4. 集合查询</h2><p>select 语句的查询结果是元组的集合，所以多个select语句的结果可进行集合操作。集合操作主要包括</p>
 <ul>
-<li><code>�?UNION</code></li>
-<li><code>�?INTERSECT</code></li>
-<li><code>�?EXCEPT</code></li>
+<li><code>并 UNION</code></li>
+<li><code>交 INTERSECT</code></li>
+<li><code>差 EXCEPT</code></li>
 </ul>
-<p>参加集合操作的各查询结果的列数必须相同；对应项的数据类型也必须相�?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询计算机系的学生及年龄不大�?9的学�?</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage &lt;= <span class="number">19</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用INTERSECT</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">INTERSECT</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage &lt;= <span class="number">19</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用EXCEPT</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage &gt; <span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+<p>参加集合操作的各查询结果的列数必须相同；对应项的数据类型也必须相同</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询计算机系的学生及年龄不大于19的学生</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage &lt;= <span class="number">19</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用INTERSECT</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">INTERSECT</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage &lt;= <span class="number">19</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以用EXCEPT</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sage &gt; <span class="number">19</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="5-基于派生表的查询"><a href="#5-基于派生表的查询" class="headerlink" title="5. 基于派生表的查询"></a>5. 基于派生表的查询</h2><p>子查询不仅可以出现在where子句中，还可以出现在子句中，这时子查询生成的临时派生表成为主查询的查询对�?(必须为派生关系置顶一个别�?</p>
+<h2 id="5-基于派生表的查询"><a href="#5-基于派生表的查询" class="headerlink" title="5. 基于派生表的查询"></a>5. 基于派生表的查询</h2><p>子查询不仅可以出现在where子句中，还可以出现在子句中，这时子查询生成的临时派生表成为主查询的查询对象 (必须为派生关系置顶一个别名)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找出每个学生超过自己选修课程平均成绩的课程号</span></span><br><span class="line"><span class="keyword">select</span> Sno,Cno</span><br><span class="line"><span class="keyword">from</span> SC,(<span class="keyword">select</span> Sno,<span class="keyword">AVG</span>(Grade) <span class="keyword">from</span> SC <span class="keyword">group</span> <span class="keyword">by</span> Sno)</span><br><span class="line">		<span class="keyword">as</span> Avg_SC(avg_sno,avg_grade);</span><br></pre></td></tr></table></figure>
 
 <br>
 
 
 
-<h1 id="三、数据更�"><a href="#三、数据更�" class="headerlink" title="三、数据更�?"></a>三、数据更�?</h1><h2 id="1-插入数据"><a href="#1-插入数据" class="headerlink" title="1. 插入数据"></a>1. 插入数据</h2><h3 id="�-插入元组"><a href="#�-插入元组" class="headerlink" title="�?插入元组"></a>�?插入元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student(Sno,Sname,Sgender,Sdept,Sage)</span><br><span class="line"><span class="keyword">values</span>(<span class="string">'123'</span>,<span class="string">'小红'</span>,<span class="string">'�?,'</span>CS<span class="string">',20);</span></span><br></pre></td></tr></table></figure>
+<h1 id="三、数据更新"><a href="#三、数据更新" class="headerlink" title="三、数据更新"></a>三、数据更新</h1><h2 id="1-插入数据"><a href="#1-插入数据" class="headerlink" title="1. 插入数据"></a>1. 插入数据</h2><h3 id="①-插入元组"><a href="#①-插入元组" class="headerlink" title="① 插入元组"></a>① 插入元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student(Sno,Sname,Sgender,Sdept,Sage)</span><br><span class="line"><span class="keyword">values</span>(<span class="string">'123'</span>,<span class="string">'小红'</span>,<span class="string">'男'</span>,<span class="string">'CS'</span>,<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
 
-<p>若不指出要添加的属性，则需要添加表中的所有属�?</p>
-<h3 id="�-插入子查询结�"><a href="#�-插入子查询结�" class="headerlink" title="�?插入子查询结�?"></a>�?插入子查询结�?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对每一个系，求学生的平均年龄，并把结果存入�?Dept_age</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Dept_age(Sdept,Avg_age)</span><br><span class="line"><span class="keyword">select</span> Sdept,<span class="keyword">AVG</span>(Sage)</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Sdept;</span><br></pre></td></tr></table></figure>
+<p>若不指出要添加的属性，则需要添加表中的所有属性</p>
+<h3 id="②-插入子查询结果"><a href="#②-插入子查询结果" class="headerlink" title="② 插入子查询结果"></a>② 插入子查询结果</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对每一个系，求学生的平均年龄，并把结果存入表 Dept_age</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Dept_age(Sdept,Avg_age)</span><br><span class="line"><span class="keyword">select</span> Sdept,<span class="keyword">AVG</span>(Sage)</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Sdept;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-修改数据"><a href="#2-修改数据" class="headerlink" title="2. 修改数据"></a>2. 修改数据</h2><h3 id="�-修改某个元组的�"><a href="#�-修改某个元组的�" class="headerlink" title="�?修改某个元组的�?"></a>�?修改某个元组的�?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改学号001的年�?</span></span><br><span class="line"><span class="keyword">update</span> Student</span><br><span class="line"><span class="keyword">set</span> Sage = <span class="number">15</span></span><br><span class="line"><span class="keyword">where</span> Sno = <span class="string">'001'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="2-修改数据"><a href="#2-修改数据" class="headerlink" title="2. 修改数据"></a>2. 修改数据</h2><h3 id="①-修改某个元组的值"><a href="#①-修改某个元组的值" class="headerlink" title="① 修改某个元组的值"></a>① 修改某个元组的值</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改学号001的年龄</span></span><br><span class="line"><span class="keyword">update</span> Student</span><br><span class="line"><span class="keyword">set</span> Sage = <span class="number">15</span></span><br><span class="line"><span class="keyword">where</span> Sno = <span class="string">'001'</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-修改多个元组的�"><a href="#�-修改多个元组的�" class="headerlink" title="�?修改多个元组的�?"></a>�?修改多个元组的�?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将所有学生年龄加1�?</span></span><br><span class="line"><span class="keyword">update</span> Stduent</span><br><span class="line"><span class="keyword">set</span> Sage = Sage + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="②-修改多个元组的值"><a href="#②-修改多个元组的值" class="headerlink" title="② 修改多个元组的值"></a>② 修改多个元组的值</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将所有学生年龄加1岁</span></span><br><span class="line"><span class="keyword">update</span> Stduent</span><br><span class="line"><span class="keyword">set</span> Sage = Sage + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-带子查询的修改语�"><a href="#�-带子查询的修改语�" class="headerlink" title="�?带子查询的修改语�?"></a>�?带子查询的修改语�?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将计算机系全体学生成绩置0</span></span><br><span class="line"><span class="keyword">update</span> Student</span><br><span class="line"><span class="keyword">set</span> Sgrade = <span class="number">0</span></span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> Sno</span><br><span class="line">    <span class="keyword">from</span> Student</span><br><span class="line">    <span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="③-带子查询的修改语句"><a href="#③-带子查询的修改语句" class="headerlink" title="③ 带子查询的修改语句"></a>③ 带子查询的修改语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将计算机系全体学生成绩置0</span></span><br><span class="line"><span class="keyword">update</span> Student</span><br><span class="line"><span class="keyword">set</span> Sgrade = <span class="number">0</span></span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> Sno</span><br><span class="line">    <span class="keyword">from</span> Student</span><br><span class="line">    <span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-删除数据"><a href="#3-删除数据" class="headerlink" title="3. 删除数据"></a>3. 删除数据</h2><h3 id="�-删除某个元组"><a href="#�-删除某个元组" class="headerlink" title="�?删除某个元组"></a>�?删除某个元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除学号001学生记录</span></span><br><span class="line"><span class="keyword">delete</span> </span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sno = <span class="string">'001'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="3-删除数据"><a href="#3-删除数据" class="headerlink" title="3. 删除数据"></a>3. 删除数据</h2><h3 id="①-删除某个元组"><a href="#①-删除某个元组" class="headerlink" title="① 删除某个元组"></a>① 删除某个元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除学号001学生记录</span></span><br><span class="line"><span class="keyword">delete</span> </span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sno = <span class="string">'001'</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-删除多个元组"><a href="#�-删除多个元组" class="headerlink" title="�?删除多个元组"></a>�?删除多个元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除所有学生记�?</span></span><br><span class="line"><span class="keyword">delete</span> </span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
+<h3 id="②-删除多个元组"><a href="#②-删除多个元组" class="headerlink" title="② 删除多个元组"></a>② 删除多个元组</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除所有学生记录</span></span><br><span class="line"><span class="keyword">delete</span> </span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
 
-<h3 id="�-带子查询的删除语�"><a href="#�-带子查询的删除语�" class="headerlink" title="�?带子查询的删除语�?"></a>�?带子查询的删除语�?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除计算机系所有学生的选课记录</span></span><br><span class="line"><span class="keyword">delete</span> </span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> Sno</span><br><span class="line">    <span class="keyword">from</span> Student</span><br><span class="line">    <span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="③-带子查询的删除语句"><a href="#③-带子查询的删除语句" class="headerlink" title="③ 带子查询的删除语句"></a>③ 带子查询的删除语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除计算机系所有学生的选课记录</span></span><br><span class="line"><span class="keyword">delete</span> </span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> Sno</span><br><span class="line">    <span class="keyword">from</span> Student</span><br><span class="line">    <span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除重复数据，只保留一条记录（除id以外，其余全部相同）</span></span><br><span class="line"><span class="comment">-- �?删除除了分组中最小id以外的所有值，即重复数�?--</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">not</span> <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span>(</span><br><span class="line">		<span class="comment">-- �?按照除id以外的任意属性就行分组排列，并选出每个分组中的最小id -- </span></span><br><span class="line">		<span class="keyword">select</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">from</span> Student</span><br><span class="line">    	<span class="keyword">group</span> <span class="keyword">by</span> Sname</span><br><span class="line">    )temp</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除重复数据，只保留一条记录（除id以外，其余全部相同）</span></span><br><span class="line"><span class="comment">-- ② 删除除了分组中最小id以外的所有值，即重复数据 --</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">not</span> <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span>(</span><br><span class="line">		<span class="comment">-- ① 按照除id以外的任意属性就行分组排列，并选出每个分组中的最小id -- </span></span><br><span class="line">		<span class="keyword">select</span> <span class="keyword">MIN</span>(<span class="keyword">id</span>) <span class="keyword">from</span> Student</span><br><span class="line">    	<span class="keyword">group</span> <span class="keyword">by</span> Sname</span><br><span class="line">    )temp</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>🚨 注意�?</p>
+<p>🚨 注意： </p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> <span class="keyword">test</span> </span><br><span class="line"><span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">not</span> <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">Min</span>(<span class="keyword">id</span>) <span class="keyword">from</span> <span class="keyword">test</span> </span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">name</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>这样写在 MySQL 中会报错�?</p>
+<p>这样写在 MySQL 中会报错，</p>
 <p><code>You can&#39;t specify target table for update in FROM clause</code></p>
-<p><em>*不允许使用同一表中查询的数据作为同一表的更新数据�?</em></p>
-<p>我们需要在select外面套上一层，让数据库认为我们不是使用同一个表的查询数据作为更新数�?</p>
+<p><strong>不允许使用同一表中查询的数据作为同一表的更新数据。</strong></p>
+<p>我们需要在select外面套上一层，让数据库认为我们不是使用同一个表的查询数据作为更新数据</p>
 </blockquote>
 <br>
 
 
 
-<h1 id="四、空值的处理"><a href="#四、空值的处理" class="headerlink" title="四、空值的处理"></a>四、空值的处理</h1><h2 id="1-空值的产生"><a href="#1-空值的产生" class="headerlink" title="1. 空值的产生"></a>1. 空值的产生</h2><p>比如：插入语句中没有赋值的属性，其值为空�?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student(Sno,Cno)</span><br><span class="line"><span class="keyword">values</span>(<span class="string">'123'</span>,<span class="string">'323'</span>);</span><br><span class="line"><span class="comment"># 除了Sno,Cno 外其余属性就是空�?</span></span><br></pre></td></tr></table></figure>
+<h1 id="四、空值的处理"><a href="#四、空值的处理" class="headerlink" title="四、空值的处理"></a>四、空值的处理</h1><h2 id="1-空值的产生"><a href="#1-空值的产生" class="headerlink" title="1. 空值的产生"></a>1. 空值的产生</h2><p>比如：插入语句中没有赋值的属性，其值为空值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student(Sno,Cno)</span><br><span class="line"><span class="keyword">values</span>(<span class="string">'123'</span>,<span class="string">'323'</span>);</span><br><span class="line"><span class="comment"># 除了Sno,Cno 外其余属性就是空值</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="2-空值的判断"><a href="#2-空值的判断" class="headerlink" title="2. 空值的判断"></a>2. 空值的判断</h2><p><strong>IS NULL / IS NOT NULL</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询漏填信息的学�?</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sname <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> Sgender <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> Sage <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> Sdept <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询漏填信息的学生</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sname <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> Sgender <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> Sage <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">or</span> Sdept <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-空值的约束条件"><a href="#3-空值的约束条件" class="headerlink" title="3. 空值的约束条件"></a>3. 空值的约束条件</h2><ul>
-<li><p>属性定义中�?<strong>NOT NULL</strong> 约束条件时不能取空�?</p>
+<li><p>属性定义中有 <strong>NOT NULL</strong> 约束条件时不能取空值</p>
 </li>
-<li><p>加了 <strong>UNIQUE</strong> 限制的属性不能取空�?</p>
+<li><p>加了 <strong>UNIQUE</strong> 限制的属性不能取空值</p>
 </li>
-<li><p><strong>主键</strong>不能取空�?</p>
+<li><p><strong>主键</strong>不能取空值</p>
 </li>
 </ul>
 <br>
 
 
 
-<h1 id="五、视�"><a href="#五、视�" class="headerlink" title="五、视�?"></a>五、视�?</h1><p>视图是从一个或几个基本表（或视图）导出的表�?</p>
-<p>它与基本表不同，是一个虚表�?</p>
-<p><em>*数据库中只存放视图的定义，不存放视图对应的数据，这些数据任然存放在原来的基本表中。所以一旦基本表中的数据变化，那么视图中的数据也会相应变化�?</em></p>
+<h1 id="五、视图"><a href="#五、视图" class="headerlink" title="五、视图"></a>五、视图</h1><p>视图是从一个或几个基本表（或视图）导出的表。</p>
+<p>它与基本表不同，是一个虚表。</p>
+<p><strong>数据库中只存放视图的定义，不存放视图对应的数据，这些数据任然存放在原来的基本表中。所以一旦基本表中的数据变化，那么视图中的数据也会相应变化。</strong></p>
 <p>其实视图就好像一个窗口，透过它可以看到自己想要看到的数据及其变化</p>
 <h2 id="1-建立视图"><a href="#1-建立视图" class="headerlink" title="1. 建立视图"></a>1. 建立视图</h2><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200418095518.png" alt=""></p>
-<h3 id="�-建立在单个表上的视图"><a href="#�-建立在单个表上的视图" class="headerlink" title="�?建立在单个表上的视图"></a>�?建立在单个表上的视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机系学生视图，并要求插入/修改/删除操作时，保证该视图只有计算机系学�?</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_Student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="①-建立在单个表上的视图"><a href="#①-建立在单个表上的视图" class="headerlink" title="① 建立在单个表上的视图"></a>① 建立在单个表上的视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机系学生视图，并要求插入/修改/删除操作时，保证该视图只有计算机系学生</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_Student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>;</span><br></pre></td></tr></table></figure>
 
-<p>由于加上�?with check option 子句，以后对视图进行 修改 / 添加 / 删除 操作时，DBMS都会自动加上 Sdept = ‘CS’ 这个条件</p>
+<p>由于加上了 with check option 子句，以后对视图进行 修改 / 添加 / 删除 操作时，DBMS都会自动加上 Sdept = ‘CS’ 这个条件</p>
 <br>
 
-<p>若一个视图是从单个基本表导出的，并且只是去掉了某些行某些列，但保留了主键，则称这类视图为 <strong>行列子集视图</strong>�?上述视图 CS_Student 就是一个行列子集视�?</p>
-<h3 id="�-建立在多个表上的视图"><a href="#�-建立在多个表上的视图" class="headerlink" title="�?建立在多个表上的视图"></a>�?建立在多个表上的视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机系选修�?号课程的学生的视图（包括学号，姓名，成绩�?</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_S1(View_Sno,View_Sname,View_Grade)</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> Student.Sno,Sname,Grade</span><br><span class="line"><span class="keyword">from</span> Student,SC</span><br><span class="line"><span class="keyword">where</span> Student.Sno = SC.Sno <span class="keyword">and</span></span><br><span class="line">	  Sdept = <span class="string">'CS'</span> <span class="keyword">and</span></span><br><span class="line">	  SC.Cno = <span class="string">'1'</span>;</span><br></pre></td></tr></table></figure>
+<p>若一个视图是从单个基本表导出的，并且只是去掉了某些行某些列，但保留了主键，则称这类视图为 <strong>行列子集视图</strong>。 上述视图 CS_Student 就是一个行列子集视图</p>
+<h3 id="②-建立在多个表上的视图"><a href="#②-建立在多个表上的视图" class="headerlink" title="② 建立在多个表上的视图"></a>② 建立在多个表上的视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机系选修了1号课程的学生的视图（包括学号，姓名，成绩）</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_S1(View_Sno,View_Sname,View_Grade)</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> Student.Sno,Sname,Grade</span><br><span class="line"><span class="keyword">from</span> Student,SC</span><br><span class="line"><span class="keyword">where</span> Student.Sno = SC.Sno <span class="keyword">and</span></span><br><span class="line">	  Sdept = <span class="string">'CS'</span> <span class="keyword">and</span></span><br><span class="line">	  SC.Cno = <span class="string">'1'</span>;</span><br></pre></td></tr></table></figure>
 
-<p>由于视图的属性列中包含了两个表的同名�?Sno，所以必须在视图名后面说明视图的各个属性列�?</p>
-<h3 id="�-建立在视图上的视�"><a href="#�-建立在视图上的视�" class="headerlink" title="�?建立在视图上的视�?"></a>�?建立在视图上的视�?</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机系选修�?号课�?�?成绩�?0分以上的学生的视�?</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_S2</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> View_Sno,View_Sname,View_Grade</span><br><span class="line"><span class="keyword">from</span> CS_S1</span><br><span class="line"><span class="keyword">where</span> View_Grade &gt;= <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+<p>由于视图的属性列中包含了两个表的同名列 Sno，所以必须在视图名后面说明视图的各个属性列名</p>
+<h3 id="③-建立在视图上的视图"><a href="#③-建立在视图上的视图" class="headerlink" title="③ 建立在视图上的视图"></a>③ 建立在视图上的视图</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机系选修了1号课程 且 成绩在90分以上的学生的视图</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_S2</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> View_Sno,View_Sname,View_Grade</span><br><span class="line"><span class="keyword">from</span> CS_S1</span><br><span class="line"><span class="keyword">where</span> View_Grade &gt;= <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="2-删除视图"><a href="#2-删除视图" class="headerlink" title="2. 删除视图"></a>2. 删除视图</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> 视图名；</span><br></pre></td></tr></table></figure>
 
-<p>若该视图上还导出了一个视图，则删除视图操作拒绝执�?</p>
-<p>或者可以使�?<code>CASCADE</code>进行级联删除，删除该视图和由它导出的所有视�?</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> 视图�?<span class="keyword">CASCADE</span>;</span><br></pre></td></tr></table></figure>
+<p>若该视图上还导出了一个视图，则删除视图操作拒绝执行</p>
+<p>或者可以使用 <code>CASCADE</code>进行级联删除，删除该视图和由它导出的所有视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> 视图名 <span class="keyword">CASCADE</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-查询视图"><a href="#3-查询视图" class="headerlink" title="3. 查询视图"></a>3. 查询视图</h2><p>视图的查询和表的查询是一样的</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机系学生视图，并要求插入/修改/删除操作时，保证该视图只有计算机系学�?</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_Student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询选修�?号课程的计算机系学生</span></span><br><span class="line"><span class="keyword">select</span> CS_Student.Sno,Sname</span><br><span class="line"><span class="keyword">from</span> CS_Student,SC</span><br><span class="line"><span class="keyword">where</span> CS_Student.Sno = SC.Sno <span class="keyword">and</span></span><br><span class="line">	  SC.Cno = <span class="string">'1'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机系学生视图，并要求插入/修改/删除操作时，保证该视图只有计算机系学生</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_Student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span></span><br><span class="line"><span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询选修了1号课程的计算机系学生</span></span><br><span class="line"><span class="keyword">select</span> CS_Student.Sno,Sname</span><br><span class="line"><span class="keyword">from</span> CS_Student,SC</span><br><span class="line"><span class="keyword">where</span> CS_Student.Sno = SC.Sno <span class="keyword">and</span></span><br><span class="line">	  SC.Cno = <span class="string">'1'</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="4-更新视图"><a href="#4-更新视图" class="headerlink" title="4. 更新视图"></a>4. 更新视图</h2><p>更新视图和更新表操作基本一致，不过有些时候视图是不允许更新的</p>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200418102146.png" alt=""></p>
-<h2 id="5-视图的优�"><a href="#5-视图的优�" class="headerlink" title="5. 视图的优�?"></a>5. 视图的优�?</h2><ul>
+<h2 id="5-视图的优点"><a href="#5-视图的优点" class="headerlink" title="5. 视图的优点"></a>5. 视图的优点</h2><ul>
 <li><p><strong>视图能够简化用户的操作</strong></p>
 </li>
 <li><p><strong>视图使用户能以多种角度看待同一数据</strong></p>
 </li>
-<li><p><em>*视图对重构数据库提供了一定数据的逻辑独立�?</em></p>
-<p>数据的逻辑独立性是指当数据库数据库构造时，如增加新的关系或对原来关系增加新的字段等，用户的应用程序不会受到影�?</p>
+<li><p><strong>视图对重构数据库提供了一定数据的逻辑独立性</strong></p>
+<p>数据的逻辑独立性是指当数据库数据库构造时，如增加新的关系或对原来关系增加新的字段等，用户的应用程序不会受到影响</p>
 </li>
-<li><p><em>*视图能够对机密数据提供安全保�?</em></p>
+<li><p><strong>视图能够对机密数据提供安全保护</strong></p>
 </li>
 <li><p><strong>适当利用视图可以更清晰的表达查询</strong></p>
 </li>
 </ul>
-<h2 id="6-视图的缺�"><a href="#6-视图的缺�" class="headerlink" title="6. 视图的缺�?"></a>6. 视图的缺�?</h2><ul>
-<li>查询视图时，必须把对视图的查询转化为对基本表的查询。如果这个视图是由一个复杂的多表查询所定义，那么即使是视图的一个简单查询，数据库也把它变成一个复杂的结合体，需要花费一定的时间�?</li>
+<h2 id="6-视图的缺点"><a href="#6-视图的缺点" class="headerlink" title="6. 视图的缺点"></a>6. 视图的缺点</h2><ul>
+<li>查询视图时，必须把对视图的查询转化为对基本表的查询。如果这个视图是由一个复杂的多表查询所定义，那么即使是视图的一个简单查询，数据库也把它变成一个复杂的结合体，需要花费一定的时间。</li>
 <li>当用户试图修改视图的某些行时，数据库必须把它转化为对基本表的某些行的修改，如果视图涉及多个表的话，由于完整性约束，可能是无法修改的</li>
 </ul>
 <br>
 
 
 
-<h1 id="六、SQL语句综合习题"><a href="#六、SQL语句综合习题" class="headerlink" title="六、SQL语句综合习题"></a>六、SQL语句综合习题</h1><p>有如下四个表�?</p>
+<h1 id="六、SQL语句综合习题"><a href="#六、SQL语句综合习题" class="headerlink" title="六、SQL语句综合习题"></a>六、SQL语句综合习题</h1><p>有如下四个表：</p>
 <ul>
-<li>供应商表 S（Sno,Sname, Status, City�?</li>
-<li>零件�?P （Pno,Pname,Color,Weight�?</li>
-<li>工程项目�?J (Jno,Jname,City)</li>
-<li>供应情况�?SPJ (Sno,Pno,Jno,Qty)</li>
+<li>供应商表 S（Sno,Sname, Status, City） </li>
+<li>零件表 P （Pno,Pname,Color,Weight）</li>
+<li>工程项目表 J (Jno,Jname,City)</li>
+<li>供应情况表 SPJ (Sno,Pno,Jno,Qty)</li>
 </ul>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200418113215.png" alt=""></p>
 <p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417155118.png" alt=""></p>
 <ul>
-<li><p>找出所有供应商姓名和所在城�?</p>
+<li><p>找出所有供应商姓名和所在城市</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname,City </span><br><span class="line"><span class="keyword">from</span> S;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>找出所有零件的名称、颜色、重�?</p>
+<li><p>找出所有零件的名称、颜色、重量</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Pname,Color,Weight</span><br><span class="line"><span class="keyword">from</span> P;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>找出使用供应商S1所供应零件的工程号�?</p>
+<li><p>找出使用供应商S1所供应零件的工程号码</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> Jno</span><br><span class="line"><span class="keyword">from</span> SPJ</span><br><span class="line"><span class="keyword">where</span> Sno = <span class="string">'S1'</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>找出工程项目J2使用的各种零件的名称及其数量</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> P.Pname,SPJ.QTY</span><br><span class="line"><span class="keyword">from</span> SPJ,P</span><br><span class="line"><span class="keyword">where</span> SPJ.Pno = P.Pno <span class="keyword">and</span> </span><br><span class="line">	  SPJ.Jno = <span class="string">'J2'</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>找出上海厂商供应的所有零件号�?</p>
+<li><p>找出上海厂商供应的所有零件号码</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Pno </span><br><span class="line"><span class="keyword">from</span> SPJ,S</span><br><span class="line"><span class="keyword">where</span> SPJ.Sno = S.Sno <span class="keyword">and</span></span><br><span class="line">	  S.City = <span class="string">'上海'</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>找出使用上海产的零件的工程名�?</p>
+<li><p>找出使用上海产的零件的工程名称</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Jname</span><br><span class="line"><span class="keyword">from</span> SPJ,S,J</span><br><span class="line"><span class="keyword">where</span> S.Sno = SPJ.Sno <span class="keyword">and</span></span><br><span class="line">	  J.Jno = SPJ.Jno <span class="keyword">and</span></span><br><span class="line">	  S.City = <span class="string">'上海'</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>找出没有使用天津产的零件的工程号�?</p>
+<li><p>找出没有使用天津产的零件的工程号码</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> Jno</span><br><span class="line"><span class="keyword">from</span> SPJ</span><br><span class="line"><span class="keyword">where</span> Jno <span class="keyword">not</span> <span class="keyword">in</span>(</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">distinct</span> Jno </span><br><span class="line">    <span class="keyword">from</span> SPJ,S</span><br><span class="line">    <span class="keyword">where</span> SPJ.Sno = S.Sno <span class="keyword">and</span> </span><br><span class="line">    S.City = <span class="string">'天津'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>把全部红色零件的颜色改成蓝色</p>
@@ -661,7 +662,7 @@
 <li><p>从供应商中删除供应商号是S2的记录，并从供应关系中删除相应的记录</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> Sno = <span class="string">'S2'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> SPJ</span><br><span class="line"><span class="keyword">where</span> Sno = <span class="string">'S2'</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>请将(S2，J6，P4�?00)插入供应情况关系</p>
+<li><p>请将(S2，J6，P4，200)插入供应情况关系</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> SPJ</span><br><span class="line"><span class="keyword">values</span>(S2,J6,P4,<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
 
 
@@ -680,7 +681,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL/" data-id="ckeof1fww000r2cudg1ohbm5d" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL/" data-id="ckeofe7m5003o6oud9c3c7ksn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -899,7 +900,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">54</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -917,7 +918,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -926,7 +927,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
         </div>
     </div>
 
@@ -974,7 +975,7 @@
 	<script src="https://billts.site/js/gitment.js"></script>
 	<script>
 		var gitment = new Gitment({
-			id: '��ϵ���ݿ��׼����SQL',
+			id: '关系数据库标准语言SQL',
 			owner: 'AaronYard',
 			repo: 'AaronYard.github.io',
 			oauth: {
