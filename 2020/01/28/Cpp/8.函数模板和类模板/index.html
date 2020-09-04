@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>函数模板和类模板 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="8.函数模板和类模板">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数模板和类模板">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;01&#x2F;28&#x2F;Cpp&#x2F;8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="8.函数模板和类模板">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153172112-78e87516-f8c4-4c77-abdf-4c8bcbbccca3.png#align=left&amp;display=inline&amp;height=490&amp;originHeight=490&amp;originWidth=565&amp;size=0&amp;status=done&amp;style=none&amp;width=565">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153172114-e00f9000-b7f7-4c0d-9b35-b8db882c361e.png#align=left&amp;display=inline&amp;height=376&amp;originHeight=376&amp;originWidth=483&amp;size=0&amp;status=done&amp;style=none&amp;width=483">
+<meta property="og:updated_time" content="2020-09-04T15:07:36.751Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153172112-78e87516-f8c4-4c77-abdf-4c8bcbbccca3.png#align=left&amp;display=inline&amp;height=490&amp;originHeight=490&amp;originWidth=565&amp;size=0&amp;status=done&amp;style=none&amp;width=565">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Cpp/8.函数模板和类模板" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            函数模板和类模板
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/01/28/Cpp/8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/">
+            <time datetime="2020-01-28T14:02:45.000Z" itemprop="datePublished">2020-01-28</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=846字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈4分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、函数模板"><a href="#一、函数模板" class="headerlink" title="一、函数模板"></a>一、函数模板</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153172112-78e87516-f8c4-4c77-abdf-4c8bcbbccca3.png#align=left&display=inline&height=490&originHeight=490&originWidth=565&size=0&status=done&style=none&width=565" alt=""><br /></p>
+<p><a name="f61ba1a5"></a></p>
+<h1 id="二、类模板"><a href="#二、类模板" class="headerlink" title="二、类模板"></a>二、类模板</h1><p>直接上示例<br /><br><br />类模板示例<br /></p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">Store</span>&#123;</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        T item; <span class="comment">//item用于存放任意类型的数据</span></span><br><span class="line">        <span class="keyword">bool</span> haveValue; <span class="comment">//标记item是否已经被存入内容</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function">T &amp;<span class="title">getElem</span><span class="params">()</span></span>; <span class="comment">//提取数据</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">putElem</span><span class="params">(<span class="keyword">const</span> T&amp; x)</span></span>; <span class="comment">//存入数据</span></span><br><span class="line">        Store();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">Store</span>&lt;T&gt;:</span>:Store():haveValue(<span class="literal">false</span>)&#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">T</span>&amp; <span class="title">Store</span>&lt;T&gt;:</span>:getElem()&#123;</span><br><span class="line">    <span class="keyword">if</span>(!haveValue)&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"no data!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>); <span class="comment">//使程序完全退出，返回操作系统</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">Store</span>&lt;T&gt;:</span>:putElem(<span class="keyword">const</span> T&amp; x)&#123;</span><br><span class="line">    item = x;</span><br><span class="line">    haveValue = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">float</span> gpa;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Store&lt;<span class="keyword">int</span>&gt;s1;</span><br><span class="line">    s1.putElem(<span class="number">4</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;s1.getElem()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    student s= &#123;<span class="number">1001</span>,<span class="number">98.2</span>&#125;;</span><br><span class="line">    Store&lt;student&gt; s2;</span><br><span class="line">    s2.putElem(s);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;s2.getElem().id&lt;&lt;<span class="string">" "</span>&lt;&lt;s2.getElem().gpa&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="三、自定义动态数组类模板"><a href="#三、自定义动态数组类模板" class="headerlink" title="三、自定义动态数组类模板"></a>三、自定义动态数组类模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">Array</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    T *<span class="built_in">list</span>;  <span class="comment">//T类型指针，存放动态分配的数组首地址</span></span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">size</span>; <span class="comment">//数组大小</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Array(<span class="keyword">int</span> sz = <span class="number">50</span>);</span><br><span class="line">    Array(<span class="keyword">const</span> Array&lt;T&gt; &amp;a); <span class="comment">//复制构造</span></span><br><span class="line">    ~Array();</span><br><span class="line">    Array&lt;T&gt; &amp;<span class="keyword">operator</span>=(<span class="keyword">const</span> Array&lt;T&gt; &amp;rhs);</span><br><span class="line">    T &amp;<span class="keyword">operator</span>[](<span class="keyword">int</span> i);             <span class="comment">//重载下标运算符 可被改变 a[3] = 5</span></span><br><span class="line">    <span class="keyword">const</span> T &amp;<span class="keyword">operator</span>[](<span class="keyword">int</span> i) <span class="keyword">const</span>; <span class="comment">//重载下标运算符 常函数</span></span><br><span class="line">    <span class="keyword">operator</span> T *();                   <span class="comment">//重载隐式转换，将对象重载为T*类型</span></span><br><span class="line">    <span class="keyword">operator</span> <span class="keyword">const</span> T *() <span class="keyword">const</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">//获取数组大小</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reSize</span><span class="params">(<span class="keyword">int</span> sz)</span></span>; <span class="comment">//修改数组大小</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">Array</span>&lt;T&gt;:</span>:Array(<span class="keyword">int</span> sz)</span><br><span class="line">&#123;</span><br><span class="line">    assert(sz &gt;= <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">size</span> = sz;</span><br><span class="line">    <span class="built_in">list</span> = <span class="keyword">new</span> T[<span class="built_in">size</span>]; <span class="comment">//动态分配数组空间</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//拷贝构造（深层复制）</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">Array</span>&lt;T&gt;:</span>:Array(<span class="keyword">const</span> Array&lt;T&gt; &amp;a)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">size</span> = a.<span class="built_in">size</span>;</span><br><span class="line">    <span class="built_in">list</span> = <span class="keyword">new</span> T[<span class="built_in">size</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)</span><br><span class="line">        <span class="built_in">list</span>[i] = a.<span class="built_in">list</span>[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//析构函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">Array</span>&lt;T&gt;:</span>:~Array()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span>[] <span class="built_in">list</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重载=</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">Array</span>&lt;T&gt; &amp;<span class="title">Array</span>&lt;T&gt;:</span>:<span class="keyword">operator</span>=(<span class="keyword">const</span> Array&lt;T&gt; &amp;rhs)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;rhs)</span><br><span class="line">    &#123; <span class="comment">//避免自身复制</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">size</span> != rhs.<span class="built_in">size</span>)</span><br><span class="line">        &#123; <span class="comment">//如果两个数组的大小不同，则需要重新分配内存空间</span></span><br><span class="line">            <span class="keyword">delete</span>[] <span class="built_in">list</span>;</span><br><span class="line">            <span class="built_in">size</span> = rhs.<span class="built_in">size</span>;</span><br><span class="line">            <span class="built_in">list</span> = <span class="keyword">new</span> T[<span class="built_in">size</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">size</span>; i++)</span><br><span class="line">            <span class="built_in">list</span>[i] = rhs.<span class="built_in">list</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>; <span class="comment">//返回当前对象的引用</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重载下标运算符[ ]，实现与普通数组一样通过下标访问元素，具有越界检查功能 </span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">T</span> &amp;<span class="title">Array</span>&lt;T&gt;:</span>:<span class="keyword">operator</span>[](<span class="keyword">int</span> i)</span><br><span class="line">&#123;</span><br><span class="line">    assert(i &gt;= <span class="number">0</span> &amp;&amp; i &lt; <span class="built_in">size</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>[i];</span><br><span class="line">    <span class="comment">//return *(list+i);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重载[ ]常函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">const</span> <span class="title">T</span> &amp;<span class="title">Array</span>&lt;T&gt;:</span>:<span class="keyword">operator</span>[](<span class="keyword">int</span> i) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    assert(i &gt;= <span class="number">0</span> &amp;&amp; i &lt; <span class="built_in">size</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>[i];</span><br><span class="line">    <span class="comment">//return *(list+i);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重载到T*类型的转换</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">Array</span>&lt;T&gt;:</span>:<span class="keyword">operator</span> T *()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>; <span class="comment">//返回当前对象私有数组的首地址</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//重载到T*类型的转换 常函数</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">Array</span>&lt;T&gt;:</span>:<span class="keyword">operator</span> <span class="keyword">const</span> T *() <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">int</span> <span class="title">Array</span>&lt;T&gt;:</span>:getSize() <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">size</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">Array</span>&lt;T&gt;:</span>:reSize(<span class="keyword">int</span> sz)</span><br><span class="line">&#123;</span><br><span class="line">    assert(sz &gt;= <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (sz == <span class="built_in">size</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    T *newlist = <span class="keyword">new</span> T[sz];          <span class="comment">//申请新的数组内存</span></span><br><span class="line">    <span class="keyword">int</span> n = (sz &lt; <span class="built_in">size</span> ? sz : <span class="built_in">size</span>); <span class="comment">//将较小值赋给n</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        newlist[i] = <span class="built_in">list</span>[i];</span><br><span class="line">    <span class="keyword">delete</span>[] <span class="built_in">list</span>;  <span class="comment">//删除原数组</span></span><br><span class="line">    <span class="built_in">list</span> = newlist; <span class="comment">//使list指向新数组</span></span><br><span class="line">    <span class="built_in">size</span> = sz;      <span class="comment">//更新size</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />其中 <code>operator T * ()；</code> 重载隐式转换的作用<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153172114-e00f9000-b7f7-4c0d-9b35-b8db882c361e.png#align=left&display=inline&height=376&originHeight=376&originWidth=483&size=0&status=done&style=none&width=483" alt=""></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/01/28/Cpp/8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/" data-id="ckeodenby002etwudawxo2sql" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/01/29/Cpp/9.%E6%96%87%E4%BB%B6%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    文件和输入输出流
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/01/27/Cpp/7.%E5%A4%9A%E6%80%81%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">多态性</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '函数模板和类模板',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

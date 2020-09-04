@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>数据库安全性和完整性 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="4-数据库安全性和完整性">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库安全性和完整性">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;03&#x2F;24&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93&#x2F;4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E5%AE%8C%E6%95%B4%E6%80%A7&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="4-数据库安全性和完整性">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200418121338.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200418135922.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200418144804.png">
+<meta property="og:updated_time" content="2020-09-04T15:50:50.120Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200418121338.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-数据库/4-数据库安全性和完整性" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            数据库安全性和完整性
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93/4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E5%AE%8C%E6%95%B4%E6%80%A7/">
+            <time datetime="2020-03-24T14:02:45.000Z" itemprop="datePublished">2020-03-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=3.4k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈13分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、数据库安全性"><a href="#一、数据库安全性" class="headerlink" title="一、数据库安全性"></a>一、数据库安全性</h1><h2 id="1-什么是数据库的安全性"><a href="#1-什么是数据库的安全性" class="headerlink" title="1. 什么是数据库的安全性"></a>1. 什么是数据库的安全性</h2><p><strong>数据库的安全性是指保护数据库以防止不合法使用所造成的数据泄露、更改或破坏</strong>。</p>
+<p>对数据安全性产生威胁的因素主要有以下几个方面</p>
+<ul>
+<li>非授权用户对数据库的恶意存取和破坏</li>
+<li>数据库中重要或敏感的数据被泄露</li>
+<li>安全环境的脆弱性</li>
+</ul>
+<h2 id="2-数据库安全性控制"><a href="#2-数据库安全性控制" class="headerlink" title="2. 数据库安全性控制"></a>2. 数据库安全性控制</h2><a id="more"></a>
+<p>数据库有关的安全性控制主要包括用户身份鉴别、多层存取控制、审计、视图和数据加密等技术</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200418121338.png" alt=""></p>
+<h3 id="①-用户身份鉴别"><a href="#①-用户身份鉴别" class="headerlink" title="① 用户身份鉴别"></a>① 用户身份鉴别</h3><p>用户身份鉴别是数据库管理系统提供的最外层安全保护措施，每个用户在系统中都有一个用户标识，每个用户标识由用户名和用户标识号UID两部分组成。UID在系统的整个生命周期中是唯一的。系统内部记录着所有合法用户的标识。</p>
+<p>每个用户要求进入系统时，由系统进行核对，通过鉴定后才提供使用数据库管理系统的权限。</p>
+<p>用户身份鉴别的方法主要有以下几种：</p>
+<ul>
+<li><p><strong>静态口令鉴别</strong></p>
+<p>静态口令一般由用户自己设定，鉴别使输入正确口令即可获得权限</p>
+</li>
+<li><p><strong>动态口令鉴别</strong></p>
+<p>每次鉴别时均需使用动态产生的新口令登录数据库管理系统。比如短信验证码登录</p>
+</li>
+<li><p><strong>生物特征鉴别</strong></p>
+<p>比如指纹、虹膜鉴别</p>
+</li>
+<li><p><strong>智能卡鉴别</strong></p>
+<p>智能卡由用户随身携带，插入专用的读卡器进行身份验证</p>
+</li>
+</ul>
+<h3 id="②-存取控制"><a href="#②-存取控制" class="headerlink" title="② 存取控制"></a>② 存取控制</h3><p>数据库安全最重要的一点就是确保只能有资格的用户授予访问权限，这主要通过存取控制机制实现。存取控制机制主要包括定义用户权限和合法权限检查两部分</p>
+<h4 id="权限授予和收回"><a href="#权限授予和收回" class="headerlink" title="权限授予和收回"></a>权限授予和收回</h4><ul>
+<li><p><code>GRANT</code> 授予权限</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200418135922.png" alt=""></p>
+<p>不允许循环授权，即被授权者不能把权限再授回授权者或者其祖先</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把查询Student表的权限授给用户User1，并允许他将此权限授予其他用户</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span></span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> Student</span><br><span class="line"><span class="keyword">to</span> User1</span><br><span class="line"><span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把对Student表和Cource表的全部操作权限授予用户User2和User3</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span></span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> Student,Cource</span><br><span class="line"><span class="keyword">to</span> User2,User3;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把对表SC的查询权限授予所有用户</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span></span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> SC</span><br><span class="line"><span class="keyword">to</span> <span class="keyword">public</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把查询Student表和修改学生学号的权限授予用户User4</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">update</span>(Sno),<span class="keyword">select</span></span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> Student</span><br><span class="line"><span class="keyword">to</span> User4;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>REVOKE</code> 收回权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 收回Uer4修改学生学号的权限</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">update</span>(Sno)</span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> Student</span><br><span class="line"><span class="keyword">from</span> Uer4;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 收回用户User1对Student表的查询权限，并级联收回User1授予的其他用户的该权限</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">select</span></span><br><span class="line"><span class="keyword">on</span> <span class="keyword">table</span> Student</span><br><span class="line"><span class="keyword">from</span> User1 <span class="keyword">CASCADE</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="③-视图机制"><a href="#③-视图机制" class="headerlink" title="③ 视图机制"></a>③ 视图机制</h3><p>还可以为不同的用户定义不同的视图，把要保密的数据对无权存取的用户隐藏起来，从而自动对数据提供一定程度的安全保护。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立计算机学生的视图，并把对该视图的select权限授予User1,对该视图的所有操作权限授予User2</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> CS_Student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">where</span> Sdept = <span class="string">'CS'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span></span><br><span class="line"><span class="keyword">on</span> CS_Student</span><br><span class="line"><span class="keyword">to</span> User1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span></span><br><span class="line"><span class="keyword">on</span> CS_Student</span><br><span class="line"><span class="keyword">to</span> User2;</span><br></pre></td></tr></table></figure>
+
+<p>###④ 审计 / 跟踪审查</p>
+<p>审计功能把用户对数据库的所有操作自动记录下来放入审计日志（audit log)中。审计员可以利用审计日志监控数据库中的各种行为，重现导致数据库现有状况的一系列事件，找出非法存取数据的人、时间和内容等</p>
+<ul>
+<li><p><code>AUDIT</code> 设置审计功能</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对修改Student表结构和修改Student表数据的操作进行审计</span></span><br><span class="line">AUDIT <span class="keyword">alter</span>,<span class="keyword">update</span></span><br><span class="line"><span class="keyword">on</span> Student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>NOAUDIT</code> 取消审计功能</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 取消取Student 表的一切审计</span></span><br><span class="line">noaudit <span class="keyword">alter</span>,<span class="keyword">update</span></span><br><span class="line"><span class="keyword">on</span> Student;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="⑤-数据加密"><a href="#⑤-数据加密" class="headerlink" title="⑤ 数据加密"></a>⑤ 数据加密</h3><p>加密的基本思想是根据一定的算法原始数据——明文（plain text) 变换为不可直接识别的格式——密文（cipher text），从而使得不知道解密算法的人无法获知数据的内容。</p>
+<br>
+
+
+
+<h1 id="二、数据库完整性"><a href="#二、数据库完整性" class="headerlink" title="二、数据库完整性"></a>二、数据库完整性</h1><h2 id="1-什么是数据库的完整性"><a href="#1-什么是数据库的完整性" class="headerlink" title="1. 什么是数据库的完整性"></a>1. 什么是数据库的完整性</h2><p>数据的完整性是指数据的正确性和相容性。</p>
+<ul>
+<li>数据的正确性：数据是符合现实世界语义，反映当前实际状况的</li>
+<li>数据的相容性：数据库同一对象在不同关系表中的数据是符合逻辑的</li>
+</ul>
+<p>例如：学生的学号必须唯一，性别只能是男或女等等</p>
+<br>
+
+<p>为了维护数据库的完整性，DBMS必须提供如下功能</p>
+<ul>
+<li>提供定义完整性约束条件的机制</li>
+<li>提供完整性检查的方法</li>
+<li>进行违约处理</li>
+</ul>
+<h2 id="2-数据库完整性和安全性的区别"><a href="#2-数据库完整性和安全性的区别" class="headerlink" title="2. 数据库完整性和安全性的区别"></a>2. 数据库完整性和安全性的区别</h2><ul>
+<li><p><strong>数据的完整性是为了防止数据库中存在不符合语义的数据，也就是防止数据库中存在不正确的数据。</strong></p>
+<p>因此完整性检查和控制的防范对象是不合语义的、不正确的数据，防止它们进入数据库；</p>
+</li>
+<li><p><strong>数据的安全性是保护数据库防止恶意破坏和非法存取。</strong></p>
+<p>因此安全性控制的防范对象是非法用户和非法操作，防止他们对数据库数据的非法存取</p>
+</li>
+</ul>
+<h2 id="3-实体完整性"><a href="#3-实体完整性" class="headerlink" title="3. 实体完整性"></a>3. 实体完整性</h2><p>主键必须存在且不为空</p>
+<h3 id="①-定义实体完整性"><a href="#①-定义实体完整性" class="headerlink" title="① 定义实体完整性"></a>① 定义实体完整性</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">	Sno <span class="built_in">char</span>(<span class="number">9</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    Sname <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    Ssex <span class="built_in">char</span>(<span class="number">2</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将SC表中的Sno,Cno属性组定义为主键</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SC(</span><br><span class="line">	Sno <span class="built_in">char</span>(<span class="number">9</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    Cno <span class="built_in">char</span>(<span class="number">9</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    Grade <span class="built_in">smallint</span>,</span><br><span class="line">    primary <span class="keyword">key</span>(Sno,Cno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="②-实体完整性检查和违约处理"><a href="#②-实体完整性检查和违约处理" class="headerlink" title="② 实体完整性检查和违约处理"></a>② 实体完整性检查和违约处理</h3><ul>
+<li>检查主键是否唯一，如果不唯一则拒绝插入或修改</li>
+<li>检查主键的各个属性是否为空，只要有一个为空则拒绝插入或修改</li>
+</ul>
+<h2 id="4-参照完整性"><a href="#4-参照完整性" class="headerlink" title="4. 参照完整性"></a>4. 参照完整性</h2><p>外键要么不存在，要么存在就不为空</p>
+<h3 id="①-定义参照完整性"><a href="#①-定义参照完整性" class="headerlink" title="① 定义参照完整性"></a>① 定义参照完整性</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SC(</span><br><span class="line">	Sno <span class="built_in">char</span>(<span class="number">9</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    Cno <span class="built_in">char</span>(<span class="number">9</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    Grade <span class="built_in">smallint</span>,</span><br><span class="line">    primary <span class="keyword">key</span> (Sno,Cno),</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(Sno) <span class="keyword">references</span> Student(Sno),</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(Cno) <span class="keyword">references</span> Cource(Cno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="②参照完整性检查和违约处理"><a href="#②参照完整性检查和违约处理" class="headerlink" title="②参照完整性检查和违约处理"></a>②参照完整性检查和违约处理</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200418144804.png" alt=""></p>
+<p>当上述的不一致发生时，系统可以采用以下策略</p>
+<ul>
+<li><p><strong>拒绝执行 NO ATION</strong>：默认策略</p>
+</li>
+<li><p><strong>级联操作 CASCADE</strong></p>
+<p>当删除或修改被参照表的一个元组导致与参照表的不一致时，删除或修改参照表中的所有导致不一致的元组。</p>
+<p>例如：删除Student表中001学生，则SC表中关于001的记录也全部删除</p>
+</li>
+<li><p><strong>设置为空值</strong></p>
+<p>当删除或修改被参照表的一个元组导致与参照表的不一致时，将不一致的属性设置为空值</p>
+</li>
+</ul>
+<h2 id="5-用户自定义完整性"><a href="#5-用户自定义完整性" class="headerlink" title="5. 用户自定义完整性"></a>5. 用户自定义完整性</h2><h3 id="①-属性上的约束条件"><a href="#①-属性上的约束条件" class="headerlink" title="① 属性上的约束条件"></a>① 属性上的约束条件</h3><p>当不满足属性约束条件的时候，操作将被拒绝执行</p>
+<ul>
+<li><p><strong>不允许空值</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> SC(</span><br><span class="line">    Sno <span class="built_in">char</span>(<span class="number">9</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列值唯一</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Dept(</span><br><span class="line">    Deptno <span class="built_in">numeric</span>(<span class="number">2</span>),</span><br><span class="line">    Dname <span class="built_in">char</span>(<span class="number">9</span>) <span class="keyword">unique</span> <span class="keyword">not</span> <span class="literal">null</span>, //列值唯一且不能为空</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>用check 短语指定列值应该满足的条件</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">    Sno <span class="built_in">char</span>(<span class="number">9</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    Ssex <span class="built_in">char</span>(<span class="number">2</span>) <span class="keyword">check</span>(Ssex <span class="keyword">in</span>(<span class="string">'男'</span>,<span class="string">'女'</span>)), //性别属性只能取男或女</span><br><span class="line">    Grade <span class="built_in">smallint</span> <span class="keyword">check</span>(Grade &gt;= <span class="number">0</span> <span class="keyword">and</span> Grade &lt;= <span class="number">100</span>), //分数属性只能取值<span class="number">0</span><span class="number">-100</span></span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="②-元组上的约束条件"><a href="#②-元组上的约束条件" class="headerlink" title="② 元组上的约束条件"></a>② 元组上的约束条件</h3><p>元组级的约束可以设置不同属性之间的相互约束条件。</p>
+<p>当不满足这些约束条件的时候，操作将被拒绝执行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">	Sno <span class="built_in">char</span>(<span class="number">9</span>),</span><br><span class="line">    Sname <span class="built_in">char</span>(<span class="number">9</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    primary <span class="keyword">key</span>(Sno),</span><br><span class="line">    <span class="keyword">check</span>(Ssex = <span class="string">'女'</span> <span class="keyword">or</span> Sname <span class="keyword">not</span> <span class="keyword">like</span> <span class="string">'Ms.%'</span>) //性别是女或者名字不以MS.%开头则可以通过<span class="keyword">check</span>检查</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-命名完整性约束-Constraint"><a href="#6-命名完整性约束-Constraint" class="headerlink" title="6. 命名完整性约束 Constraint"></a>6. 命名完整性约束 Constraint</h2><h3 id="①-完整性约束命名"><a href="#①-完整性约束命名" class="headerlink" title="① 完整性约束命名"></a>① 完整性约束命名</h3><p><code>constraint</code> 命名完整性约束，方便增加和删除一个完整性约束条件</p>
+<p><code>格式：constrain 完整性约束条件名 完整性约束条件</code></p>
+<p>完整性约束条件包括</p>
+<ul>
+<li><p>not null</p>
+</li>
+<li><p>unique</p>
+</li>
+<li><p>primary key</p>
+</li>
+<li><p>foreign key</p>
+</li>
+<li><p>check</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">	Sno numberic(<span class="number">9</span>)</span><br><span class="line">    	<span class="keyword">constraint</span> c1 <span class="keyword">check</span> (Sno <span class="keyword">between</span> <span class="number">100</span><span class="number">-1000</span>),</span><br><span class="line">    Sname <span class="built_in">char</span>(<span class="number">9</span>) </span><br><span class="line">    	<span class="keyword">constraint</span> c2 <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    Sage <span class="built_in">numeric</span>(<span class="number">3</span>)</span><br><span class="line">    	<span class="keyword">constraint</span> c3 <span class="keyword">check</span>(Sage &lt; <span class="number">30</span>),</span><br><span class="line">    constrain StudentKey primary <span class="keyword">key</span>(Sno)   </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="②-修改表中的完整性约束"><a href="#②-修改表中的完整性约束" class="headerlink" title="② 修改表中的完整性约束"></a>② 修改表中的完整性约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 去除对年龄小于30的约束</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student</span><br><span class="line">	<span class="keyword">drop</span> <span class="keyword">constraint</span> c3;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加年龄小于40的约束</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> Student</span><br><span class="line">	<span class="keyword">add</span> <span class="keyword">constraint</span> c4 <span class="keyword">check</span>(Sage &lt; <span class="number">40</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-断言-ASSERTION"><a href="#7-断言-ASSERTION" class="headerlink" title="7. 断言 ASSERTION"></a>7. 断言 ASSERTION</h2><p>关键词：<code>ASSERTION</code></p>
+<p>任何对断言中所涉及关系的操作都会触发关系数据库管理系统对断言的检查，任何使断言不为真值的操作都会被拒绝执行</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 限制数据库课程最多60名学生选修</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">assertion</span> asse_sc_db_num</span><br><span class="line">	<span class="keyword">check</span> (<span class="number">60</span> &gt;= (<span class="keyword">select</span> <span class="keyword">count</span>(*)</span><br><span class="line">                 <span class="keyword">from</span> Cource,SC</span><br><span class="line">                 <span class="keyword">where</span> SC.Cno = Cource.Cno <span class="keyword">and</span></span><br><span class="line">                 Couce.Cname = <span class="string">'数据库'</span>)</span><br><span class="line">          );</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-触发器-Trigger"><a href="#8-触发器-Trigger" class="headerlink" title="8. 触发器 Trigger"></a>8. 触发器 Trigger</h2><p>触发器是用户定义在关系表上的一类由事件驱动的特殊过程</p>
+<h3 id="①-创建触发器"><a href="#①-创建触发器" class="headerlink" title="① 创建触发器"></a>① 创建触发器</h3><p>触发器仅限于数据库中增 删 改三种操作</p>
+<p>触发器定义如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> 触发器名 </span><br><span class="line">	<span class="keyword">before</span>/<span class="keyword">after</span> 触发事件 <span class="comment">/*指明触发器的激活时间*/</span></span><br><span class="line">	<span class="keyword">on</span> 表名 <span class="comment">/*触发器只能定义在基本表上，不能定义在视图上*/</span></span><br><span class="line">	[<span class="keyword">referencing</span> 引用名] 可选的</span><br><span class="line">	<span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span>/<span class="keyword">statement</span> <span class="comment">/*定义触发器的类型，指明动作体执行的频率*/</span></span><br><span class="line">	<span class="keyword">when</span> <span class="keyword">SQL</span>语句</span><br><span class="line">	动作</span><br></pre></td></tr></table></figure>
+
+<p><strong>before/after</strong>：触发器必须指定在语句执行之前还是之后自动执行，之前执行使用 BEFORE 关键字，之后执行使用 AFTER 关键字。<code>BEFORE</code> 用于数据验证和净化，<code>AFTER</code> 用于审计跟踪，将修改记录到另外一张表中。</p>
+<p><strong>触发事件</strong>：</p>
+<ul>
+<li><p><code>insert</code>：触发器包含一个名为 NEW 的虚拟表。</p>
+</li>
+<li><p><code>delete</code> ：触发器包含一个名为 OLD 的虚拟表，并且是只读的。</p>
+</li>
+<li><p><code>update</code>：触发器包含一个名为 NEW 和一个名为 OLD 的虚拟表，其中 NEW 是可以被修改的，而 OLD 是只读的。</p>
+<p>也可以是 <code>update of &lt; 触发列名1，触发列名2 ... &gt;</code></p>
+</li>
+</ul>
+<p><strong>引用名：</strong></p>
+<blockquote>
+<p>触发器事件既然是数据库更新操作，这些操作的执行势必会引起数据库中某些值的改变，即由旧值变成新值，这些新旧值称为过渡值。在触发器的条件和动作中可以引用这些过渡值</p>
+</blockquote>
+<ul>
+<li><code>OLD【ROW】AS 旧元组别名</code> （row旧元组名是可选的）</li>
+<li><code>NEW【ROW】AS 新元组别名</code></li>
+<li><code>OLD TABLE AS 旧表别名</code></li>
+<li><code>NEW TABLE AS 旧表别名</code></li>
+</ul>
+<p><strong>触发器类型：</strong></p>
+<ul>
+<li><p>for each row：行级触发器</p>
+</li>
+<li><p>for each statement : 语句级触发器</p>
+<blockquote>
+<p>比如修改一个Teacher表中的deptno字段（一共1000条记录）</p>
+<p>update teacher set deptno = 5;</p>
+<p>若是行级触发器，update后触发动作执行一次</p>
+<p>若是语句级触发器，触发动作将执行1000次</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<p>cource表中删除一个元组，若该元组的主键是sc表中的外键，则卷回删除该元组的操作。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> mytrigger </span><br><span class="line"><span class="keyword">BEFORE</span> <span class="keyword">DELETE</span> <span class="keyword">ON</span> cource  </span><br><span class="line"><span class="keyword">referencing</span> <span class="keyword">old</span> <span class="keyword">as</span> o </span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">when</span> (<span class="keyword">exists</span> (<span class="keyword">select</span> * <span class="keyword">from</span> sc</span><br><span class="line">             <span class="keyword">where</span> cno = o.cno))</span><br><span class="line"><span class="keyword">ROLLBACK</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="②-删除触发器"><a href="#②-删除触发器" class="headerlink" title="② 删除触发器"></a>② 删除触发器</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TRIGGER</span> 触发器名</span><br></pre></td></tr></table></figure>
+
+<h3 id="③-触发器实现参照完整性"><a href="#③-触发器实现参照完整性" class="headerlink" title="③ 触发器实现参照完整性"></a>③ 触发器实现参照完整性</h3><p><strong>比如有三个表：student（学生表），cource（课程表），sc（选修表），其中sc定义了两个外键sno和cno以及其完整性约束，试写出触发器实现该参照完整性约束的规则</strong></p>
+<p>首先分析：有哪些操作会影响到本例的完整性约束</p>
+<ul>
+<li>sc 表的 insert 操作</li>
+<li>cource 表的 delete 操作</li>
+<li>student 表的 delete 操作</li>
+<li>sc 表的 update（sno, cno) 操作</li>
+<li>cource 表的 update（cno) 操作</li>
+<li>student 表的 update（sno) 操作</li>
+</ul>
+<p>对上述6中操作分别定义6条规则，实现参照完整性约束</p>
+<p><strong>规则1：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> referential_integrity_check</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">insert</span> <span class="keyword">on</span> sc</span><br><span class="line"><span class="keyword">referencing</span> <span class="keyword">new</span> <span class="keyword">as</span> n</span><br><span class="line"><span class="keyword">when</span> (<span class="keyword">not</span>(<span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> student</span><br><span class="line">                <span class="keyword">where</span> sno = n.sno)</span><br><span class="line">         <span class="keyword">and</span></span><br><span class="line">         <span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> cource</span><br><span class="line">               <span class="keyword">where</span> cno = n.cno)</span><br><span class="line">         )</span><br><span class="line">     )</span><br><span class="line"><span class="keyword">rollback</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果 sc 表中插入元组，其外键在 student 和 cource 表中均不存在，则卷回插入该元组操作</p>
+<p><strong>规则2：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> cource_delete</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">delete</span> <span class="keyword">on</span> cource</span><br><span class="line"><span class="keyword">referencing</span> <span class="keyword">old</span> <span class="keyword">as</span> o</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">when</span> (<span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> sc</span><br><span class="line">            <span class="keyword">where</span> o.cno = sc.cno)</span><br><span class="line">     )</span><br><span class="line"><span class="keyword">rollback</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果 cource 表中删除一个元组，若该元组是 sc 表中的外键，则卷回删除该元组的操作（此处我们假定在sc表的定义中，外键 cno 使用了 restrict 选项）</p>
+<p><strong>规则3：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> student_delete</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">delete</span> <span class="keyword">on</span> student</span><br><span class="line"><span class="keyword">referencing</span> <span class="keyword">old</span> <span class="keyword">as</span> o</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">when</span>(<span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> sc</span><br><span class="line">           <span class="keyword">where</span> sc.sno = o.sno)</span><br><span class="line">    )</span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">where</span> sc.sno = o.sno;</span><br></pre></td></tr></table></figure>
+
+<p>假设在 sc 表的定义中，外键 sno 的定义中采用了 cascade 选项，即当在 student 表中删除一个元组的时候，则在 sc 表中删除引用该元组主键作为外键的所有元组</p>
+<p><strong>规则4：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> sc_fk_update</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">update</span> <span class="keyword">of</span> sno,cno <span class="keyword">on</span> sc</span><br><span class="line"><span class="keyword">referencing</span> <span class="keyword">new</span> <span class="keyword">as</span> n</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">when</span>(<span class="keyword">not</span>(<span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> student</span><br><span class="line">               <span class="keyword">where</span> sno = n.sno)</span><br><span class="line">        <span class="keyword">and</span></span><br><span class="line">        <span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> cource</span><br><span class="line">              <span class="keyword">where</span> cno = n.cno)</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line"><span class="keyword">rollback</span>;</span><br></pre></td></tr></table></figure>
+
+<p>对于 sc 表的更新操作，若更新的外键 sno 或者 cno 在 student 和 cource 表中无相应的主键供其引用，则卷回更新该元组的操作</p>
+<p><strong>规则5：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> cource_cno_update</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">update</span> <span class="keyword">of</span> cno <span class="keyword">on</span> cource</span><br><span class="line"><span class="keyword">referencing</span> <span class="keyword">old</span> <span class="keyword">as</span> o</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">when</span>(<span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> sc</span><br><span class="line">               <span class="keyword">where</span> sc.cno = o.cno)</span><br><span class="line">     )</span><br><span class="line">    </span><br><span class="line"><span class="keyword">rollback</span>;</span><br></pre></td></tr></table></figure>
+
+<p>对于 cource 表的 更新操作，在修改主键cno的同时，如果sc表中有元组正引用修改前的cno值作为外键，则卷回该操作</p>
+<p><strong>规则6：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> student_sno_update</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">update</span> <span class="keyword">of</span> sno <span class="keyword">of</span> student</span><br><span class="line"><span class="keyword">referencing</span> <span class="keyword">old</span> <span class="keyword">as</span> o</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">each</span> <span class="keyword">row</span></span><br><span class="line"><span class="keyword">when</span> (<span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> sc</span><br><span class="line">            <span class="keyword">where</span> sc.sno = o.sno)</span><br><span class="line">     )</span><br><span class="line"><span class="keyword">rollback</span>;</span><br></pre></td></tr></table></figure>
+
+<p>对于 student 表的更新操作，在修改主键sno的同时，如果sc表中有元组正引用修改前的sno值作为外键，则卷回该操作</p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93/4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E5%AE%8C%E6%95%B4%E6%80%A7/" data-id="ckeof1fwv000o2cud9i3n2uj0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/25/%E6%95%B0%E6%8D%AE%E5%BA%93/5-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    关系数据库设计理论
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">��ϵ���ݿ��׼����SQL</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '数据库安全性和完整性',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

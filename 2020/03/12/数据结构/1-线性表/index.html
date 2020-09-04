@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>线性表 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1-线性表">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性表">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;03&#x2F;12&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;1-%E7%BA%BF%E6%80%A7%E8%A1%A8&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="1-线性表">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505102631.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069585694-cbd42295-b637-46e2-8914-cb2ad39d8c32.png#align=left&amp;display=inline&amp;height=303&amp;originHeight=303&amp;originWidth=653&amp;size=0&amp;status=done&amp;style=none&amp;width=653">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069585747-a36a9d0a-34ce-4ae9-a0bf-a5c6108d1baf.png#align=left&amp;display=inline&amp;height=215&amp;originHeight=215&amp;originWidth=583&amp;size=0&amp;status=done&amp;style=none&amp;width=583">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069585701-4be087d0-8e85-466e-b280-32825ae170bd.png#align=left&amp;display=inline&amp;height=400&amp;originHeight=400&amp;originWidth=687&amp;size=0&amp;status=done&amp;style=none&amp;width=687">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505102722.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505102826.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505102900.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200514154741.png">
+<meta property="og:updated_time" content="2020-09-04T15:49:46.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505102631.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-数据结构/1-线性表" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            线性表
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1-%E7%BA%BF%E6%80%A7%E8%A1%A8/">
+            <time datetime="2020-03-12T14:02:45.000Z" itemprop="datePublished">2020-03-12</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2.6k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈11分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、线性表的定义"><a href="#一、线性表的定义" class="headerlink" title="一、线性表的定义"></a>一、线性表的定义</h1><p>具有相同数据类型的 n 个数据元素的有限序列</p>
+<p>线性表是一种逻辑结构，表示元素之间一对一的逻辑关系。</p>
+<p>顺序表和链表是存储结构。</p>
+<br />
+
+<a id="more"></a>
+
+
+<h1 id="二、顺序表"><a href="#二、顺序表" class="headerlink" title="二、顺序表"></a>二、顺序表</h1><h2 id="1-顺序表定义："><a href="#1-顺序表定义：" class="headerlink" title="1. 顺序表定义："></a>1. 顺序表定义：</h2><p>线性表的顺序存储</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125; SqList;</span><br></pre></td></tr></table></figure>
+
+<p><strong>逻辑上相邻的两个元素在物理位置上也相邻</strong></p>
+<p>特点：</p>
+<ul>
+<li>随机访问（通过首地址和元素序号可在时间O(1)内找到元素）</li>
+<li>插入和删除需要移动大量元素</li>
+<li>存储密度高，每个结点只存储数据元素</li>
+</ul>
+<h2 id="2-顺序表基本操作"><a href="#2-顺序表基本操作" class="headerlink" title="2. 顺序表基本操作"></a>2. 顺序表基本操作</h2><h3 id="①-插入"><a href="#①-插入" class="headerlink" title="① 插入"></a>① 插入</h3><p>在第i个位置(下标i-1)插入元素e</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//第i个元素及其之后的元素后移</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = length; j &gt;= i; j--)</span><br><span class="line">    L[j] = L[j - <span class="number">1</span>];</span><br><span class="line">L[i - <span class="number">1</span>] = e;</span><br><span class="line">length++;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>最好情况：在表尾插入，时间复杂度 O(1)</li>
+<li>最坏情况：在表头插入，时间复杂度 O(n)</li>
+<li>平均情况：时间复杂度 O(n)</li>
+</ul>
+<h3 id="②-删除"><a href="#②-删除" class="headerlink" title="② 删除"></a>② 删除</h3><p>删除第i个位置的元素，用e返回</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">e = L[i<span class="number">-1</span>];</span><br><span class="line"><span class="comment">//从第i个位置元素前移</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j = i; j&lt;length;j++) </span><br><span class="line">    L[j<span class="number">-1</span>] = L[j];</span><br><span class="line">length --;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>最好情况：删除表尾元素，O(1)</li>
+<li>最坏情况：删除表头元素，O(n)</li>
+<li>平均情况：O(n)</li>
+</ul>
+<h3 id="③-按值查找"><a href="#③-按值查找" class="headerlink" title="③ 按值查找"></a>③ 按值查找</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)</span><br><span class="line">    <span class="keyword">if</span> (L[i] == e)</span><br><span class="line">        <span class="keyword">return</span> i;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>最好情况：查找元素在表头，O(1)</li>
+<li>最坏情况：查找元素在表尾，O(n)</li>
+<li>平均情况：O(n)</li>
+</ul>
+<h2 id="3-顺序表相关算法"><a href="#3-顺序表相关算法" class="headerlink" title="3. 顺序表相关算法"></a>3. 顺序表相关算法</h2><h3 id="①-删除线性表中所有值为x的数据元素"><a href="#①-删除线性表中所有值为x的数据元素" class="headerlink" title="① 删除线性表中所有值为x的数据元素"></a>① 删除线性表中所有值为x的数据元素</h3><ul>
+<li><p>用 k 记录顺序表中等于 x 的元素个数，边扫描边统计 k</p>
+</li>
+<li><p>遍历结束后将不等于 x 的元素前移 k 个位置，最后修改 L 的长度</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delete_x</span><span class="params">(<span class="keyword">int</span> &amp;a, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>; <span class="comment">//记录当前查询到的x的个数</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;len)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]==x)</span><br><span class="line">            k++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            a[i-k] = a[i];</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    len = len - k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="②-将两个有序顺序表合成一个有序顺序表"><a href="#②-将两个有序顺序表合成一个有序顺序表" class="headerlink" title="② 将两个有序顺序表合成一个有序顺序表"></a>② 将两个有序顺序表合成一个有序顺序表</h3><p>归并思想</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125; SqList;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">merge</span><span class="params">(SqList a,SqList b,SqList &amp;c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.length+b.length&gt;<span class="number">50</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;a.length &amp;&amp; j&lt;b.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a.data[i]&lt;b.data[j])&#123; <span class="comment">//a表元素较小</span></span><br><span class="line">            c.data[k++] = a.data[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">//b表元素较小</span></span><br><span class="line">            c.data[k++] = b.data[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//若a表未比较完</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;a.length)&#123;</span><br><span class="line">        c.data[k++] = a.data[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(j&lt;b.length)&#123;</span><br><span class="line">        c.data[k++] = b.data[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    c.length = k;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="③-将数组R中的n个元素循环左移p个位置"><a href="#③-将数组R中的n个元素循环左移p个位置" class="headerlink" title="③ 将数组R中的n个元素循环左移p个位置"></a>③ 将数组R中的n个元素循环左移p个位置</h3><p>题目等同于将ab转变为ba（a为前p个元素）</p>
+<p>XY —&gt; (XTYT)T = YX</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reverse(R,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">reverse(R,<span class="number">0</span>,p<span class="number">-1</span>);</span><br><span class="line">reverse(R,p,n<span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="④-找出两个等长升序序列A，B的中位数（取上整）"><a href="#④-找出两个等长升序序列A，B的中位数（取上整）" class="headerlink" title="④ 找出两个等长升序序列A，B的中位数（取上整）"></a>④ 找出两个等长升序序列A，B的中位数（取上整）</h3><p>A中位数a，B中位数b</p>
+<ul>
+<li><p>若a=b: 返回a或b</p>
+</li>
+<li><p>若a&gt;b: 舍弃a右边较大的部分，同时舍弃b左边较小的部分（不删除中位数）</p>
+</li>
+<li><p>若a&lt;b：舍弃a左边较小的部分，同时舍弃b右边较大的部分</p>
+</li>
+<li><p>重复上述操作，直到两序列都只剩一个元素，较小值即为中位数</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Mid</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> B[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s1 = <span class="number">0</span>, d1 = n - <span class="number">1</span>, m1; <span class="comment">//首位数，末位数，中位数</span></span><br><span class="line">    <span class="keyword">int</span> s2 = <span class="number">0</span>, d2 = n - <span class="number">1</span>, m2;</span><br><span class="line">    <span class="keyword">while</span> (s1 != d1 || s2 != d2)</span><br><span class="line">    &#123; <span class="comment">//表中不只一个元素</span></span><br><span class="line">        m1 = (s1 + d1) / <span class="number">2</span>;</span><br><span class="line">        m2 = (s2 + d2) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (A[m1] == A[m2])</span><br><span class="line">            <span class="keyword">return</span> A[m1];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (A[m1] &gt; A[m2])</span><br><span class="line">        &#123; <span class="comment">//舍弃A较大部分和B较小部分</span></span><br><span class="line">            <span class="keyword">if</span> ((s1 + d1) % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">            &#123; <span class="comment">//元素个数为奇数,保留中间点</span></span><br><span class="line">                d1 = m1;</span><br><span class="line">                s2 = m2;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123; <span class="comment">//元素个数为偶数，B的中间点也舍弃</span></span><br><span class="line">                d1 = m1;</span><br><span class="line">                s2 = m2 + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123; <span class="comment">//舍弃A较小部分和B较大部分</span></span><br><span class="line">            <span class="keyword">if</span> ((s1 + d1) % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">            &#123; <span class="comment">//元素个数为奇数,保留中间点</span></span><br><span class="line">                d2 = m2;</span><br><span class="line">                s1 = m1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123; <span class="comment">//元素个数为偶数，A的中间点也舍弃</span></span><br><span class="line">                d2 = m2;</span><br><span class="line">                s1 = m1 + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> A[s1]&lt;A[s2]?A[s1]:A[s2];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="三、链表"><a href="#三、链表" class="headerlink" title="三、链表"></a>三、链表</h1><p>链表分为：</p>
+<ul>
+<li>单链表</li>
+<li>双链表</li>
+<li>循环单链表（判空条件：表尾结点的next是否是等于头指针）</li>
+<li>循环双链表</li>
+</ul>
+<h2 id="1-单链表"><a href="#1-单链表" class="headerlink" title="1. 单链表"></a>1. 单链表</h2><h3 id="①-定义"><a href="#①-定义" class="headerlink" title="① 定义"></a>① 定义</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">    ElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;LNode,*LinkList;</span><br></pre></td></tr></table></figure>
+
+<p><strong>单链表可以解决顺序表需要大量连续存储空间的缺点，但单链表附加指针域，也存在浪费存储空间的缺点</strong></p>
+<p>单链表是非随机存储的存储结构：即不能直接找到表中某个特点的结点。需要从头开始遍历。</p>
+<p>单链表访问前驱的时间复杂度为O(n),访问后继O(1)</p>
+<p><strong>引入头节点的优点：</strong></p>
+<ul>
+<li><p>链表的第一个元素位置上的操作与其他位置的元素操作一样，无须进行特殊处理</p>
+</li>
+<li><p>无论链表是否为空，其头指针都是指向头节点的非空指针，空表和非空表的处理得到了统一</p>
+<p>（头指针始终指向第一个结点，有头节点则指向头节点，无头节点则指向第一个元素结点）</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505102631.png" alt=""></p>
+</li>
+</ul>
+<h3 id="②-基本操作"><a href="#②-基本操作" class="headerlink" title="② 基本操作"></a>② 基本操作</h3><h4 id="头插法：-读入顺序和生成顺序相反）"><a href="#头插法：-读入顺序和生成顺序相反）" class="headerlink" title="头插法：(读入顺序和生成顺序相反）"></a>头插法：(读入顺序和生成顺序相反）</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s-&gt;next = L-&gt;next;</span><br><span class="line">L-&gt;next = s;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="尾插法：-读入顺序和生成顺序相同）"><a href="#尾插法：-读入顺序和生成顺序相同）" class="headerlink" title="尾插法：(读入顺序和生成顺序相同）"></a>尾插法：(读入顺序和生成顺序相同）</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//尾指针r</span></span><br><span class="line">r-&gt;next = s;</span><br><span class="line">r = s;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="按序号查找"><a href="#按序号查找" class="headerlink" title="按序号查找"></a>按序号查找</h4><h4 id="按值查找"><a href="#按值查找" class="headerlink" title="按值查找"></a>按值查找</h4><h4 id="插入结点："><a href="#插入结点：" class="headerlink" title="插入结点："></a>插入结点：</h4><p>p之后插入s (p的位置需要自行查找)</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069585694-cbd42295-b637-46e2-8914-cb2ad39d8c32.png#align=left&display=inline&height=303&originHeight=303&originWidth=653&size=0&status=done&style=none&width=653" alt=""></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next = s;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="删除结点："><a href="#删除结点：" class="headerlink" title="删除结点："></a>删除结点：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除p之后的q</span></span><br><span class="line">q = p-&gt;next;</span><br><span class="line">p-&gt;next = q-&gt;next;</span><br><span class="line"><span class="built_in">free</span>(q); <span class="comment">//释放结点的存储空间</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="求表长"><a href="#求表长" class="headerlink" title="求表长"></a>求表长</h4><h2 id="2-双链表"><a href="#2-双链表" class="headerlink" title="2. 双链表"></a>2. 双链表</h2><h3 id="①-定义-1"><a href="#①-定义-1" class="headerlink" title="① 定义"></a>① 定义</h3><p>就是同时具有前驱指针和后继指针的链表</p>
+<p>访问前驱和后继结点时间复杂度都是O(1)</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069585747-a36a9d0a-34ce-4ae9-a0bf-a5c6108d1baf.png#align=left&display=inline&height=215&originHeight=215&originWidth=583&size=0&status=done&style=none&width=583" alt=""></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">DNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DNode</span>* <span class="title">next</span>,*<span class="title">prior</span>;</span></span><br><span class="line">&#125;DNode,*DinkList;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="②-基本操作-1"><a href="#②-基本操作-1" class="headerlink" title="② 基本操作"></a>② 基本操作</h3><h4 id="插入："><a href="#插入：" class="headerlink" title="插入："></a>插入：</h4><p>p之后插入s</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069585701-4be087d0-8e85-466e-b280-32825ae170bd.png#align=left&display=inline&height=400&originHeight=400&originWidth=687&size=0&status=done&style=none&width=687" alt=""><br /></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s-&gt;next = p-&gt;next;</span><br><span class="line">p-&gt;next-&gt;prior = s;</span><br><span class="line">p-&gt;next = s;</span><br><span class="line">s-&gt;prior = p;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="删除："><a href="#删除：" class="headerlink" title="删除："></a>删除：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除p之后的s</span></span><br><span class="line">p-&gt;next = s-&gt;next;</span><br><span class="line">s-&gt;next-&gt;prior = p;</span><br><span class="line"><span class="built_in">free</span>(s);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-循环单链表"><a href="#3-循环单链表" class="headerlink" title="3. 循环单链表"></a>3. 循环单链表</h2><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505102722.png" alt=""></p>
+<p>判空条件：表尾结点的next是否是等于头指针</p>
+<h2 id="4-循环双链表"><a href="#4-循环双链表" class="headerlink" title="4. 循环双链表"></a>4. 循环双链表</h2><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505102826.png" alt=""></p>
+<br>
+
+
+
+<h1 id="四、顺序表和链表的比较"><a href="#四、顺序表和链表的比较" class="headerlink" title="四、顺序表和链表的比较"></a>四、顺序表和链表的比较</h1><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505102900.png" alt=""></p>
+<br>
+
+
+
+<h1 id="五、链表的相关算法"><a href="#五、链表的相关算法" class="headerlink" title="五、链表的相关算法"></a>五、链表的相关算法</h1><h2 id="1-递归删除不带头节点的单链表L中所有值为x的结点"><a href="#1-递归删除不带头节点的单链表L中所有值为x的结点" class="headerlink" title="1. 递归删除不带头节点的单链表L中所有值为x的结点"></a>1. 递归删除不带头节点的单链表L中所有值为x的结点</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Del</span><span class="params">(LinkList &amp;L,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    LNode *p;</span><br><span class="line">    <span class="keyword">if</span>(L==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(L-&gt;data == x)&#123;</span><br><span class="line">        p=L;</span><br><span class="line">        L=L-&gt;next;</span><br><span class="line">        <span class="built_in">free</span>(p);</span><br><span class="line">        Del(L,x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        Del(L-&gt;next,x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-反向输出单链表中每个结点的值"><a href="#2-反向输出单链表中每个结点的值" class="headerlink" title="2. 反向输出单链表中每个结点的值"></a>2. 反向输出单链表中每个结点的值</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rprint</span><span class="params">(LinkList L)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(L-&gt;next!=<span class="literal">NULL</span>)</span><br><span class="line">        rprint(L-&gt;next);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;L-&gt;data&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-带头结点的单链表就地逆置"><a href="#3-带头结点的单链表就地逆置" class="headerlink" title="3. 带头结点的单链表就地逆置"></a>3. 带头结点的单链表就地逆置</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//摘下头结点，同头插法</span></span><br><span class="line"><span class="function">LinkList <span class="title">Reverse</span><span class="params">(LinkList &amp;L)</span></span>&#123;</span><br><span class="line">    LNode *p=L-&gt;next, *r=L;<span class="comment">//r为后继结点，防止断链</span></span><br><span class="line">    L-&gt;next = <span class="literal">NULL</span>; <span class="comment">//摘下头节点</span></span><br><span class="line">    <span class="keyword">while</span>(p)&#123;</span><br><span class="line">        r = p-&gt;next;</span><br><span class="line">        p-&gt;next = L-&gt;next;</span><br><span class="line">        L-&gt;next = p;</span><br><span class="line">        p = r; <span class="comment">//继续插入</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-找出两个链表的公共结点"><a href="#4-找出两个链表的公共结点" class="headerlink" title="4. 找出两个链表的公共结点"></a>4. 找出两个链表的公共结点</h2><p>算法思想：两个链表公共结点之后的所有结点都重合，呈现Y型；</p>
+<p>先走完较长链表的多出来的一部分，到达同样长度后再同步比较</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LinkList <span class="title">Search_Common</span><span class="params">(LinkList L1, LinkList L2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len1 = L1.length;</span><br><span class="line">    <span class="keyword">int</span> len2 = L2.length;</span><br><span class="line">    <span class="keyword">int</span> longlist, shortlist;</span><br><span class="line">    <span class="keyword">if</span> (len1 &gt; len2)</span><br><span class="line">        longlist = L1-&gt;next;</span><br><span class="line">    shortlist = L2-&gt;next;</span><br><span class="line">    dist = len1 - len2;</span><br><span class="line">    <span class="keyword">else</span> longlist = L2;</span><br><span class="line">    shortlist = L1;</span><br><span class="line">    dist = len2 - len1;</span><br><span class="line">    <span class="keyword">while</span> (dist--)</span><br><span class="line">        longlist = longlist-&gt;next;</span><br><span class="line">    <span class="keyword">while</span> (longlist != Null)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (longlist == shortlist)</span><br><span class="line">            <span class="keyword">return</span> longlist;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            longlist = longlist-&gt;next;</span><br><span class="line">            shortlist = shortlist-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-在一个递增有序的单链表中，删除数值相同的元素，使表中不再有重复的元素"><a href="#5-在一个递增有序的单链表中，删除数值相同的元素，使表中不再有重复的元素" class="headerlink" title="5. 在一个递增有序的单链表中，删除数值相同的元素，使表中不再有重复的元素"></a>5. 在一个递增有序的单链表中，删除数值相同的元素，使表中不再有重复的元素</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Del_Same</span><span class="params">(LinkList &amp;L)</span></span>&#123;</span><br><span class="line">    LNode *p=L-&gt;next, *r; <span class="comment">//后继结点r</span></span><br><span class="line">    <span class="keyword">if</span>(p==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">while</span>(p-&gt;next!=<span class="literal">NULL</span>)&#123; </span><br><span class="line">        r = p-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;data == r-&gt;data)&#123;</span><br><span class="line">            p-&gt;next = r-&gt;next;</span><br><span class="line">            <span class="built_in">free</span>(r);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-查找链表中倒数第K个位置的结点"><a href="#6-查找链表中倒数第K个位置的结点" class="headerlink" title="6. 查找链表中倒数第K个位置的结点"></a>6. 查找链表中倒数第K个位置的结点</h2><p>算法思想：快慢指针法；</p>
+<p>快指针先走k步，随后快慢指针同时依次后移，快指针到达链表尾部时，慢指针正好访问倒数第k个位置结点</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Search_k</span><span class="params">(LinkList L, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">  LNode *p = L-&gt;next, *q = L-&gt;next;</span><br><span class="line">  <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(p!=Null)&#123;</span><br><span class="line">    <span class="keyword">if</span>(conut &lt; k)&#123;</span><br><span class="line">      p = p-&gt;next;</span><br><span class="line">      count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      p = p-&gt;next;</span><br><span class="line">      q = q-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(count &gt; k) <span class="comment">//k值超过了线性表长度</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">else</span> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-查找单链表的中间结点"><a href="#7-查找单链表的中间结点" class="headerlink" title="7. 查找单链表的中间结点"></a>7. 查找单链表的中间结点</h2><p>此题可应用于上一题类似的思想。也是设置两个指针，只不过这里是，两个指针同时向前走，前面的指针每次走两步，后面的指针每次走一步，前面的指针走到最后一个结点时，后面的指针所指结点就是中间结点，即第（n/2+1）个结点。注意链表为空、链表结点个数为1和2的情况。时间复杂度O（n）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取单链表中间结点，若链表长度为n(n&gt;0)，则返回第n/2+1个结点  </span></span><br><span class="line"><span class="function">ListNode * <span class="title">GetMiddleNode</span><span class="params">(ListNode * pHead)</span>  </span>&#123;  </span><br><span class="line">      <span class="keyword">if</span>(pHead == <span class="literal">NULL</span> || pHead-&gt;m_pNext == <span class="literal">NULL</span>) <span class="comment">// 链表为空或只有一个结点，返回头指针  </span></span><br><span class="line">          <span class="keyword">return</span> pHead;  </span><br><span class="line">    </span><br><span class="line">      ListNode * pAhead = pHead;  </span><br><span class="line">      ListNode * pBehind = pHead;  </span><br><span class="line">      <span class="keyword">while</span>(pAhead-&gt;m_pNext != <span class="literal">NULL</span>) <span class="comment">// 前面指针每次走两步，直到指向最后一个结点，后面指针每次走一步 </span></span><br><span class="line">      &#123;  </span><br><span class="line">           pAhead = pAhead-&gt;m_pNext;  </span><br><span class="line">      	   pBehind = pBehind-&gt;m_pNext;  </span><br><span class="line">           <span class="keyword">if</span>(pAhead-&gt;m_pNext != <span class="literal">NULL</span>)  </span><br><span class="line">            	pAhead = pAhead-&gt;m_pNext;  </span><br><span class="line">       &#125;  </span><br><span class="line">       <span class="keyword">return</span> pBehind; <span class="comment">// 后面的指针所指结点即为中间结点  </span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="8-如何判断单链表是否有环以及环的入口"><a href="#8-如何判断单链表是否有环以及环的入口" class="headerlink" title="8. 如何判断单链表是否有环以及环的入口"></a>8. 如何判断单链表是否有环以及环的入口</h2><p>假设一个单链表有环，他就是下面这种情况：</p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200514154741.png" style="zoom:67%;" />
+
+<p><strong>判断是否有环</strong>：使用二指针法，设定两个指针slow、fast，从头指针开始，每次分别前进1步、2步。</p>
+<p>如存在环，则两者相遇；如不存在环，fast遇到NULL退出</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (slow != <span class="literal">NULL</span>&amp;&amp; fast != <span class="literal">NULL</span> &amp;&amp; fast -&gt; next != <span class="literal">NULL</span>)  &#123;  </span><br><span class="line">      slow = slow -&gt; next ;  </span><br><span class="line">      fast = fast -&gt; next -&gt; next ;  </span><br><span class="line">      <span class="keyword">if</span> (slow == fast)  </span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span> ;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>环的入口</strong>：头结点到入口的距离 = slow 和 fast 指针相遇点到入口的距离。设定一个<strong>start</strong>指针指向<strong>头结点</strong>，<strong>meet</strong>指针指向<strong>slow</strong>和<strong>fast</strong>指针相遇处，将<strong>start</strong>指针和<strong>meet</strong>指针遍历，<strong>start</strong>指针和<strong>meet</strong>指针相等时，则该地址为<strong>环的入口地址</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//环的入口节点</span></span><br><span class="line">   start=head;</span><br><span class="line">   meet=fast;<span class="comment">//meet=slow</span></span><br><span class="line">   <span class="keyword">while</span>(start!= meet)<span class="comment">//遍历指针，直到start指针和meet指针相等</span></span><br><span class="line">   &#123;</span><br><span class="line">       start = start-&gt;next;</span><br><span class="line">       meet = meet-&gt;next;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> start;<span class="comment">//return meet</span></span><br></pre></td></tr></table></figure>
+
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1-%E7%BA%BF%E6%80%A7%E8%A1%A8/" data-id="ckeof1fxa001i2cud5q1727t2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    栈和队列
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/03/06/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E9%87%8D%E7%82%B9%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">软件工程重点知识总结</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '线性表',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>栈和队列 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="2-栈和队列">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈和队列">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;03&#x2F;13&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;2-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="2-栈和队列">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069628881-a8ca48d1-89b2-4fd2-a357-07e892aa3c7e.png">
+<meta property="og:image" content="c:&#x2F;Users&#x2F;19124&#x2F;AppData&#x2F;Roaming&#x2F;Typora&#x2F;typora-user-images&#x2F;image-20200505110658107.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505094012.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069628893-2e862333-bb9c-439e-95c8-a4fddaed591d.png">
+<meta property="og:updated_time" content="2020-09-04T15:49:43.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069628881-a8ca48d1-89b2-4fd2-a357-07e892aa3c7e.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-数据结构/2-栈和队列" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            栈和队列
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/">
+            <time datetime="2020-03-13T14:02:45.000Z" itemprop="datePublished">2020-03-13</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.4k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈5分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、栈"><a href="#一、栈" class="headerlink" title="一、栈"></a>一、栈</h1><h2 id="1-栈的定义"><a href="#1-栈的定义" class="headerlink" title="1. 栈的定义"></a>1. 栈的定义</h2><ul>
+<li><p>操作受限的线性表，先进后出 <strong>FILO</strong>（First In Last Out）</p>
+</li>
+<li><p>一般设立栈顶指针初值为top=-1（栈空）</p>
+</li>
+<li><p>从队头出队，从队头进队</p>
+<p> 进栈：top ++;</p>
+<p> 出栈：top –;</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="2-共享栈：S-0-n-1"><a href="#2-共享栈：S-0-n-1" class="headerlink" title="2. 共享栈：S[0 : n-1]"></a>2. 共享栈：S[0 : n-1]</h2><p>一般设初值为top1 = -1(栈空)，top2 = n(栈空)</p>
+<p>当且仅当top2-top1 = 1时共享栈满（即两个栈顶指针相邻）</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069628881-a8ca48d1-89b2-4fd2-a357-07e892aa3c7e.png" alt="img"></p>
+<h2 id="3-出栈序列"><a href="#3-出栈序列" class="headerlink" title="3. 出栈序列"></a>3. 出栈序列</h2><p>若元素的进栈序列为ABCDE,运用栈操作，能否得到出栈序列BCAED和DBACE？</p>
+<img src="C:\Users\19124\AppData\Roaming\Typora\typora-user-images\image-20200505110658107.png" alt="image-20200505110658107" style="zoom:67%;" />
+
+<ul>
+<li>BCAED  正确</li>
+<li>DBACE 不可能：若 D 为首先出栈元素，已知 ABC 先于 D 入栈， C 不可能后于 AB 出栈</li>
+</ul>
+<h2 id="4-实际应用举例"><a href="#4-实际应用举例" class="headerlink" title="4. 实际应用举例"></a>4. 实际应用举例</h2><p>设计算法判断单链表（字符型data域)的全部n个字符是否中心对称。</p>
+<p>ex: xyx, xyyx</p>
+<p>思路：利用栈的先进后出的特点，将链表前一半元素依次进栈，然后将栈中元素出栈，与链表的后半元素依次进行比较。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dc</span><span class="params">(LinkList L, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> s[n/<span class="number">2</span>]; <span class="comment">//字符栈，同数组实现栈的功能</span></span><br><span class="line">  p = L-&gt;next;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n/<span class="number">2</span>; i++)&#123; <span class="comment">//链表前一半元素进栈</span></span><br><span class="line">    s[i] = p-&gt;data;</span><br><span class="line">    i++;</span><br><span class="line">  &#125;</span><br><span class="line">  i--; <span class="comment">//恢复最后的i值</span></span><br><span class="line"><span class="keyword">if</span>(n%<span class="number">2</span>!=<span class="number">0</span>) <span class="comment">//若n为奇数，后移过中心结点</span></span><br><span class="line">    p = p-&gt;next;</span><br><span class="line">  <span class="keyword">while</span>(p!=<span class="literal">NULL</span> &amp;&amp; s[i]=p-&gt;data)&#123; <span class="comment">//检测是否中心对称</span></span><br><span class="line">    i --; <span class="comment">//i充当栈顶指针</span></span><br><span class="line">    p = p-&gt;next;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">if</span>(i = <span class="number">-1</span>) <span class="comment">//空栈</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-将中缀表达式转化为后缀表达式"><a href="#5-将中缀表达式转化为后缀表达式" class="headerlink" title="5. 将中缀表达式转化为后缀表达式"></a>5. 将中缀表达式转化为后缀表达式</h2><p><strong>核心思想</strong> ：栈外字符加入栈内时，要保证栈外字符的优先级比栈内所有字符的优先级都要低，否则，弹出栈内优先级较高的字符，并加入后缀表达式。</p>
+<p><strong>步骤</strong> ：</p>
+<ul>
+<li><p>遇到字母或数字直接入栈；</p>
+</li>
+<li><p>遇到运算符时：</p>
+</li>
+<li><ul>
+<li>若为’(‘, 直接入栈；</li>
+<li>若为’)’, 依次把栈中运算符加入后缀表达式，直到出现‘(’, 并从栈中将‘(’删除；</li>
+<li>若为其他运算符，<strong>根据优先级表依次弹出比当前处理的运算符优先级高的运算符</strong>，并将其加入后缀表达式，直到遇到一个比它优先级低的或遇到了一个’(‘为止。</li>
+</ul>
+</li>
+</ul>
+<p><strong>运算符优先级表</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>#</th>
+<th>（</th>
+<th>*，/</th>
+<th>+，-</th>
+<th>）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>栈内优先级</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>栈外优先级</td>
+<td>0</td>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<h2 id="6-栈在递归中的应用"><a href="#6-栈在递归中的应用" class="headerlink" title="6. 栈在递归中的应用"></a>6. 栈在递归中的应用</h2><p>ex：斐波拉契数列 0 1 1 2 3 5 …</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(n == <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span> c</span><br><span class="line">    <span class="keyword">return</span> Fib(n<span class="number">-1</span>) + Fib(n<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>递归必要的两个条件：</p>
+<ul>
+<li>递归表达式（递归体）</li>
+<li><strong>递归出口</strong>（边界条件）</li>
+</ul>
+<blockquote>
+<p>采用非递归方式重写递归程序时必须使用栈。该说法是错误的！</p>
+<p>ex: 计算斐波拉契数列可用循环实现</p>
+</blockquote>
+<p>函数调用时，系统要用栈保存必要的信息；递归次数过多容易造成栈溢出</p>
+<br>
+
+
+
+<h1 id="二、队列"><a href="#二、队列" class="headerlink" title="二、队列"></a>二、队列</h1><h2 id="1-队列定义"><a href="#1-队列定义" class="headerlink" title="1. 队列定义"></a>1. 队列定义</h2><p>同样也是操作受限的线性表，<strong>先进先出FIFO</strong>，从队尾进队，从队头出队</p>
+<p>队列分为：</p>
+<ul>
+<li>顺序队列</li>
+<li>循环队列</li>
+<li>链式队列</li>
+<li>双端队列</li>
+</ul>
+<h2 id="2-顺序队列"><a href="#2-顺序队列" class="headerlink" title="2. 顺序队列"></a>2. 顺序队列</h2><ul>
+<li>同样采用数组存储元素</li>
+<li>队头指针指向第一个元素</li>
+<li><strong>队尾指针一般指向最后一个元素的下一个位置</strong></li>
+</ul>
+<p>进队：先送值到队尾，再将队尾指针+1</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Q.data[Q.rear] = x;</span><br><span class="line">rear ++;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>出队：先取出队头元素，再将队头指针+1</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = Q.data[Q.front]</span><br><span class="line">front ++;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>顺序队列存在的问题</strong> ：会导致上溢出；是一种 <strong>假溢出</strong> ，在data数组中任然存在可以存放数组的位置</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505094012.png" alt=""></p>
+<p>解决方法：</p>
+<ul>
+<li>建立一个足够大的存储空间以避免溢出，但这样做空间使用率低，浪费存储空间</li>
+<li>移动元素：每当出队一个元素，就将移动队列中所有的已有元素向队头移动一个位置</li>
+<li>循环队列：将队头和队尾看作是一个首尾相接的循环队列</li>
+</ul>
+<h2 id="3-循环队列"><a href="#3-循环队列" class="headerlink" title="3. 循环队列"></a>3. 循环队列</h2><p><strong>弥补顺序队列的缺点</strong></p>
+<ul>
+<li>初始/队空：Q.front = Q.rear (队空条件）</li>
+<li>出队：Q.front = (Q.front+1) % maxsize (最大元素个数)</li>
+<li>进队：Q.rear = (Q.rear+1) % maxsize</li>
+<li>队列长度 = (Q.rear - Q.front + maxsize) % maxsize</li>
+<li>队满：( <strong>牺牲一个单元来区分队空和队满</strong> ）(Q.rear + 1) % maxsize = Q.front</li>
+</ul>
+<img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069628893-2e862333-bb9c-439e-95c8-a4fddaed591d.png" alt="img" style="zoom:67%;" />
+
+
+
+<h2 id="4-链式队列"><a href="#4-链式队列" class="headerlink" title="4. 链式队列"></a>4. 链式队列</h2><p><strong>实际就是一个同时带有头指针和尾指针的单链表</strong></p>
+<p>头指针指向队头结点，尾指针指向队尾结点（即单链表最后一个结点，与顺序存储有所不同）</p>
+<p>适合于数据元素变动较大的情况，而且不存在队列满或者溢出的问题。</p>
+<ul>
+<li>队空： Q.rear == Q.front == NULL</li>
+<li>出队：（带头结点）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LinkNode *p = Q.front-&gt;next;</span><br><span class="line">x = p-&gt;data;</span><br><span class="line">Q.front-&gt;next = p-&gt;next; //插入头节点之后</span><br><span class="line">if(Q.rear = p) //若原队列中只有一个结点，删除后变空，还需修改尾指针</span><br><span class="line">    Q.rear = Q.front;</span><br><span class="line">free(p);</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>进队：（带头节点）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LinkNode *s = (LinkNode *) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span>(LinkNode)); <span class="comment">//创建新结点</span></span><br><span class="line">s-&gt;data = x; s-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">Q.rear-&gt;next = s; <span class="comment">//插入到表尾</span></span><br><span class="line">Q.rear = s;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-双端队列"><a href="#5-双端队列" class="headerlink" title="5. 双端队列"></a>5. 双端队列</h2><p>允许两端都进行入队和出队操作的队列</p>
+<ul>
+<li>输出受限：有一端允许插入和删除；另一端只允许插入</li>
+<li>输入受限：有一端允许插入和删除；另一端只允许删除</li>
+</ul>
+<h2 id="6-队列的应用"><a href="#6-队列的应用" class="headerlink" title="6. 队列的应用"></a>6. 队列的应用</h2><ul>
+<li><p>层次遍历</p>
+</li>
+<li><p>计算机系统中的应用</p>
+</li>
+<li><ul>
+<li>解决主机与外部设备之间速度不匹配的问题（ex:打印机数据缓冲区中所存储的数据就是一个队列）</li>
+<li>解决由多用户引起的资源竞争问题（CPU将请求按时间先后排成队列）</li>
+</ul>
+</li>
+</ul>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" data-id="ckeof1fxc001p2cud8w0h4uay" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3-%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    树
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/03/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1-%E7%BA%BF%E6%80%A7%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">线性表</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '栈和队列',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

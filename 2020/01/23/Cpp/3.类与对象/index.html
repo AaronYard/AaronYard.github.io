@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>类与对象 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="3.类与对象">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类与对象">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;01&#x2F;23&#x2F;Cpp&#x2F;3.%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="3.类与对象">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038205-fca6cc67-00ed-459f-b2f4-269275510718.png#align=left&amp;display=inline&amp;height=669&amp;originHeight=669&amp;originWidth=747&amp;size=0&amp;status=done&amp;style=none&amp;width=747">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038404-0a6e8b3d-9918-4b3e-bce6-e10cc3112dcb.png#align=left&amp;display=inline&amp;height=478&amp;originHeight=478&amp;originWidth=666&amp;size=0&amp;status=done&amp;style=none&amp;width=666">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038329-4f84160c-7d47-4bed-8499-f37c90b4c5d0.png#align=left&amp;display=inline&amp;height=118&amp;originHeight=118&amp;originWidth=668&amp;size=0&amp;status=done&amp;style=none&amp;width=668">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038293-b75fb243-7f4e-46ad-8a0c-0af57f1943a1.png#align=left&amp;display=inline&amp;height=155&amp;originHeight=155&amp;originWidth=700&amp;size=0&amp;status=done&amp;style=none&amp;width=700">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038496-5dd2fc45-081b-4b4f-beb0-53dc16b54c40.png#align=left&amp;display=inline&amp;height=388&amp;originHeight=388&amp;originWidth=704&amp;size=0&amp;status=done&amp;style=none&amp;width=704">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038366-d16dd536-fb12-4c80-9040-0810424673ce.png#align=left&amp;display=inline&amp;height=262&amp;originHeight=262&amp;originWidth=683&amp;size=0&amp;status=done&amp;style=none&amp;width=683">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038430-bf8bb6af-f135-43ab-8494-0b37928e6c2b.png#align=left&amp;display=inline&amp;height=807&amp;originHeight=807&amp;originWidth=703&amp;size=0&amp;status=done&amp;style=none&amp;width=703">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038417-f9fc4aa0-a760-4231-999d-13d0b7e5f4c5.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038344-ebf316ef-bb4c-4aa7-8534-84b3a62debf8.png#align=left&amp;display=inline&amp;height=99&amp;originHeight=99&amp;originWidth=201&amp;size=0&amp;status=done&amp;style=none&amp;width=201">
+<meta property="og:updated_time" content="2020-09-04T15:07:58.968Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153038205-fca6cc67-00ed-459f-b2f4-269275510718.png#align=left&amp;display=inline&amp;height=669&amp;originHeight=669&amp;originWidth=747&amp;size=0&amp;status=done&amp;style=none&amp;width=747">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Cpp/3.类与对象" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            类与对象
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/01/23/Cpp/3.%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">
+            <time datetime="2020-01-23T14:02:45.000Z" itemprop="datePublished">2020-01-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈9分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、面向对象程序设计的基本特点"><a href="#一、面向对象程序设计的基本特点" class="headerlink" title="一、面向对象程序设计的基本特点"></a>一、面向对象程序设计的基本特点</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038205-fca6cc67-00ed-459f-b2f4-269275510718.png#align=left&amp;display=inline&amp;height=669&amp;originHeight=669&amp;originWidth=747&amp;size=0&amp;status=done&amp;style=none&amp;width=747" style="zoom: 80%;" /><br /></p>
+<h1 id="二、类成员的访问控制"><a href="#二、类成员的访问控制" class="headerlink" title="二、类成员的访问控制"></a>二、类成员的访问控制</h1><h2 id="public"><a href="#public" class="headerlink" title="public"></a>public</h2><p>类外(main()函数)不能访问 private 和 protected 类型，只能访问声明 public 的对外接口</p>
+<h2 id="private"><a href="#private" class="headerlink" title="private"></a>private</h2><p>类开头若不加访问权限，则默认为private类型</p>
+<ul>
+<li>可被基类的成员函数访问</li>
+<li>可被基类的友元函数访问<a id="more"></a>
+<h2 id="protected"><a href="#protected" class="headerlink" title="protected"></a>protected</h2></li>
+</ul>
+<ul>
+<li>可被基类的成员函数访问</li>
+<li>可被基类的友元函数访问</li>
+<li>派生类的成员函数可以访问 <strong>当前对象</strong> 基类的protected成员</li>
+</ul>
+<p>举例如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>: <span class="keyword">int</span> c;</span><br><span class="line">    <span class="keyword">private</span>: <span class="keyword">int</span> b;</span><br><span class="line">    <span class="keyword">protected</span>: <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">public</span> A&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">        c = <span class="number">1</span>; <span class="comment">//right</span></span><br><span class="line">        b = <span class="number">1</span>; <span class="comment">//wrong</span></span><br><span class="line">        a = <span class="number">1</span>; <span class="comment">//right</span></span><br><span class="line">        B f;</span><br><span class="line">        f.a = <span class="number">1</span> <span class="comment">//wrong f是新构造的对象，不是func()面向的当前对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> main()&#123;</span><br><span class="line">    B boo;</span><br><span class="line">    A aoo;</span><br><span class="line">    </span><br><span class="line">    aoo.b = <span class="number">1</span> ; <span class="comment">//worng</span></span><br><span class="line">    aoo.a = <span class="number">1</span>; <span class="comment">//wrong</span></span><br><span class="line">    boo.b = <span class="number">1</span>; <span class="comment">//wrong</span></span><br><span class="line">    boo.a = <span class="number">1</span>; <span class="comment">//wrong</span></span><br><span class="line">    aoo.c = <span class="number">1</span>; <span class="comment">//right</span></span><br><span class="line">    boo.c = <span class="number">1</span>; <span class="comment">//right</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><a name="2a118a6c"></a></p>
+<h1 id="三、构造函数-析构函数-复制构造函数"><a href="#三、构造函数-析构函数-复制构造函数" class="headerlink" title="三、构造函数/析构函数/复制构造函数"></a>三、构造函数/析构函数/复制构造函数</h1><h2 id="1-构造函数："><a href="#1-构造函数：" class="headerlink" title="1. 构造函数："></a>1. 构造函数：</h2><p><br />构造函数的作用：在对象被创建时使用特定的值构造对象，将对象初始化为一个特定的初始状态。<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038404-0a6e8b3d-9918-4b3e-bce6-e10cc3112dcb.png#align=left&amp;display=inline&amp;height=478&amp;originHeight=478&amp;originWidth=666&amp;size=0&amp;status=done&amp;style=none&amp;width=666" style="zoom:80%;" /><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        Complex(<span class="keyword">double</span> r, <span class="keyword">double</span> i = <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Complex c1; <span class="comment">//错误，缺乏不带参数的构造函数</span></span><br><span class="line"><span class="comment">//若Complex(double r = 0, double i = 0);则可以执行，即缺省函数</span></span><br><span class="line">Complex(<span class="number">2</span>,<span class="number">1</span>); <span class="comment">//right</span></span><br></pre></td></tr></table></figure>
+
+<p><br /><strong>可以有多个构造函数（参数类型/个数不同),但只能有一个析构函数</strong>（可把delete语句放在析构函数中，先被构造的对象最后被析构掉）。<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Test *pArray[<span class="number">3</span>] = &#123;<span class="keyword">new</span> Test(<span class="number">4</span>), <span class="keyword">new</span> Test(<span class="number">1</span>,<span class="number">2</span>)&#125;;</span><br><span class="line"><span class="comment">//new Test()返回 Test* 类型，即用地址初始化指针数组；</span></span><br><span class="line"><span class="comment">//只生成两个对象，调用两个构造函数</span></span><br><span class="line"><span class="comment">//若无new,则不会调用相应的构造函数，指针不会引发对象生成</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>🚩 <strong>注 ： 构造函数 不能被派生类继承</strong></p>
+<h2 id="2-析构函数"><a href="#2-析构函数" class="headerlink" title="2. 析构函数:"></a>2. 析构函数:</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038329-4f84160c-7d47-4bed-8499-f37c90b4c5d0.png#align=left&display=inline&height=118&originHeight=118&originWidth=668&size=0&status=done&style=none&width=668" alt=""><br /></p>
+<h3 id="析构函数和构造函数的调用顺序"><a href="#析构函数和构造函数的调用顺序" class="headerlink" title="析构函数和构造函数的调用顺序"></a>析构函数和构造函数的调用顺序</h3><p><br />遵循原则：先被构造的函数后被析构掉<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Demo(<span class="keyword">int</span> i)</span><br><span class="line">    &#123;</span><br><span class="line">        id = i;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"id="</span> &lt;&lt; id &lt;&lt; <span class="string">" Constructor"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ~Demo()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"id="</span> &lt;&lt; id &lt;&lt; <span class="string">" Destructor"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">Demo <span class="title">d1</span><span class="params">(<span class="number">1</span>)</span></span>; <span class="comment">//率先创建</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> Demo <span class="title">d2</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="function">Demo <span class="title">d3</span><span class="params">(<span class="number">3</span>)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Func"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Demo <span class="title">d4</span><span class="params">(<span class="number">4</span>)</span></span>;</span><br><span class="line">    d4 = <span class="number">6</span>; <span class="comment">//6被自动转换成一个Demo的*临时对象*，同时调用构造函数和析构函数</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"main"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">Demo <span class="title">d5</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    &#125; <span class="comment">//作用域</span></span><br><span class="line">    Func();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"main ends"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />运行结果：<br /></p>
+<blockquote>
+<p>id=1 Constructor<br>id=4 Constructor<br>id=6 Constructor<br>id=6 Destructor //d4 = 6临时对象的消亡<br>main<br>id=5 Constructor<br>id=5 Destructor<br>id=2 Constructor<br>id=3 Constructor<br>Func<br>id=3 Destructor<br>main ends<br>id=6 Destructor //Demo d4对象的消亡<br>id=2 Destructor<br>id=1 Destructor</p>
+</blockquote>
+<h2 id="3-复制构造函数："><a href="#3-复制构造函数：" class="headerlink" title="3. 复制构造函数："></a>3. 复制构造函数：</h2><p>复制构造函数是一种特殊的构造函数，其形参为本类的对象引用。作用是用一个<strong>已存在的对象</strong>去初始化同类型的新对象。<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038293-b75fb243-7f4e-46ad-8a0c-0af57f1943a1.png#align=left&display=inline&height=155&originHeight=155&originWidth=700&size=0&status=done&style=none&width=700" alt=""><br /></p>
+<p><a name="eda3385c"></a></p>
+<h3 id="复制构造函数被调用的三种情况："><a href="#复制构造函数被调用的三种情况：" class="headerlink" title="复制构造函数被调用的三种情况："></a>复制构造函数被调用的三种情况：</h3><ul>
+<li>用类的一个对象取初始化另一个对象时；</li>
+<li>函数的返回值是类的对象，函数执行完成返回调用者时；</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Point <span class="title">g</span><span class="params">()</span></span>&#123;</span><br><span class="line">	 <span class="function">Point <span class="title">a</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">	 <span class="keyword">return</span> a; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Point b;</span><br><span class="line">	b = g();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><strong>a是g( )的局部对象，离开g( )之后就消亡了，不可能再返回主函数后继续生存</strong>。<br />所以这种情况下系统会创建一个<strong>临时无名对象</strong>，该临时对象的生存期只存在于函数调用所处的表达式中，即 b = g( )中。<br /><br><br />执行语句 <code>return a</code> ，实际上是调用复制构造函数将a的值复制到临时对象中，函数g( )运行结束时对象a消亡，但临时对象会存在于表达式 b = g( ) 中，计算完这个表达式，临时对象也就自动消亡了。<br /></p>
+<ul>
+<li>函数的形参是类的对象，调用函数进行形参和实参结合时；</li>
+</ul>
+<br />
+**举例如下：**<br />
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span></span><br><span class="line"><span class="class">&#123;</span> <span class="comment">//Point 类的定义</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Point(<span class="keyword">int</span> xx = <span class="number">0</span>, <span class="keyword">int</span> yy = <span class="number">0</span>) <span class="comment">//构造函数，内联</span></span><br><span class="line">    &#123;</span><br><span class="line">        x = xx;</span><br><span class="line">        y = yy;</span><br><span class="line">    &#125;</span><br><span class="line">    Point(<span class="keyword">const</span> Point &amp;p); <span class="comment">//复制构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setX</span><span class="params">(<span class="keyword">int</span> xx)</span> </span>&#123; x = xx; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setY</span><span class="params">(<span class="keyword">int</span> yy)</span> </span>&#123; y = yy; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> x; &#125; <span class="comment">//常函数（第5章）</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getY</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> y; &#125; <span class="comment">//常函数（第5章）</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x, y; <span class="comment">//私有数据</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//复制构造函数的实现</span></span><br><span class="line">Point::Point(<span class="keyword">const</span> Point &amp;p)</span><br><span class="line">&#123;</span><br><span class="line">    x = p.x;</span><br><span class="line">    y = p.y;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Calling the copy constructor "</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//形参为Point类对象</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun1</span><span class="params">(Point p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p.getX() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回值为Point类对象</span></span><br><span class="line"><span class="function">Point <span class="title">fun2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Point <span class="title">a</span><span class="params">(<span class="number">1</span>, <span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">Point <span class="title">a</span><span class="params">(<span class="number">4</span>, <span class="number">5</span>)</span></span>;</span><br><span class="line">    <span class="function">Point <span class="title">b</span><span class="params">(a)</span></span>; <span class="comment">//用a初始化b。</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; b.getX() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    fun1(b);    <span class="comment">//对象b作为fun1的实参</span></span><br><span class="line">    b = fun2(); <span class="comment">//函数的返回值是类对象</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; b.getX() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><a name="ffc106f9"></a></p>
+<h3 id="拷贝构造函数和赋值运算符（-）有啥不同？"><a href="#拷贝构造函数和赋值运算符（-）有啥不同？" class="headerlink" title="拷贝构造函数和赋值运算符（=）有啥不同？"></a>拷贝构造函数和赋值运算符（=）有啥不同？</h3><ul>
+<li>赋值运算符作用于一个已存在的对象；</li>
+<li>拷贝构造函数会创建一个新对象。</li>
+</ul>
+<h1 id="四、类的组合"><a href="#四、类的组合" class="headerlink" title="四、类的组合"></a>四、类的组合</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038496-5dd2fc45-081b-4b4f-beb0-53dc16b54c40.png#align=left&display=inline&height=388&originHeight=388&originWidth=704&size=0&status=done&style=none&width=704" alt=""><br /><br><br />注意以下代码的构造函数和复制构造函数的调用顺序（原则：内嵌类先构造）<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span></span><br><span class="line"><span class="class">&#123;</span> <span class="comment">//Point类定义</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Point(<span class="keyword">int</span> xx = <span class="number">0</span>, <span class="keyword">int</span> yy = <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x = xx;</span><br><span class="line">        y = yy;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"constructor of Point!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Point(Point &amp;p);</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> x; &#125;   <span class="comment">//用于让其他类获得私有成员的值</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> y; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//复制构造函数的实现</span></span><br><span class="line">Point::Point(Point &amp;p)</span><br><span class="line">&#123; </span><br><span class="line">    x = p.x;</span><br><span class="line">    y = p.y;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Calling the copy constructor of Point"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//类的组合</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Line</span>&#123;</span> <span class="comment">//Line类的定义</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//外部接口</span></span><br><span class="line">    Line(Point xp1, Point xp2);</span><br><span class="line">    Line(Line &amp;l);</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getLen</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> len; &#125;</span><br><span class="line"><span class="keyword">private</span>:          <span class="comment">//私有数据成员</span></span><br><span class="line">    Point p1, p2; <span class="comment">//按照此顺序调用构造函数</span></span><br><span class="line">    <span class="keyword">double</span> len;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//组合类的构造函数</span></span><br><span class="line">Line::Line(Point xp1, Point xp2) : p2(xp2), p1(xp1) <span class="comment">//仍然按照p1,p2的顺序调用构造函数</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Calling constructor of Line"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">double</span> x = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(p1.getX() - p2.getX());</span><br><span class="line">    <span class="keyword">double</span> y = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(p1.getY() - p2.getY());</span><br><span class="line">    len = <span class="built_in">sqrt</span>(x * x + y * y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//组合类的复制构造函数</span></span><br><span class="line">Line::Line(Line &amp;l) : p1(l.p1), p2(l.p2)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Calling the copy constructor of Line"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    len = l.len;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//主函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Point myp1(1, 1), myp2(4, 5);</span><br><span class="line">    <span class="comment">//建立Point类的对象</span></span><br><span class="line">    <span class="function">Line <span class="title">line</span><span class="params">(myp1, myp2)</span></span>; <span class="comment">//建立Line类的对象</span></span><br><span class="line">    <span class="function">Line <span class="title">line2</span><span class="params">(<span class="built_in">line</span>)</span></span>;      <span class="comment">//利用复制构造函数建立一个新对象</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"The length of the line is: "</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">line</span>.getLen() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"The length of the line2 is: "</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; line2.getLen() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038366-d16dd536-fb12-4c80-9040-0810424673ce.png#align=left&display=inline&height=262&originHeight=262&originWidth=683&size=0&status=done&style=none&width=683" alt=""><br /></p>
+<h1 id="五、结构体和联合体"><a href="#五、结构体和联合体" class="headerlink" title="五、结构体和联合体"></a>五、结构体和联合体</h1><h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038430-bf8bb6af-f135-43ab-8494-0b37928e6c2b.png#align=left&display=inline&height=807&originHeight=807&originWidth=703&size=0&status=done&style=none&width=703" alt=""><br /></p>
+<h2 id="union"><a href="#union" class="headerlink" title="union"></a>union</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038417-f9fc4aa0-a760-4231-999d-13d0b7e5f4c5.png" alt=""><br /><br><br />例如：使用联合体保存成绩信息，并且输出。<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExamInfo</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> name; <span class="comment">//课程名称</span></span><br><span class="line">    <span class="keyword">enum</span></span><br><span class="line">    &#123;</span><br><span class="line">        GRADE,</span><br><span class="line">        PASS,</span><br><span class="line">        PERCENTAGE</span><br><span class="line">    &#125; mode; <span class="comment">//计分方式</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="keyword">char</span> grade;  <span class="comment">//等级制的成绩</span></span><br><span class="line">        <span class="keyword">bool</span> pass;   <span class="comment">//只记是否通过课程的成绩</span></span><br><span class="line">        <span class="keyword">int</span> percent; <span class="comment">//百分制的成绩</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">public</span>: <span class="comment">//三种构造函数，分别用等级、是否通过和百分初始化</span></span><br><span class="line">    ExamInfo(<span class="built_in">string</span> name, <span class="keyword">char</span> grade) : name(name), mode(GRADE), grade(grade) &#123;&#125;</span><br><span class="line">    ExamInfo(<span class="built_in">string</span> name, <span class="keyword">bool</span> pass) : name(name), mode(PASS), pass(pass) &#123;&#125;</span><br><span class="line">    ExamInfo(<span class="built_in">string</span> name, <span class="keyword">int</span> percent) : name(name), mode(PERCENTAGE), percent(percent) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ExamInfo::show()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; name &lt;&lt; <span class="string">": "</span>;</span><br><span class="line">    <span class="keyword">switch</span> (mode)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">case</span> GRADE:</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; grade;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> PASS:</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (pass ? <span class="string">"PASS"</span> : <span class="string">"FAIL"</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> PERCENTAGE:</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; percent;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">ExamInfo <span class="title">course1</span><span class="params">(<span class="string">"English"</span>, <span class="string">'B'</span>)</span></span>;</span><br><span class="line">    <span class="function">ExamInfo <span class="title">course2</span><span class="params">(<span class="string">"Calculus"</span>, <span class="literal">true</span>)</span></span>;</span><br><span class="line">    <span class="function">ExamInfo <span class="title">course3</span><span class="params">(<span class="string">"C++ Programming"</span>, <span class="number">85</span>)</span></span>;</span><br><span class="line">    course1.show();</span><br><span class="line">    course2.show();</span><br><span class="line">    course3.show();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153038344-ebf316ef-bb4c-4aa7-8534-84b3a62debf8.png#align=left&display=inline&height=99&originHeight=99&originWidth=201&size=0&status=done&style=none&width=201" alt=""><br /></p>
+<h1 id="六、C-中的-操作符与-gt-操作符"><a href="#六、C-中的-操作符与-gt-操作符" class="headerlink" title="六、C++中的 . 操作符与 -&gt; 操作符"></a>六、C++中的 . 操作符与 -&gt; 操作符</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">String</span> name;</span><br><span class="line">    <span class="keyword">String</span> born;</span><br><span class="line">    <span class="keyword">double</span> money;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person A;</span><br><span class="line">Person *B = <span class="keyword">new</span> Person;</span><br><span class="line"></span><br><span class="line">A.name = <span class="string">"Dr.nothing"</span>;</span><br><span class="line">B-&gt;name = <span class="string">"Dr.something"</span>; <span class="comment">//B-&gt;name = (*B).name</span></span><br><span class="line">A.money = <span class="number">300.0</span>;</span><br><span class="line">(*B).money = <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>若是使用到 <code>-&gt;</code> 操作符则左边的变量必须是指针变量；</li>
+<li>若是使用到 <code>.</code> 操作符那么左边的变量不能为指针，指针变量需要使用 <code>*</code> 操作符访问到该地址的内容</li>
+</ul>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/01/23/Cpp/3.%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="ckeodenbt0025twud2fma3d4a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/01/24/Cpp/4.%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E4%B8%8E%E4%BF%9D%E6%8A%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    数据的共享与保护
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/01/22/Cpp/2.%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">函数</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '类与对象',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

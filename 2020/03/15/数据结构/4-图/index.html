@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>图 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="4-图">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;03&#x2F;15&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;4-%E5%9B%BE&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="4-图">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505114349.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505114919.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505114935.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200510203203.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200510204315.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200510204810.png">
+<meta property="og:updated_time" content="2020-09-04T15:50:02.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505114349.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-数据结构/4-图" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            图
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4-%E5%9B%BE/">
+            <time datetime="2020-03-15T14:02:45.000Z" itemprop="datePublished">2020-03-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.8k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈6分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、相关名词解释"><a href="#一、相关名词解释" class="headerlink" title="一、相关名词解释"></a>一、相关名词解释</h1><h2 id="1-完全图"><a href="#1-完全图" class="headerlink" title="1. 完全图"></a>1. 完全图</h2><ul>
+<li>无向图中任意两个顶点之间都存在边，称为无向完全图。 n个顶点，n(n-1)/2 条边</li>
+<li>有向图中任意两个顶点之间都存在相反的两条弧，称为有向完全图。 n个顶点,  n(n-1）条边</li>
+</ul>
+<h2 id="2-连通图-强连通图"><a href="#2-连通图-强连通图" class="headerlink" title="2. 连通图/强连通图"></a>2. 连通图/强连通图</h2><ul>
+<li><strong>无向图</strong> 中顶点v到顶点w有路径存在，称v和w连通。若任意两个顶点都连通，<code>连通图</code><br> 若一个图有n个顶点，并且边数小于n-1，则此图必是非连通图<br> 若一个图有n个顶点，并且边数大于n-1，则此图必有回路</li>
+<li><strong>有向图</strong> 中顶点 v 到顶点 w 和顶点 w 到顶点 v 之间都有路径，称 v 和w 强连通 。若任意两个顶点都连通，<code>强连通图</code></li>
+</ul>
+<a id="more"></a>
+
+<h2 id="3-连通分量-极大连通子图"><a href="#3-连通分量-极大连通子图" class="headerlink" title="3. 连通分量/极大连通子图"></a>3. 连通分量/极大连通子图</h2><ul>
+<li>无向图中极大连通子图称为连通分量；</li>
+<li>有向图中极大连通子图称为强连通分量；</li>
+</ul>
+<p>极小连通子图指该连通子图既保持图的连通且包含的边数最少；</p>
+<h2 id="4-生成树-对于连通图而言）"><a href="#4-生成树-对于连通图而言）" class="headerlink" title="4. 生成树 (对于连通图而言）"></a>4. 生成树 (对于连通图而言）</h2><p>连通图的生成树是 <strong>包含全部顶点的一个极小连通子图</strong>（即包含全部顶点且边数最少）</p>
+<p>若砍去生成树的一条边，则会变成非连通图</p>
+<p>若加上一条边，则会形成一个回路</p>
+<h2 id="5-顶点的入度和出度"><a href="#5-顶点的入度和出度" class="headerlink" title="5. 顶点的入度和出度"></a>5. 顶点的入度和出度</h2><ul>
+<li>无向图 的的全部顶点的度之和等于边数的2倍</li>
+<li>有向图 的全部顶点的入度之和与出度之和相等，且与边数相等</li>
+</ul>
+<h2 id="6-简单路径"><a href="#6-简单路径" class="headerlink" title="6. 简单路径"></a>6. 简单路径</h2><p>序列中的顶点和路径不重复出现的路径。</p>
+<h2 id="7-回路"><a href="#7-回路" class="headerlink" title="7. 回路"></a>7. 回路</h2><p>路径中第一个顶点和最后一个顶点相同的路径</p>
+<br>
+
+
+
+<h1 id="二、图的存储"><a href="#二、图的存储" class="headerlink" title="二、图的存储"></a>二、图的存储</h1><h2 id="1-邻接矩阵法：（稠密图）"><a href="#1-邻接矩阵法：（稠密图）" class="headerlink" title="1. 邻接矩阵法：（稠密图）"></a>1. 邻接矩阵法：（稠密图）</h2><p><strong>图的顺序存储结构</strong></p>
+<p>一维数组存储顶点集，二维数组存储边集</p>
+<p>无向图的邻接矩阵第i行（列）非零元素的个数表示该顶点的度</p>
+<p>有向图的邻接矩阵第i行（列）非零元素的个数表示该顶点的出度（入度）</p>
+<p>无向图的邻接矩阵是对称的</p>
+<h2 id="2-邻接表法：（稀疏图）"><a href="#2-邻接表法：（稀疏图）" class="headerlink" title="2. 邻接表法：（稀疏图）"></a>2. 邻接表法：（稀疏图）</h2><p><strong>图的链式存储结构</strong></p>
+<p>一个单链表表示该顶点的边表；</p>
+<p>各个单链表的头指针和顶点采用顺序存储连接起来表示顶点表</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505114349.png" alt=""></p>
+<p>邻接表可以方便的找出一顶点的所有邻边，但确定两结点之间是否有边效率低下</p>
+<p>在有向图中，求一个给定结点的出度只需计算邻接表中结点的个数，但求入度需要遍历全部顶点的邻接表</p>
+<blockquote>
+<p>假设有n个顶点，e条边的有向图用邻接表表示，则删除与某个顶点v相关的所有边的时间复杂度为：<code>O(n+e)</code> </p>
+<p>首先删除下标为v的顶点表结点的单链表，边数最多n-1，时间复杂度O(n)；</p>
+<p>再扫描所有边表结点，删除所有的顶点v的入边，时间复杂度O(e)；</p>
+</blockquote>
+<h2 id="3-十字链表"><a href="#3-十字链表" class="headerlink" title="3. 十字链表"></a>3. 十字链表</h2><p>有向图的另一种链式存储结构。</p>
+<h2 id="4-邻接多重表"><a href="#4-邻接多重表" class="headerlink" title="4. 邻接多重表"></a>4. 邻接多重表</h2><p>无向图的链式存储结构。</p>
+<br>
+
+
+
+<h1 id="三、图的遍历"><a href="#三、图的遍历" class="headerlink" title="三、图的遍历"></a>三、图的遍历</h1><h2 id="1-广度优先遍历BFS（类似于层次遍历）"><a href="#1-广度优先遍历BFS（类似于层次遍历）" class="headerlink" title="1. 广度优先遍历BFS（类似于层次遍历）"></a>1. 广度优先遍历BFS（类似于层次遍历）</h2><p><strong>基本思想</strong> ：利用 <code>队列</code> 实现。</p>
+<ul>
+<li>首先访问起始顶点 V 并将其入队</li>
+<li>V出队，并遍历V的所有邻接点 w1，w2，….，wn并依次入队</li>
+<li>w1出队，并遍历 w1 的全部邻接点(不包括已经被访问的点)</li>
+<li>w2出队，并遍历w2的全部邻接点(不包括已经被访问的点)</li>
+<li>……. 以此类推</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        visit(v); <span class="comment">//访问初始结点</span></span><br><span class="line">        visited[v] = TRUE; <span class="comment">//初始结点置已访问标识</span></span><br><span class="line">        EnQueue(Q,v); <span class="comment">//顶点v入队</span></span><br><span class="line">        <span class="keyword">while</span>(!isEmpty(Q))&#123;</span><br><span class="line">            DeQueue(Q,v); <span class="comment">//顶点v出队</span></span><br><span class="line">            <span class="keyword">for</span>(w = FirstNeighbor(G,v); w&gt;=<span class="number">0</span>; w = NextNeighbor(G,v,w))&#123; <span class="comment">//循环遍历v所有邻接点</span></span><br><span class="line">                <span class="keyword">if</span>(!visited[w])&#123;</span><br><span class="line">                    visit(w); <span class="comment">//访问顶点w</span></span><br><span class="line">                    visited[w] = TRUE;</span><br><span class="line">                    EnQueue(Q, w);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="comment">//while</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">BFSTraverse</span><span class="params">(Graph G)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt;G.vexnum; i++)</span><br><span class="line">            visited[i] = FALSE;</span><br><span class="line">        InitQueue(Q); <span class="comment">//初始化队列</span></span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt;G.vexnum;i++) <span class="comment">//防止一次遍历无法遍历到全部结点（非连通图）</span></span><br><span class="line">            <span class="keyword">if</span>(!visited[i]) <span class="comment">//若未被访问</span></span><br><span class="line">                BFS(G,i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-深度优先遍历DFS（类似于先序遍历）"><a href="#2-深度优先遍历DFS（类似于先序遍历）" class="headerlink" title="2. 深度优先遍历DFS（类似于先序遍历）"></a>2. 深度优先遍历DFS（类似于先序遍历）</h2><p>基本思想：利用 <code>递归/栈</code> 实现。当不能继续向下访问时，依次回退到最近的被访问结点</p>
+<ul>
+<li>首先访问顶点V，并将其标记为已访问</li>
+<li>然后访问与顶点V的其中<strong>一个</strong>未被访问的邻接点W，并将其标记为已访问</li>
+<li>再访问W的其中一个未被访问的邻接点，并将其标记为已访问</li>
+<li>依次类推….. <strong>当一个顶点所有的邻接顶点都被访问过时，则依次退回最近被访问过的顶点</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        visit(v);</span><br><span class="line">        visited[v] = TRUE;</span><br><span class="line">        <span class="keyword">for</span> (w = FirstNeighbor(G, v); w &gt;= <span class="number">0</span>; w = NextNeighbor(G, v, w))&#123;</span><br><span class="line">            <span class="keyword">if</span>(!visited[v])</span><br><span class="line">                DFS(G,w); <span class="comment">//递归</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(Graph G, <span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i&lt;G.vexnum; i++)</span><br><span class="line">            visited[v] = FALSE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;G.vexnum; i++)</span><br><span class="line">            <span class="keyword">if</span>(!visited[v])</span><br><span class="line">                DFS(G,i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="四、图的应用"><a href="#四、图的应用" class="headerlink" title="四、图的应用"></a>四、图的应用</h1><h2 id="1-最小生成树"><a href="#1-最小生成树" class="headerlink" title="1. 最小生成树"></a>1. 最小生成树</h2><h3 id="①-Prim算法"><a href="#①-Prim算法" class="headerlink" title="① Prim算法"></a>① Prim算法</h3><p>每次选取相对最小的边并且互相连通。需保证无环</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505114919.png" alt=""></p>
+<h3 id="②-kruskal算法"><a href="#②-kruskal算法" class="headerlink" title="② kruskal算法"></a>② kruskal算法</h3><p>每次选取最小的边，<strong>无须保证此过程是否连通</strong>。需保证无环</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505114935.png" alt=""></p>
+<h2 id="2-最短路径"><a href="#2-最短路径" class="headerlink" title="2. 最短路径"></a>2. 最短路径</h2><h3 id="①-Dijkstra算法"><a href="#①-Dijkstra算法" class="headerlink" title="① Dijkstra算法"></a>① Dijkstra算法</h3><p>该算法可以求得某一顶点到其余各顶点的最短路径。</p>
+<p>算法思想：</p>
+<ul>
+<li><p>设有两个顶点集合 S 和 T，其中<strong>集合 S 中存放的是图中已找到最短路径的顶点</strong>，集合 T 中存放 的是图中的剩余顶点。</p>
+</li>
+<li><p>初始状态时，集合 S 中只包含源点 V0，然后不断从集合 T 中选取到顶点 V0 路径最短的顶点 Vu 并加入集合 S 中，之后的路径可通过该结点</p>
+</li>
+<li><p><strong>集合 S 每加入一个新的顶点 Vu，都要修改 V0 到集合 T 中各个顶点的最短路径的长度值</strong>。</p>
+</li>
+<li><p>不断重 复这个过程，直至集合T中的顶点全部并入到 S 中为止。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200510203203.png" alt=""></p>
+</li>
+</ul>
+<h3 id="②-Floyd算法"><a href="#②-Floyd算法" class="headerlink" title="② Floyd算法"></a>② Floyd算法</h3><p>每次都试图在路径上添加新的中间结点</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200510204315.png" alt=""></p>
+<h2 id="3-拓扑排序"><a href="#3-拓扑排序" class="headerlink" title="3. 拓扑排序"></a>3. 拓扑排序</h2><p><strong>什么图可以进行拓扑排序？</strong></p>
+<p>有向无环图</p>
+<p><strong>基本思想</strong> ：每次去除一个入度为0的结点和该与顶结点相连的边</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200510204810.png" alt=""></p>
+<p>若图中存在一条A——&gt;B的路径，则在拓扑排序中表示B事件在A事件的后面</p>
+<h2 id="4-关键路径"><a href="#4-关键路径" class="headerlink" title="4. 关键路径"></a>4. 关键路径</h2><p><strong>具有最大路径长度的路径称为关键路径</strong></p>
+<p>只提高一条关键路径上的关键活动速度并不能缩短整个工程的工期，只有加快所有关键路径上的关键活动才能缩短工期</p>
+<p>关于关键路径的求解问题可参考本篇博文：<a href="https://www.cnblogs.com/muziyang/p/12603884.html" target="_blank" rel="noopener">木子阳555 -【数据结构-图】关键路径解法</a></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4-%E5%9B%BE/" data-id="ckeof1fxd001s2cudfr8mbm3x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5-%E6%9F%A5%E6%89%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    查找
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/03/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3-%E6%A0%91/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">树</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '图',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

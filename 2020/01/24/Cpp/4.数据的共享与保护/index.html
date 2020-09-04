@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>数据的共享与保护 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="4.数据的共享与保护">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据的共享与保护">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;01&#x2F;24&#x2F;Cpp&#x2F;4.%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E4%B8%8E%E4%BF%9D%E6%8A%A4&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="4.数据的共享与保护">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061194-8e1cba8c-fdcd-414c-9a35-5dbb4171344d.png#align=left&amp;display=inline&amp;height=487&amp;originHeight=487&amp;originWidth=531&amp;size=0&amp;status=done&amp;style=none&amp;width=531">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061215-6fdde052-29b5-4409-820f-a60aaf1e568b.png#align=left&amp;display=inline&amp;height=690&amp;originHeight=690&amp;originWidth=537&amp;size=0&amp;status=done&amp;style=none&amp;width=537">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061247-5c1ccd9f-4537-474c-a03f-fae1f94fdd94.png#align=left&amp;display=inline&amp;height=259&amp;originHeight=259&amp;originWidth=405&amp;size=0&amp;status=done&amp;style=none&amp;width=405">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061207-ee6f0484-e991-4d53-af23-685b0bd49de5.png#align=left&amp;display=inline&amp;height=96&amp;originHeight=96&amp;originWidth=567&amp;size=0&amp;status=done&amp;style=none&amp;width=567">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061198-b469d10e-fde1-47bf-864e-711e183419e7.png#align=left&amp;display=inline&amp;height=81&amp;originHeight=81&amp;originWidth=545&amp;size=0&amp;status=done&amp;style=none&amp;width=545">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061213-d3be2b10-3b25-4035-8480-f97cb644d785.png#align=left&amp;display=inline&amp;height=151&amp;originHeight=151&amp;originWidth=636&amp;size=0&amp;status=done&amp;style=none&amp;width=636">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061251-6f122c12-49e6-4b53-8bfa-099c1522a17b.png#align=left&amp;display=inline&amp;height=462&amp;originHeight=462&amp;originWidth=698&amp;size=0&amp;status=done&amp;style=none&amp;width=698">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061278-1d410f21-cb56-48dd-87d9-e800bdb5eaa5.png#align=left&amp;display=inline&amp;height=353&amp;originHeight=353&amp;originWidth=755&amp;size=0&amp;status=done&amp;style=none&amp;width=755">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061256-f2525fba-7736-4640-8907-1f36fc89c849.png#align=left&amp;display=inline&amp;height=61&amp;originHeight=61&amp;originWidth=567&amp;size=0&amp;status=done&amp;style=none&amp;width=567">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061252-bad2647b-8817-4dbd-917a-3ec5fa221b79.png#align=left&amp;display=inline&amp;height=223&amp;originHeight=223&amp;originWidth=673&amp;size=0&amp;status=done&amp;style=none&amp;width=673">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061254-dcca37d9-854a-4439-b308-5f80202d13ee.png#align=left&amp;display=inline&amp;height=594&amp;originHeight=594&amp;originWidth=429&amp;size=0&amp;status=done&amp;style=none&amp;width=429">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061273-90c24a0b-409b-4667-9705-d8b04d2c012d.png#align=left&amp;display=inline&amp;height=761&amp;originHeight=761&amp;originWidth=738&amp;size=0&amp;status=done&amp;style=none&amp;width=738">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061304-3011d06f-fa22-47e0-bfab-419260f626be.png#align=left&amp;display=inline&amp;height=123&amp;originHeight=123&amp;originWidth=667&amp;size=0&amp;status=done&amp;style=none&amp;width=667">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061314-f1e430b9-02f6-48be-abc0-725e902388bc.png#align=left&amp;display=inline&amp;height=345&amp;originHeight=345&amp;originWidth=714&amp;size=0&amp;status=done&amp;style=none&amp;width=714">
+<meta property="og:updated_time" content="2020-09-04T15:07:21.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153061194-8e1cba8c-fdcd-414c-9a35-5dbb4171344d.png#align=left&amp;display=inline&amp;height=487&amp;originHeight=487&amp;originWidth=531&amp;size=0&amp;status=done&amp;style=none&amp;width=531">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Cpp/4.数据的共享与保护" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            数据的共享与保护
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/01/24/Cpp/4.%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E4%B8%8E%E4%BF%9D%E6%8A%A4/">
+            <time datetime="2020-01-24T14:02:45.000Z" itemprop="datePublished">2020-01-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.3k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈4分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、标识符的作用域与可见性"><a href="#一、标识符的作用域与可见性" class="headerlink" title="一、标识符的作用域与可见性"></a>一、标识符的作用域与可见性</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061194-8e1cba8c-fdcd-414c-9a35-5dbb4171344d.png#align=left&display=inline&height=487&originHeight=487&originWidth=531&size=0&status=done&style=none&width=531" alt=""><br /></p>
+<p><a name="a92f868d"></a></p>
+<h1 id="二、对象的生存期"><a href="#二、对象的生存期" class="headerlink" title="二、对象的生存期"></a>二、对象的生存期</h1><h2 id="1-静态生存期"><a href="#1-静态生存期" class="headerlink" title="1. 静态生存期"></a>1. 静态生存期</h2><ul>
+<li>这种生存期与程序的运行期相同。</li>
+<li>在文件作用域中声明的对象具有这种生存期。</li>
+<li>在函数内部声明静态生存期对象，要冠以关键字 <code>static</code> 。</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="2-动态生存期"><a href="#2-动态生存期" class="headerlink" title="2. 动态生存期"></a>2. 动态生存期</h2><ul>
+<li>块作用域中声明的，没有用static修饰的对象是动态生存期的对象（习惯称<strong>局部生存期对象</strong>）。</li>
+<li>开始于程序执行到声明点时，结束于命名该标识符的作用域结束处。</li>
+</ul>
+<br>
+
+
+
+<h1 id="三、变量的生存期与可见性综合示例"><a href="#三、变量的生存期与可见性综合示例" class="headerlink" title="三、变量的生存期与可见性综合示例"></a>三、变量的生存期与可见性综合示例</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061215-6fdde052-29b5-4409-820f-a60aaf1e568b.png#align=left&display=inline&height=690&originHeight=690&originWidth=537&size=0&status=done&style=none&width=537" alt=""><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061247-5c1ccd9f-4537-474c-a03f-fae1f94fdd94.png#align=left&display=inline&height=259&originHeight=259&originWidth=405&size=0&status=done&style=none&width=405" alt=""><br /><br><br /><strong>思考：在函数内部定义的普通局部变量和静态局部变量在功能上有何不同？计算机底层对这两类变量做了<br />怎样的不同处理？</strong><br /></p>
+<ul>
+<li>局部作用域中的静态变量： 不会随着每次函数的调用而产生一个副本，也不会随着函数的返回而失效，定义时未指定初值的会被以0初始化</li>
+<li>局部作用域中的全局变量：诞生于声明点，结束于声明所在块执行完毕之时，并且不指定初值意味着初值不确定</li>
+</ul>
+<h1 id="四、类的静态成员-static"><a href="#四、类的静态成员-static" class="headerlink" title="四、类的静态成员 static"></a>四、类的静态成员 static</h1><p>静态成员函数/变量本质上是全局函数/变量，哪怕一个对象都不存在，类的静态成员都还是存在的。<br /><br><br />那为什么还要设置静态成员而不直接设置成全局函数/变量呢？<br /></p>
+<ul>
+<li>是为了将和某些类紧密相关的全局变量和函数写到类里面，使其看上去像一个整体，便于维护和理解。</li>
+</ul>
+<p><br /><strong>注：私有的静态成员在类外依然不能访问</strong><br /></p>
+<h2 id="1-静态成员变量"><a href="#1-静态成员变量" class="headerlink" title="1. 静态成员变量"></a>1. 静态成员变量</h2><p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061207-ee6f0484-e991-4d53-af23-685b0bd49de5.png#align=left&display=inline&height=96&originHeight=96&originWidth=567&size=0&status=done&style=none&width=567" alt=""><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> A :: s = <span class="number">2</span>;  <span class="comment">//类外初始化</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>所有对象共享，维护同一个副本，即对象 n1 修改其值，对象 n2 中的值也会改变。</li>
+<li>sizeof(A) = 4；sizeof不会计算静态成员变量</li>
+<li>静态成员变量必须在类外进行一次说明或初始化，否则编译能通过但链接不能通过</li>
+</ul>
+<h2 id="2-静态成员函数"><a href="#2-静态成员函数" class="headerlink" title="2. 静态成员函数"></a>2. 静态成员函数</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061198-b469d10e-fde1-47bf-864e-711e183419e7.png#align=left&display=inline&height=81&originHeight=81&originWidth=545&size=0&status=done&style=none&width=545" alt=""><br />普通成员函数必须具体作用于某个对象（即通过 对象名. 访问），<br /><strong>而静态成员函数并不具体作用于某个对象，不需要通过对象就能访问。</strong><br /><br><br /><strong>静态成员函数的访问方式：</strong><br /></p>
+<ul>
+<li>类名::成员名（无须对象，直接通过类名访问）</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Point::showCount();</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>对象名.成员名</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A a; </span><br><span class="line">a.s( );</span><br></pre></td></tr></table></figure>
+
+<p><br />但并不意味着只作用于a上面<br /></p>
+<ul>
+<li>指针-&gt;成员名</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A *p; </span><br><span class="line">p-&gt;s( );</span><br></pre></td></tr></table></figure>
+
+<p><br />但并不意味着只作用于a上面<br /></p>
+<ul>
+<li>引用.成员名</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A &amp;q = a; </span><br><span class="line">q.s( );</span><br></pre></td></tr></table></figure>
+
+<p><br />但并不意味着只作用于a上面<br /></p>
+<p><strong>注：静态成员函数要访问非静态成员变量必须通过对象名.</strong><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">func</span><span class="params">(A a)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; x; <span class="comment">//ERROR!!!</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; a.x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="五、类的友元-friend"><a href="#五、类的友元-friend" class="headerlink" title="五、类的友元 friend"></a>五、类的友元 friend</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061213-d3be2b10-3b25-4035-8480-f97cb644d785.png#align=left&display=inline&height=151&originHeight=151&originWidth=636&size=0&status=done&style=none&width=636" alt=""><br /></p>
+<h2 id="1-友元函数"><a href="#1-友元函数" class="headerlink" title="1. 友元函数"></a>1. 友元函数</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061251-6f122c12-49e6-4b53-8bfa-099c1522a17b.png#align=left&display=inline&height=462&originHeight=462&originWidth=698&size=0&status=done&style=none&width=698" alt=""><br /></p>
+<p><a name="b71c6da6"></a></p>
+<h2 id="2-友元类"><a href="#2-友元类" class="headerlink" title="2. 友元类"></a>2. 友元类</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061278-1d410f21-cb56-48dd-87d9-e800bdb5eaa5.png#align=left&display=inline&height=353&originHeight=353&originWidth=755&size=0&status=done&style=none&width=755" alt=""><br /><br><br />特别注意：<strong>友元关系不能继承；不能传递；单向 ！</strong><br /></p>
+<h1 id="六、共享数据的保护-const）"><a href="#六、共享数据的保护-const）" class="headerlink" title="六、共享数据的保护 (const）"></a>六、共享数据的保护 (const）</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061256-f2525fba-7736-4640-8907-1f36fc89c849.png#align=left&display=inline&height=61&originHeight=61&originWidth=567&size=0&status=done&style=none&width=567" alt=""><br /></p>
+<blockquote>
+<p>Java 中没有 <code>const</code> 关键字，与之替代的是 <code>final</code></p>
+</blockquote>
+<h2 id="1-常对象"><a href="#1-常对象" class="headerlink" title="1. 常对象"></a>1. 常对象</h2><p>用 const 修饰的对象<br /></p>
+<ul>
+<li>常量对象的值不可被修改</li>
+<li><strong>常量对象不能执行非常量成员函数</strong>，因为非常量成员函数有可能对成员变量进行修改；</li>
+<li>常量对象可以执行常量成员函数</li>
+</ul>
+<p><br />例：<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		A(<span class="keyword">int</span> i, <span class="keyword">int</span> j)&#123;</span><br><span class="line">			x = i;</span><br><span class="line">			y = j;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">private</span>:</span><br><span class="line">		<span class="keyword">int</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">A <span class="keyword">const</span> <span class="title">a</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>; <span class="comment">//常对象a,不能被更新</span></span><br></pre></td></tr></table></figure>
+
+
+<p><a name="95169f97"></a></p>
+<h2 id="2-常成员"><a href="#2-常成员" class="headerlink" title="2. 常成员"></a>2. 常成员</h2><p>用 const 修饰的对象成员<br /></p>
+<h3 id="常成员函数"><a href="#常成员函数" class="headerlink" title="常成员函数"></a>常成员函数</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061252-bad2647b-8817-4dbd-917a-3ec5fa221b79.png#align=left&display=inline&height=223&originHeight=223&originWidth=673&size=0&status=done&style=none&width=673" alt=""><br />例：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061254-dcca37d9-854a-4439-b308-5f80202d13ee.png#align=left&display=inline&height=594&originHeight=594&originWidth=429&size=0&status=done&style=none&width=429" alt=""><br /><br><br /><strong>常成员函数执行期间不应该修改其所作用的对象</strong>，即</p>
+<ul>
+<li>在常量成员函数中不能修改成员变量的值(静态成员变量除外）</li>
+<li>也不能调用同类的非常量成员函数（静态成员函数除外）</li>
+</ul>
+<p>例：<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="keyword">int</span> value;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> A :: setValue()&#123;</span><br><span class="line">    value = <span class="number">0</span>; <span class="comment">//wrong 常量成员函数中不能修改成员变量的值</span></span><br><span class="line">    func(); <span class="comment">//wrong 常量成员函数中不能调用同类的非常量成员函数</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">const</span> A a;</span><br><span class="line">a.value = <span class="number">100</span>; <span class="comment">//wrong 常量对象的值不可被修改</span></span><br><span class="line">a.func(); <span class="comment">//wrong 常量对象不能执行非常量成员函数</span></span><br><span class="line">a.setValue(); <span class="comment">//right 常量对象可以执行常量成员函数</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="常数据成员"><a href="#常数据成员" class="headerlink" title="常数据成员"></a>常数据成员</h3><p>使用 const 说明的数据成员<br /></p>
+<ul>
+<li>常数据成员 const 只能通过构造函数的初始化列表来获得初值</li>
+<li>静态常数据成员 static const 在类外进行说明和初始化</li>
+</ul>
+<p><br />例：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061273-90c24a0b-409b-4667-9705-d8b04d2c012d.png#align=left&display=inline&height=761&originHeight=761&originWidth=738&size=0&status=done&style=none&width=738" alt=""><br /></p>
+<h2 id="3-常引用"><a href="#3-常引用" class="headerlink" title="3. 常引用"></a>3. 常引用</h2><p>当需要对象作为参数时，生成该参数需要调用复制构造函数，效率比较低，用指针做参数，代码会比较不好看，所以用对象的引用做参数<br /><code>void func(A &amp;a)</code><br /><br><br />使用对象引用作参数有一定的风险性，若函数中修改了形参a，则实参也跟着变，有时候这可能不是开发者想要的。若不想要对象发生改变，则使用const限定：<br /><code>void func(const A &amp;a)</code><br /><br><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061304-3011d06f-fa22-47e0-bfab-419260f626be.png#align=left&display=inline&height=123&originHeight=123&originWidth=667&size=0&status=done&style=none&width=667" alt=""><br />例：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153061314-f1e430b9-02f6-48be-abc0-725e902388bc.png#align=left&display=inline&height=345&originHeight=345&originWidth=714&size=0&status=done&style=none&width=714" alt=""></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/01/24/Cpp/4.%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E4%B8%8E%E4%BF%9D%E6%8A%A4/" data-id="ckeodenbs0024twud5z8pbq28" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/01/25/Cpp/5.%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    数组与指针
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/01/23/Cpp/3.%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">类与对象</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '数据的共享与保护',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

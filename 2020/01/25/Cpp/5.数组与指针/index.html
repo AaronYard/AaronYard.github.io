@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>数组与指针 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="5.数组与指针">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组与指针">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;01&#x2F;25&#x2F;Cpp&#x2F;5.%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="5.数组与指针">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830909-478c6719-62c0-4c1a-b2b9-ad768eb3ea53.png#align=left&amp;display=inline&amp;height=421&amp;originHeight=538&amp;originWidth=761&amp;size=0&amp;status=done&amp;style=none&amp;width=596">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830913-dec1af1d-0378-495e-90bb-7c931502e650.png#align=left&amp;display=inline&amp;height=570&amp;originHeight=663&amp;originWidth=686&amp;size=0&amp;status=done&amp;style=none&amp;width=590">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830938-71f53e15-8fda-45dc-a9d2-c761319d02e8.png#align=left&amp;display=inline&amp;height=765&amp;originHeight=824&amp;originWidth=667&amp;size=0&amp;status=done&amp;style=none&amp;width=619">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830926-b92c2d75-46d5-4413-8a07-43effc7c00ed.png#align=left&amp;display=inline&amp;height=437&amp;originHeight=499&amp;originWidth=693&amp;size=0&amp;status=done&amp;style=none&amp;width=607">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831012-bcb648c7-2adc-4edd-b8b7-e79549e28c5c.png#align=left&amp;display=inline&amp;height=64&amp;originHeight=64&amp;originWidth=295&amp;size=0&amp;status=done&amp;style=none&amp;width=295">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830943-6b1363c3-f834-4858-bf3d-e7ac3e2e0614.png#align=left&amp;display=inline&amp;height=648&amp;originHeight=648&amp;originWidth=638&amp;size=0&amp;status=done&amp;style=none&amp;width=638">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830950-d17d8b8e-6c2d-48b6-8fd2-a6f62595e431.png#align=left&amp;display=inline&amp;height=683&amp;originHeight=683&amp;originWidth=1001&amp;size=0&amp;status=done&amp;style=none&amp;width=1001">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830966-50ebf258-9e5d-4c70-9176-cf873b3329c8.png#align=left&amp;display=inline&amp;height=250&amp;originHeight=273&amp;originWidth=668&amp;size=0&amp;status=done&amp;style=none&amp;width=611">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830966-7b754d7d-6829-4eb4-8940-c7c5f8891342.png#align=left&amp;display=inline&amp;height=159&amp;originHeight=167&amp;originWidth=453&amp;size=0&amp;status=done&amp;style=none&amp;width=431">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830976-c29d1459-3dad-4ad0-a5b1-b72884eb1ccd.png#align=left&amp;display=inline&amp;height=500&amp;originHeight=545&amp;originWidth=667&amp;size=0&amp;status=done&amp;style=none&amp;width=612">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831250-6773ff50-e75b-4111-b886-ca0c33aa4af8.png#align=left&amp;display=inline&amp;height=694&amp;originHeight=694&amp;originWidth=927&amp;size=0&amp;status=done&amp;style=none&amp;width=927">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830998-90c08d75-de77-4b4e-9084-b929779d0067.png#align=left&amp;display=inline&amp;height=715&amp;originHeight=850&amp;originWidth=742&amp;size=0&amp;status=done&amp;style=none&amp;width=624">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830999-e6b5e1aa-d7ef-4881-b64d-df60d7f65fbb.png#align=left&amp;display=inline&amp;height=896&amp;originHeight=896&amp;originWidth=732&amp;size=0&amp;status=done&amp;style=none&amp;width=732">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831021-1f916511-a3ae-4361-ae7a-226844eb2511.png#align=left&amp;display=inline&amp;height=165&amp;originHeight=177&amp;originWidth=677&amp;size=0&amp;status=done&amp;style=none&amp;width=633">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831017-c84c66b4-e187-4066-bbd4-f5f5eb693425.png#align=left&amp;display=inline&amp;height=132&amp;originHeight=132&amp;originWidth=626&amp;size=0&amp;status=done&amp;style=none&amp;width=626">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831034-b64b71d3-d796-414e-ac06-cf41db2b22bf.png#align=left&amp;display=inline&amp;height=236&amp;originHeight=253&amp;originWidth=651&amp;size=0&amp;status=done&amp;style=none&amp;width=606">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831021-b7919913-fc8d-4b01-92ff-4d35c12c8c5a.png#align=left&amp;display=inline&amp;height=295&amp;originHeight=318&amp;originWidth=710&amp;size=0&amp;status=done&amp;style=none&amp;width=658">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831032-29c3f4bd-315b-4554-8355-faf8b0807338.png#align=left&amp;display=inline&amp;height=732&amp;originHeight=732&amp;originWidth=856&amp;size=0&amp;status=done&amp;style=none&amp;width=856">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831053-a5f3bdec-29ab-42a3-b90f-1a6b4f9e8bd2.png#align=left&amp;display=inline&amp;height=575&amp;originHeight=578&amp;originWidth=550&amp;size=0&amp;status=done&amp;style=none&amp;width=547">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831045-fc56ed1d-cf15-4188-9d9f-e6052dac515c.png#align=left&amp;display=inline&amp;height=166&amp;originHeight=177&amp;originWidth=664&amp;size=0&amp;status=done&amp;style=none&amp;width=624">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831038-ab20ed3a-8ce0-4286-8e21-a724bb6d166f.png#align=left&amp;display=inline&amp;height=318&amp;originHeight=318&amp;originWidth=622&amp;size=0&amp;status=done&amp;style=none&amp;width=622">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831065-cd858609-b5a1-4235-92c4-41380c63d621.png#align=left&amp;display=inline&amp;height=537&amp;originHeight=537&amp;originWidth=692&amp;size=0&amp;status=done&amp;style=none&amp;width=692">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152831071-3c51cb08-2f78-40bc-974a-be5d7078be3a.png#align=left&amp;display=inline&amp;height=220&amp;originHeight=220&amp;originWidth=438&amp;size=0&amp;status=done&amp;style=none&amp;width=438">
+<meta property="og:updated_time" content="2020-09-04T15:07:24.940Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152830909-478c6719-62c0-4c1a-b2b9-ad768eb3ea53.png#align=left&amp;display=inline&amp;height=421&amp;originHeight=538&amp;originWidth=761&amp;size=0&amp;status=done&amp;style=none&amp;width=596">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Cpp/5.数组与指针" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            数组与指针
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/01/25/Cpp/5.%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/">
+            <time datetime="2020-01-25T14:02:45.000Z" itemprop="datePublished">2020-01-25</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2.6k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈11分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、数组"><a href="#一、数组" class="headerlink" title="一、数组"></a>一、数组</h1><h2 id="1-数组的存储与初始化"><a href="#1-数组的存储与初始化" class="headerlink" title="1. 数组的存储与初始化"></a>1. 数组的存储与初始化</h2><h3 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h3><p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830909-478c6719-62c0-4c1a-b2b9-ad768eb3ea53.png#align=left&display=inline&height=421&originHeight=538&originWidth=761&size=0&status=done&style=none&width=596" alt=""><br /></p>
+<p><a name="030522dc"></a></p>
+<h3 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830913-dec1af1d-0378-495e-90bb-7c931502e650.png#align=left&display=inline&height=570&originHeight=663&originWidth=686&size=0&status=done&style=none&width=590" alt=""><br /></p>
+<a id="more"></a>
+<p><a name="8a49ebeb"></a></p>
+<h2 id="2-数组作为函数参数"><a href="#2-数组作为函数参数" class="headerlink" title="2. 数组作为函数参数"></a>2. 数组作为函数参数</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830938-71f53e15-8fda-45dc-a9d2-c761319d02e8.png#align=left&display=inline&height=765&originHeight=824&originWidth=667&size=0&status=done&style=none&width=619" alt=""><br /></p>
+<p><a name="f74413b3"></a></p>
+<h2 id="3-对象数组"><a href="#3-对象数组" class="headerlink" title="3. 对象数组"></a>3. 对象数组</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830926-b92c2d75-46d5-4413-8a07-43effc7c00ed.png#align=left&display=inline&height=437&originHeight=499&originWidth=693&size=0&status=done&style=none&width=607" alt=""><br /><strong>对象数组——线性回归方程实例</strong><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        Point(<span class="keyword">float</span> xx = <span class="number">0</span>,<span class="keyword">float</span> yy = <span class="number">0</span>):x(xx),y(yy)&#123; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">float</span> <span class="title">getX</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> x;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">float</span> <span class="title">getY</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> y;&#125;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">float</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//直线线性拟合，number为点数</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">lineFit</span><span class="params">(<span class="keyword">const</span> Point points[], <span class="keyword">int</span> number)</span></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> avgx = <span class="number">0</span>, avgy = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">float</span> lxx = <span class="number">0</span>,lyy = <span class="number">0</span>, lxy = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;number;i++)&#123;</span><br><span class="line">        avgx += points[i].getX()/number;</span><br><span class="line">        avgy += points[i].getY()/number;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;number;i++)&#123;</span><br><span class="line">        lxy += (points[i].getX() - avgx) * (points[i].getY() - avgy);</span><br><span class="line">        lyy += (points[i].getY() - avgy) * (points[i].getY() - avgy);</span><br><span class="line">        lxx += (points[i].getX() - avgx) * (points[i].getX() - avgx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"This line can be fitted by y=ax+b."</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">//输出回归系数a,b</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"a = "</span>&lt;&lt;lxy/lxx&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="string">"b = "</span>&lt;&lt;avgy-lxy*avgx/lxx&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">float</span>)(lxy/<span class="built_in">sqrt</span>(lxx*lyy)); <span class="comment">//线性相关的密切程度</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Point points[<span class="number">10</span>] = &#123;Point(<span class="number">6</span>,<span class="number">10</span>),Point(<span class="number">14</span>,<span class="number">20</span>),Point(<span class="number">26</span>,<span class="number">30</span>),Point(<span class="number">33</span>,<span class="number">40</span>),</span><br><span class="line">                        Point(<span class="number">46</span>,<span class="number">50</span>),Point(<span class="number">54</span>,<span class="number">60</span>),Point(<span class="number">67</span>,<span class="number">70</span>),Point(<span class="number">75</span>,<span class="number">80</span>),</span><br><span class="line">                        Point(<span class="number">84</span>,<span class="number">90</span>),Point(<span class="number">100</span>,<span class="number">100</span>)&#125;;</span><br><span class="line">    <span class="keyword">float</span> r = lineFit(points,<span class="number">10</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"Line coefficient r = "</span>&lt;&lt;r&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831012-bcb648c7-2adc-4edd-b8b7-e79549e28c5c.png#align=left&display=inline&height=64&originHeight=64&originWidth=295&size=0&status=done&style=none&width=295" alt=""><br /></p>
+<p><a name="f8bcc9cb"></a></p>
+<h1 id="二、指针"><a href="#二、指针" class="headerlink" title="二、指针"></a>二、指针</h1><h2 id="1-指针运算符-和-amp"><a href="#1-指针运算符-和-amp" class="headerlink" title="1. 指针运算符 * 和 &amp;"></a>1. 指针运算符 * 和 &amp;</h2><ul>
+<li><code>*</code> 称为指针运算符，也称解析；</li>
+<li><code>&amp;</code> 称为取地址运算符；</li>
+</ul>
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830943-6b1363c3-f834-4858-bf3d-e7ac3e2e0614.png#align=left&display=inline&height=648&originHeight=648&originWidth=638&size=0&status=done&style=none&width=638" alt=""><br /></p>
+<p><a name="79a23078"></a></p>
+<h2 id="2-指针变量的赋值运算"><a href="#2-指针变量的赋值运算" class="headerlink" title="2. 指针变量的赋值运算"></a>2. 指针变量的赋值运算</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830950-d17d8b8e-6c2d-48b6-8fd2-a6f62595e431.png#align=left&display=inline&height=683&originHeight=683&originWidth=1001&size=0&status=done&style=none&width=1001" alt=""><br /></p>
+<p><a name="31e98e30"></a></p>
+<h2 id="3-指针的类型"><a href="#3-指针的类型" class="headerlink" title="3. 指针的类型"></a>3. 指针的类型</h2><h3 id="指向常量的指针-const-int-p"><a href="#指向常量的指针-const-int-p" class="headerlink" title="指向常量的指针 const int * p"></a>指向常量的指针 const int * p</h3><p><br /><code>*</code> 在const的右边<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830966-50ebf258-9e5d-4c70-9176-cf873b3329c8.png#align=left&display=inline&height=250&originHeight=273&originWidth=668&size=0&status=done&style=none&width=611" alt=""><br /></p>
+<p><a name="73286f73"></a></p>
+<h3 id="指针类型的常量-int-const-p"><a href="#指针类型的常量-int-const-p" class="headerlink" title="指针类型的常量 int * const p"></a>指针类型的常量 int * const p</h3><p><code>*</code> 在const的左边<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830966-7b754d7d-6829-4eb4-8940-c7c5f8891342.png#align=left&display=inline&height=159&originHeight=167&originWidth=453&size=0&status=done&style=none&width=431" alt=""><br /></p>
+<p><a name="a643e8ff"></a></p>
+<h2 id="4-指针的算法运算、关系运算"><a href="#4-指针的算法运算、关系运算" class="headerlink" title="4. 指针的算法运算、关系运算"></a>4. 指针的算法运算、关系运算</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830976-c29d1459-3dad-4ad0-a5b1-b72884eb1ccd.png#align=left&display=inline&height=500&originHeight=545&originWidth=667&size=0&status=done&style=none&width=612" alt=""><br /></p>
+<p><a name="2e573958"></a></p>
+<h2 id="5-用指针访问数组元素"><a href="#5-用指针访问数组元素" class="headerlink" title="5. 用指针访问数组元素"></a>5. 用指针访问数组元素</h2><p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831250-6773ff50-e75b-4111-b886-ca0c33aa4af8.png#align=left&display=inline&height=694&originHeight=694&originWidth=927&size=0&status=done&style=none&width=927" alt=""><br /></p>
+<p><a name="e18b5483"></a></p>
+<h2 id="6-指针数组-Point-p-2"><a href="#6-指针数组-Point-p-2" class="headerlink" title="6. 指针数组 Point *p[2]"></a>6. 指针数组 Point *p[2]</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830998-90c08d75-de77-4b4e-9084-b929779d0067.png#align=left&display=inline&height=715&originHeight=850&originWidth=742&size=0&status=done&style=none&width=624" alt=""><br /></p>
+<p><a name="5c7f3da5"></a></p>
+<h2 id="7-指针与函数"><a href="#7-指针与函数" class="headerlink" title="7. 指针与函数"></a>7. 指针与函数</h2><h3 id="指针作为函数参数"><a href="#指针作为函数参数" class="headerlink" title="指针作为函数参数"></a>指针作为函数参数</h3><p>为什么需要用指针做参数？<br /></p>
+<ul>
+<li>需要数据双向传递时（引用也可以达到此效果）；<br /><br>用指针作为函数的参数，可以使被调函数通过形参指针存取主调函数中实参指针指向的数据，实现数据的双向传递</li>
+<li>需要传递一组数据，只传首地址运行效率比较高 ；<br /><br>实参是数组名时，形参可以是指针</li>
+</ul>
+<p><br /><strong>引用和指针有何区别？何时只能用指针而不能使用引用</strong><br /></p>
+<ul>
+<li><strong>引用是一个别名，不能为空，不能被重新分配</strong>；指针是一个存放地址的变量。</li>
+<li>当需要对变量重新赋以另外的地址或赋值为NULL时只能使用指针</li>
+</ul>
+<h3 id="指针类型的函数"><a href="#指针类型的函数" class="headerlink" title="指针类型的函数"></a>指针类型的函数</h3><p>若函数的返回值是指针，该函数就是指针类型的函数<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> * <span class="title">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152830999-e6b5e1aa-d7ef-4881-b64d-df60d7f65fbb.png#align=left&display=inline&height=896&originHeight=896&originWidth=732&size=0&status=done&style=none&width=732" alt=""></p>
+<h3 id="函数类型的指针"><a href="#函数类型的指针" class="headerlink" title="函数类型的指针"></a>函数类型的指针</h3><p>即指向函数的指针</p>
+<p>定义：数据类型 （* 函数指针名）(形参表)</p>
+<p><code>int (*func)(int, int)</code></p>
+<p>含义：函数指针指向的是程序代码存储区。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831021-1f916511-a3ae-4361-ae7a-226844eb2511.png#align=left&display=inline&height=165&originHeight=177&originWidth=677&size=0&status=done&style=none&width=633" alt="">)<img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831017-c84c66b4-e187-4066-bbd4-f5f5eb693425.png#align=left&display=inline&height=132&originHeight=132&originWidth=626&size=0&status=done&style=none&width=626" alt=""></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compute</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> (*func)(<span class="keyword">int</span>, <span class="keyword">int</span>))</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> func(a, b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> <span class="comment">// 求最大值</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="number">11</span></span><br><span class="line">    <span class="keyword">return</span> ((a &gt; b) ? a : b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">min</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> <span class="comment">// 求最小值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((a &lt; b) ? a : b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> <span class="comment">// 求和</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, b, res;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入整数a："</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入整数b："</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; b;</span><br><span class="line">    res = compute(a, b, &amp;<span class="built_in">max</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Max of "</span> &lt;&lt; a &lt;&lt; <span class="string">" and "</span> &lt;&lt; b &lt;&lt; <span class="string">" is "</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    res = compute(a, b, &amp;<span class="built_in">min</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Min of "</span> &lt;&lt; a &lt;&lt; <span class="string">" and "</span> &lt;&lt; b &lt;&lt; <span class="string">" is "</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    res = compute(a, b, &amp;sum);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Sum of "</span> &lt;&lt; a &lt;&lt; <span class="string">" and "</span> &lt;&lt; b &lt;&lt; <span class="string">" is "</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-对象指针"><a href="#8-对象指针" class="headerlink" title="8. 对象指针"></a>8. 对象指针</h2><p>定义形式：类名 *对象指针名</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Point *ptr;</span><br><span class="line"><span class="function">Point <span class="title">a</span><span class="params">(<span class="number">5</span>,<span class="number">10</span>)</span></span>;</span><br><span class="line">ptr = &amp;a;</span><br></pre></td></tr></table></figure>
+
+<p>对象指针通过 <code>-&gt;</code> 访问对象成员</p>
+<p><code>ptr-&gt;getx()</code> 相当于 <code>(*ptr).getx();</code></p>
+<h2 id="9-this-指针"><a href="#9-this-指针" class="headerlink" title="9. this 指针"></a>9. this 指针</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831034-b64b71d3-d796-414e-ac06-cf41db2b22bf.png#align=left&display=inline&height=236&originHeight=253&originWidth=651&size=0&status=done&style=none&width=606" alt=""></p>
+<h2 id="10-动态内存分配"><a href="#10-动态内存分配" class="headerlink" title="10. 动态内存分配"></a>10. 动态内存分配</h2><blockquote>
+<p>首先我们需要分清几个概念<br>int *point = new int(5); //用5初始化<br>int *point = new int();  //用0初始化<br>int *point = new int; //不分配初值<br>int *point  = new int[5]    //表示为该指针分配包含十个元素的地址空间</p>
+</blockquote>
+<p><br /><strong>同一个程序有可能会处理很大的数据，有时处理很小，若总是以最大的空间内存分配，难免会造成浪费。</strong></p>
+<ul>
+<li>在C语言中，用 <code>malloc</code> 进行动态内存分配；</li>
+<li>在C++中，用 <code>new</code> 语句</li>
+</ul>
+<h3 id="new-动态分配"><a href="#new-动态分配" class="headerlink" title="new 动态分配"></a>new 动态分配</h3><p><strong>动态分配一个变量</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p = <span class="keyword">new</span> T; <span class="comment">//T代表int,double,float等等</span></span><br><span class="line"><span class="comment">//p类型为T*的指针</span></span><br><span class="line"><span class="comment">//该语句动态分配了一片大小为 sizeof(T) 字节的内存空间，并将起始地址赋给了p</span></span><br><span class="line"><span class="keyword">int</span> *pn;</span><br><span class="line">pn = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">*pn = <span class="number">5</span>; <span class="comment">//往刚开辟的空间中写入了数据5</span></span><br></pre></td></tr></table></figure>
+
+<p><br /><strong>动态分配一个数组</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p = <span class="keyword">new</span> T[N];</span><br><span class="line"><span class="comment">//动态分配了一片大小为 sizeof(T)*N 字节的内存空间，并将起始地址赋给了p</span></span><br><span class="line"><span class="keyword">int</span> *pn;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">5</span>;</span><br><span class="line">pn = <span class="keyword">new</span> <span class="keyword">int</span>[i*<span class="number">20</span>]; <span class="comment">//100个元素，最大合法下标为99</span></span><br><span class="line">pn[<span class="number">0</span>] = <span class="number">20</span>;</span><br><span class="line">pn[<span class="number">100</span>] = <span class="number">30</span>; <span class="comment">// 编译没问题，运行时数组越界</span></span><br></pre></td></tr></table></figure>
+
+<p>注：new运算符返回值类型都是 <code>T*</code></p>
+<br />
+
+
+
+<h3 id="delete-释放动态分配的内存"><a href="#delete-释放动态分配的内存" class="headerlink" title="delete 释放动态分配的内存"></a>delete 释放动态分配的内存</h3><p>delete总是和new成对出现 :即动态分配的内存一定要释放掉，否则占用的内存就会越来越多。</p>
+<p><strong>delete指针</strong></p>
+<p>该指针必须指向new出来的空间</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">*p = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">delete</span> p;</span><br><span class="line"><span class="keyword">delete</span> p; <span class="comment">//wrong; 同一片空间不能被delete两次</span></span><br></pre></td></tr></table></figure>
+
+<p><br /><strong>delete [ ]指针</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">20</span>];</span><br><span class="line">p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">delete</span> []p; <span class="comment">//若delete p 则只删除了一部分，没有删干净</span></span><br></pre></td></tr></table></figure>
+
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831021-b7919913-fc8d-4b01-92ff-4d35c12c8c5a.png#align=left&display=inline&height=295&originHeight=318&originWidth=710&size=0&status=done&style=none&width=658" alt=""><br /></p>
+<h1 id="三、自定义动态数组类-ArrofPoints"><a href="#三、自定义动态数组类-ArrofPoints" class="headerlink" title="三、自定义动态数组类 ArrofPoints"></a>三、自定义动态数组类 ArrofPoints</h1><p>将数组的建立和删除过程封装起来，数组下标越界检查<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831032-29c3f4bd-315b-4554-8355-faf8b0807338.png#align=left&display=inline&height=732&originHeight=732&originWidth=856&size=0&status=done&style=none&width=856" alt=""><br /></p>
+<p><a name="9a51b0ee"></a></p>
+<h1 id="四、Vector类模板（C-标准库中的）"><a href="#四、Vector类模板（C-标准库中的）" class="headerlink" title="四、Vector类模板（C++标准库中的）"></a>四、Vector类模板（C++标准库中的）</h1><p><strong>为什么需要vector</strong><br /></p>
+<ul>
+<li>封装任何类型的动态数组，自动创建和删除</li>
+<li>数组下标越界检查</li>
+</ul>
+<p><br /><strong>vector对象的定义</strong><br />vector&lt;元素类型&gt; 数组对象名(数组长度)<br /></p>
+<ul>
+<li><code>vector&lt;int&gt; arr(5)</code>  建立大小为5的int数组</li>
+<li><code>vector&lt;int&gt; arr(5,2)</code> 大小为5的int类型数组，所有元素用2初始化</li>
+</ul>
+<p><br /><strong>vector对象的使用</strong><br /></p>
+<ul>
+<li>对数组元素的引用 ：<br /><br>与普通数组具有相同形式： vector对象名 [ 下标表达式 ]<br /></li>
+</ul>
+<p><strong>vector数组对象名不表示数组首地址 ，因为数组对象不是数组，而是封装了数组的对象</strong></p>
+<ul>
+<li>获得数组长度 ：用size函数 数组对象名.size()</li>
+</ul>
+<p><br /><strong>vector应用举例：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831053-a5f3bdec-29ab-42a3-b90f-1a6b4f9e8bd2.png#align=left&display=inline&height=575&originHeight=578&originWidth=550&size=0&status=done&style=none&width=547" alt=""><br /></p>
+<p><a name="823bfdee"></a></p>
+<h1 id="五、深复制与浅复制"><a href="#五、深复制与浅复制" class="headerlink" title="五、深复制与浅复制"></a>五、深复制与浅复制</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831045-fc56ed1d-cf15-4188-9d9f-e6052dac515c.png#align=left&display=inline&height=166&originHeight=177&originWidth=664&size=0&status=done&style=none&width=624" alt=""></p>
+<p>以上面的自定义动态数组类 ArrayOfPoints 为例</p>
+<h2 id="浅复制"><a href="#浅复制" class="headerlink" title="浅复制"></a>浅复制</h2><p><code>ArrayOfPoints pointsArray2(pointsArray1); //创建副本</code><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831038-ab20ed3a-8ce0-4286-8e21-a724bb6d166f.png#align=left&display=inline&height=318&originHeight=318&originWidth=622&size=0&status=done&style=none&width=622" alt=""><br /></p>
+<ul>
+<li>pointsArray1和pointsArray2有相同的值，表面上好像完成了复制，但是指向的是同一个内存空间，并没有形成真正的副本，当程序中改变pointsArray1时也会改变pointsArray2。</li>
+<li>而且，在程序结束之前，pointsArray1和pointsArray2的析构函数会自动调用，动态分配的内存空间被释放，由于两个对象给公用了同一块内存空间，因此该空间被释放两次，导致运行错误。</li>
+</ul>
+<h2 id="深复制（重新编写复制构造函数）"><a href="#深复制（重新编写复制构造函数）" class="headerlink" title="深复制（重新编写复制构造函数）"></a>深复制（重新编写复制构造函数）</h2><p>核心思想：重新new一个存储空间进行值的复制操作<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831065-cd858609-b5a1-4235-92c4-41380c63d621.png#align=left&display=inline&height=537&originHeight=537&originWidth=692&size=0&status=done&style=none&width=692" alt=""><br /></p>
+<p><a name="08f49df7"></a></p>
+<h1 id="六、字符串"><a href="#六、字符串" class="headerlink" title="六、字符串"></a>六、字符串</h1><p>详见第一章 <a href="https://blog.csdn.net/qq_41133986/article/details/105105801" target="_blank" rel="noopener">【C++复习总结回顾】—— 【一】基础知识+字符串/string类</a><br /></p>
+<p><a name="d770acd8"></a></p>
+<h1 id="七、手撸String类"><a href="#七、手撸String类" class="headerlink" title="七、手撸String类"></a>七、手撸String类</h1><p><strong>设计一个字符串类MyString，具有构造函数、析构函数、复制构造函数、并重载运算符 +、=、+=、[ ]，尽可能的完善它，使之能满足各种需要。</strong><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mystring</span>&#123;</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">char</span>* mystring; <span class="comment">//字符指针</span></span><br><span class="line">        <span class="keyword">int</span> len; <span class="comment">//字符串长度</span></span><br><span class="line">        Mystring(<span class="keyword">int</span> clen)&#123; <span class="comment">//私有构造，防止其他类进行调用创建实例，只使用一次（在+重载）</span></span><br><span class="line">            mystring = <span class="keyword">new</span> <span class="keyword">char</span>[clen + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; clen; i++)</span><br><span class="line">                mystring[i] = <span class="string">'\0'</span>;</span><br><span class="line">            len = clen;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        Mystring(); <span class="comment">//无参构造</span></span><br><span class="line">        Mystring(<span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> cmystring); <span class="comment">//带参构造</span></span><br><span class="line">        Mystring(<span class="keyword">const</span> Mystring&amp; rhs); <span class="comment">//复制构造</span></span><br><span class="line">        ~Mystring(); <span class="comment">//析构</span></span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">getLen</span><span class="params">()</span> <span class="keyword">const</span></span>&#123; <span class="comment">//获取长度</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>-&gt;len;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">const</span> <span class="keyword">char</span> *<span class="title">GetMyString</span><span class="params">()</span> <span class="keyword">const</span></span>&#123; <span class="comment">//获取字符串</span></span><br><span class="line">            <span class="keyword">return</span> mystring;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="keyword">char</span> &amp; <span class="keyword">operator</span>[](<span class="keyword">int</span> offset); <span class="comment">//重载下标运算符，作为左值可被修改，需返回引用</span></span><br><span class="line">        <span class="keyword">char</span> <span class="keyword">operator</span> [](<span class="keyword">int</span> offset) <span class="keyword">const</span>; <span class="comment">//重载下标运算符，作为右值仅能访问</span></span><br><span class="line">        Mystring <span class="keyword">operator</span> +(<span class="keyword">const</span> Mystring&amp; rhs); <span class="comment">//a+b a的值并不会被修改，不需要返回引用</span></span><br><span class="line">        <span class="keyword">void</span> <span class="keyword">operator</span> +=(<span class="keyword">const</span> Mystring&amp; rhs); <span class="comment">//a+=b 无返回值</span></span><br><span class="line">        Mystring&amp; <span class="keyword">operator</span> =(<span class="keyword">const</span> Mystring&amp; rhs); <span class="comment">//a=b a的值会被修改，需要返回引用</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//无参构造</span></span><br><span class="line">Mystring::Mystring()&#123;</span><br><span class="line">    mystring = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1</span>];</span><br><span class="line">    mystring[<span class="number">0</span>] = <span class="string">'\0'</span>;</span><br><span class="line">    len = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//带参构造</span></span><br><span class="line">Mystring::Mystring(<span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> cmystring)&#123;</span><br><span class="line">    len = <span class="built_in">strlen</span>(cmystring);</span><br><span class="line">    mystring = <span class="keyword">new</span> <span class="keyword">char</span>[len+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;len; i++)</span><br><span class="line">        mystring[i] = cmystring[i];</span><br><span class="line">    mystring[len] = <span class="string">'\0'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//复制构造</span></span><br><span class="line">Mystring::Mystring(<span class="keyword">const</span> Mystring&amp; rhs)&#123;</span><br><span class="line">    len = rhs.getLen();</span><br><span class="line">    mystring = <span class="keyword">new</span> <span class="keyword">char</span>[len+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;len;i++)</span><br><span class="line">        mystring[i] = rhs[i];</span><br><span class="line">    mystring[len] = <span class="string">'\0'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//析构 </span></span><br><span class="line">Mystring::~Mystring()&#123;</span><br><span class="line">    <span class="keyword">delete</span>[] mystring;</span><br><span class="line">    len = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span>&amp; Mystring::<span class="keyword">operator</span>[](<span class="keyword">int</span> offset)&#123;</span><br><span class="line">    <span class="keyword">if</span>(offset&gt;len) <span class="comment">//若超出最大长度，返回最后一位字符</span></span><br><span class="line">        <span class="keyword">return</span> mystring[len<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> mystring[offset];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">char</span> Mystring::<span class="keyword">operator</span>[](<span class="keyword">int</span> offset) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (offset &gt; len) <span class="comment">//若超出最大长度，返回最后一位字符</span></span><br><span class="line">        <span class="keyword">return</span> mystring[len - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> mystring[offset];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//字符串连接+重载</span></span><br><span class="line">Mystring Mystring :: <span class="keyword">operator</span> +(<span class="keyword">const</span> Mystring&amp; rhs)&#123;</span><br><span class="line">    <span class="keyword">int</span> totallen = len + rhs.getLen();</span><br><span class="line">    <span class="function">Mystring <span class="title">str</span><span class="params">(totallen)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;i&lt;len;i++)</span><br><span class="line">        str[i] = mystring[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j&lt;rhs.getLen();i++,j++)</span><br><span class="line">        str[i] = rhs[j];</span><br><span class="line">    str[totallen] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> Mystring::<span class="keyword">operator</span>+=(<span class="keyword">const</span> Mystring&amp; rhs)&#123;</span><br><span class="line">    <span class="keyword">int</span> totallen = len + rhs.getLen();</span><br><span class="line">    <span class="function">Mystring <span class="title">str</span><span class="params">(totallen)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(;i&lt;len;i++)</span><br><span class="line">        str[i] = mystring[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; rhs.getLen(); i++, j++)</span><br><span class="line">        str[i] = rhs[j];</span><br><span class="line">    str[totallen] = <span class="string">'\0'</span>;</span><br><span class="line">    *<span class="keyword">this</span> = str;</span><br><span class="line">&#125;</span><br><span class="line">Mystring &amp;Mystring ::<span class="keyword">operator</span>=(<span class="keyword">const</span> Mystring &amp;rhs)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span>[] mystring;</span><br><span class="line">    len = rhs.getLen();</span><br><span class="line">    mystring = <span class="keyword">new</span> <span class="keyword">char</span>[len + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">        mystring[i] = rhs[i];</span><br><span class="line">    mystring[len] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />测试：<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	    <span class="function">Mystring <span class="title">s1</span><span class="params">(<span class="string">"initial test"</span>)</span></span>;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S1:\t"</span> &lt;&lt; s1.GetMyString() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    <span class="keyword">char</span> *temp = <span class="string">"Hello World"</span>;</span><br><span class="line">	    s1 = temp;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Now,S1 is replaced by Hello World"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S1:\t"</span> &lt;&lt; s1.GetMyString() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    <span class="keyword">char</span> s2[<span class="number">20</span>];</span><br><span class="line">	    <span class="built_in">strcpy</span>(s2, <span class="string">"; I like you!"</span>);</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S2:\t"</span> &lt;&lt; s2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    s1 += s2;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S1+S2:\t"</span> &lt;&lt; s1.GetMyString() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S1[4]:\t"</span> &lt;&lt; s1[<span class="number">4</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    s1[<span class="number">4</span>] = <span class="string">'x'</span>;</span><br><span class="line">	    <span class="built_in">cout</span>&lt;&lt;<span class="string">"now s1[4] is repalced by x"</span>&lt;&lt;<span class="built_in">endl</span>; </span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S1:\t"</span> &lt;&lt; s1.GetMyString() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S1[999]:\t"</span> &lt;&lt; s1[<span class="number">999</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    <span class="function">Mystring <span class="title">s3</span><span class="params">(<span class="string">" Another myString"</span>)</span></span>;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S3:\t"</span> &lt;&lt; s3.GetMyString() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    Mystring s4;</span><br><span class="line">	    s4 = s1 + s3;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; <span class="string">"S1+S3:\t"</span> &lt;&lt; s4.GetMyString() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152831071-3c51cb08-2f78-40bc-974a-be5d7078be3a.png#align=left&display=inline&height=220&originHeight=220&originWidth=438&size=0&status=done&style=none&width=438" alt=""></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/01/25/Cpp/5.%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/" data-id="ckeodenbu0027twud6b2jf7zp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/01/26/Cpp/6.%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%B4%BE%E7%94%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    类的继承与派生
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/01/24/Cpp/4.%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E4%B8%8E%E4%BF%9D%E6%8A%A4/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">数据的共享与保护</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '数组与指针',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

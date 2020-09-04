@@ -155,11 +155,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                17
+                61
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                7
+                14
                 <span>标签</span>
             </div>
         </div>
@@ -196,7 +196,7 @@
 
             
             <section id="main">
-    <article id="post-GameUpdate" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-数据库/10-数据库编程" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -204,7 +204,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/30/GameUpdate/">游戏项目中的热更新机制</a>
+            <a class="article-title" href="/2020/03/30/%E6%95%B0%E6%8D%AE%E5%BA%93/10-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E7%A8%8B/">数据库编程</a>
         </h1>
     
 
@@ -213,8 +213,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/11/30/GameUpdate/">
-            <time datetime="2019-11-30T13:51:31.000Z" itemprop="datePublished">2019-11-30</time>
+        <a href="/2020/03/30/%E6%95%B0%E6%8D%AE%E5%BA%93/10-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E7%A8%8B/">
+            <time datetime="2020-03-30T14:02:45.000Z" itemprop="datePublished">2020-03-30</time>
         </a>
     </div>
 
@@ -228,149 +228,11 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/3D-Client/" rel="tag">3D Client</a>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=2.3k字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈8分钟</span></font>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h2 id="项目中的热更新机制"><a href="#项目中的热更新机制" class="headerlink" title="项目中的热更新机制"></a>项目中的热更新机制</h2><p>热更新技术是指可以在不关闭游戏客户端的情况下，动态的更新游戏本身的资源。类似的服务器硬盘的“热插拔”。</p>
-<p>目前市面上的绝大部分游戏客户端都启用了热更新技术，热更新的好处是玩家不必重新下载完整的安装包也能体验到官方的新版本资料片，减少了用户流失。</p>
-<p>项目中安卓系统与苹果系统在热更新的机制上有一个明显的差异：苹果系统不能热更C#代码。</p>
-<p>同样都可以进行热更新的是：AssetBundle（prefab预制体和UI界面图集等）、Table（文本，项目中的excel表格转成的二进制文件）、Lua（Lua脚本语言）、Mapfile（场景地图文件，关卡编辑器生成，项目中独有的）。</p>
-<p>通过校验本地文件的MD5与拉取到的MD5是否一样来进行热更。</p></p>
-            <p class="article-more-link">
-                <a href="/2019/11/30/GameUpdate/#more">查看更多</a>
-            </p>
-        
-        </div>
-		
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://aaronyard.github.io/2019/11/30/GameUpdate/" data-id="ckdz6jwni0012ocud1yg47s4b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-History-of-quantum-physics-1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/28/History-of-quantum-physics-1/">上帝掷骰子吗？（一）</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2019/11/28/History-of-quantum-physics-1/">
-            <time datetime="2019-11-28T14:53:10.000Z" itemprop="datePublished">2019-11-28</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a>
-    </div>
-
-                    </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=1.4k字</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.3k字</span></font>
 					<font color="#E56048"><span class="post-count">⏳阅读时长≈4分钟</span></font>
                 
             </header>
@@ -378,12 +240,20 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>回归到搭建这篇博客的初衷，我要开始写下一些关于量子物理的有趣的事情。</p>
-<h2 id="物理学的黄金时代"><a href="#物理学的黄金时代" class="headerlink" title="物理学的黄金时代"></a>物理学的黄金时代</h2><p>一些关于在确立量子物理这个时代主题之前的事情，这个“之前”，就要从19世纪末说起了。那是物理学的黄金时代，那时还在争论光的本质到底是什么、一个科学与神共存的时代。</p>
-<p>在那个时代，关于光的本质的问题，物理学上的大佬们喋喋不休的争论了前后几百年。两个主要派系分别主导着这场没有硝烟的战争：微粒派和波动派。</p>
-<p>在微粒派和波动派彻底成形之前，远古以来，对于光的猜测一直没有停歇。</p></p>
+            <p><blockquote>
+<p>数据库编程就是用编程方法对数据库进行操纵的技术，SQL编程技术可以有效克服SQL语言实现复杂应用方面的不足（没有逻辑控制能力），提高应用系统和数据库管理系统间的互操作性。</p>
+<p>使用 SQL 编程来访问和管理数据库中数据的方式主要有：</p>
+<ul>
+<li>嵌入式 SQL （ESQL）</li>
+<li>过程化 SQL （PL/SQL）</li>
+<li>存储过程和自定义函数</li>
+<li>开放数据库互连（ODBC）</li>
+<li>Java 数据库连接 （JDBC）</li>
+</ul>
+</blockquote>
+<h1 id="一、嵌入式-SQL"><a href="#一、嵌入式-SQL" class="headerlink" title="一、嵌入式 SQL"></a>一、嵌入式 SQL</h1></p>
             <p class="article-more-link">
-                <a href="/2019/11/28/History-of-quantum-physics-1/#more">查看更多</a>
+                <a href="/2020/03/30/%E6%95%B0%E6%8D%AE%E5%BA%93/10-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E7%A8%8B/#more">查看更多</a>
             </p>
         
         </div>
@@ -395,7 +265,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/28/History-of-quantum-physics-1/" data-id="ckdz6jwnf000vocud34gx9h35" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/03/30/%E6%95%B0%E6%8D%AE%E5%BA%93/10-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E7%A8%8B/" data-id="ckeof1fwq000a2cud17a75ebo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -471,7 +341,7 @@
 
 
 
-    <article id="post-3D-Engine-3" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-数据库/9-事务处理-并发控制" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -479,7 +349,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/28/3D-Engine-3/">3D游戏引擎初探（三）</a>
+            <a class="article-title" href="/2020/03/29/%E6%95%B0%E6%8D%AE%E5%BA%93/9-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/">事务处理-并发控制</a>
         </h1>
     
 
@@ -488,8 +358,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/11/28/3D-Engine-3/">
-            <time datetime="2019-11-28T14:11:31.000Z" itemprop="datePublished">2019-11-28</time>
+        <a href="/2020/03/29/%E6%95%B0%E6%8D%AE%E5%BA%93/9-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/">
+            <time datetime="2020-03-29T14:02:45.000Z" itemprop="datePublished">2020-03-29</time>
         </a>
     </div>
 
@@ -503,22 +373,31 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=789字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈2分钟</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=4.9k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈16分钟</span></font>
                 
             </header>
         
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h1 id="数学相关知识"><a href="#数学相关知识" class="headerlink" title="数学相关知识"></a>数学相关知识</h1><p>在3D游戏引擎中会涉及到数学的相关知识，具体可以划分到线性代数：向量、矩阵、齐次坐标系、四元数。</p>
-<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p>假设大家都已经对向量最基本的加法、减法、点乘、叉乘、单位化都是有了解的，简单介绍一下这些基础计算在游戏引擎中是如何应用的。</p></p>
+            <p><blockquote>
+<p>本章以及上一章的并发控制都是关于<strong>事务处理</strong>技术的。</p>
+<p><strong>事务是一系列的数据库操作，是数据库应用程序的基本逻辑单元。</strong></p>
+<p>事务处理技术主要包括</p>
+<ul>
+<li>数据库恢复技术（上一章）</li>
+<li><strong>并发控制技术</strong></li>
+</ul>
+</blockquote>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200429181735.png" alt=""></p>
+<br></p>
             <p class="article-more-link">
-                <a href="/2019/11/28/3D-Engine-3/#more">查看更多</a>
+                <a href="/2020/03/29/%E6%95%B0%E6%8D%AE%E5%BA%93/9-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/#more">查看更多</a>
             </p>
         
         </div>
@@ -530,7 +409,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/28/3D-Engine-3/" data-id="ckdz6jwmx0008ocud8hyq384e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/03/29/%E6%95%B0%E6%8D%AE%E5%BA%93/9-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/" data-id="ckeof1fx500152cudguinhbpv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -606,7 +485,7 @@
 
 
 
-    <article id="post-3D-Engine-2" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-数据库/8-事务处理-数据库恢复技术" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -614,7 +493,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/27/3D-Engine-2/">3D游戏引擎初探（二）</a>
+            <a class="article-title" href="/2020/03/28/%E6%95%B0%E6%8D%AE%E5%BA%93/8-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%8A%80%E6%9C%AF/">事务处理-数据库恢复技术</a>
         </h1>
     
 
@@ -623,8 +502,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/11/27/3D-Engine-2/">
-            <time datetime="2019-11-27T14:29:36.000Z" itemprop="datePublished">2019-11-27</time>
+        <a href="/2020/03/28/%E6%95%B0%E6%8D%AE%E5%BA%93/8-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%8A%80%E6%9C%AF/">
+            <time datetime="2020-03-28T14:02:45.000Z" itemprop="datePublished">2020-03-28</time>
         </a>
     </div>
 
@@ -638,11 +517,298 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=1.4k字</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.5k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈5分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><blockquote>
+<p>本章以及下一章的并发控制都是关于<strong>事务处理</strong>技术的。</p>
+<p><strong>事务是一系列的数据库操作，是数据库应用程序的基本逻辑单元。</strong></p>
+<p>事务处理技术主要包括</p>
+<ul>
+<li><strong>数据库恢复技术</strong></li>
+<li>并发控制技术（下一章）</li>
+</ul>
+</blockquote>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200429181735.png" alt=""></p>
+<br></p>
+            <p class="article-more-link">
+                <a href="/2020/03/28/%E6%95%B0%E6%8D%AE%E5%BA%93/8-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%8A%80%E6%9C%AF/#more">查看更多</a>
+            </p>
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/28/%E6%95%B0%E6%8D%AE%E5%BA%93/8-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E6%8A%80%E6%9C%AF/" data-id="ckeof1fx700192cud3k421jg2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-数据库/7-查询处理和优化" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/03/27/%E6%95%B0%E6%8D%AE%E5%BA%93/7-%E6%9F%A5%E8%AF%A2%E5%A4%84%E7%90%86%E5%92%8C%E4%BC%98%E5%8C%96/">查询处理和优化</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/27/%E6%95%B0%E6%8D%AE%E5%BA%93/7-%E6%9F%A5%E8%AF%A2%E5%A4%84%E7%90%86%E5%92%8C%E4%BC%98%E5%8C%96/">
+            <time datetime="2020-03-27T14:02:45.000Z" itemprop="datePublished">2020-03-27</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2.1k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈7分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="一、查询处理"><a href="#一、查询处理" class="headerlink" title="一、查询处理"></a>一、查询处理</h1><p>查询处理是数据库管理系统把用户提交上来的查询语句转换成高效的查询执行计划。</p>
+<p>关系数据库管理系统查询处理可以分为4个阶段：</p>
+<ul>
+<li>查询分析</li>
+<li>查询检查</li>
+<li>查询优化</li>
+<li>查询执行</li>
+</ul>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200417110226.png" alt=""></p>
+<h2 id="1-查询分析"><a href="#1-查询分析" class="headerlink" title="1. 查询分析"></a>1. 查询分析</h2><p><strong>首先对查询语句进行扫描、语法分析和词法分析</strong>。从查询语句中识别出语言符号，如SQL关键字、属性名和关系名等，进行语法检查和语法分析，<strong>判断查询语句是否符合SQL语法规则</strong></p></p>
+            <p class="article-more-link">
+                <a href="/2020/03/27/%E6%95%B0%E6%8D%AE%E5%BA%93/7-%E6%9F%A5%E8%AF%A2%E5%A4%84%E7%90%86%E5%92%8C%E4%BC%98%E5%8C%96/#more">查看更多</a>
+            </p>
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/27/%E6%95%B0%E6%8D%AE%E5%BA%93/7-%E6%9F%A5%E8%AF%A2%E5%A4%84%E7%90%86%E5%92%8C%E4%BC%98%E5%8C%96/" data-id="ckeof1fx1000z2cudgvjc0w1i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-数据库/6-数据库设计之E-R图" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/03/26/%E6%95%B0%E6%8D%AE%E5%BA%93/6-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B9%8BE-R%E5%9B%BE/">数据库设计之E-R图</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/26/%E6%95%B0%E6%8D%AE%E5%BA%93/6-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B9%8BE-R%E5%9B%BE/">
+            <time datetime="2020-03-26T14:02:45.000Z" itemprop="datePublished">2020-03-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.2k字</span></font>
 					<font color="#E56048"><span class="post-count">⏳阅读时长≈4分钟</span></font>
                 
             </header>
@@ -650,11 +816,18 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h1 id="3D游戏引擎架构"><a href="#3D游戏引擎架构" class="headerlink" title="3D游戏引擎架构"></a>3D游戏引擎架构</h1><h2 id="最底层"><a href="#最底层" class="headerlink" title="最底层"></a>最底层</h2><p>渲染模块的图形库接口。目前游戏引擎最常用的渲染模块是微软的DirectX库或者开源跨平台的OPENGL和OPENGLES图形库。项目中使用的是Windows的GDI接口，只针对Windows操作系统。</p>
-<h2 id="中间层"><a href="#中间层" class="headerlink" title="中间层"></a>中间层</h2><p>封装好的3D游戏引擎，可以理解为功能的控制模块。可细分为：声音模块、渲染模块、图形系统、UI系统、特效系统、管理系统、物理系统、数据系统、输入系统、内存管理。</p>
-<h2 id="最上层"><a href="#最上层" class="headerlink" title="最上层"></a>最上层</h2><p>游戏开发人员所用到的游戏逻辑，一般情况下是调用引擎封装好的接口编写游戏所需要的逻辑。</p></p>
+            <p><p>P.P.S.Chen 提出的 E-R 模型使用 E-R 图来描述现实世界的概念模型。E-R 模型涉及的主要概念包括实体、属性、实体之间的联系等</p>
+<ul>
+<li><strong>实体 entity：</strong>客观存在并可相互区别的事物，比如一个学生，一门课，学生的一次选课</li>
+<li><strong>属性：</strong>实体所具有的特性，比如学生的身高</li>
+<li><strong>码：</strong>唯一标识实体的属性集，比如学生的学号</li>
+<li><strong>实体型</strong>： 实体名+属性名，比如 <u>学生（学号，姓名，性别）</u>就是一个实体型</li>
+<li><strong>实体集</strong>：同一类型的实体的集合，比如全体学生</li>
+<li><strong>联系 relationship</strong>：实体之间的联系（有一对一，一对多，多对多等多种类型）</li>
+</ul>
+<br></p>
             <p class="article-more-link">
-                <a href="/2019/11/27/3D-Engine-2/#more">查看更多</a>
+                <a href="/2020/03/26/%E6%95%B0%E6%8D%AE%E5%BA%93/6-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B9%8BE-R%E5%9B%BE/#more">查看更多</a>
             </p>
         
         </div>
@@ -666,7 +839,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/27/3D-Engine-2/" data-id="ckdz6jwn0000cocudb7tw1a5f" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/03/26/%E6%95%B0%E6%8D%AE%E5%BA%93/6-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B9%8BE-R%E5%9B%BE/" data-id="ckeof1fx8001c2cud488pfwfe" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -742,7 +915,7 @@
 
 
 
-    <article id="post-3D-Engine-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-数据库/5-关系数据库设计理论" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -750,7 +923,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/24/3D-Engine-1/">3D游戏引擎初探（一）</a>
+            <a class="article-title" href="/2020/03/25/%E6%95%B0%E6%8D%AE%E5%BA%93/5-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA/">关系数据库设计理论</a>
         </h1>
     
 
@@ -759,8 +932,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/11/24/3D-Engine-1/">
-            <time datetime="2019-11-24T15:52:45.000Z" itemprop="datePublished">2019-11-24</time>
+        <a href="/2020/03/25/%E6%95%B0%E6%8D%AE%E5%BA%93/5-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA/">
+            <time datetime="2020-03-25T14:02:45.000Z" itemprop="datePublished">2020-03-25</time>
         </a>
     </div>
 
@@ -774,24 +947,29 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=466字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈1分钟</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈7分钟</span></font>
                 
             </header>
         
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>前阵子，我用C++编写的3D游戏引擎成功的运行了一个小游戏demo，在此将会分享我的学习与搭建历程。</p>
-<p>该3D引擎是跟着书籍《手把手教你架构3D游戏引擎》学习搭建的，由浅入深的讲解以及范例，令我受益匪浅。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>底层运用c++编写，图形接口为GDI（windows下的图形接口，不可跨平台。），模型材质运用的3D max制作，用通用的shader语法解析模型，渲染管线的一些列流程利用了矩阵的数学知识。</p>
-<p>项目结构分为三部分：ECore核心模块，EEngine功能模块，EGame游戏模块。</p></p>
+            <p><blockquote>
+<p>针对一个具体问题，应该如何构造一个适合于它的数据库模式呢？</p>
+</blockquote>
+<h1 id="一、异常"><a href="#一、异常" class="headerlink" title="一、异常"></a>一、异常</h1><p>以下的学生课程关系的函数依赖为 {Sno, Cname} -&gt; {Sname, Sdept, Mname, Grade}，键码为 {Sno, Cname}。也就是说，确定学生和课程之后，就能确定其它信息。</p>
+<img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069534079-7d87b554-ecf7-4201-b0a6-1d2bb51a16aa.png" alt="img" style="zoom:70%;" />
+
+
+
+<p>不符合范式的关系，会产生很多异常，主要有以下四种异常：</p></p>
             <p class="article-more-link">
-                <a href="/2019/11/24/3D-Engine-1/#more">查看更多</a>
+                <a href="/2020/03/25/%E6%95%B0%E6%8D%AE%E5%BA%93/5-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA/#more">查看更多</a>
             </p>
         
         </div>
@@ -803,7 +981,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/24/3D-Engine-1/" data-id="ckdz6jwlw0001ocud7m7p62w5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/03/25/%E6%95%B0%E6%8D%AE%E5%BA%93/5-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA/" data-id="ckeof1fx0000v2cud28vj0yly" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -879,7 +1057,7 @@
 
 
 
-    <article id="post-Hexo-blog" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-数据库/4-数据库安全性和完整性" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -887,7 +1065,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/24/Hexo-blog/">博客建站</a>
+            <a class="article-title" href="/2020/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93/4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E5%AE%8C%E6%95%B4%E6%80%A7/">数据库安全性和完整性</a>
         </h1>
     
 
@@ -896,8 +1074,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/11/24/Hexo-blog/">
-            <time datetime="2019-11-24T05:44:07.000Z" itemprop="datePublished">2019-11-24</time>
+        <a href="/2020/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93/4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E5%AE%8C%E6%95%B4%E6%80%A7/">
+            <time datetime="2020-03-24T14:02:45.000Z" itemprop="datePublished">2020-03-24</time>
         </a>
     </div>
 
@@ -911,11 +1089,287 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=1.6k字</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=3.4k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈13分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="一、数据库安全性"><a href="#一、数据库安全性" class="headerlink" title="一、数据库安全性"></a>一、数据库安全性</h1><h2 id="1-什么是数据库的安全性"><a href="#1-什么是数据库的安全性" class="headerlink" title="1. 什么是数据库的安全性"></a>1. 什么是数据库的安全性</h2><p><strong>数据库的安全性是指保护数据库以防止不合法使用所造成的数据泄露、更改或破坏</strong>。</p>
+<p>对数据安全性产生威胁的因素主要有以下几个方面</p>
+<ul>
+<li>非授权用户对数据库的恶意存取和破坏</li>
+<li>数据库中重要或敏感的数据被泄露</li>
+<li>安全环境的脆弱性</li>
+</ul>
+<h2 id="2-数据库安全性控制"><a href="#2-数据库安全性控制" class="headerlink" title="2. 数据库安全性控制"></a>2. 数据库安全性控制</h2></p>
+            <p class="article-more-link">
+                <a href="/2020/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93/4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E5%AE%8C%E6%95%B4%E6%80%A7/#more">查看更多</a>
+            </p>
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93/4-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E5%92%8C%E5%AE%8C%E6%95%B4%E6%80%A7/" data-id="ckeof1fwv000o2cud9i3n2uj0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-数据库/3-关系数据库标准语言SQL" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL/">��ϵ���ݿ��׼����SQL</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL/">
+            <time datetime="2020-03-23T14:02:45.000Z" itemprop="datePublished">2020-03-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=4.8k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈19分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="一、数据定�"><a href="#一、数据定�" class="headerlink" title="一、数据定�?"></a>一、数据定�?</h1><p>关系数据库系统支持三级模式结构，其模式，外模式，内模式中的基本对象有模式、表、视图和索引，所以SQL的数据定义功能包括模式定义、表定义、视图和索引的定�?</p>
+<h2 id="1-模式的定义与删除"><a href="#1-模式的定义与删除" class="headerlink" title="1. 模式的定义与删除"></a>1. 模式的定义与删除</h2><h3 id="�-模式定义"><a href="#�-模式定义" class="headerlink" title="�?模式定义"></a>�?模式定义</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> 模式�?authorization 用户�?</span><br></pre></td></tr></table></figure></p>
+            <p class="article-more-link">
+                <a href="/2020/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL/#more">查看更多</a>
+            </p>
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/3-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80SQL/" data-id="ckeof1fww000r2cudg1ohbm5d" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-数据库/2-关系数据库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/03/22/%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">关系数据库</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/22/%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">
+            <time datetime="2020-03-22T14:02:45.000Z" itemprop="datePublished">2020-03-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.7k字</span></font>
 					<font color="#E56048"><span class="post-count">⏳阅读时长≈6分钟</span></font>
                 
             </header>
@@ -923,13 +1377,12 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><h1 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h1><p><a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>：看了匠心零度的博客，我才下定决心要做一个自己的博客，理由太充分了。</p>
-<p><a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>：博客的建立，基础的工作都是按照小茗同学的教程来做的，很详细。</p>
-<p><a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>：最终的博客主题确定为徐靖峰的博客主题，联系上后告知了<a href="https://blog.zhangruipeng.me/hexo-theme-icarus/" target="_blank" rel="noopener">相关主题</a>以及<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">主题出处</a>。</p>
-<h1 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h1><p>AaronYard：<a href="https://aaronyard.github.io/">https://aaronyard.github.io/</a></p>
-<p>欢迎各位来到我的博客考察~👏👏👏</p></p>
+            <p><h1 id="一、关系"><a href="#一、关系" class="headerlink" title="一、关系"></a>一、关系</h1><p>关系模型的数据结构非常简单，只包含单一的数据结构 —— 关系。在用户看来，关系模型中的数据的逻辑结构是一张扁平的二维表</p>
+<p>相关概念：（上一节已经给出了一些概念）</p>
+<h2 id="1-域-domain"><a href="#1-域-domain" class="headerlink" title="1. 域 domain"></a>1. 域 domain</h2><p>域是一组相同数据类型的值的集合</p>
+<p>比如人的年龄 1 - 120 岁</p></p>
             <p class="article-more-link">
-                <a href="/2019/11/24/Hexo-blog/#more">查看更多</a>
+                <a href="/2020/03/22/%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/#more">查看更多</a>
             </p>
         
         </div>
@@ -941,7 +1394,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/24/Hexo-blog/" data-id="ckdz6jwnd000socud2n450f63" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/03/22/%E6%95%B0%E6%8D%AE%E5%BA%93/2-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" data-id="ckeof1fwt000h2cud7n5k1md5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1017,7 +1470,7 @@
 
 
 
-    <article id="post-MyHexo" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-数据库/1-数据库系统概述" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1025,7 +1478,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/23/MyHexo/">我的个人博客开通啦</a>
+            <a class="article-title" href="/2020/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">数据库系统概述</a>
         </h1>
     
 
@@ -1034,8 +1487,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/11/23/MyHexo/">
-            <time datetime="2019-11-23T14:44:14.000Z" itemprop="datePublished">2019-11-23</time>
+        <a href="/2020/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
+            <time datetime="2020-03-21T14:02:45.000Z" itemprop="datePublished">2020-03-21</time>
         </a>
     </div>
 
@@ -1043,28 +1496,34 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=838字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈2分钟</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.4k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈4分钟</span></font>
                 
             </header>
         
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>欢迎您来到我的 <a href="https://www.aaronyard.top/" target="_blank" rel="noopener">个人博客</a>！点击此处进入我的<a href="https://github.com/AaronYard" target="_blank" rel="noopener">GitHub</a>个人账户。</p>
-<p>虽说大学期间有为学院写过一个学院网站，但是懵懵懂懂，并不知道从搭建一个网站到可以外网访问的完整流程。所以从某种意义上来讲，这是我第一次搭建完成一个完整的网站，我将它作为我的个人博客（容我小得瑟一下，嘻嘻），此博客是基于Hexo与Git生成的网站，之后有时间了我会写一篇详细的搭建教程供各位参考。</p></p>
+            <p><h1 id="一、-数据库的四个基本概念"><a href="#一、-数据库的四个基本概念" class="headerlink" title="一、 数据库的四个基本概念"></a>一、 数据库的四个基本概念</h1><ul>
+<li><p><strong>数据 data</strong></p>
+</li>
+<li><p><strong>数据库 DataBase / DB</strong></p>
+<p>数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合</p>
+</li>
+<li><p><strong>数据库管理系统 DataBase Management System / DBMS</strong></p>
+<p>DBMS 是位于用户和操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件，也是一个大型复杂的软件系统。</p></p>
             <p class="article-more-link">
-                <a href="/2019/11/23/MyHexo/#more">查看更多</a>
+                <a href="/2020/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/#more">查看更多</a>
             </p>
         
         </div>
@@ -1076,7 +1535,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/23/MyHexo/" data-id="ckdz6jwnn001docuddq6o0ig7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/03/21/%E6%95%B0%E6%8D%AE%E5%BA%93/1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" data-id="ckeof1fwl00042cud7b75h092" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1153,7 +1612,7 @@
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">下一页 &amp;raquo;</a>
     </nav>
 </section>
             
@@ -1270,7 +1729,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1279,7 +1738,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -1288,7 +1747,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1297,7 +1756,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/3D-Client/" style="font-size: 20px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 15px;">3D Engine</a> <a href="/tags/LeetCode/" style="font-size: 15px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
         </div>
     </div>
 

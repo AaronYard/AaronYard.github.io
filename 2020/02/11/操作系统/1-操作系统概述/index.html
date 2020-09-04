@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>操作系统概述 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1-操作系统概述">
+<meta name="keywords" content="操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统概述">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;02&#x2F;11&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="1-操作系统概述">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200507095035.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113515.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113529.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113543.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113601.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113613.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113622.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113632.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113649.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113701.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705113716.png">
+<meta property="og:updated_time" content="2020-09-04T15:47:45.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200507095035.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-操作系统/1-操作系统概述" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            操作系统概述
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
+            <time datetime="2020-02-11T14:02:45.000Z" itemprop="datePublished">2020-02-11</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=3.8k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈12分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="⛵-操作系统概述"><a href="#⛵-操作系统概述" class="headerlink" title="⛵ 操作系统概述"></a>⛵ 操作系统概述</h1><hr>
+<h2 id="一、操作系统的概念和功能"><a href="#一、操作系统的概念和功能" class="headerlink" title="一、操作系统的概念和功能"></a>一、操作系统的概念和功能</h2><h3 id="1-什么是操作系统"><a href="#1-什么是操作系统" class="headerlink" title="1. 什么是操作系统"></a>1. 什么是操作系统</h3><ul>
+<li><p>操作系统（Operating System，简称OS）是管理计算机硬件与软件资源的程序，是计算机系统的内核与基石；</p>
+</li>
+<li><p>操作系统本质上是运行在计算机上的软件程序 ；</p>
+</li>
+<li><p>操作系统为用户提供一个与系统交互的操作界面 ；</p>
+</li>
+<li><p>操作系统分内核与外壳（我们可以把外壳理解成围绕着内核的应用程序，而内核就是能操作硬件的程序）。</p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200507095035.png" style="zoom: 80%;" />
+
+</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="2-操作系统的功能和目标"><a href="#2-操作系统的功能和目标" class="headerlink" title="2. 操作系统的功能和目标"></a>2. 操作系统的功能和目标</h3><ul>
+<li><p><code>对系统资源的管理</code></p>
+</li>
+<li><p><code>向上层提供接口</code></p>
+<ul>
+<li>给普通用户使用的：GUI图形界面 / 命令接口</li>
+<li>给软件/程序员用的：<strong>程序接口——系统调用</strong></li>
+</ul>
+</li>
+<li><p><code>对下层功能的扩展</code></p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113515.png" alt=""></p>
+<p>没有任何软件支持的计算机成为裸机。在裸机上安装的操作系统， 可以提供资源管理功能和方便用户的服务功能，将裸机改造成功能 更强、使用更方便的机器</p>
+<p>类比汽车： 发动机——只会转；轮胎——只会滚； 在原始的硬件机器上覆盖一层传动系统——让发动机带着轮子转——使原始的硬件机器得到拓展</p>
+<p>操作系统对硬件机器的拓展：将CPU、内存、磁盘、显示器、键盘等硬件合理地组织起来，让各种硬件 能够相互协调配合，实现更多更复杂的功能 普通用户无需关心这些硬件在底层是怎么组织起来工作的，只需直接使用操作系统提供的接口即可</p>
+</li>
+</ul>
+<h2 id="二、操作系统的四个特征"><a href="#二、操作系统的四个特征" class="headerlink" title="二、操作系统的四个特征"></a>二、操作系统的四个特征</h2><h3 id="1-并发（最基本特征）"><a href="#1-并发（最基本特征）" class="headerlink" title="1. 并发（最基本特征）"></a>1. 并发（最基本特征）</h3><ul>
+<li><code>并发</code>：并发是指宏观上在<strong>一段时间内</strong>能同时运行多个程序。这些程序宏观上是同时发生的，但微观上是交替发生的。操作系统通过引入进程和线程，使得程序能够并发运行。</li>
+</ul>
+<p>  <strong>单核CPU</strong>同一时刻只能执行一个程序，各个程序只能并发地执行 ；</p>
+<p>  <strong>多核CPU</strong>同一时刻可以同时执行多个程序，多个程序可以并行地执行。</p>
+<p>  比如Intel的第八代i3处理器就是<code>4核CPU</code>，意味着可以<code>并行地执行4个程序</code><br>  即使是对于4核CPU来说，只要有4个以上的程序需要“同时”运行，那么并发性依然是必不可少的，因此 <strong>并发性 是操作系统一个基本的特性</strong></p>
+<ul>
+<li><p><code>并行</code>：并行则指<strong>同一时刻</strong>能运行多个指令，指两个或多个事件在<strong>同一时刻同时发生</strong>。并行需要硬件支持，如多流水线、多核处理器或者分布式计算系统。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113529.png" alt=""></p>
+</li>
+</ul>
+<h3 id="2-共享（最基本特征）"><a href="#2-共享（最基本特征）" class="headerlink" title="2. 共享（最基本特征）"></a>2. 共享（最基本特征）</h3><p>共享即资源共享，是<strong>指系统中的资源可供内存中多个<code>并发</code>执行的进程共同使用</strong>。</p>
+<p>两种共享方式</p>
+<ul>
+<li><p><code>互斥共享</code></p>
+<p>互斥共享的资源称为<code>临界资源</code>，例如打印机等，虽然可以提供给多个进程使用，<strong>但在同一时刻只允许一个进程访问</strong>，需要用同步机制来实现互斥访问。</p>
+</li>
+<li><p><code>同时共享</code><br>系统中的某些资源，允许一个时间段内由多个进程“<code>同时</code>”对它们进行访问</p>
+</li>
+</ul>
+<p><strong>所谓的“同时”往往是宏观上的</strong>，而在微观上，这些进程可能是交替地对该资源进行访问的（即分时共享）</p>
+<p>实例：</p>
+<ul>
+<li><strong>互斥共享方式</strong>：使用QQ和微信视频。同一时间段内摄像头只能分配给其中一个进程。</li>
+<li><strong>同时共享方式</strong>：使用QQ发送文件A，同时使用微信发送文件B。宏观上看，两边都在同时读取并发送文件， 说明两个进程都在访问硬盘资源，从中读取数据。微观上看，两个进程是交替着访问硬盘的</li>
+</ul>
+<h4 id="💖-并发和共享互为存在条件"><a href="#💖-并发和共享互为存在条件" class="headerlink" title="💖 并发和共享互为存在条件"></a>💖 并发和共享互为存在条件</h4><p>并发性指计算机系统中同时存在着多个运行着的程序。</p>
+<p>共享性是指系统中的资源可供内存中多个并发执行的进程共同使用。</p>
+<p>通过下述例子来看并发与共享的关系：</p>
+<p>使用QQ发送文件A，同时使用微信发送文件B。</p>
+<ul>
+<li><p>两个进程正在并发执行（并发性）</p>
+<p>如果失去并发性，则系统中只有一个程序正在运行，则共享性失去存在的意义</p>
+</li>
+<li><p>需要共享地访问硬盘资源（共享性）</p>
+<p>如果失去共享性，则QQ和微信不能同时访问硬盘资源，就无法实现同时发 送文件，也就无法并发</p>
+<p>同时，<code>没有并发和共享，就谈不上虚拟和异步，因此并发和共享是操作系统的两个基本的特征</code></p>
+</li>
+</ul>
+<h3 id="3-虚拟"><a href="#3-虚拟" class="headerlink" title="3. 虚拟"></a>3. 虚拟</h3><p>虚拟是指<strong>把一个物理上的实体变为若干个逻辑上的对应物</strong>。物理实体（前者）是实际存在的，而逻辑上对应物（后者）是用户感受到的。</p>
+<p>用一个例子来理解:</p>
+<p>我们都知道 <code>一个程序需要放入内存并给它分配CPU才能执行</code></p>
+<p>GTA5需要4GB的运行内存，QQ需要256MB的内存，Chrome需要256MB的内 存，网易云音乐需要256MB的内存……</p>
+<p>电脑：4GB内存</p>
+<p>处理器：单核CPU</p>
+<p><strong>问题1</strong>：这些程序同时运行需要的内存远大于4GB，那么为什么它们还可以 在我的电脑上同时运行呢？</p>
+<p><strong>答</strong>：这是虚拟存储器技术 (<code>空分复用技术</code>)。实际只有4GB的内存，在用户看来似乎远远大 于4GB</p>
+<p><strong>问题2</strong>：既然一个程序需要被分配CPU才能正常执行，那么为什么<code>单核CPU</code> 的电脑中能同时运行这么多个程序呢？</p>
+<p><strong>答</strong>：这是虚拟处理器技术（<code>时分复用技术</code>），微观上处理机在 各个微小的时间段内交替 着为各个进程服务。实际上只有一个单核CPU，在用户看来似乎有 6个CPU在同时为自己服务</p>
+<p>下面来解释一下上述两种虚拟技术：</p>
+<ul>
+<li><p><code>时分复用技术</code></p>
+<p>多个进程能在同一个处理器上并发执行使用了时分复用技术，让每个进程轮流占用处理器，每次只执行一小个时间片并快速切换。</p>
+</li>
+<li><p><code>空分复用技术</code></p>
+<p>虚拟内存使用了空分复用技术，它<strong>将物理内存抽象为地址空间，每个进程都有各自的地址空间</strong>。地址空间的页被映射到物理内存，地址空间的页并不需要全部在物理内存中，当使用到一个没有在物理内存的页时，执行页面置换算法，将该页置换到内存中。</p>
+</li>
+</ul>
+<p>显然，如果失去了并发性，则一个时间段内系统中只需运行一道程序，那么就失去了实现虚拟性的意义了。因此，<strong>没有并发性，就谈不上虚拟性</strong></p>
+<h3 id="4-异步"><a href="#4-异步" class="headerlink" title="4. 异步"></a>4. 异步</h3><p>异步是指，在多道程序环境下，允许多个程序并发执行，但<strong>由于资源有限，进程的执行不是一贯到底的， 而是走走停停，以不可预知的速度向前推进</strong>，这就是进程的异步性。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113543.png" alt=""></p>
+<p>如果失去了并发性，即系统只能串行地运行各个程序，那么每个程序的执行会一贯到底。<strong>只有系统拥有并发性，才有可能导致异步性</strong></p>
+<h2 id="三、中断和异常"><a href="#三、中断和异常" class="headerlink" title="三、中断和异常"></a>三、中断和异常</h2><h3 id="1-用户态和内核态"><a href="#1-用户态和内核态" class="headerlink" title="1. 用户态和内核态"></a>1. 用户态和内核态</h3><p>根据进程访问资源的特点，我们可以把进程在系统上的运行分为两个级别：</p>
+<ul>
+<li>用户态(user mode) : 用户态运行的进程可以直接读取用户程序的数据。</li>
+<li>系统态(kernel mode):可以简单的理解<strong>内核态运行的进程或程序几乎可以访问计算机的任何资源，不受限制。</strong></li>
+</ul>
+<h3 id="2-中断的作用"><a href="#2-中断的作用" class="headerlink" title="2. 中断的作用"></a>2. 中断的作用</h3><p>CPU上会运行两种程序，一种是 <code>操作系统内核程序</code> (是整个系统的管理者)，一种是 <code>应用程序</code></p>
+<p>在合适的情况下，操作系统内核会把CPU的使用权主动让给应用程序。<strong>“中断”是让操作系统内核夺回CPU使用权的唯一途径</strong></p>
+<p><strong>如果没有“中断”机制，那么一旦应用程序上CPU运行，CPU就会一直运行这个应用程序。没有中断机制，就不可能实现操作系统，不可能实现程序并发</strong></p>
+<ul>
+<li><strong>内核态-&gt;用户态</strong>：执行一条<code>特权指令</code> —— <code>修改PSW</code>的标志位为“用户态”，这个动作意味着操作系统将主动让出CPU使用权</li>
+<li><strong>用户态-&gt;内核态</strong>：由“<code>中断</code>”引发，硬件自动完成变态过程，触发中断信号意味着操作系统将强行夺回CPU的使用权</li>
+</ul>
+<p>总结：“中断”会使CPU由<code>用户态</code> 变为 <code>内核态</code> ，使操作系统重新夺回对CPU的控制权</p>
+<h3 id="3-中断的类型"><a href="#3-中断的类型" class="headerlink" title="3. 中断的类型"></a>3. 中断的类型</h3><ul>
+<li><p><code>内中断</code>（也称 异常、例外）</p>
+<p>与当前执行的指令有关， 中断信号来源于CPU内部。如非法操作码、地址越界、算术溢出，除数为0等</p>
+<p>有时候应用程序想请求操作系统内核的服务，此时会执行一条特殊的指令——<code>陷入指令</code>，该指令会引发一个内部中断信号</p>
+<p>执行“陷入指令”，意味着应用程序主动地将CPU控制权还给操作系统内核。 <strong>“<code>系统调用</code>”就是通过陷入指令完成的</strong></p>
+</li>
+<li><p><code>外中断</code> （也称 中断，狭义的中断）</p>
+<p>与当前执行的指令无关， 中断信号来源于CPU外部。如 I/O 完成中断，表示设备输入/输出处理已经完成，处理器能够发送下一个输入/输出请求。此外还有时钟中断、控制台中断等。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113601.png" alt=""></p>
+</li>
+</ul>
+<h3 id="4-中断机制的基本原理"><a href="#4-中断机制的基本原理" class="headerlink" title="4. 中断机制的基本原理"></a>4. 中断机制的基本原理</h3><p>不同的中断信号，需要用不同的中断处理程序来处理。当CPU检测到中断信号后，会根据中断信号的类型去查询“<code>中断向量表</code>”，以此来找到相应的中断处理程序在内存中的存放位置。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113613.png" alt=""></p>
+<h2 id="四、系统调用"><a href="#四、系统调用" class="headerlink" title="四、系统调用"></a>四、系统调用</h2><h3 id="1-什么是系统调用，有何作用"><a href="#1-什么是系统调用，有何作用" class="headerlink" title="1. 什么是系统调用，有何作用"></a>1. 什么是系统调用，有何作用</h3><p>操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务。主要包括命令接口和程序接口。其中，程序接口由一组系统调用组成。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113622.png" alt=""></p>
+<p>“系统调用”是操作系统提供给应用程序（程序员/编程人员）使用的接口，可以理解为一种可供应用程序调用的特殊函数，<code>应用程序可以通过系统调用来请求获得操作系统内核的服务</code></p>
+<p>如果一个进程在用户态需要使用内核态的功能，就进行系统调用从而陷入内核，由操作系统代为完成。</p>
+<h3 id="2-系统调用与库函数的区别"><a href="#2-系统调用与库函数的区别" class="headerlink" title="2. 系统调用与库函数的区别"></a>2. 系统调用与库函数的区别</h3><p>有的库函数涉及系统调用，有的不涉及</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113632.png" alt=""></p>
+<ul>
+<li>不涉及系统调用的库函数：如“取绝对值”的函数</li>
+<li>涉及系统调用的库函数：如“创建一个新文件”的函数</li>
+</ul>
+<h3 id="3-为什么系统调用是必须的"><a href="#3-为什么系统调用是必须的" class="headerlink" title="3. 为什么系统调用是必须的"></a>3. 为什么系统调用是必须的</h3><ul>
+<li><p><strong>实例</strong>：去学校打印店打印论文，你按下了WPS的“打印”选项，打印机开 始工作。 你的论文打印到一半时，另一位同学按下了Word 的“打印”按钮，开始打印他自己的论文。</p>
+</li>
+<li><p><strong>思考</strong>：如果两个进程可以随意地、并发地共享打印机资源，会发生什么情况？</p>
+<p>两个进程并发运行，打印机设备交替地收到WPS和Word 两个进程发来的打印请 求，结果两篇论文的内容混杂在一起了…</p>
+</li>
+<li><p><strong>解决方法</strong>：由操作系统内核对共享资源进行统一的管理，并向上提供 “系统调用” ，<code>用户进程想要使用打印机这种共享资源，只能通过系统调用向操作系统内核发出请求。内核会对各个请求进行协调处理。</code></p>
+</li>
+</ul>
+<h3 id="4-什么功能要用到系统调用"><a href="#4-什么功能要用到系统调用" class="headerlink" title="4. 什么功能要用到系统调用"></a>4. 什么功能要用到系统调用</h3><p>应用程序通过系统调用请求操作系统的服务。而系统中的各种共享资源都由操作系统内核统一掌管。</p>
+<p>因此<strong>凡是 与<code>共享资源</code>有关的操作（如存储分配、I/O操作、文件管理等），都必须通过系统调用的方式向操作系统内核提 出服务请求，由操作系统内核代为完成</strong>。这样可以保证系统的稳定性和安全性，防止用户进行非法操作。</p>
+<p>这些系统调用按功能大致可分为如下几类：</p>
+<ul>
+<li>设备管理。完成设备的请求或释放，以及设备启动等功能。</li>
+<li>文件管理。完成文件的读、写、创建及删除等功能。</li>
+<li>进程控制。完成进程的创建、撤销、阻塞及唤醒等功能。</li>
+<li>进程通信。完成进程之间的消息传递或信号传递等功能。</li>
+<li>内存管理。完成内存的分配、回收以及获取作业占用内存区大小及地址等功能。</li>
+</ul>
+<h3 id="5-系统调用的过程"><a href="#5-系统调用的过程" class="headerlink" title="5. 系统调用的过程"></a>5. 系统调用的过程</h3><p>传递系统调用参数 ——&gt; 执行<strong>陷入指令</strong>（用户态），引发一个内中断，使CPU进入内核态 ——&gt; 执行相应的请求，内核程序处理系统调用（内核态）——&gt; 返回应用程序</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113649.png" alt=""></p>
+<h2 id="五、操作系统的体系结构"><a href="#五、操作系统的体系结构" class="headerlink" title="五、操作系统的体系结构"></a>五、操作系统的体系结构</h2><p>操作系统的体系结构可以分为 <code>大内核</code> + <code>微内核</code></p>
+<p>内核是操作系统最基本、最核心的部分。 实现操作系统内核功能的那些程序就是内核程序。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113701.png" alt=""></p>
+<h3 id="1-大内核"><a href="#1-大内核" class="headerlink" title="1. 大内核"></a>1. 大内核</h3><p>大内核是将操作系统功能作为一个紧密结合的整体放到内核。由于各模块共享信息，因此有很高的性能。</p>
+<ul>
+<li><strong>优点</strong>：高性能</li>
+<li><strong>缺点</strong>：内核代码庞大，结构混乱，难以维护</li>
+</ul>
+<h3 id="2-微内核"><a href="#2-微内核" class="headerlink" title="2. 微内核"></a>2. 微内核</h3><p>由于操作系统不断复杂，因此将一部分操作系统功能移出内核，从而降低内核的复杂性。移出的部分根据分层的原则划分成若干服务，相互独立。</p>
+<p>在微内核结构下，操作系统被划分成小的、定义良好的模块，只有微内核这一个模块运行在内核态，其余模块运行在用户态。</p>
+<p>因为需要频繁地在用户态和内核态之间进行切换，所以会有一定的性能损失。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705113716.png" alt=""></p>
+<ul>
+<li><strong>优点</strong>：内核功能少，结构清晰，方便维护</li>
+<li><strong>缺点</strong>：需要频繁地在用户态和内核态之间进行切换，性能低</li>
+</ul>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" data-id="ckeof1fwa00002cud7bh4b0fl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/02/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/2-%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E3%80%81%E6%AD%BB%E9%94%81/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    进程、线程、死锁
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/01/30/Cpp/%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">C++面试指南</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '操作系统概述',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

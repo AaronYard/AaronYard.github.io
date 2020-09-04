@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>传输层 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="5-传输层">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="传输层">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;02&#x2F;25&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;5-%E4%BC%A0%E8%BE%93%E5%B1%82&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="5-传输层">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586070616512-f74705cc-eac4-4f3b-a037-83bc96373825.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200430100712.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586071519353-ac5d24aa-3983-4ae1-ad14-75286eb249cb.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586071575592-db227814-94ec-4dde-9cba-d37e12c978d4.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586071642055-f371b965-ce8a-4a13-acbc-5e8cb5520f93.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586071698477-ba30f1ea-d928-4781-9d22-628237f0ef32.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586073046756-2f0ca504-d31b-4047-8351-269add44c796.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586071907137-25a79d44-e170-493a-942d-6aad23393158.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586072026735-9cbd2354-723c-48f6-9348-0ca4a9a43b9a.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586072145428-e9e07d8a-2922-4da3-bebf-8f59bb2ebece.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586072256800-f71b56cb-e7e8-4af5-803d-44473af60bb2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586072615438-a9519049-a424-4920-b9eb-f4b422dc3a99.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586073560296-ca6b3dbf-8850-4017-8326-c030c382a6ea.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586073541928-1b8e0687-2349-432b-9b4f-c0aa21782dba.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200510155804.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200510160257.png">
+<meta property="og:updated_time" content="2020-09-04T15:49:03.845Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586070616512-f74705cc-eac4-4f3b-a037-83bc96373825.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-计算机网络/5-传输层" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            传输层
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/5-%E4%BC%A0%E8%BE%93%E5%B1%82/">
+            <time datetime="2020-02-25T14:02:45.000Z" itemprop="datePublished">2020-02-25</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=3.2k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈10分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、思维导图</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586070616512-f74705cc-eac4-4f3b-a037-83bc96373825.png" alt="img"></p>
+<br>
+
+
+
+<h1 id="二、传输层的功能"><a href="#二、传输层的功能" class="headerlink" title="二、传输层的功能"></a>二、传输层的功能</h1><p>运输层(transport layer)的主要任务就是负责向<strong>两台主机进程之间的通信</strong>提供通用的数据传输服务。应用进程利用该服务传送应用层报文。“通用的”是指并不针对某一个特定的网络应用，而是多种应用可以使用同一个运输层服务。</p>
+<p>由于一台主机可同时运行多个线程，因此运输层有复用和分用的功能。所谓复用就是指多个应用层进程可同时使用下面运输层的服务，分用和复用相反，是运输层把收到的信息分别交付上面应用层中的相应进程。</p>
+<a id="more"></a>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200430100712.png" style="zoom:50%;" />
+
+<p>主要功能总结如下：</p>
+<ul>
+<li>传输层提供进程和进程之间的逻辑通信（网络层提供主机间的通信）</li>
+<li>复用和分用</li>
+<li>传输层对接收到的报文进行差错检测</li>
+<li>TCP/UDP协议</li>
+</ul>
+<br>
+
+
+
+<h1 id="三、UDP-和-TCP-的特点"><a href="#三、UDP-和-TCP-的特点" class="headerlink" title="三、UDP 和 TCP 的特点"></a>三、UDP 和 TCP 的特点</h1><ul>
+<li><p><code>用户数据报协议 UDP（User Datagram Protocol）</code></p>
+<p><strong>UDP 在传送数据之前不需要先建立连接</strong>，远程主机在收到 UDP 报文后，不需要给出任何确认。虽然 </p>
+<p>UDP <strong>不提供可靠交付</strong>，但在某些情况下 UDP 确是一种最有效的工作方式（<strong>一般用于即时通信），比</strong></p>
+<p><strong>如： QQ 语音、 QQ 视频 、直播等等</strong></p>
+</li>
+<li><p><code>传输控制协议 TCP（Transmission Control Protocol）</code></p>
+<p>TCP 提供<strong>面向连接</strong>的服务。在传送数据之前必须先建立连接，数据传送结束后要释放连接。</p>
+<p>TCP 不提供广播或多播服务。由于 TCP 要提供<strong>可靠</strong>的，面向连接的传输服务（TCP的可靠体现在TCP在传递数据之前，会有三次握手来建立连接，而且在数据传递时，有确认、窗口、重传、流量控制、拥塞控制机制，在数据传完后，还会断开连接用来节约系统资源。这不仅使协议数据单元的首部增大很多，还要占用许多处理机资源。TCP <strong>一般用于文件传输、发送和接收邮件、远程登录等场景</strong>。</p>
+<blockquote>
+<p>🚩 插入一个小知识点：TCP/UDP 应用中，端口号的作用是什么？</p>
+<p>IP 地址 + TCP/UDP 端口号确定因特网中的某个主机上的某个应用进程</p>
+</blockquote>
+</li>
+</ul>
+<br>
+
+
+
+<h1 id="四、UDP协议"><a href="#四、UDP协议" class="headerlink" title="四、UDP协议"></a>四、UDP协议</h1><p>UDP 只在 IP 数据报服务之上增加了很少功能，即复用分用和差错检测功能。</p>
+<img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586071519353-ac5d24aa-3983-4ae1-ad14-75286eb249cb.png" alt="image.png" style="zoom:80%;" />
+
+<h2 id="1-UDP首部格式"><a href="#1-UDP首部格式" class="headerlink" title="1. UDP首部格式"></a>1. UDP首部格式</h2><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586071575592-db227814-94ec-4dde-9cba-d37e12c978d4.png" alt="image.png" style="zoom:80%;" />
+
+
+
+<h2 id="2-UDP校验"><a href="#2-UDP校验" class="headerlink" title="2. UDP校验"></a>2. UDP校验</h2><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586071642055-f371b965-ce8a-4a13-acbc-5e8cb5520f93.png" alt="image.png" style="zoom:80%;" />
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586071698477-ba30f1ea-d928-4781-9d22-628237f0ef32.png" alt="image.png"></p>
+<br>
+
+
+
+<h1 id="五、TCP首部格式"><a href="#五、TCP首部格式" class="headerlink" title="五、TCP首部格式"></a>五、TCP首部格式</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586073046756-2f0ca504-d31b-4047-8351-269add44c796.png" alt="image.png"></p>
+<br>
+
+
+
+<h1 id="六、TCP可靠传输"><a href="#六、TCP可靠传输" class="headerlink" title="六、TCP可靠传输"></a>六、TCP可靠传输</h1><p><strong>可靠传输</strong>：保证接收方收到的字节流和发送方发出的字节流是完全一样的</p>
+<ul>
+<li>传输层：使用 TCP 实现可靠传输</li>
+<li>网络层：尽最大努力交付，不可靠传输</li>
+</ul>
+<p>TCP实现可靠传输的机制：</p>
+<ul>
+<li><p><strong>校验</strong>：与UDP校验一样，增加伪首部</p>
+</li>
+<li><p><strong>序号</strong>：一个字节占一个序号。序号字段指的是一个报文段第一个字节的序号</p>
+<img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586071907137-25a79d44-e170-493a-942d-6aad23393158.png" alt="image.png" style="zoom:80%;" />
+</li>
+<li><p><strong>确认</strong>：累计确认</p>
+<img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586072026735-9cbd2354-723c-48f6-9348-0ca4a9a43b9a.png" alt="image.png" style="zoom:80%;" />
+</li>
+<li><p><strong>超时重传</strong>：确认重传不分家，TCP发送方在规定的时间内没有收到确认就要重传已发送的报文段。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586072145428-e9e07d8a-2922-4da3-bebf-8f59bb2ebece.png" alt="image.png"></p>
+</li>
+</ul>
+<br>
+
+
+
+<h1 id="七、TCP三次握手-建立连接"><a href="#七、TCP三次握手-建立连接" class="headerlink" title="七、TCP三次握手 - 建立连接"></a>七、TCP三次握手 - 建立连接</h1><h2 id="1-三次握手过程（连接建立）"><a href="#1-三次握手过程（连接建立）" class="headerlink" title="1. 三次握手过程（连接建立）"></a>1. 三次握手过程（连接建立）</h2><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586072256800-f71b56cb-e7e8-4af5-803d-44473af60bb2.png" alt="img" style="zoom: 50%;" />
+
+<ul>
+<li><code>SYN</code>：连接请求/接收 报文段</li>
+<li><code>seq</code>：发送的第一个字节的序号</li>
+<li><code>ACK</code>：确认报文段</li>
+<li><code>ack</code>：希望收到的下一个数据的第一个字节的序号</li>
+</ul>
+<p><strong>具体流程：</strong></p>
+<ol>
+<li>客户端：发送连接请求报文段 SYN， 无应用层数据。</li>
+<li>服务器端：为该TCP连接分配缓存和变量，并向客户端返回确认报文段ACK，允许连接，无应用层数据。</li>
+<li>客户端：为该TCP连接分配缓存和变量，并向服务器返回确认的确认，可以携带数据。</li>
+</ol>
+<h2 id="2-为什么要三次握手"><a href="#2-为什么要三次握手" class="headerlink" title="2. 为什么要三次握手"></a>2. 为什么要三次握手</h2><p>三次握手的目的是建立可靠的通信信道，说到通讯，简单来说就是数据的发送与接收，而<strong>三次握手最主要的目的就是双方确认自己与对方的发送与接收是正常的</strong>。</p>
+<ul>
+<li>第一次握手：Client 什么都不能确认；Server 确认了对方发送正常，自己接收正常</li>
+<li>第二次握手：Client 确认了：自己发送、接收正常，对方发送、接收正常；Server 确认了：对方发送正常，自己接收正常</li>
+<li>第三次握手：Client 确认了：自己发送、接收正常，对方发送、接收正常；Server 确认了：自己发送、接收正常，对方发送、接收正常</li>
+</ul>
+<p>所以三次握手就能确认双发收发功能都正常，缺一不可。</p>
+<h2 id="3-为什么要传回-SYN"><a href="#3-为什么要传回-SYN" class="headerlink" title="3. 为什么要传回 SYN"></a>3. 为什么要传回 SYN</h2><p>接收端传回发送端所发送的 SYN 是为了告诉发送端，我接收到的信息确实就是你所发送的信号了。</p>
+<p>SYN 是 TCP/IP 建立连接时使用的握手信号。在客户机和服务器之间建立正常的 TCP 网络连接时，客户机首先发出一个 SYN 消息，服务器使用 SYN-ACK 应答表示接收到了这个消息，最后客户机再以 ACK响应，表示确认发来的数据已经接受无误。这样在客户机和服务器之间才能建立起可靠的TCP连接，数据才可以在客户机和服务器之间传递。</p>
+<h2 id="4-传了-SYN-为啥还要传-ACK"><a href="#4-传了-SYN-为啥还要传-ACK" class="headerlink" title="4. 传了 SYN,为啥还要传 ACK"></a>4. 传了 SYN,为啥还要传 ACK</h2><p>双方通信无误必须是两者互相发送信息都无误。传了 SYN，证明发送方到接收方的通道没有问题，但是接收方到发送方的通道还需要 ACK 信号来进行验证。</p>
+<h2 id="5-SYN洪泛攻击"><a href="#5-SYN洪泛攻击" class="headerlink" title="5. SYN洪泛攻击"></a>5. SYN洪泛攻击</h2><p>攻击者发送大量的TCP SYN，而当服务器返回ACK后，该攻击者就不对其进行再确认，那这个TCP连接就处于挂起状态（<strong>半连接状态</strong>），服务器收不到再确认的话，还会重复ACK给攻击者，这样更加浪费服务器的资源。</p>
+<br>
+
+
+
+<h1 id="八、TCP四次握手-释放连接"><a href="#八、TCP四次握手-释放连接" class="headerlink" title="八、TCP四次握手 - 释放连接"></a>八、TCP四次握手 - 释放连接</h1><h2 id="1-四次握手过程（连接释放）"><a href="#1-四次握手过程（连接释放）" class="headerlink" title="1. 四次握手过程（连接释放）"></a>1. 四次握手过程（连接释放）</h2><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586072615438-a9519049-a424-4920-b9eb-f4b422dc3a99.png" alt="img" style="zoom: 45%;" />
+
+
+
+<ul>
+<li><code>FIN</code> ：连接终止位</li>
+</ul>
+<p><strong>具体过程</strong>：</p>
+<ol>
+<li>客户端：发送连接释放报文段FIN，停止发送数据，主动关闭TCP连接。</li>
+<li>服务器端：回送一个确认报文段ACK。客户到服务器这个方向的连接就被释放了——半关闭状态</li>
+<li>服务器端：发送连接释放报文段FIN，停止发送数据，主动关闭TCP连接。</li>
+<li>客户端：回送一个确认报文段ACK，再等到时间等待计时器设置的2MSL后(最长报文段寿命)，服务器到客户这个方向的连接就被释放了——连接彻底关闭</li>
+</ol>
+<h2 id="2-为什么要四次挥手"><a href="#2-为什么要四次挥手" class="headerlink" title="2. 为什么要四次挥手"></a>2. 为什么要四次挥手</h2><p>任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后进入<strong>半关闭状态</strong>。当另一方也没有数据再发送的时候，则发出连接释放通知，对方确认后就<strong>完全关闭</strong>了TCP连接。</p>
+<p>举个例子：A 和 B 打电话，通话即将结束后，A 说“我没啥要说的了”，B回答“我知道了”，但是 B 可能还会有要说的话，A 不能要求 B 跟着自己的节奏结束通话，于是 B 可能又巴拉巴拉说了一通，最后 B 说“我说完了”，A 回答“知道了”，这样通话才算结束。</p>
+<br>
+
+
+
+<h1 id="九、TCP流量控制-—-滑动窗口协议"><a href="#九、TCP流量控制-—-滑动窗口协议" class="headerlink" title="九、TCP流量控制 — 滑动窗口协议"></a>九、TCP流量控制 — 滑动窗口协议</h1><p>流量控制是为了<strong>控制发送方发送速率</strong>，保证接收方来得及接收。</p>
+<p>TCP实现流量控制主要是 <strong>滑动窗口协议</strong>， 使用这种方法的时候，发送方和接收方向外通信各使用一个窗口。窗口大小取决于下面两个数：接收窗口（rwnd）和拥塞窗口（cwnd）。</p>
+<p>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段 rwnd 设置为 0，则发送方不能发送数据。</p>
+<p>（接收方根据自己接收缓存的大小，即接收窗口<code>rwnd</code>，动态的调整发送方的发送窗口大小，发送方的发送窗口取接收窗口rwnd和<strong>拥塞窗口cwnd</strong>的最小值。）</p>
+<blockquote>
+<p> 滑动窗口协议的实际应用：数据链路层的三个ARQ协议</p>
+</blockquote>
+<br>
+
+
+
+<h1 id="十、TCP拥塞控制"><a href="#十、TCP拥塞控制" class="headerlink" title="十、TCP拥塞控制"></a>十、TCP拥塞控制</h1><p>在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分（<strong>需&gt;供</strong>)，网络的性能就要变坏。这种情况就叫拥塞。</p>
+<p>如果网络出现拥塞，分组将会丢失，此时发送方会继续重传，从而导致网络拥塞程度更高。</p>
+<p>因此当出现拥塞时，应当控制发送方的速率。这一点和流量控制很像，但是出发点不同。</p>
+<p>流量控制是为了让接收方能来得及接收，而拥塞控制是为了降低整个网络的拥塞程度，<strong>防止过多的数据注入到网络中。</strong></p>
+<p>TCP的拥塞控制采用了四种算法，即 <code>慢开始</code> 、 <code>拥塞避免</code> | <code>快重传</code> 、<code>快恢复</code>。</p>
+<ul>
+<li><strong>慢开始</strong>（指数增长）： 慢开始算法的思路是当主机开始发送数据时，如果立即把大量数据字节注入到网络，那么可能会引起网络阻塞，因为现在还不知道网络的符合情况。经验表明，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是由小到大逐渐增大拥塞窗口数值。<strong>cwnd初始值为1，每经过一个传播轮次，cwnd加倍</strong>。</li>
+</ul>
+<ul>
+<li><strong>拥塞避免</strong>（加法增大，乘法减小）： 拥塞避免算法的思路是让拥塞窗口cwnd缓慢增大，<strong>即每经过一个往返时间RTT cwnd加1</strong>。（<strong>网络堵塞后cwnd=1</strong>，慢开始轮限ssthresh = 堵塞时的cwnd/2）</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586073560296-ca6b3dbf-8850-4017-8326-c030c382a6ea.png" alt="image.png"></p>
+<ul>
+<li><p><strong>快重传与快恢复</strong>： 在 TCP / IP 中，快速重传和恢复（fast retransmit and recovery，FRR）是一种拥塞控制算法，它能快速恢复丢失的数据包。</p>
+<p>没有 FRR，如果数据包丢失了，TCP 将会使用定时器来要求传输暂停。在暂停的这段时间内，没有新的或复制的数据包被发送。</p>
+<p>有了 FRR，如果接收方接收到一个不按顺序的数据段，它会立即给发送方发送一个重复确认。<strong>如果发送方接收到三个重复确认，它会假定确认件指出的数据段丢失了，并立即重传这些丢失的数据段</strong>。有了 FRR，就不会因为重传时要求的暂停被耽误。  当有单独的数据报丢失时，快速重传和恢复（FRR）能最有效地工作。当有多个数据报在某一段很短的时间内丢失时，它则不能很有效地工作。</p>
+<p>（<strong>网络堵塞后cwnd = cwnd/2</strong>，慢开始轮限 ssthresh = 堵塞时的 cwnd/2）</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586073541928-1b8e0687-2349-432b-9b4f-c0aa21782dba.png" alt="image.png"></p>
+</li>
+</ul>
+<br>
+
+
+
+<h1 id="十一、网关-Gateway"><a href="#十一、网关-Gateway" class="headerlink" title="十一、网关 Gateway"></a>十一、网关 Gateway</h1><p>网关（Gateway）设备又称<strong>网间连接器、协议转换器</strong>，是多个网络间提供数据转换服务的计算机系统或设备。可以说<strong>网关设备就是不同网之间的连接器，就是数据要从一个网到另外一个网时要经过“协商”的设备</strong>。</p>
+<p><strong>网关工作在 OSI/RM 的传输层及以上的所有层次，通过重新封装信息来使它们能够被另一种系统处理。</strong></p>
+<p>事实上现在的网关已经不能完全归为一种网络硬件，而可以概括为能够连接不同网络的软件和硬件的结合产品。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200510155804.png" alt=""></p>
+<p>一个非常典型的例子就是互联网邮件与手机邮件的转换服务。</p>
+<p>手机邮件与互联网邮件有时候可能会不兼容，这是由于他们在表示层和应用层中的 “ 电子邮件协议 ” 互不相同导致的。</p>
+<p>那么，为什么连到互联网的电脑与手机之间能够互发电子邮件呢？</p>
+<p>因为互联网与手机之间设置了一道网关。网关负责读取完各种不同协议后，对他们逐一进行合理的转换，再将相应的数据转发出去。这样一来即使应用的是不同电子邮件协议，计算机与手机之间也能互相发送邮件。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200510160257.png" alt=""></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/02/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/5-%E4%BC%A0%E8%BE%93%E5%B1%82/" data-id="ckeof1fxn002g2cud81cx69py" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/02/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/6-%E5%BA%94%E7%94%A8%E5%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    应用层
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/4-%E7%BD%91%E7%BB%9C%E5%B1%82/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">网络层</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '传输层',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

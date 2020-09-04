@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>函数 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="2.函数">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;01&#x2F;22&#x2F;Cpp&#x2F;2.%E5%87%BD%E6%95%B0&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="2.函数">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777638-d718fee7-0bc9-4841-b0c6-03c8e30d9fca.png#align=left&amp;display=inline&amp;height=408&amp;originHeight=408&amp;originWidth=714&amp;size=0&amp;status=done&amp;style=none&amp;width=714">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777589-cefd2f17-5a9a-49df-a2ab-c1c928bd1fb4.png#align=left&amp;display=inline&amp;height=340&amp;originHeight=340&amp;originWidth=600&amp;size=0&amp;status=done&amp;style=none&amp;width=600">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777588-06f1abc3-a6ae-4500-8118-396ae1f53d2b.png#align=left&amp;display=inline&amp;height=259&amp;originHeight=259&amp;originWidth=294&amp;size=0&amp;status=done&amp;style=none&amp;width=294">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777652-1b48b797-d863-4b53-9928-8a56503f74e2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777617-cedb5e36-e162-4159-8538-c6470f351820.png#align=left&amp;display=inline&amp;height=451&amp;originHeight=451&amp;originWidth=605&amp;size=0&amp;status=done&amp;style=none&amp;width=605">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777668-186c21cb-f552-4b9d-839c-4e7816bdbd91.png#align=left&amp;display=inline&amp;height=107&amp;originHeight=107&amp;originWidth=365&amp;size=0&amp;status=done&amp;style=none&amp;width=365">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777699-d85c2f18-22f7-413a-ac2c-17c6018f57fa.png#align=left&amp;display=inline&amp;height=191&amp;originHeight=191&amp;originWidth=420&amp;size=0&amp;status=done&amp;style=none&amp;width=420">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777765-4a9a6643-681b-4bbb-8d09-c96b1107ece5.png#align=left&amp;display=inline&amp;height=288&amp;originHeight=288&amp;originWidth=563&amp;size=0&amp;status=done&amp;style=none&amp;width=563">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777698-8f107a71-bb9a-460f-bc0e-37e02fe58cc9.png#align=left&amp;display=inline&amp;height=156&amp;originHeight=156&amp;originWidth=277&amp;size=0&amp;status=done&amp;style=none&amp;width=277">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777798-3bd338fd-f3b7-4427-8b57-229f1088b14e.png#align=left&amp;display=inline&amp;height=109&amp;originHeight=109&amp;originWidth=565&amp;size=0&amp;status=done&amp;style=none&amp;width=565">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777684-587858a3-3de5-442a-bc51-45bfa4cd2747.png">
+<meta property="og:updated_time" content="2020-09-04T15:07:55.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586152777638-d718fee7-0bc9-4841-b0c6-03c8e30d9fca.png#align=left&amp;display=inline&amp;height=408&amp;originHeight=408&amp;originWidth=714&amp;size=0&amp;status=done&amp;style=none&amp;width=714">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Cpp/2.函数" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            函数
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/01/22/Cpp/2.%E5%87%BD%E6%95%B0/">
+            <time datetime="2020-01-22T14:02:45.000Z" itemprop="datePublished">2020-01-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2.2k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈9分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、函数定义和调用"><a href="#一、函数定义和调用" class="headerlink" title="一、函数定义和调用"></a>一、函数定义和调用</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777638-d718fee7-0bc9-4841-b0c6-03c8e30d9fca.png#align=left&display=inline&height=408&originHeight=408&originWidth=714&size=0&status=done&style=none&width=714" alt=""></p>
+<br>
+
+
+
+<h1 id="二、函数的递归调用"><a href="#二、函数的递归调用" class="headerlink" title="二、函数的递归调用"></a>二、函数的递归调用</h1><h2 id="1-Hanoi-问题"><a href="#1-Hanoi-问题" class="headerlink" title="1. Hanoi 问题"></a>1. Hanoi 问题</h2><p>从经典的 汉诺塔Hanoi 问题入手</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777589-cefd2f17-5a9a-49df-a2ab-c1c928bd1fb4.png#align=left&display=inline&height=340&originHeight=340&originWidth=600&size=0&status=done&style=none&width=600" alt=""></p>
+<p>思路如下：</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hanoi</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> A, <span class="keyword">char</span> B, <span class="keyword">char</span> C)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="built_in">move</span>(A, C);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        hanoi(n - <span class="number">1</span>, A, C, B); <span class="comment">//将上面的n-1个借助C从A移动到B</span></span><br><span class="line">        <span class="built_in">move</span>(A, C); <span class="comment">//将最下面一个从A移到C</span></span><br><span class="line">        hanoi(n - <span class="number">1</span>, B, A, C); <span class="comment">//将n-1个从B借助A移动到C</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将src针的最上面一个盘子移动到dest针上</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">char</span> src, <span class="keyword">char</span> dest)</span> </span>&#123; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; src &lt;&lt; <span class="string">" --&gt; "</span> &lt;&lt; dest &lt;&lt; <span class="built_in">endl</span>; &#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//将n个盘子从src针移动到dest针，以medium针作为中转</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hanoi</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">char</span> src, <span class="keyword">char</span> medium, <span class="keyword">char</span> dest)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">        <span class="built_in">move</span>(src, dest);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        hanoi(n - <span class="number">1</span>, src, dest, medium);</span><br><span class="line">        <span class="built_in">move</span>(src, dest);</span><br><span class="line">        hanoi(n - <span class="number">1</span>, medium, src, dest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter the number of diskes: "</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; m;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"the steps to moving "</span> &lt;&lt; m &lt;&lt; <span class="string">" diskes:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    hanoi(m, <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777588-06f1abc3-a6ae-4500-8118-396ae1f53d2b.png#align=left&display=inline&height=259&originHeight=259&originWidth=294&size=0&status=done&style=none&width=294" alt=""></p>
+<p>当函数发生递归调用时，同一个局部变量在不同递归深度上可以同时存在不同的取值，这在底层是如何做到的？<br>答：<strong>对同一个函数的多次不同调用中，编译器会为函数的形参和局部变量分配不同的空间，他们互不影响。</strong></p>
+<h2 id="2-递归练习"><a href="#2-递归练习" class="headerlink" title="2. 递归练习"></a>2. 递归练习</h2><h3 id="①-递归逆序打印字符串"><a href="#①-递归逆序打印字符串" class="headerlink" title="① 递归逆序打印字符串"></a>① 递归逆序打印字符串</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// function to reverse a string</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stringReverse</span><span class="params">( <span class="built_in">string</span> stringToReverse, <span class="keyword">int</span> startSubscript )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// return when null character is encountered</span></span><br><span class="line">   <span class="keyword">if</span> ( startSubscript == stringToReverse.length() )</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// recursively call stringReverse with new substring</span></span><br><span class="line">   stringReverse( stringToReverse, startSubscript + <span class="number">1</span> );</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; stringToReverse[ startSubscript ]; <span class="comment">// output character</span></span><br><span class="line">&#125; <span class="comment">// end function stringReverse</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="②-递归查询最小元素"><a href="#②-递归查询最小元素" class="headerlink" title="② 递归查询最小元素"></a>② 递归查询最小元素</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// function to recursively find minimum array element</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXRANGE = <span class="number">1000</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">recursiveMinimum</span><span class="params">( <span class="keyword">const</span> <span class="keyword">int</span> <span class="built_in">array</span>[], <span class="keyword">int</span> low, <span class="keyword">int</span> high )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">int</span> smallest = MAXRANGE;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// if first element of array is smallest so far</span></span><br><span class="line">   <span class="comment">// set smallest equal to that element</span></span><br><span class="line">   <span class="keyword">if</span> ( <span class="built_in">array</span>[ low ] &lt; smallest )</span><br><span class="line">      smallest = <span class="built_in">array</span>[ low ];</span><br><span class="line"></span><br><span class="line">   <span class="comment">// if only one element in array, return smallest</span></span><br><span class="line">   <span class="comment">// else recursively call recursiveMinimum with new subarray</span></span><br><span class="line">   <span class="keyword">return</span> low == high ? </span><br><span class="line">      smallest : recursiveMinimum( <span class="built_in">array</span>, low + <span class="number">1</span>, high );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="三、函数的参数传递"><a href="#三、函数的参数传递" class="headerlink" title="三、函数的参数传递"></a>三、函数的参数传递</h1><ul>
+<li>在函数被调用时才给形参分配存储单元</li>
+<li>实参可以是常量、变量或表达式</li>
+<li>实参类型必须和形参类型相符</li>
+<li><strong>值传递是传递参数值，形参的改变不会引起实参的改变，即单向传递</strong></li>
+<li>引用传递可以实现双向传递</li>
+<li>常引用作参数可以保障实参数据的安全</li>
+</ul>
+<h2 id="1-值传递"><a href="#1-值传递" class="headerlink" title="1. 值传递"></a>1. 值传递</h2><p>传递参数值，单向传递</p>
+<h2 id="2-引用传递（需要修改形参值的时候使用）"><a href="#2-引用传递（需要修改形参值的时候使用）" class="headerlink" title="2. 引用传递（需要修改形参值的时候使用）"></a>2. 引用传递（需要修改形参值的时候使用）</h2><p>我们常用的交换函数就需要用到引用传递，实现双向传递，修改传进来的形参值<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> &amp;a, <span class="keyword">int</span> &amp;b)</span></span>&#123;</span><br><span class="line"> <span class="keyword">int</span> temp = a;</span><br><span class="line"> a = b;</span><br><span class="line"> b = temp;</span><br></pre></td></tr></table></figure>
+
+<p>学习 引用传递 需详细掌握以下 <strong>引用</strong> 的知识</p>
+<h3 id="①-变量的引用"><a href="#①-变量的引用" class="headerlink" title="① 变量的引用"></a>① 变量的引用</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;r = n;</span><br><span class="line">某个变量的引用，等价于这个变量（即同一个人，不管谁发生改变，另一个也会随之改变）</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;r = n; <span class="comment">//定义引用时一定要将其初始化引用某个*变量*</span></span><br><span class="line">r = <span class="number">4</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;r; <span class="comment">//4</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;n; <span class="comment">//4</span></span><br><span class="line">n = <span class="number">5</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;r; <span class="comment">//5</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;r1 = a;</span><br><span class="line"><span class="keyword">int</span> &amp;r2 = r1; <span class="comment">//等价于 int &amp;r2 = a; r2也引用a</span></span><br><span class="line">r2 = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a; <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<p>一旦一个引用被初始化后，就不能改为指向其他对象</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;r1 = a;</span><br><span class="line"><span class="comment">//*一个引用是从一而终的*，该语句并不表示r1引用了b，而是b的值赋给了r1</span></span><br><span class="line">r1 = b; </span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a; <span class="comment">//5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="②-引用作为函数的返回值"><a href="#②-引用作为函数的返回值" class="headerlink" title="② 引用作为函数的返回值"></a>② 引用作为函数的返回值</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">4</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> &amp;<span class="title">setValue</span><span class="params">()</span></span>&#123; <span class="comment">//返回了n的引用</span></span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    setValue() = <span class="number">40</span>; <span class="comment">//函数返回的是n的引用，所以可以作为左值被赋值</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;n; <span class="comment">//给n的引用赋值40 等价于 给n赋值40</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="③-常引用"><a href="#③-常引用" class="headerlink" title="③ 常引用"></a>③ 常引用</h3><p><code>const int &amp;r = n;</code></p>
+<p>不能通过常引用去修改其引用的内容</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r = n;</span><br><span class="line">r = <span class="number">50</span>; <span class="comment">//wrong</span></span><br><span class="line">n = <span class="number">49</span>; <span class="comment">//right n的引用r的值也随之改变</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="三、内联函数"><a href="#三、内联函数" class="headerlink" title="三、内联函数"></a>三、内联函数</h1><ul>
+<li>声明时使用关键字 <code>inline</code></li>
+<li>编译时在调用处用函数进行替换，节省了参数传递、控制转移等开销</li>
+<li>注意：内联函数体内不能有循环语句和 switch 语句</li>
+</ul>
+<p><strong>内联函数的调用过程：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Max</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a&gt;b)</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假如主函数中有如下语句</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">K = Max(n1,n2);</span><br></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(n1 &gt; n2)</span><br><span class="line">    tmp = n1;</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    tmp = n2;</span><br><span class="line">K = tmp;</span><br></pre></td></tr></table></figure>
+
+<p><strong>即直接把函数体嵌入到代码中，而没有函数调用的出入栈的过程。</strong></p>
+<p>编译器并不承诺将inline修饰的函数作为内联，而在现代编译器中，没有inline修饰的函数也可能被编译为内联</p>
+<br />
+
+
+
+
+<h1 id="四、带默认形参值的函数（缺省函数）"><a href="#四、带默认形参值的函数（缺省函数）" class="headerlink" title="四、带默认形参值的函数（缺省函数）"></a>四、带默认形参值的函数（缺省函数）</h1><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777652-1b48b797-d863-4b53-9928-8a56503f74e2.png"  />
+
+<p><strong>在相同的作用域内，不允许在同一个函数的多个声明中对同一个参数的默认值重复定义，即使前后定义的值相同也不行。</strong></p>
+<br />
+
+
+
+<h1 id="五、函数重载（形参个数-类型不同）"><a href="#五、函数重载（形参个数-类型不同）" class="headerlink" title="五、函数重载（形参个数/类型不同）"></a>五、函数重载（形参个数/类型不同）</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777617-cedb5e36-e162-4159-8538-c6470f351820.png#align=left&display=inline&height=451&originHeight=451&originWidth=605&size=0&status=done&style=none&width=605" alt=""><br /><br>函数重载提高了程序的可扩充性。</p>
+<p>(C语言中不允许同名函数，即没有重载的概念)</p>
+<p>注：<strong>编译器不以形参名和返回值来区分重载。</strong> 若只有返回值类型不同，则不叫重载，叫重复定义</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a, <span class="built_in">string</span> var)</span></span>&#123; &#125;;</span><br><span class="line"><span class="keyword">int</span> func（<span class="keyword">int</span> x, <span class="built_in">string</span> b)&#123; &#125;;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="六、典型例题"><a href="#六、典型例题" class="headerlink" title="六、典型例题"></a>六、典型例题</h1><h2 id="1-数制转换"><a href="#1-数制转换" class="headerlink" title="1. 数制转换"></a>1. 数制转换</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777668-186c21cb-f552-4b9d-839c-4e7816bdbd91.png#align=left&display=inline&height=107&originHeight=107&originWidth=365&size=0&status=done&style=none&width=365" alt=""><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">power</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span></span>; <span class="comment">//x的n次方</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"please enter 8 bit binary number:"</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">7</span>; i&gt;=<span class="number">0</span>; i--)&#123; <span class="comment">//从高位往低位读入二进制数</span></span><br><span class="line">        <span class="keyword">char</span> ch;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;ch; <span class="comment">//以字符形式读取</span></span><br><span class="line">        <span class="keyword">if</span>(ch == <span class="string">'1'</span>)</span><br><span class="line">        	<span class="comment">//强转</span></span><br><span class="line">            value += <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(power(<span class="number">2</span>,i)); <span class="comment">//value += (int)(power(2,i));</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"decimal value is "</span>&lt;&lt;value&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">power</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> sum = <span class="number">1.0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">        sum = sum*x;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者用数学方式处理</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以int形式读入的数学方式处理</span></span><br><span class="line">   <span class="keyword">while</span> ( binary != <span class="number">0</span> )</span><br><span class="line">   &#123;</span><br><span class="line">      decimal += binary % <span class="number">10</span> * <span class="built_in">bit</span>;</span><br><span class="line">      binary /= <span class="number">10</span>;</span><br><span class="line">      <span class="built_in">bit</span> *= <span class="number">2</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-编写程序求-π-的值"><a href="#2-编写程序求-π-的值" class="headerlink" title="2. 编写程序求 π 的值"></a>2. 编写程序求 π 的值</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777699-d85c2f18-22f7-413a-ac2c-17c6018f57fa.png#align=left&display=inline&height=191&originHeight=191&originWidth=420&size=0&status=done&style=none&width=420" alt=""><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">arctanx</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> sqr = x * x; <span class="comment">//x每次都乘以x2</span></span><br><span class="line">    <span class="keyword">double</span> e = x; <span class="comment">//保存x的次方，分子</span></span><br><span class="line">    <span class="keyword">double</span> sum = <span class="number">0</span>; <span class="comment">//保存最终结果</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>; <span class="comment">//分母</span></span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (e / i &gt; <span class="number">1e-15</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">double</span> f = flag * e / i;</span><br><span class="line">        sum += f;</span><br><span class="line">        e = e * sqr;</span><br><span class="line">        i += <span class="number">2</span>;</span><br><span class="line">        flag = -flag;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	 <span class="comment">//注意：因为整数相除结果取整，如果参数写1/5，1/239，结果就都是0</span></span><br><span class="line">    <span class="keyword">double</span> a = <span class="number">16.0</span> * arctanx(<span class="number">1</span> / <span class="number">5.0</span>);</span><br><span class="line">    <span class="keyword">double</span> b = <span class="number">4.0</span> * arctanx(<span class="number">1</span> / <span class="number">239.0</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"PI = "</span> &lt;&lt; a - b &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-掷骰子"><a href="#3-掷骰子" class="headerlink" title="3. 掷骰子"></a>3. 掷骰子</h2><ul>
+<li>每个骰子有六面，点数分别为1、2、3、4、5、6。游戏者在程序开始时输入一个无 符号整数，作为产生随机数的种子。</li>
+<li>每轮投两次骰子，第一轮如果和数为7或11则为胜，游戏结束；和数为2、3或12 则为负，游戏结束；和数为其它值则将此值作为自己的点数，继续第二轮、第三轮…直到 某轮的和数等于点数则取胜，若在此前出现和数为7则为负。</li>
+</ul>
+<p><br />此处需要用到 <code>rand</code> 函数,rand产生的是伪随机数，即每次运行产生的是同一串随机数序列<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777765-4a9a6643-681b-4bbb-8d09-c96b1107ece5.png#align=left&display=inline&height=288&originHeight=288&originWidth=563&size=0&status=done&style=none&width=563" alt=""><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//投骰子、计算和数、输出和数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rollDice</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> die1 = <span class="number">1</span> + rand() % <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">int</span> die2 = <span class="number">1</span> + rand() % <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = die1 + die2;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"player rolled "</span> &lt;&lt; die1 &lt;&lt; <span class="string">" + "</span> &lt;&lt; die2 &lt;&lt; <span class="string">" = "</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> GameStatus</span><br><span class="line">&#123;</span><br><span class="line">    WIN,</span><br><span class="line">    LOSE,</span><br><span class="line">    PLAYING</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum, myPoint;</span><br><span class="line">    GameStatus status;</span><br><span class="line">    <span class="keyword">unsigned</span> seed;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Please enter an unsigned integer: "</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; seed;      <span class="comment">//输入随机数种子</span></span><br><span class="line">    srand(seed);      <span class="comment">//将种子传递给rand()</span></span><br><span class="line">    sum = rollDice(); <span class="comment">//第一轮投骰子、计算和数</span></span><br><span class="line">    <span class="keyword">switch</span> (sum)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>: <span class="comment">//如果和数为7或11则为胜,状态为WIN</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">        status = WIN;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: <span class="comment">//和数为2、3或12则为负,状态为LOSE</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">        status = LOSE;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>: <span class="comment">//其它情况，尚无结果，状态为 PLAYING，记下点数</span></span><br><span class="line">        status = PLAYING;</span><br><span class="line">        myPoint = sum;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"point is "</span> &lt;&lt; myPoint &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (status == PLAYING)</span><br><span class="line">    &#123; <span class="comment">//只要状态为PLAYING，继续</span></span><br><span class="line">        sum = rollDice();</span><br><span class="line">        <span class="keyword">if</span> (sum == myPoint) <span class="comment">//某轮的和数等于点数则取胜</span></span><br><span class="line">            status = WIN;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (sum == <span class="number">7</span>) <span class="comment">//出现和数为7则为负</span></span><br><span class="line">            status = LOSE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//当状态不为PLAYING时循环结束，输出游戏结果</span></span><br><span class="line">    <span class="keyword">if</span> (status == WIN)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"player wins"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"player loses"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777698-8f107a71-bb9a-460f-bc0e-37e02fe58cc9.png#align=left&display=inline&height=156&originHeight=156&originWidth=277&size=0&status=done&style=none&width=277" alt=""></p>
+<h2 id="4-递归计算从n个人中选k个人不同组合数。"><a href="#4-递归计算从n个人中选k个人不同组合数。" class="headerlink" title="4. 递归计算从n个人中选k个人不同组合数。"></a>4. 递归计算从n个人中选k个人不同组合数。</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777798-3bd338fd-f3b7-4427-8b57-229f1088b14e.png#align=left&display=inline&height=109&originHeight=109&originWidth=565&size=0&status=done&style=none&width=565" alt=""><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">comm</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (k &gt; n)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == k || k == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> comm(n - <span class="number">1</span>, k) + comm(n - <span class="number">1</span>, k - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-递归实现-getPower-计算-x的y次方"><a href="#5-递归实现-getPower-计算-x的y次方" class="headerlink" title="5. 递归实现 getPower 计算 x的y次方"></a>5. 递归实现 getPower 计算 x的y次方</h2><p>此处需要考虑两种情况，x是整数 和 x是小数 ，利用重载编写两个做同样运算的函数 getPower</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586152777684-587858a3-3de5-442a-bc51-45bfa4cd2747.png" alt=""></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/01/22/Cpp/2.%E5%87%BD%E6%95%B0/" data-id="ckeodenbq0022twud85knfwjc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/01/23/Cpp/3.%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    类与对象
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/01/21/Cpp/1.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86+%E5%AD%97%E7%AC%A6%E4%B8%B2string%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">基础知识+字符串string类</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '函数',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

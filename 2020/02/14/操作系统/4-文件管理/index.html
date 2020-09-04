@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>文件管理 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="4-文件管理">
+<meta name="keywords" content="操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件管理">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;02&#x2F;14&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;4-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="4-文件管理">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114050.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114057.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114121.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114134.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114145.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114151.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114158.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114210.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114235.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114243.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114250.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114257.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114303.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114313.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114320.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114332.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114339.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114347.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114358.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114405.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114412.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114417.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114425.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114431.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114440.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114446.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114453.png">
+<meta property="og:updated_time" content="2020-09-04T15:47:56.045Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200705114050.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-操作系统/4-文件管理" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            文件管理
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/02/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/4-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+            <time datetime="2020-02-14T14:02:45.000Z" itemprop="datePublished">2020-02-14</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=3.8k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈12分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="📃-文件管理"><a href="#📃-文件管理" class="headerlink" title="📃 文件管理"></a>📃 文件管理</h1><hr>
+<h2 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h2><p>操作系统作为系统资源的管理者，提供的功能主要有</p>
+<ul>
+<li>处理机管理</li>
+<li>存储器管理</li>
+<li>文件管理</li>
+<li>设备管理</li>
+</ul>
+<p>计算机中存放了各种各样的文件，一个文件有哪些属性？ 文件内部的数据应该怎样组织起来？ 文件之间又应该又应该怎么组织起来？</p>
+<p>从下往上看，OS应提供哪些功能，才能方便用户、应用程序使用文件？</p>
+<p>从上往下看，文件数据应该怎么存放在外存（磁盘）上？</p>
+<a id="more"></a>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114050.png" alt=""></p>
+<h2 id="二、文件的逻辑结构"><a href="#二、文件的逻辑结构" class="headerlink" title="二、文件的逻辑结构"></a>二、文件的逻辑结构</h2><h3 id="1-逻辑结构的概念"><a href="#1-逻辑结构的概念" class="headerlink" title="1. 逻辑结构的概念"></a>1. 逻辑结构的概念</h3><p>所谓的“<strong>逻辑结构</strong>”，就是指在用户看来， 文件内部的数据应该是如何组织起来的。</p>
+<p>而 “<strong>物理结构</strong>”指的是在操作系统看来，文件的数据是如何存放在外存中的。</p>
+<p>类似于数据结构的“逻辑结构”和“物理结构”。</p>
+<p>如“线性表”就是一种逻辑结构，在用户角度看来，线性表就是一组有先后关系的元素序列，如：a, b,c,d,e…… <strong>“线性表”这种逻辑结构可以用不同的物理结构实现</strong>，如：顺序表/链表。顺序表的各个元素在逻辑 上相邻，在物理上也相邻；</p>
+<p>而链表的各个元素在物理上可以是不相邻的。因此，顺序表可以实现“随 机访问”，而“链表”无法实现随机访问。</p>
+<p>可见，算法的具体实现与逻辑结构、物理结构都有关（文件也一样，文件操作的具体实现与文件的逻 辑结构、物理结构都有关）</p>
+<p>文件的逻辑结构分为：</p>
+<ul>
+<li><p>无结构文件</p>
+</li>
+<li><p>有结构文件</p>
+</li>
+<li><ul>
+<li>顺序文件</li>
+<li>索引文件</li>
+<li>索引顺序文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-无结构文件"><a href="#2-无结构文件" class="headerlink" title="2. 无结构文件"></a>2. 无结构文件</h3><p>无结构文件：<strong>文件内部的数据就是一系列二进制流或字符流组成</strong>。又称“流式文件”。</p>
+<p>如： Windows操作系统中的.txt 文件。</p>
+<p>文件内部的数据其实就是一系 列字符流，没有明显的结构特 性。因此也不用探讨无结构文件的逻辑结构问题。</p>
+<h3 id="3-有结构文件"><a href="#3-有结构文件" class="headerlink" title="3. 有结构文件"></a>3. 有结构文件</h3><h4 id="a-定义"><a href="#a-定义" class="headerlink" title="a. 定义"></a>a. 定义</h4><p>有结构文件：<strong>由一组相似的记录组成</strong>，又称“记录式文件”。每条记录又若干个数据项组成。</p>
+<p>如： 数据库表文件。一般来说，每条记录有一个数据项可作为关键字（作为识别不同记录的ID），记录可以是定长的或可变长的</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114057.png" alt=""></p>
+<h4 id="b-逻辑结构"><a href="#b-逻辑结构" class="headerlink" title="b. 逻辑结构"></a>b. 逻辑结构</h4><p>根据有结构文件中的各 条记录在逻辑上如何组 织，可以分为三类</p>
+<ul>
+<li>顺序文件</li>
+<li>索引文件</li>
+<li>索引顺序文件</li>
+</ul>
+<h5 id="顺序文件"><a href="#顺序文件" class="headerlink" title="顺序文件"></a>顺序文件</h5><p>文件中的记录一个接一个地顺序排列（逻辑上），记录可以是定长的或可变长的。各个记录在物理上可以顺序存储或链式存储。</p>
+<h5 id="索引文件"><a href="#索引文件" class="headerlink" title="索引文件"></a>索引文件</h5><p>对于可变长记录文件，要找到第i个记录，必须先顺序第查找前i-1个记录， 但是很多应用场景中又必须使用可变长记录。如何解决这个问题？</p>
+<p>建立一张<strong>索引表</strong>以加快 文件检索速度。每条记录对应一个索引项。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114121.png" alt=""></p>
+<h5 id="索引顺序文件"><a href="#索引顺序文件" class="headerlink" title="索引顺序文件"></a>索引顺序文件</h5><p>思考索引文件的缺点<strong>：每个记录对应一个索引表项，因此索引表可能会很大</strong>。</p>
+<p>比如：文件的每个记录平均只占8B，而每个索引表项占32个字节，那么索引表都要比文件内容本身大4倍，这样对存储空间的利用率就太低了。</p>
+<p>索引顺序文件是索引文件和顺序文件思想的 结合。</p>
+<p>索引顺序文件中，同样会为文件建立 一张索引表，但不同的是：并不是每个记录 对应一个索引表项，而是<strong>一组记录对应一个索引表项。</strong></p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114134.png" alt=""></p>
+<p>为了进一步提高检索效率，可以为顺序文件建立<strong>多级索引表</strong>。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114145.png" alt=""></p>
+<h2 id="三、文件目录"><a href="#三、文件目录" class="headerlink" title="三、文件目录"></a>三、文件目录</h2><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114151.png" alt=""></p>
+<h3 id="1-文件控制块-FCB"><a href="#1-文件控制块-FCB" class="headerlink" title="1. 文件控制块 FCB"></a>1. 文件控制块 FCB</h3><p>目录本身就是一种有结构文件，由一条条记录组成。每条记录对应一个放在该目录下的文件。</p>
+<p>目录文件中的一条记录就是一个 文件控制块FCB</p>
+<p>FCB的有序集合称为文件目录，一个FCB就是一个文件目录项。</p>
+<p><strong>FCB实现了文件名和文件之间的映射。</strong></p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114158.png" alt=""></p>
+<h3 id="2-目录结构"><a href="#2-目录结构" class="headerlink" title="2. 目录结构"></a>2. 目录结构</h3><ul>
+<li><strong>单极目录结构</strong></li>
+</ul>
+<p>早期操作系统不支持多级目录，整个系统中只有一张目录表，每个文件占一个目录项目，<strong>不允许文件重名</strong></p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114210.png" alt=""></p>
+<ul>
+<li><strong>两级目录结构</strong></li>
+</ul>
+<p>早期的多用户操作系统，采用两级目录结构，分为 主文件目录 和 用户文件目录</p>
+<p>两级目录结构允许不同用户的文件重名，但依然缺乏灵活性，用户不能对自己的文件进行分类</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114235.png" alt=""></p>
+<ul>
+<li><strong>多级目录结构</strong></li>
+</ul>
+<p>又称树形目录结构，不同目录下的文件可以重名</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114243.png" alt=""></p>
+<p>树形目录结构可以很方便的对文件进行分类，层次结构清晰，也能够有效的对文件进行管理和保护，但树形结构不便于实现文加共享。为此，提出了无环图目录结构</p>
+<ul>
+<li><strong>无环图目录结构</strong></li>
+</ul>
+<p>可以用不同的文件名指向同一个文件，甚至同一个目录</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114250.png" alt=""></p>
+<h3 id="3-索引结点—FCB的改进"><a href="#3-索引结点—FCB的改进" class="headerlink" title="3. 索引结点—FCB的改进"></a>3. 索引结点—FCB的改进</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114257.png" alt=""></p>
+<ul>
+<li>除了文件名之外的所有信息都放到索引结点中，每个文件对应一个索引结点</li>
+<li>目录项中只包含文件名、索引结点指针，每个目录项的长度大幅减小</li>
+<li>由于目录项长度减小，因此磁盘中可以存放更多目录项，因此检测文件时磁盘I/O的次数减少了很多</li>
+</ul>
+<h2 id="四、文件的物理结构（文件分配方式）"><a href="#四、文件的物理结构（文件分配方式）" class="headerlink" title="四、文件的物理结构（文件分配方式）"></a>四、文件的物理结构（文件分配方式）</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114303.png" alt=""></p>
+<p>文件分配方式：即<strong>文件数据应该怎样存放在外存中</strong></p>
+<ul>
+<li><p>连续分配</p>
+</li>
+<li><p>链接分配</p>
+<ul>
+<li><p>隐式链接</p>
+</li>
+<li><p>显示链接</p>
+</li>
+</ul>
+</li>
+<li><p>索引分配</p>
+</li>
+</ul>
+<h3 id="2-连续分配"><a href="#2-连续分配" class="headerlink" title="2. 连续分配"></a>2. 连续分配</h3><p>连续分配方式要求每个文件在磁盘上占有一组连续的块。</p>
+<p>连续分配支持顺序访问 和直接访问（即随机访问）</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114313.png" alt=""></p>
+<p>读取某个磁盘块时，需要移动磁头。访问的两个磁盘块相隔越远，移动磁头所需时间就越长。</p>
+<ul>
+<li>优点：<strong>连续分配的文件在顺序读/写时速度最快，支持顺序访问和随机访问</strong>；</li>
+<li>缺点<strong>：物理上采用连续分配的文件不方便拓展，存储空间利用率低，会产生难以利用的磁盘碎片。</strong></li>
+</ul>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114320.png" alt=""></p>
+<h3 id="3-链接分配"><a href="#3-链接分配" class="headerlink" title="3. 链接分配"></a>3. 链接分配</h3><p>链接分配采取<strong>离散分配</strong>的方式，可以为文件分配离散的磁盘块。分为隐式链接和显式链接两种。</p>
+<h4 id="隐式链接"><a href="#隐式链接" class="headerlink" title="隐式链接"></a>隐式链接</h4><p>除文件的最后一个盘块之外，<strong>每个盘块中都存有指向下一个盘块的指针</strong>。文件目录包括文件第一块的指针和最后一块的指针。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114332.png" alt=""></p>
+<p><strong>优点</strong>：很方便文件拓展，不会有碎片问题，外存利用率高。</p>
+<p><strong>缺点</strong>：只支持顺序访问，不支持随机访问，查找效率低，指向下一个盘块的指针也需要耗费少量 的存储空间。</p>
+<h4 id="显示链接"><a href="#显示链接" class="headerlink" title="显示链接"></a>显示链接</h4><p><strong>把用于链接文件各物理块的指针显 式地存放在一张表中</strong>。即 文件分配表（FAT，FileAllocationTable）</p>
+<p>注意：一个磁盘仅设置一张FAT。 开机时，将FAT读入内存，并常驻 内存。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114339.png" alt=""></p>
+<p><strong>优点：</strong>很方便文件拓展，不会有碎片问题，外存利用率高，并且支持随机访问。相比于隐式链接 来说，<strong>地址转换时不需要访问磁盘</strong>，因此文件的访问效率更高。</p>
+<p><strong>缺点：</strong>文件分配表的需要占用一定的存储空间。</p>
+<h3 id="4-索引分配"><a href="#4-索引分配" class="headerlink" title="4. 索引分配"></a>4. 索引分配</h3><p>索引分配允许文件离散地分配在各个磁盘块中，<strong>系统会为每个文件建立一张索引表，索引表中记录了文 件的各个逻辑块对应的物理块</strong>（索引表的功能类似于内存管理中的页表——建立逻辑页面到物理页之间 的映射关系）。索引表存放的磁盘块称为索引块。文件数据存放的磁盘块称为数据块。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114347.png" alt=""></p>
+<p>可见，索引分配方式可以支持随机访问。 文件拓展也很容易实现（只需要给文件分配一个空闲块，并增加一个索引表项即可） 但是索引表需要占用一定的存储空间</p>
+<p><strong>若文件太大，索引表项太多，可以采取以下三种方法解决</strong>：</p>
+<ul>
+<li><p><strong>① 链接方案</strong>：如果索引表太大，一个索引块装不下，那么可以将多个索引块链接起来存放。</p>
+<p>缺点：若文 件很大，索引表很长，就需要将很多个索引块链接起来。想要找到i号索引块，必须先依次读入0~i-1 号索引块，这就导致磁盘I/O次数过多，查找效率低下。</p>
+</li>
+<li><p><strong>② 多层索引</strong>：建立多层索引（原理类似于多级页表）。使第一层索引块指向第二层的索引块。还可根据 文件大小的要求再建立第三层、第四层索引块。采用K层索引结构，且顶级索引表未调入内存，则访问 一个数据块只需要K+1次读磁盘操作。</p>
+<p>缺点：即使是小文件，访问一个数据块依然需要K+1次读磁盘。</p>
+</li>
+<li><p><strong>③ 混合索引</strong>：多种索引分配方式的结合。</p>
+<p>例如，一个文件的顶级索引表中，既包含直接地址索引（直接 指向数据块），又包含一级间接索引（指向单层索引表）、还包含两级间接索引（指向两层索引表） 。 </p>
+<p>优点：对于小文件来说，访问一个数据块所需的读磁盘次数更少。 </p>
+</li>
+</ul>
+<h3 id="5-三种文件分配方式总结对比"><a href="#5-三种文件分配方式总结对比" class="headerlink" title="5. 三种文件分配方式总结对比"></a>5. 三种文件分配方式总结对比</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114358.png" alt=""></p>
+<h2 id="五、文件共享"><a href="#五、文件共享" class="headerlink" title="五、文件共享"></a>五、文件共享</h2><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114405.png" alt=""></p>
+<h3 id="1-基于索引结点的共享方式—硬链接"><a href="#1-基于索引结点的共享方式—硬链接" class="headerlink" title="1. 基于索引结点的共享方式—硬链接"></a>1. 基于索引结点的共享方式—硬链接</h3><p>硬链接实际上就是为文件建一个别名，链接文件和原文件实际上是同一个文件。</p>
+<p>在 Linux 的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号<code>inode</code>。</p>
+<p>硬链接是不会建立 inode 的，他只是在文件原来的 inode 的 link count 域中增加 1 而已，因此硬链接是不可以跨越文件系统的。</p>
+<p>硬链接删除的时候，系统调用会检查 inode link count 的数值，如果大于等于 1，那么 inode 就不会被回收，也即文件的内容不会被删除。</p>
+<h3 id="2-基于符号链的共享方式—软链接"><a href="#2-基于符号链的共享方式—软链接" class="headerlink" title="2. 基于符号链的共享方式—软链接"></a>2. 基于符号链的共享方式—软链接</h3><p>软链接，其实就是建立一个新的文件，这个文件是专门用来指向别的文件的（和快捷方式类似）。</p>
+<p>也就是说，软链接会产生一个新的 inode，不过这个 inode 只是指明源文件的字符串信息，一旦源文件删除了，那么软链接将变得毫无意义。</p>
+<p>软链接可以跨越文件系统 。</p>
+<p>由于软链接的方式访问共享文件时要查询多级目录，会有多次磁盘I/O，因此<strong>软链接访问共享文件的速度比硬链接要慢</strong></p>
+<h2 id="六、文件保护"><a href="#六、文件保护" class="headerlink" title="六、文件保护"></a>六、文件保护</h2><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114412.png" alt=""></p>
+<h3 id="1-口令保护"><a href="#1-口令保护" class="headerlink" title="1. 口令保护"></a>1. 口令保护</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114417.png" alt=""></p>
+<h3 id="2-加密保护"><a href="#2-加密保护" class="headerlink" title="2. 加密保护"></a>2. 加密保护</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114425.png" alt=""></p>
+<h3 id="3-访问控制"><a href="#3-访问控制" class="headerlink" title="3. 访问控制"></a>3. 访问控制</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114431.png" alt=""></p>
+<h2 id="七、磁盘"><a href="#七、磁盘" class="headerlink" title="七、磁盘"></a>七、磁盘</h2><h3 id="1-磁盘结构"><a href="#1-磁盘结构" class="headerlink" title="1. 磁盘结构"></a>1. 磁盘结构</h3><p>磁盘：磁盘的表面由一些磁性物质组成，可以用这些磁性物质来记录二进制数据</p>
+<p>磁盘结构如下：</p>
+<ul>
+<li><p><strong>磁道</strong>（Track）：磁盘的盘面被分为一个个磁道。</p>
+</li>
+<li><p><strong>扇区</strong>（Track Sector）：一个磁道又被分成一个个扇区，每个扇区就是一个磁盘块，每个扇区中存放的数据量相同。</p>
+<p>扇区是最小的物理储存单位，目前主要有 512 bytes 与 4 K 两种大小；</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114440.png" alt=""></p>
+</li>
+<li><p><strong>盘面</strong>（Platter）：一个盘片可能会有多个盘面。所有盘面中相对位置相同大的磁道组成<strong>柱面</strong></p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114446.png" alt=""></p>
+</li>
+<li><p><strong>磁头</strong>（Head）：与盘面的距离很近，能够将盘面上的磁场转换为电信号（读），或者将电信号转换为盘面的磁场（写）；</p>
+</li>
+<li><p><strong>制动手臂</strong>（Actuator arm）：用于在磁道之间移动磁头；</p>
+</li>
+<li><p><strong>主轴</strong>（Spindle）：使整个盘面转动。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200705114453.png" alt=""></p>
+</li>
+</ul>
+<h3 id="2-如何在磁盘中读写数据"><a href="#2-如何在磁盘中读写数据" class="headerlink" title="2. 如何在磁盘中读写数据"></a>2. 如何在磁盘中读写数据</h3><p>需要把磁头移动到想要读写的扇区所在的磁道。磁道会转起来，<strong>让目标扇区从磁头下面划过</strong>，才能完成对扇区的读写操作</p>
+<h3 id="3-磁盘调度算法"><a href="#3-磁盘调度算法" class="headerlink" title="3. 磁盘调度算法"></a>3. 磁盘调度算法</h3><p>读写一个磁盘块的时间的影响因素有：</p>
+<ul>
+<li><strong>寻道时间</strong>（制动手臂移动，使得磁头移动到适当的磁道上）</li>
+<li>旋转时间（主轴转动盘面，使得磁头移动到适当的扇区上）</li>
+<li>实际的数据传输时间</li>
+</ul>
+<p>其中，寻道时间最长，因此<strong>磁盘调度的主要目标是使磁盘的平均寻道时间最短。</strong></p>
+<h4 id="先来先服务-FCFS"><a href="#先来先服务-FCFS" class="headerlink" title="先来先服务 FCFS"></a>先来先服务 FCFS</h4><p><code>First Come First Served</code></p>
+<p><strong>按照磁盘请求的顺序进行调度。</strong></p>
+<p>优点是公平和简单。缺点也很明显，因为未对寻道做任何优化，使平均寻道时间可能较长。</p>
+<h4 id="最短寻道时间优先-SSTF"><a href="#最短寻道时间优先-SSTF" class="headerlink" title="最短寻道时间优先 SSTF"></a>最短寻道时间优先 SSTF</h4><p><code>Shortest Seek Time First</code></p>
+<p><strong>优先调度与当前磁头所在磁道距离最近的磁道。</strong></p>
+<p>虽然平均寻道时间比较低，但是不够公平。如果新到达的磁道请求总是比一个在等待的磁道请求近，那么在等待的磁道请求会一直等待下去，也就是出现饥饿现象。具体来说，两端的磁道请求更容易出现饥饿现象。</p>
+<h4 id="扫描-电梯算法-SCAN"><a href="#扫描-电梯算法-SCAN" class="headerlink" title="扫描/电梯算法 SCAN"></a>扫描/电梯算法 SCAN</h4><p>SSTF算法会产生饥饿的原因在于：磁头有可一直在一个小区域内来回移动。为了防止这个问题，可以规定，<strong>只有磁头移动道最外层磁道的时候才能往内移动，移动到最内侧磁道的时候才能往外移动</strong>。这就是扫描算法，类似于电梯，电梯总是保持一个方向运行，直到该方向没有请求为止，然后改变运行方向。因此也称电梯算法</p>
+<h4 id="循环扫描算法-C-SCAN"><a href="#循环扫描算法-C-SCAN" class="headerlink" title="循环扫描算法 C-SCAN"></a>循环扫描算法 C-SCAN</h4><p>SCAN算法对于各个位置磁道的响应频率不平均，而C-Scan算法就是为了解决这个问题。规定只有磁头朝某个特定方向移动时才处理磁道访问请求，而<strong>返回时直接快速移动到起始端而不处理任何请求</strong></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/02/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/4-%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" data-id="ckeof1fwn00062cudhwjl5dx3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/02/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/5-%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    设备管理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/02/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/3-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">内存管理</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '文件管理',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

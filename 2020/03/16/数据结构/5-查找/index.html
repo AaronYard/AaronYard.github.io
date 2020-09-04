@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>查找 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="5-查找">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;03&#x2F;16&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;5-%E6%9F%A5%E6%89%BE&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="5-查找">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738359-4baa3db2-fc4a-44e4-9b84-32b267f0b425.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738247-aaada860-04fe-403a-b91c-d120c999ee98.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738246-2c370850-c552-4bac-bddd-a72394c95b1e.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738347-1f38b83f-f6ab-432e-9ef2-3ec61a993809.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738243-3463fb13-c892-4ade-b0d8-0192ac984798.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200416155030.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738314-04ac3e37-3e36-4b06-b6f9-0223d1b66b21.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738287-b1a5f736-4ddd-49f8-be6d-b1732ea5b333.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738369-dabc3f90-b860-4466-a9ac-61e85131a618.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738311-c1d7ddc3-92c1-4375-8af3-93639c556058.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200413212932.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738299-271a096f-5094-4df2-9e6f-b63482958984.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738366-65cc6d02-3c9c-41c1-8703-bf9f8f9149f7.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738327-3447e7e3-b7e2-4d5c-b106-a56596222c1c.png">
+<meta property="og:updated_time" content="2020-09-04T15:49:59.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069738359-4baa3db2-fc4a-44e4-9b84-32b267f0b425.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-数据结构/5-查找" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            查找
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5-%E6%9F%A5%E6%89%BE/">
+            <time datetime="2020-03-16T14:02:45.000Z" itemprop="datePublished">2020-03-16</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.9k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈7分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738359-4baa3db2-fc4a-44e4-9b84-32b267f0b425.png" alt="img"></p>
+<br>
+
+
+
+<h1 id="一、线性结构"><a href="#一、线性结构" class="headerlink" title="一、线性结构"></a>一、线性结构</h1><a id="more"></a>
+<h2 id="1-顺序查找（线性查找）O-n"><a href="#1-顺序查找（线性查找）O-n" class="headerlink" title="1. 顺序查找（线性查找）O(n)"></a>1. 顺序查找（线性查找）O(n)</h2><p>主要用于在线性表上进行查找</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Search_Seq</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="comment">//a[0]作哨兵，使得循环不必判断数组是否越界</span></span><br><span class="line">    <span class="comment">//因为满足i==0时，循环一定会跳出</span></span><br><span class="line">    a[<span class="number">0</span>] = x; </span><br><span class="line">    <span class="keyword">int</span> i; </span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">10</span>;a[i]!=x;i--);</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注：对于顺序查找，不管线性表是有序的还是无序的，成功查找第一个元素的比较次数为1，成功查找第二个元素的比较次数为2，依次类推，每个元素查找成功的比较次数只与其位置有关，与是否有序无关。</p>
+<p><strong>对有n个元素的有序顺序表和无序顺序表进行顺序查找，讨论平均查找长度</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738247-aaada860-04fe-403a-b91c-d120c999ee98.png" alt="img"></p>
+<h2 id="2-折半查找-仅适用于有序的顺序表-O-log2n"><a href="#2-折半查找-仅适用于有序的顺序表-O-log2n" class="headerlink" title="2. 折半查找(仅适用于有序的顺序表) O(log2n)"></a>2. 折半查找(仅适用于有序的顺序表) O(log2n)</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Binary_Search</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> low = <span class="number">0</span>, high = <span class="number">10</span>,mid;</span><br><span class="line">    <span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">        mid = (low+high)/<span class="number">2</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; a[low] &lt;&lt; setw(<span class="number">5</span>) &lt;&lt; a[mid] &lt;&lt; setw(<span class="number">5</span>) &lt;&lt; a[high] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">if</span>(a[mid]==x)</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[mid]&lt;x)</span><br><span class="line">            low = mid+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            high = mid<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">//若查找成功不会走到这一步</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738246-2c370850-c552-4bac-bddd-a72394c95b1e.png" alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738347-1f38b83f-f6ab-432e-9ef2-3ec61a993809.png" alt="img"></p>
+<h2 id="3-分块查找（索引顺序查找）"><a href="#3-分块查找（索引顺序查找）" class="headerlink" title="3. 分块查找（索引顺序查找）"></a>3. 分块查找（索引顺序查找）</h2><p><strong>块中元素可无序，块间元素须有序</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738243-3463fb13-c892-4ade-b0d8-0192ac984798.png" alt="img"></p>
+<br>
+
+
+
+<h1 id="二、树形结构"><a href="#二、树形结构" class="headerlink" title="二、树形结构"></a>二、树形结构</h1><h2 id="1-二叉排序树"><a href="#1-二叉排序树" class="headerlink" title="1. 二叉排序树"></a>1. 二叉排序树</h2><p>详见 <u>第三章节 - 树</u></p>
+<h2 id="2-平衡二叉树"><a href="#2-平衡二叉树" class="headerlink" title="2. 平衡二叉树"></a>2. 平衡二叉树</h2><p>详见 <u>第三章节 - 树</u></p>
+<h2 id="3-B-B-树"><a href="#3-B-B-树" class="headerlink" title="3. B / B+ 树"></a>3. B / B+ 树</h2><p>B/B+树一种平衡的多路查找树，一般被用在文件系统（我们常说的B树其实是叫 B- 树）</p>
+<table>
+<thead>
+<tr>
+<th>B 树 M阶</th>
+<th>B+ 树 M阶</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>① 关键字个数 + 1 = 子树个数</strong></td>
+<td><strong>① 关键字个数 = 子树个数</strong></td>
+</tr>
+<tr>
+<td>② 根节点至少2棵子树（1个关键字），至多M棵子树（M-1个关键字）</td>
+<td>② 根节点至少2棵子树（2个关键字），至多M棵子树（M个关键字）</td>
+</tr>
+<tr>
+<td>③ 除根节点的分支结点至少 M/2 取上整 棵子树（至少 M/2 取上整 - 1 个关键字），至多 M 棵子树（至多 M - 1个关键字）</td>
+<td>③ 除根节点的分支结点至少 M/2 取上整 棵子树至少 M/2 取上整 -个关键字），至多 M 棵子树至多 M 个关键字）</td>
+</tr>
+<tr>
+<td><strong>④ B 树的叶节点不带任何信息，所有的信息（key，value）都存在分支结点中</strong></td>
+<td><strong>④ B+树叶子结点携带所有结点的全部信息（key，value），且按照大小顺序通过指针链接起来，分支结点仅携带索引信息（key）起索引作用</strong>。所以B+ 树的查找更稳定，因为每次都是从根节点到叶节点的查找路径</td>
+</tr>
+</tbody></table>
+<p>下图为 B+ 树</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200416155030.png" alt=""></p>
+<h3 id="B树的插入删除操作"><a href="#B树的插入删除操作" class="headerlink" title="B树的插入删除操作"></a>B树的插入删除操作</h3><p><strong>插入：</strong></p>
+<ul>
+<li>插入后该结点关键字个数小于等于m-1，直接插入</li>
+<li>插入后该结点关键字个数大与m-1，以该结点的中间元素为轴进行结点分裂，并将该结点的中间元素上移到其父结点，相应的父结点要增加新分支，即分裂的结点</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738314-04ac3e37-3e36-4b06-b6f9-0223d1b66b21.png" alt="img"></p>
+<p><strong>删除（叶节点）：以3阶为例</strong></p>
+<ul>
+<li>删除该关键字后所在结点的关键字个数 &gt; [m/2]取上整 - 1, 直接删除关键字</li>
+<li>删除该关键字后所在结点的关键字个数 &lt; [m/2]取上整 - 1 且与其相邻的左（右）兄弟结点够借 ， <strong>父子换位法</strong>（兄弟的第一个元素上移到父结点，父结点的最后一个元素下移到要删除的关键字所在的结点。—— <strong>兄弟够借，父子换位</strong><br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738287-b1a5f736-4ddd-49f8-be6d-b1732ea5b333.png" alt="img"></li>
+<li>删除该关键字后所在结点的关键字个数 &lt; [m/2]取上整 - 1 且与其相邻的左（右）兄弟结点不够借 ， 则将关键字删除后，将父结点第一个元素下移至要删除元素所在结点处 并与其兄弟结点合并 —— <strong>兄弟不够借，父子合并</strong><br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738369-dabc3f90-b860-4466-a9ac-61e85131a618.png" alt="img"></li>
+</ul>
+<p><strong>B树的建立过程举例：</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738311-c1d7ddc3-92c1-4375-8af3-93639c556058.png" alt="img"></p>
+<h2 id="4-红黑树"><a href="#4-红黑树" class="headerlink" title="4. 红黑树"></a>4. 红黑树</h2><h3 id="①-为什么需要红黑树"><a href="#①-为什么需要红黑树" class="headerlink" title="① 为什么需要红黑树"></a>① 为什么需要红黑树</h3><p>对于二叉搜索树，如果插入的数据是随机的，那么它就是接近平衡的二叉树，平衡的二叉树，它的操作效率（查询，插入，删除）效率较高，时间复杂度是O（logN）。</p>
+<p>但是可能会出现一种极端的情况，那就是<strong>插入的数据是有序的</strong>（递增或者递减），那么所有的节点都会在根节点的右侧或左侧，此时，<strong>二叉搜索树就变为了一个链表，它的操作效率就降低了</strong>，时间复杂度为O(N)，所以可以认为二叉搜索树的时间复杂度介于O（logN）和O(N)之间，视情况而定。</p>
+<p><strong>那么为了应对这种极端情况，红黑树应运而生，它是具备了某些特性的二叉搜索树，能解决非平衡树问题，红黑树是一种接近平衡的二叉树。</strong></p>
+<h3 id="②-红黑树的特征"><a href="#②-红黑树的特征" class="headerlink" title="② 红黑树的特征"></a>② 红黑树的特征</h3><p>首先，红黑树是一个二叉搜索 / 二叉排序树，它同时满足以下特性：</p>
+<ul>
+<li><p>每个节点非黑即红</p>
+</li>
+<li><p>根节点是黑色</p>
+</li>
+<li><p><strong>如果节点是红色的，那么它的子节点必须是黑色的</strong>（反之，不一定需要成立）</p>
+</li>
+<li><p>从根节点到叶节点或空子节点的每条路径，都包含相同数目的黑色结点</p>
+</li>
+</ul>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200413212932.png" style="zoom:67%;" />
+
+<h3 id="③-红黑树的效率"><a href="#③-红黑树的效率" class="headerlink" title="③ 红黑树的效率"></a>③ 红黑树的效率</h3><p><strong>红黑树的查找，插入和删除操作，时间复杂度都是O(logN)</strong>。</p>
+<p>查找操作时，它和普通的相对平衡的二叉搜索树的效率相同，都是通过相同的方式来查找的，没有用到红黑树特有的特性。</p>
+<p>但，如果插入的时候是有序数据，那么红黑树的查询效率就比二叉搜索树要高了，因为此时二叉搜索树不是平衡树，它的时间复杂度O(N)。</p>
+<p>插入和删除操作时，由于红黑树的每次操作平均要旋转一次和变换颜色，所以它比普通的二叉搜索树效率要低一点，不过时间复杂度仍然是O(logN)。</p>
+<p>总之，<strong>红黑树的优点就是对有序数据的查询操作不会慢到O(logN)的时间复杂度。</strong></p>
+<h3 id="④-红黑树的操作"><a href="#④-红黑树的操作" class="headerlink" title="④ 红黑树的操作"></a>④ 红黑树的操作</h3><p>👉 <a href="https://www.cnblogs.com/51life/p/9324321.html" target="_blank" rel="noopener">红黑树详解</a></p>
+<br>
+
+
+
+<h1 id="三、散列结构"><a href="#三、散列结构" class="headerlink" title="三、散列结构"></a>三、散列结构</h1><h2 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h2><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738299-271a096f-5094-4df2-9e6f-b63482958984.png" alt="img"  />
+
+
+
+<h3 id="1-散列表的定义"><a href="#1-散列表的定义" class="headerlink" title="1. 散列表的定义"></a>1. 散列表的定义</h3><p>散列（哈希）表： <strong>根据关键码值(Key value)而直接进行访问的数据结构</strong> 。根据给定的关键字通过散列函数来计算出关键字在表中的地址，以加快查找的速度。</p>
+<h3 id="2-散列函数的构造方法"><a href="#2-散列函数的构造方法" class="headerlink" title="2. 散列函数的构造方法"></a>2. 散列函数的构造方法</h3><ol>
+<li>直接定址法<br> <code>H(key) = a*key + b</code></li>
+<li>除留取余法<br> <code>H(key) = key%p</code> (p为不大于m的最大质数)</li>
+</ol>
+<h3 id="3-散列（哈希）冲突"><a href="#3-散列（哈希）冲突" class="headerlink" title="3. 散列（哈希）冲突"></a>3. 散列（哈希）冲突</h3><p>冲突：指的是多个关键字映射同一个地址的情况。</p>
+<h3 id="4-处理冲突的方法"><a href="#4-处理冲突的方法" class="headerlink" title="4. 处理冲突的方法"></a>4. 处理冲突的方法</h3><p>1.<strong>开放定址法</strong></p>
+<ul>
+<li><p>线性探测法（常用，会产生堆积问题）</p>
+<p> 冲突发生时顺序查找下一个位置</p>
+</li>
+<li><p>平方探测法</p>
+</li>
+<li><p>再散列法</p>
+</li>
+</ul>
+<p>2.<strong>拉链法</strong>（所有的同义词都存储在一个线性链表中）</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738366-65cc6d02-3c9c-41c1-8703-bf9f8f9149f7.png" alt="img"></p>
+<h3 id="5-性能分析"><a href="#5-性能分析" class="headerlink" title="5. 性能分析"></a>5. 性能分析</h3><p><strong>平均查找长度仅依赖于装填因子，越满发生冲突的可能性越大。</strong></p>
+<ul>
+<li>ASL成功 （除以 元素的总个数）</li>
+<li>ASL失败 （除以 P 或 mod后面的数）</li>
+</ul>
+<br>
+
+
+
+<h1 id="四、字符串模式匹配"><a href="#四、字符串模式匹配" class="headerlink" title="四、字符串模式匹配"></a>四、字符串模式匹配</h1><h2 id="KMP-算法"><a href="#KMP-算法" class="headerlink" title="KMP 算法"></a>KMP 算法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Index_KMP</span><span class="params">(<span class="built_in">string</span> s,<span class="built_in">string</span> T,<span class="keyword">int</span> next[],<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = pos,j = <span class="number">1</span>; <span class="comment">//i代表母表，j代表字表</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;=s.length &amp;&amp; j&lt;T.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span> || s[j]==T[i])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            j = next[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j&gt;T.length) <span class="comment">//匹配成功</span></span><br><span class="line">        <span class="keyword">return</span> i-T.length;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>next 数组算法如下：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069738327-3447e7e3-b7e2-4d5c-b106-a56596222c1c.png" alt="img"></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5-%E6%9F%A5%E6%89%BE/" data-id="ckeof1fxe001v2cudcyvk3pqt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/6-%E6%8E%92%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    排序
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/03/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4-%E5%9B%BE/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">图</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '查找',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>文件和输入输出流 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="9.文件和输入输出流">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件和输入输出流">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;01&#x2F;29&#x2F;Cpp&#x2F;9.%E6%96%87%E4%BB%B6%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="9.文件和输入输出流">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153189820-a72b339d-75e7-45b2-b6a2-379986379cab.png#align=left&amp;display=inline&amp;height=384&amp;originHeight=384&amp;originWidth=720&amp;size=0&amp;status=done&amp;style=none&amp;width=720">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153189770-1d035ca5-b75e-43c1-8f85-4bd234d8a0bf.png#align=left&amp;display=inline&amp;height=403&amp;originHeight=403&amp;originWidth=1101&amp;size=0&amp;status=done&amp;style=none&amp;width=1101">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153189927-22f1ff55-8f29-4fc8-8c48-eb38f4ff2d8d.png#align=left&amp;display=inline&amp;height=254&amp;originHeight=254&amp;originWidth=660&amp;size=0&amp;status=done&amp;style=none&amp;width=660">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153189719-342e61ef-4b7d-40fe-9755-ba5c1f05f25b.png#align=left&amp;display=inline&amp;height=301&amp;originHeight=301&amp;originWidth=427&amp;size=0&amp;status=done&amp;style=none&amp;width=427">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153189747-0ce39809-e587-4dd8-956c-2ad3cec4dea9.png#align=left&amp;display=inline&amp;height=223&amp;originHeight=223&amp;originWidth=619&amp;size=0&amp;status=done&amp;style=none&amp;width=619">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153189763-b8ad7148-0d60-4fa1-88a7-b5c57f24a1b6.png#align=left&amp;display=inline&amp;height=281&amp;originHeight=281&amp;originWidth=678&amp;size=0&amp;status=done&amp;style=none&amp;width=678">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153189782-fa82c27e-88e3-4b61-bf9a-a644671af40d.png#align=left&amp;display=inline&amp;height=468&amp;originHeight=468&amp;originWidth=688&amp;size=0&amp;status=done&amp;style=none&amp;width=688">
+<meta property="og:updated_time" content="2020-09-04T15:07:43.780Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153189820-a72b339d-75e7-45b2-b6a2-379986379cab.png#align=left&amp;display=inline&amp;height=384&amp;originHeight=384&amp;originWidth=720&amp;size=0&amp;status=done&amp;style=none&amp;width=720">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Cpp/9.文件和输入输出流" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            文件和输入输出流
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/01/29/Cpp/9.%E6%96%87%E4%BB%B6%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81/">
+            <time datetime="2020-01-29T14:02:45.000Z" itemprop="datePublished">2020-01-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.1k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈4分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <blockquote>
+<ul>
+<li>C++的 I/O是以一连串的字节流的方式进行的，在输入操作中，字节从设备（键盘，磁盘驱动器等）流向内存。在输出操作中，字节从内存流向设备（显示屏，打印机等）</li>
+<li>C++将每个文件看成是字节序列流。</li>
+</ul>
+</blockquote>
+<h1 id="一、关于流的头文件"><a href="#一、关于流的头文件" class="headerlink" title="一、关于流的头文件"></a>一、关于流的头文件</h1><p>绝大多数的C++程序都包含了<code>&lt; iostream &gt;</code>头文件，该头文件中声明了所有I/O流操作的所需的基础服务。<br /><br><br /><code>&lt; iostream &gt;</code>头文件定义了 cin 标准输入流、cout 标准输出流、cerr 标准错误流 和 clog 有缓冲的标准错误流（流输出内容存入缓冲区，直到缓冲区填满或是被清空才会输出）<br /><br><br /><code>&lt; iomanip &gt;</code> 头文件声明了对于带有参数化流运算符（例如 setw 和 setprecision）的格式化I/O有用的服务<br /><br><br /><code>&lt;fstream&gt;</code> 头文件声明了用户控制的文件处理服务<br /><br><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153189820-a72b339d-75e7-45b2-b6a2-379986379cab.png#align=left&display=inline&height=384&originHeight=384&originWidth=720&size=0&status=done&style=none&width=720" alt=""><br /></p>
+<p><a name="dfc98dce"></a></p>
+<h1 id="二、文件打开模式"><a href="#二、文件打开模式" class="headerlink" title="二、文件打开模式"></a>二、文件打开模式</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153189770-1d035ca5-b75e-43c1-8f85-4bd234d8a0bf.png#align=left&display=inline&height=403&originHeight=403&originWidth=1101&size=0&status=done&style=none&width=1101" alt=""><br /></p>
+<a id="more"></a>
+<h1 id="三、输出流"><a href="#三、输出流" class="headerlink" title="三、输出流"></a>三、输出流</h1><p>输出功能包括<br /></p>
+<ul>
+<li>流插入运算符 &lt;&lt;</li>
+<li>put成员函数进行字符输出</li>
+<li>write成员函数进行非格式化的输出</li>
+<li>十进制、八进制、十六进制格式的整数输出</li>
+<li>不同精确度的浮点数的输出</li>
+<li>指定宽度数据的输出</li>
+<li>。。。。。。</li>
+</ul>
+<h2 id="1-构造输出流对象打开文件——用于修改"><a href="#1-构造输出流对象打开文件——用于修改" class="headerlink" title="1. 构造输出流对象打开文件——用于修改"></a>1. 构造输出流对象打开文件——用于修改</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153189927-22f1ff55-8f29-4fc8-8c48-eb38f4ff2d8d.png#align=left&display=inline&height=254&originHeight=254&originWidth=660&size=0&status=done&style=none&width=660" alt=""><br />默认输出流文件打开模式是 <code>ios::out</code><br /><br><br />当不需要文件时显示的将其关闭，可以减少资源占用 <code>file.close();</code><br /><br><br /><strong>举例：使用I/O流以文本方式建立一个文件test.txt，并写入字符！</strong><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ofstream <span class="title">file1</span><span class="params">(<span class="string">"E:\\Codes\\TestInfo\\test.txt"</span>)</span></span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"the file is writing......"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">file1&lt;&lt;<span class="string">"successful input!"</span>;</span><br><span class="line">file1.<span class="built_in">close</span>();</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"done!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+
+<p><a name="e89fef40"></a></p>
+<h2 id="2-文件输出流成员函数"><a href="#2-文件输出流成员函数" class="headerlink" title="2. 文件输出流成员函数"></a>2. 文件输出流成员函数</h2><h2 id="put-成员函数"><a href="#put-成员函数" class="headerlink" title="put 成员函数"></a>put 成员函数</h2><p><code>cout.put(&#39;A&#39;);</code> 显示<strong>单个</strong>字符。<br />put也可级联使用<br /><code>cout.put(&#39;A&#39;).put(&#39;\n&#39;);</code><br /></p>
+<blockquote>
+<p>cout.put(‘A’); 效果基本等同于 cout&lt;&lt;’A’;<br><strong>cout.put(‘AAAA’); //错误，只能输出单个字符</strong><br><code>warning: overflow in implicit constant conversion [-Woverflow]</code></p>
+</blockquote>
+<h2 id="write-成员函数"><a href="#write-成员函数" class="headerlink" title="write 成员函数"></a>write 成员函数</h2><p>将内存中的一块内容写到一个文件输出流中<br /><br><strong>从字符数组中输出字节到文件中去</strong><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153189719-342e61ef-4b7d-40fe-9755-ba5c1f05f25b.png#align=left&display=inline&height=301&originHeight=301&originWidth=427&size=0&status=done&style=none&width=427" alt=""><br /></p>
+<p><a name="f8666d7f"></a></p>
+<h1 id="四、输入流"><a href="#四、输入流" class="headerlink" title="四、输入流"></a>四、输入流</h1><h2 id="1-构造输入流对象打开文件——用于读取"><a href="#1-构造输入流对象打开文件——用于读取" class="headerlink" title="1. 构造输入流对象打开文件——用于读取"></a>1. 构造输入流对象打开文件——用于读取</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153189747-0ce39809-e587-4dd8-956c-2ad3cec4dea9.png#align=left&display=inline&height=223&originHeight=223&originWidth=619&size=0&status=done&style=none&width=619" alt=""><br />文件输入流的默认打开模式 <code>ios::in</code><br /></p>
+<p><a name="76f4d724"></a></p>
+<h2 id="2-输入流相关函数"><a href="#2-输入流相关函数" class="headerlink" title="2. 输入流相关函数"></a>2. 输入流相关函数</h2><h2 id="get成员函数"><a href="#get成员函数" class="headerlink" title="get成员函数"></a>get成员函数</h2><p>功能和 &gt;&gt; 很像，主要的不同点在于 <strong>get函数在读入数据时包括空白字符</strong><br /><br><br />get函数在遇到文件尾的时候返回 <code>EOF</code><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153189763-b8ad7148-0d60-4fa1-88a7-b5c57f24a1b6.png#align=left&display=inline&height=281&originHeight=281&originWidth=678&size=0&status=done&style=none&width=678" alt=""><br /></p>
+<p><a name="b4f57f23"></a></p>
+<h2 id="getline-成员-非成员函数"><a href="#getline-成员-非成员函数" class="headerlink" title="getline 成员/非成员函数"></a>getline 成员/非成员函数</h2><p>读取多行字符，每读一行存储一次，可定义行分割符<br /></p>
+<ul>
+<li>非成员函数<br><br />函数原型 <code>template&lt;&gt; std::istream &amp;std::getline&lt;...&gt;(std::istream &amp;__is, std::string &amp;__str, char __delim)</code><br /><br>第一个参数传入输入流，第二个参数传入string字符串，第三个参数为自定义行分割符，getline读取到行分割符就结束本次读取，并将自定义的行分割符从流中删除</li>
+</ul>
+<p><br />举例：分行读取文件中的内容<br /></p>
+<blockquote>
+<p>文件中的内容<br>123<br>456<br>789</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> line1;</span><br><span class="line">    <span class="built_in">string</span> line2;</span><br><span class="line">    <span class="built_in">string</span> line3;</span><br><span class="line">    <span class="function">ifstream <span class="title">ifile</span><span class="params">(<span class="string">"E:\\Codes\\Program-c++\\Zhenli_Book_Code\\11-7.txt"</span>)</span></span>;</span><br><span class="line">    getline(ifile, line1);</span><br><span class="line">    getline(ifile, line2,<span class="string">'5'</span>);   </span><br><span class="line">    getline(ifile, line3);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;line1&lt;&lt;<span class="built_in">endl</span>&lt;&lt;line2&lt;&lt;<span class="built_in">endl</span>&lt;&lt;line3&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />读取结果<br /></p>
+<blockquote>
+<p>123<br>4<br>6</p>
+</blockquote>
+<ul>
+<li>成员函数<br /></li>
+</ul>
+<p><strong>成员函数只能将读取到内容存储在字符数组中 <code>char[ ]</code></strong><br><br />函数原型 <code>template&lt;&gt; std::istream &amp;std::istream::getline(char *__s, std::streamsize __n, char __delim)</code><br /><br>第一个参数时字符数组，第二个参数是读取的字节数，第三个参数为自定义行分割符<br /><br>读取的字节数已满或者已到自定义的行分割符，则getline都会结束本次读取，并将自定义的行分割符从流中删除</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> buf1[<span class="number">10</span>];</span><br><span class="line">   <span class="keyword">char</span> buf2[<span class="number">10</span>];</span><br><span class="line">   <span class="keyword">char</span> buf3[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">   <span class="function">ifstream <span class="title">ifile</span><span class="params">(<span class="string">"E:\\Codes\\Program-c++\\Zhenli_Book_Code\\11-7.txt"</span>)</span></span>;</span><br><span class="line">   ifile.getline(buf1,<span class="number">10</span>,<span class="string">'2'</span>);</span><br><span class="line">   ifile.getline(buf2, <span class="number">10</span>);</span><br><span class="line">   ifile.getline(buf3, <span class="number">10</span>);</span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;buf1&lt;&lt;<span class="built_in">endl</span>&lt;&lt;buf2&lt;&lt;<span class="built_in">endl</span>&lt;&lt;buf3&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />输出结果<br /></p>
+<blockquote>
+<p>1<br>3<br>456</p>
+</blockquote>
+<h2 id="read-成员函数"><a href="#read-成员函数" class="headerlink" title="read 成员函数"></a>read 成员函数</h2><p><strong>从文件中读取内容输入到字符数组中</strong><br />由长度参数确定要读的字节数<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153189782-fa82c27e-88e3-4b61-bf9a-a644671af40d.png#align=left&display=inline&height=468&originHeight=468&originWidth=688&size=0&status=done&style=none&width=688" alt=""></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/01/29/Cpp/9.%E6%96%87%E4%BB%B6%E5%92%8C%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%B5%81/" data-id="ckeodenc0002ltwudcgb1c1ya" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/01/30/Cpp/%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    C++面试指南
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/01/28/Cpp/8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">函数模板和类模板</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '文件和输入输出流',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

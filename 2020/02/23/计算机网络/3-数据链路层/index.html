@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>数据链路层 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="3-数据链路层">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据链路层">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;02&#x2F;23&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="3-数据链路层">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173805.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173601.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173820.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173834.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173842.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173853.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200429212615.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173904.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173917.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173927.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173943.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173955.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200429212027.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200427220527.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200427221238.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174024.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174030.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174043.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174053.png">
+<meta property="og:image" content="c:%5CUsers%5C19124%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200709174104188.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200429213626.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174118.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174126.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174146.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174202.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200430104154.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174215.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174227.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174238.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174252.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200430110132.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200510162530.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174321.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174333.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709174340.png">
+<meta property="og:updated_time" content="2020-09-04T15:49:11.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200709173805.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-计算机网络/3-数据链路层" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            数据链路层
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+            <time datetime="2020-02-23T14:02:45.000Z" itemprop="datePublished">2020-02-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=4k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈13分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="🚡-数据链路层"><a href="#🚡-数据链路层" class="headerlink" title="🚡 数据链路层"></a>🚡 数据链路层</h1><hr>
+<h2 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、思维导图</h2><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173805.png" alt=""></p>
+<h2 id="二、数据链路层的作用"><a href="#二、数据链路层的作用" class="headerlink" title="二、数据链路层的作用"></a>二、数据链路层的作用</h2><p><strong>基于物理层的问题</strong>：</p>
+<ul>
+<li>物理连接是有差错和不可靠的</li>
+<li>物理设备之间可能存在传输速度不匹配问题<a id="more"></a></li>
+</ul>
+<p><strong>数据链路层功能</strong>：</p>
+<ul>
+<li>数据链路层在物理层提供服务的基础上为网络层提供服务。</li>
+<li>其最基本的服务是将来自网络层的 IP 数据报封装成帧，可靠的传输到相邻结点的目标网络层。</li>
+<li>其主要作用是加强物理层传输原始比特流的功能，将物理层提供的可能出错的物理连接改造成为逻辑上无差错的数据链路，使之对网络层表现为一条无差错的链路<ul>
+<li>流量控制：解决速度不匹配问题</li>
+<li>差错处理技术：保证数据传输准确性</li>
+</ul>
+</li>
+</ul>
+<p><strong>功能概述：</strong></p>
+<ul>
+<li>为网络层提供服务</li>
+<li>链路管理，即连接的建立，维持，释放</li>
+<li>组帧</li>
+<li>流量控制（限制发送方）</li>
+<li>差错控制</li>
+</ul>
+<p>下面具体解释这些功能</p>
+<h2 id="三、封装成帧-amp-透明传输"><a href="#三、封装成帧-amp-透明传输" class="headerlink" title="三、封装成帧&amp;透明传输"></a>三、封装成帧&amp;透明传输</h2><h3 id="1-封装成帧的概念"><a href="#1-封装成帧的概念" class="headerlink" title="1. 封装成帧的概念"></a>1. 封装成帧的概念</h3><p>封装成帧就是在网络层传下来的IP数据报的前后部分添加首部，尾部，这样就构成了一个帧。</p>
+<p>接收端在收到物理层上交的比特流后，就能根据首部和尾部的标记，从收到的比特流中识别帧的开始和结束。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173601.png" alt=""></p>
+<h3 id="2-透明传输"><a href="#2-透明传输" class="headerlink" title="2. 透明传输"></a>2. 透明传输</h3><ul>
+<li><strong>透明传输是指不管所传数据是什么样的比特组合，都应当能够在链路上传送。</strong></li>
+<li>当所传数据中的比特组合恰巧与某一个控制信息完全一样时，就必须采取适当的措施，使接收方不会将这样的数据误认为是某种控制信息。这样才能保证数据链路层的传输是透明的。方法如下：</li>
+</ul>
+<h3 id="3-组帧的四种方法"><a href="#3-组帧的四种方法" class="headerlink" title="3. 组帧的四种方法"></a>3. 组帧的四种方法</h3><h4 id="①-字符计数法"><a href="#①-字符计数法" class="headerlink" title="① 字符计数法"></a>① 字符计数法</h4><p>帧首部使用一个计数字段（第一个字节）来标明帧内字符数</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173820.png" alt=""></p>
+<p>存在的问题：若一个帧出错，则它之后的帧都出错</p>
+<h4 id="②-字节填充法（转义符）"><a href="#②-字节填充法（转义符）" class="headerlink" title="② 字节填充法（转义符）"></a>② 字节填充法（转义符）</h4><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173834.png" alt=""></p>
+<h4 id="③-零比特填充法"><a href="#③-零比特填充法" class="headerlink" title="③ 零比特填充法"></a>③ 零比特填充法</h4><p>发送端：<strong>连续5个1，则立即填入1个0</strong></p>
+<p>接收端：连续5个1，则立即去除后面的0</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173842.png" alt=""></p>
+<h4 id="④-违规编码法（曼彻斯特编码）"><a href="#④-违规编码法（曼彻斯特编码）" class="headerlink" title="④ 违规编码法（曼彻斯特编码）"></a>④ 违规编码法（曼彻斯特编码）</h4><p>可以用电平的 “高-高” “低-低“ 来判定帧的起始和终止</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173853.png" alt=""></p>
+<h2 id="四、数据链路层的差错控制"><a href="#四、数据链路层的差错控制" class="headerlink" title="四、数据链路层的差错控制"></a>四、数据链路层的差错控制</h2><h3 id="1-检测编码"><a href="#1-检测编码" class="headerlink" title="1. 检测编码"></a>1. 检测编码</h3><h4 id="①-奇偶校验码"><a href="#①-奇偶校验码" class="headerlink" title="① 奇偶校验码"></a>① 奇偶校验码</h4><p>校验位的取值应使整个码字(包括校验位)中为“1”的比特个数为奇(偶)数。</p>
+<p>传输时，形成的校验位附加在信息字段之后传输。</p>
+<p>直接举例：</p>
+<p>0110001 采用奇校验码，应使 0110001中1的个数为奇数，所以添加0</p>
+<p>偶校验码，应使0110001中的1的个数为偶数，所以添加1</p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200429212615.png" style="zoom: 50%;" />
+
+<p>奇偶校验码的特点：</p>
+<p><strong>只能检查出奇数个比特的错误，检测能力为50%</strong></p>
+<ul>
+<li><p>异步传输方式中采用偶校验， </p>
+</li>
+<li><p>同步传输方式中采用奇校验</p>
+</li>
+</ul>
+<h4 id="②-循环冗余码CRC"><a href="#②-循环冗余码CRC" class="headerlink" title="② 循环冗余码CRC"></a>② 循环冗余码CRC</h4><p><code>冗余码</code> ：在数据发送之前，先按某种关系附加上一定的冗余码，当要发送的数据发送变化时，相应的冗余码位也随之变化。接收端接收时判断数据信息和冗余码是否符合，从而判断是否出错。</p>
+<p>类似于快递买了5本书，包装上写了5本，但是收到后里面只有3本，则可判断发送过来的数据出了问题</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173904.png" alt=""></p>
+<p><strong>异或相除，同0异1，即 1 /0 = 0， 1 / 1 = 1，0 / 1 = 0，0 / 0 = 1</strong></p>
+<h3 id="2-纠错编码-—-海明码"><a href="#2-纠错编码-—-海明码" class="headerlink" title="2. 纠错编码 — 海明码"></a>2. 纠错编码 — 海明码</h3><p>工作流程：</p>
+<ul>
+<li><p><code>确定校验码位数r</code></p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173917.png" alt=""></p>
+</li>
+<li><p><code>确定校验码和数据的位置</code></p>
+<p> <img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173927.png" alt=""></p>
+<p> 4位校验码P1,P2,P3,P4，分别放在 2^0 ，2^1 ，2^2 ， 2^3这四个位置上，<br> 其余位置依次从高到底填入原始数据</p>
+</li>
+<li><p><code>求出校验码的值</code></p>
+<p> <img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173943.png" alt=""></p>
+</li>
+<li><p><code>检错并纠错</code></p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709173955.png" alt=""></p>
+</li>
+</ul>
+<p>  按照上一步的逻辑进行异或运算求出一个二进制序列 </p>
+<p>  <code>P1</code> 异或 D1 异或 D2 异或 D4 异或 D5 = 1</p>
+<p>   <code>P2</code> 异或 D1 异或 D3 异或 D4 异或 D6 = 0</p>
+<p>   <code>P3</code> 异或 D2 异或 D3 异或 D4 = 1</p>
+<p>   <code>P4</code> 异或 D5 异或 D6 = 0 </p>
+<p>  得出的二进制序列为 0101 = 5，由此可知第五位出错</p>
+<h2 id="五、流量控制-amp-可靠传输"><a href="#五、流量控制-amp-可靠传输" class="headerlink" title="五、流量控制&amp;可靠传输"></a>五、流量控制&amp;可靠传输</h2><h3 id="1-流量控制的概念"><a href="#1-流量控制的概念" class="headerlink" title="1. 流量控制的概念"></a>1. 流量控制的概念</h3><p>限制发送方的发送速度，让<code>发送发</code>慢点发</p>
+<p>通过<code>滑动窗口</code>来实现流量控制</p>
+<h3 id="2-数据链路层流量控制的方法-——-ARQ协议"><a href="#2-数据链路层流量控制的方法-——-ARQ协议" class="headerlink" title="2. 数据链路层流量控制的方法 —— ARQ协议"></a>2. 数据链路层流量控制的方法 —— ARQ协议</h3><blockquote>
+<p>有些书中将这个协议放在运输层</p>
+</blockquote>
+<p>以下三种协议都包含 自动重传请求（Automatic Repeat Request）ARQ，所以也称 <code>ARQ 协议</code></p>
+<p>传统自动重传请求分成为三种，即停等式(stop-and-wait）ARQ，回退n帧（go-back-n）ARQ，以及选择性重传（selective repeat）ARQ。<strong>后两种协议是滑动窗口技术与请求重发技术的结合</strong>，由于窗口尺寸开到足够大时，帧在线路上可以连续地流动，因此又称其为连续ARQ协议。三者的区别在于对于出错的数据报文的处理机制不同。三种ARQ协议中，复杂性递增，效率也递增。</p>
+<h4 id="①-停等协议（停等式ARQ）"><a href="#①-停等协议（停等式ARQ）" class="headerlink" title="① 停等协议（停等式ARQ）"></a>① 停等协议（停等式ARQ）</h4><ul>
+<li><p>在停等式ARQ中，数据报文发送完成之后，发送方等待接收方的状态报告，如果状态报告报文发送成功，发送后续的数据报文，否则重传该报文。</p>
+</li>
+<li><p>停等式ARQ，<strong><code>发送窗口和接收窗口大小均为1</code>，发送方每发送一帧之后就必须停下来等待接收方的确认返回，仅当接收方确认正确接收后再继续发送下一帧</strong>。该方法所需要的缓冲存储空间最小，缺点是信道效率很低。</p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200429212027.png" style="zoom:50%;" />
+
+
+
+</li>
+</ul>
+<h4 id="②-后退N帧协议-GBN（后退N帧的ARQ）"><a href="#②-后退N帧协议-GBN（后退N帧的ARQ）" class="headerlink" title="② 后退N帧协议 GBN（后退N帧的ARQ）"></a>② 后退N帧协议 GBN（后退N帧的ARQ）</h4><ul>
+<li><p><strong><code>发送窗口 &gt;= 1，接收窗口 = 1</code></strong> , 发信侧不用等待收信侧的应答，持续的发送多个帧，假如发现已发送的帧中有错误发生，<strong>那么从那个发生错误的帧开始及其之后所有的帧全部再重新发送。</strong></p>
+</li>
+<li><p>特点：（GBN）复杂度低，但是不必要的帧会再重发，所以大幅度范围内使用的话效率是不高的</p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200427220527.png" style="zoom: 67%;" />
+
+</li>
+</ul>
+<h4 id="③-选择重传协议-SR（选择性重传ARQ）"><a href="#③-选择重传协议-SR（选择性重传ARQ）" class="headerlink" title="③ 选择重传协议 SR（选择性重传ARQ）"></a>③ 选择重传协议 SR（选择性重传ARQ）</h4><ul>
+<li><p><strong><code>发送窗口 &gt;= 1，接收窗口 &gt;= 1</code></strong> , 发信侧不用等待收信侧的应答，持续的发送多个帧，接收方将确认一个正确接收的帧而不管其是否按序，失序的帧都将被缓存。<strong>假如发现已发送的帧中有错误发生，那么发信侧将只重新发送那个发生错误的帧。</strong></p>
+</li>
+<li><p>特点：相对于GBN 复杂度高，但是不需要发送没必要的帧，所以效率高。</p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200427221238.png" style="zoom:67%;" />
+
+</li>
+</ul>
+<h3 id="3-可靠传输"><a href="#3-可靠传输" class="headerlink" title="3. 可靠传输"></a>3. 可靠传输</h3><p>发送端发送什么，接收端原封不动接收什么</p>
+<h2 id="六、介质访问控制"><a href="#六、介质访问控制" class="headerlink" title="六、介质访问控制"></a>六、介质访问控制</h2><h3 id="1-传播数据使用的两种信道-链路"><a href="#1-传播数据使用的两种信道-链路" class="headerlink" title="1. 传播数据使用的两种信道/链路"></a>1. 传播数据使用的两种信道/链路</h3><h4 id="①-点对点信道"><a href="#①-点对点信道" class="headerlink" title="① 点对点信道"></a>① 点对点信道</h4><p>一对一通信。</p>
+<p>因为不会发生碰撞，因此也比较简单，使用 PPP 协议进行控制。常用于广域网</p>
+<h4 id="②-广播式信道"><a href="#②-广播式信道" class="headerlink" title="② 广播式信道"></a>② 广播式信道</h4><p>一对多通信，一个节点发送的数据能够被广播信道上所有的节点接收到。</p>
+<p>所有的节点都在同一个广播信道上发送数据，因此需要有专门的控制方法进行协调，避免发生冲突（冲突也叫碰撞）。</p>
+<p>主要有两种控制方法进行协调，一个是使用信道复用技术（静态划分信道），另一个是使用 CSMA/CD 协议。</p>
+<p>详细控制方法如下</p>
+<h3 id="2-介质访问控制的概念"><a href="#2-介质访问控制的概念" class="headerlink" title="2. 介质访问控制的概念"></a>2. 介质访问控制的概念</h3><p>介质访问控制 就是采取一定的措施，使得 广播式链路中 两对节点之间的通信不会发生互相干扰的情况</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174024.png" alt=""></p>
+<h3 id="3-静态划分信道"><a href="#3-静态划分信道" class="headerlink" title="3. 静态划分信道"></a>3. 静态划分信道</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174030.png" alt=""></p>
+<p>使得多路信号可以共用一个信道， 将多路信号组合在一条物理信道上传输，充分利用信道容量。</p>
+<h4 id="①-频分多路复用-FDM"><a href="#①-频分多路复用-FDM" class="headerlink" title="① 频分多路复用 FDM"></a>① 频分多路复用 FDM</h4><p>对整个物理信道的可用带宽进行分割，每个用户分配不同的频带</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174043.png" alt=""></p>
+<p><strong>频分复用如何避免各路信号间的干扰：</strong></p>
+<p>频分复用要求总频率宽度大于各个子信道频率之和，同时为了保证各子信道中所传输的信号互不干扰，<strong>应在各子信道之间设立隔离带（也就是保护频带，即插入一些 空白的频段 ）</strong>，这样就保证了各路信号互不干扰。</p>
+<h4 id="②-时分多路复用-TDM"><a href="#②-时分多路复用-TDM" class="headerlink" title="② 时分多路复用 TDM"></a>② 时分多路复用 TDM</h4><p>将时间段分为一段段等长的时分复用帧，每个用户在每一个TDM帧内占用固定序号的时隙，所用用户按序轮流占用信道</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174053.png" alt=""></p>
+<p>在一个TDM帧内：A先发送na比特，接着B发送nb比特，C发送nc比特，最后D发送nd比特</p>
+<p>下一个TDM帧同样如此</p>
+<h4 id="③-波分多路复用-WDM"><a href="#③-波分多路复用-WDM" class="headerlink" title="③ 波分多路复用 WDM"></a>③ 波分多路复用 WDM</h4><p>就是光的频分多路复用，将不同路信号调制成<strong>不同波长</strong>的光，并借助同一光纤信道传输</p>
+<p><img src="C:%5CUsers%5C19124%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200709174104188.png" alt="image-20200709174104188"></p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200429213626.png" style="zoom: 50%;" />
+
+<h4 id="④-码分多路复用-CDM"><a href="#④-码分多路复用-CDM" class="headerlink" title="④ 码分多路复用 CDM"></a>④ 码分多路复用 CDM</h4><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174118.png" alt=""></p>
+<h4 id="⑤-多路复用的特点"><a href="#⑤-多路复用的特点" class="headerlink" title="⑤ 多路复用的特点"></a>⑤ 多路复用的特点</h4><ul>
+<li><p><strong>多路复用的特点</strong>：各个子信道（频分多路复用中的子 频段，时分多路复用中的时间片，波分多路复用中的波 长） 被<strong>静态地</strong>分配给各路信号传输，接收方可以直接 通过识别固定子频段、时间片或者波长来完成信号分离。 </p>
+</li>
+<li><p><strong>不足之处</strong>：信道利用率不够高，信号的传输往往是间断 的，在某个时刻，子信道会出现空闲状态**（无数据）</p>
+</li>
+<li><p><strong>解决办法</strong>：集中传输 —— 动态按需分配子信道</p>
+</li>
+</ul>
+<h3 id="4-动态划分信道"><a href="#4-动态划分信道" class="headerlink" title="4. 动态划分信道"></a>4. 动态划分信道</h3><h4 id="a-轮询访问介质访问控制"><a href="#a-轮询访问介质访问控制" class="headerlink" title="a. 轮询访问介质访问控制"></a>a. 轮询访问介质访问控制</h4><h5 id="令牌传递协议"><a href="#令牌传递协议" class="headerlink" title="令牌传递协议"></a>令牌传递协议</h5><p>结点之间通过有序传递令牌（特定比特模式）来分配各结点对共享型总线的访问权利，形成闭合的逻辑环路</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174126.png" alt=""></p>
+<h4 id="b-随机访问介质访问控制"><a href="#b-随机访问介质访问控制" class="headerlink" title="b. 随机访问介质访问控制"></a>b. 随机访问介质访问控制</h4><p>所有用户可随机发送信息，发送信息时占全部带宽</p>
+<h5 id="①-ALOHA-协议-不听就说，想发就发"><a href="#①-ALOHA-协议-不听就说，想发就发" class="headerlink" title="① ALOHA 协议 不听就说，想发就发"></a>① ALOHA 协议 不听就说，想发就发</h5><p>不监听信道</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174146.png" alt=""></p>
+<h5 id="②-CSMA-协议-先听再说"><a href="#②-CSMA-协议-先听再说" class="headerlink" title="② CSMA 协议 先听再说"></a>② CSMA 协议 先听再说</h5><p><code>载波监听多路访问</code></p>
+<ul>
+<li><strong>载波监听</strong>：侦听媒体是否空闲（先听再说） </li>
+<li><strong>多路访问</strong>：多个结点共享媒体，多个结点同时获取信息</li>
+</ul>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174202.png" alt=""></p>
+<h5 id="③-CSMA-CD-协议-先听再说，边听边说，冲突停发，随机重发"><a href="#③-CSMA-CD-协议-先听再说，边听边说，冲突停发，随机重发" class="headerlink" title="③ CSMA/CD 协议 先听再说，边听边说，冲突停发，随机重发"></a>③ CSMA/CD 协议 先听再说，边听边说，冲突停发，随机重发</h5><p><code>载波监听多点接入/碰撞检测</code></p>
+<ul>
+<li><p><strong>冲突检测</strong>：适配器边发送数据边检测信道上信号电压的变化情况，以便判断是否有人也在发送信号。</p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200430104154.png" style="zoom:50%;" />
+
+</li>
+</ul>
+<p>发现碰撞后采用 <code>截断二进制指数规避算法</code> 确定重传时机</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174215.png" alt=""></p>
+<p><u><strong>CAMA/CD 碰撞检测协议一般用于有线连接的局域网</strong></u></p>
+<blockquote>
+<p>CSMA/CD 数据帧格式中，会有最小帧长（每个帧的长度不小于64字节）的限制，这是为了保证发送结点可以对发生的冲突进行有效的检测</p>
+</blockquote>
+<h5 id="④-CSMA-CA-协议-先听再说，空闲发送，协商频段，避免冲突"><a href="#④-CSMA-CA-协议-先听再说，空闲发送，协商频段，避免冲突" class="headerlink" title="④ CSMA/CA 协议 先听再说，空闲发送，协商频段，避免冲突"></a>④ CSMA/CA 协议 先听再说，空闲发送，协商频段，避免冲突</h5><p><code>载波监听多点接入/碰撞避免</code></p>
+<p>主要流程：</p>
+<ul>
+<li>先听再说，但监听到信道空闲时，<strong>并不是立即发送数据，而是先发送一个很小的信道侦测帧 RTS</strong>，告知对方自己将要发送的数据长度和频段选择，如果收到最近的接入点返回的 <strong>响应 CTS</strong>，就认为信道是空闲的，然后再发送数据</li>
+<li>接收端如果正确收到此数据帧，则经过一段时间间隔后，向发送端发送确认帧ACK。 </li>
+<li>发送端收到ACK帧，确定数据正确传输，在经历一段时间间隔后，再发送数据。</li>
+</ul>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174227.png" alt=""></p>
+<p><u><strong>CSMA/CA 碰撞避免协议一般用于无线局域网</strong></u></p>
+<blockquote>
+<p><strong>为什么 CSMA/CD 协议不适用于无线网呢？</strong></p>
+<ul>
+<li><p>碰撞检测”要求一个站点在发送本站数据的同时，还必须不间断地检测信道。一旦检测到碰撞，就立即停止发送。<strong>但由于无线信道的传输条件特殊，其信号强度的动态范围非常大，因此在802.11适配器上接收到的信号强度往往会远远小于发送信号的强度</strong>(信号强度可能相差百万倍)。如要在无线局域网的适配器上实现检测到碰撞，在硬件上需要的花费就会过大。</p>
+</li>
+<li><p>更重要的是，<strong>即使我们能够在硬件上实现无线局域网的碰撞检测功能，我们仍然无法避免碰撞的发生</strong>。这就表明，<strong>无线局域网不需要进行碰撞检测。</strong></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="七、局域网-LAN"><a href="#七、局域网-LAN" class="headerlink" title="七、局域网 LAN"></a>七、局域网 LAN</h2><p>局域网是一种典型的广播信道，主要特点是网络为一个单位所拥有，且地理范围和站点数目均有限。</p>
+<h3 id="1-局域网分类"><a href="#1-局域网分类" class="headerlink" title="1. 局域网分类"></a>1. 局域网分类</h3><ul>
+<li><code>以太网</code></li>
+<li>令牌环网</li>
+<li>FDDI</li>
+<li>ATM</li>
+<li>无线局域网 WLAN</li>
+</ul>
+<h3 id="2-局域网拓扑结构"><a href="#2-局域网拓扑结构" class="headerlink" title="2. 局域网拓扑结构"></a>2. 局域网拓扑结构</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174238.png" alt=""></p>
+<h3 id="3-MAC子层和LLC子层"><a href="#3-MAC子层和LLC子层" class="headerlink" title="3. MAC子层和LLC子层"></a>3. MAC子层和LLC子层</h3><p>MAC子层和物理层对接，LLC子层和网络层对接</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174252.png" alt=""></p>
+<ul>
+<li><p>媒体访问控制（MAC）技术构成局域网的主要内容， 不同的媒体访问控制技术—不同的协议—不同的帧格式； </p>
+</li>
+<li><p>LLC的目的：<strong>屏蔽不同MAC技术，向高层提供统一服务和接口</strong></p>
+<img src="https://gitee.com/xinxiban/images/raw/master/img/20200430110132.png" style="zoom:50%;" />
+
+</li>
+</ul>
+<h2 id="八、以太网"><a href="#八、以太网" class="headerlink" title="八、以太网"></a>八、以太网</h2><p>以太网是一种星型拓扑结构局域网。</p>
+<p>早期使用<strong>集线器</strong>进行连接，集线器是一种物理层设备， 作用于比特而不是帧，当一个比特到达接口时，集线器重新生成这个比特，并将其能量强度放大，从而扩大网络的传输距离，之后再将这个比特发送到其它所有接口。如果集线器同时收到两个不同接口的帧，那么就发生了碰撞。</p>
+<p>目前以太网使用<strong>交换机</strong>替代了集线器，交换机是一种链路层设备，它不会发生碰撞，能根据 MAC 地址进行存储转发。</p>
+<p>以太网提供 <code>无连接，不可靠</code> 的服务</p>
+<h3 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h3><p>MAC 地址是链路层地址，长度为 6 字节（48 位），<strong>用于唯一标识网络适配器（网卡）。</strong></p>
+<p>一台主机拥有多少个网络适配器就有多少个 MAC 地址。例如<strong>笔记本电脑普遍存在无线网络适配器和有线网络适配器，因此就有两个 MAC 地址。</strong></p>
+<h2 id="九、PPP协议"><a href="#九、PPP协议" class="headerlink" title="九、PPP协议"></a>九、PPP协议</h2><p>互联网用户通常需要连接到某个 <strong>ISP(互联网服务提供商)</strong> 之后才能接入到互联网，PPP 协议是用户计算机和 ISP 进行通信时所使用的数据链路层协议。</p>
+<p>用户使用拨号电话接入因特网一般都使用PPP协议。</p>
+<p>只支持全双工链路</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200510162530.png" alt=""></p>
+<h2 id="十、链路层设备"><a href="#十、链路层设备" class="headerlink" title="十、链路层设备"></a>十、链路层设备</h2><p>隔离冲突域，不隔离广播域</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174321.png" alt=""></p>
+<h3 id="1-网桥-二层交换机"><a href="#1-网桥-二层交换机" class="headerlink" title="1. 网桥 / 二层交换机"></a>1. 网桥 / 二层交换机</h3><p>工作于OSI模型的第2层，因而称为二层交换机</p>
+<p>网桥：<strong>根据MAC帧的目的地址对帧进行转发和过滤</strong>。当网桥收到一个帧的时候，并不向所有接口转发此帧（集线器），而是先检查此帧的目的MAC地址，然后再确定该帧转发到哪一个接口，或者是把他丢弃</p>
+<p>网桥的功能在延长网络跨度上类似于中继器/集线器，然而它能提供智能化连接服务，即根据帧的终点地址处于哪一网段来进行转发和滤除</p>
+<p>网桥只用于连接相同类型的网络。</p>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174333.png" alt=""></p>
+<h3 id="2-多接口网桥"><a href="#2-多接口网桥" class="headerlink" title="2. 多接口网桥"></a>2. 多接口网桥</h3><p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200709174340.png" alt=""></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/02/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" data-id="ckeof1fxl002d2cud800b3p72" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/02/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/4-%E7%BD%91%E7%BB%9C%E5%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    网络层
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/02/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2-%E7%89%A9%E7%90%86%E5%B1%82/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">物理层</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '数据链路层',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

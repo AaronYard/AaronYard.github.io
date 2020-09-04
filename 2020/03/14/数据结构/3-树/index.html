@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>树 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="3-树">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;03&#x2F;14&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;3-%E6%A0%91&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="3-树">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666306-defc5b8d-59b4-427a-81cb-4e657e465946.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666237-87c770da-ebfb-47a6-8e29-1892924a5738.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;gitee.com&#x2F;xinxiban&#x2F;images&#x2F;raw&#x2F;master&#x2F;img&#x2F;20200505111847.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666281-a439627b-8ae8-45b1-bc84-c8540ea160c8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666293-34a93357-6200-4dc2-bd09-14adabfa2d24.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666351-d5958c36-e1dc-48f0-a367-0acf75c22244.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666352-f8ec3220-09b0-4281-87bc-9ab648622fca.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666320-1c792825-44e0-45c2-847f-2f8c25786d9f.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666368-05f4c54f-0ef4-4632-ab9a-029c538d3033.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666346-59ec1657-b716-4c68-b8c2-98a0de925251.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666391-c37b319d-dd0d-4fc4-9473-9de453cd55d6.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666382-3e0fa698-479d-4344-a014-d5bc58235c7b.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666397-52152221-b062-4c4d-8ad2-90ad68ef782f.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666442-bf4e4f2b-fc5f-4376-b2b3-2da92e1db8d7.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666491-4b67e2f9-b5b3-4667-8128-8da74f4f4b12.png">
+<meta property="og:updated_time" content="2020-09-04T15:49:39.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586069666306-defc5b8d-59b4-427a-81cb-4e657e465946.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-数据结构/3-树" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            树
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/03/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3-%E6%A0%91/">
+            <time datetime="2020-03-14T14:02:45.000Z" itemprop="datePublished">2020-03-14</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=2.5k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈11分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、思维导图"><a href="#一、思维导图" class="headerlink" title="一、思维导图"></a>一、思维导图</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666306-defc5b8d-59b4-427a-81cb-4e657e465946.png" alt="img"></p>
+<br>
+
+
+<a id="more"></a>
+<h1 id="二、基本概念和性质"><a href="#二、基本概念和性质" class="headerlink" title="二、基本概念和性质"></a>二、基本概念和性质</h1><ol>
+<li><strong>结点数等于所有结点的度数(边数)加1</strong>  <code>v = e+1</code>；</li>
+<li>对于一颗具有n个结点，度为4的树来说，树的最大高度为n-3；<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666237-87c770da-ebfb-47a6-8e29-1892924a5738.png" alt="img"></li>
+<li>二叉树的性质：</li>
+</ol>
+<ul>
+<li><p><code>n0 = n2 + 1</code>； 叶子结点数数 = 度为2的结点+1</p>
+</li>
+<li><p>高度为h的二叉树总共至多有 <code>2的h次方 -1</code> 个结点（满二叉树）<br> 第k层至多有 <code>2的k-1次方</code> 个结点；</p>
+</li>
+<li><p>具有n个结点的完全二叉树的高度为 <code>log2(n+1)</code> 向上取整</p>
+</li>
+</ul>
+<p><img src="https://gitee.com/xinxiban/images/raw/master/img/20200505111847.png" alt=""></p>
+<br>
+
+
+
+<h1 id="三、二叉树的存储结构"><a href="#三、二叉树的存储结构" class="headerlink" title="三、二叉树的存储结构"></a>三、二叉树的存储结构</h1><h2 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h2><p>顺序存储（数组）：空间利用率较低</p>
+<h2 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h2><p>链式存储（链表）：左右孩子指针（含有n个结点的二叉链表中，含有n+1个空链域）</p>
+<ul>
+<li>C</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>* <span class="title">lchild</span>,*<span class="title">rchild</span>;</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    T data;</span><br><span class="line">    BiTNode&lt;T&gt; *lchild,*rchild;</span><br><span class="line">    BiTNode():lchild(<span class="literal">NULL</span>),rchild(<span class="literal">NULL</span>)&#123;&#125; <span class="comment">//无参构造</span></span><br><span class="line">    BiTNode(T x, BiTNode&lt;T&gt; *l = <span class="literal">NULL</span>, BiTNode&lt;T&gt; *r = <span class="literal">NULL</span>):data(x),lchild(l),rchild(r)&#123;&#125; <span class="comment">//带参构造</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="四、二叉树的三种遍历-层次遍历"><a href="#四、二叉树的三种遍历-层次遍历" class="headerlink" title="四、二叉树的三种遍历+层次遍历"></a>四、二叉树的三种遍历+层次遍历</h1><p>以下代码给出三种遍历的递归和非递归实现，均为 c++ 实现</p>
+<p><strong>先中后遍历均借助栈实现，层次遍历借助队列实现</strong></p>
+<h2 id="1-先序遍历"><a href="#1-先序遍历" class="headerlink" title="1. 先序遍历"></a>1. 先序遍历</h2><ul>
+<li><p>递归</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">scan</span><span class="params">(BiTree b)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;r-&gt;data;</span><br><span class="line">    <span class="keyword">if</span>(b-&gt;lchild != null) scan(b-&gt;lchild);</span><br><span class="line">    <span class="keyword">if</span>(b-&gt;rchild != null) scan(b-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>非递归</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先序遍历非递归</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    BiTree p = T;</span><br><span class="line">    <span class="keyword">while</span>(p || !is_empty(S))&#123;</span><br><span class="line">        <span class="keyword">if</span>(p)&#123;</span><br><span class="line">            visit(p-&gt;data);</span><br><span class="line">            push(S,p);</span><br><span class="line">            p=p-&gt;lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            pop(S,p);</span><br><span class="line">            p = p-&gt;rchild</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="2-中序遍历"><a href="#2-中序遍历" class="headerlink" title="2. 中序遍历"></a>2. 中序遍历</h2><ul>
+<li><p>递归</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">scan</span><span class="params">(BiTree b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b != null) &#123;</span><br><span class="line">        scan(b-&gt;lchild);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;r-&gt;data;</span><br><span class="line">        scan(b-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>非递归</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//中序遍历非递归</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    BiTree p = T;</span><br><span class="line">    <span class="keyword">while</span>(p || !is_empty(S))&#123;</span><br><span class="line">        <span class="keyword">if</span>(p)&#123;</span><br><span class="line">            push(S,p);</span><br><span class="line">            p=p-&gt;lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            pop(S,p);</span><br><span class="line">            visit(p-&gt;data);</span><br><span class="line">            p = p-&gt;rchild</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="3-后序遍历"><a href="#3-后序遍历" class="headerlink" title="3. 后序遍历"></a>3. 后序遍历</h2><ul>
+<li><p>递归</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">scan</span><span class="params">(BiTree b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b != null) &#123;</span><br><span class="line">        scan(b-&gt;lchild);</span><br><span class="line">        scan(b-&gt;rchild);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;r-&gt;data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>非递归</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后序遍历非递归</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    InitStack(S);</span><br><span class="line">    p = T;</span><br><span class="line">    r = <span class="literal">NULL</span>; <span class="comment">//最近访问过的结点</span></span><br><span class="line">    <span class="keyword">while</span>(p || !is_empty(S))&#123;</span><br><span class="line">        <span class="keyword">if</span>(p)&#123;</span><br><span class="line">            Push(S,p);</span><br><span class="line">            p = p-&gt;lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            GetTop(S,p);</span><br><span class="line">            <span class="comment">//右孩子存在且未被访问过</span></span><br><span class="line">            <span class="keyword">if</span>(p-&gt;rchild &amp;&amp; r!=p-&gt;rchild)&#123;</span><br><span class="line">                p = p-&gt;rchild;</span><br><span class="line">                Push(S,p);</span><br><span class="line">                p = p-&gt;lchild; <span class="comment">//再走到最左</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123; <span class="comment">//若既无左孩子也无右孩子，则弹出结点并访问</span></span><br><span class="line">                Pop(S,p); </span><br><span class="line">                visit(p-&gt;data);</span><br><span class="line">                r = p; <span class="comment">//置为最近访问结点</span></span><br><span class="line">                p = <span class="literal">NULL</span>; <span class="comment">//p重置</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="4-层次遍历"><a href="#4-层次遍历" class="headerlink" title="4. 层次遍历"></a>4. 层次遍历</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    BiTNode p;</span><br><span class="line">    EnQueue(Q,T);</span><br><span class="line">    <span class="keyword">while</span>(!isEmpty(Q))&#123;</span><br><span class="line">        DeQueue(p);</span><br><span class="line">        visit(p);</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;lchild!=<span class="literal">NULL</span>)</span><br><span class="line">            EnQueue(Q,p-&gt;lchild);</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;rchild!=<span class="literal">NULL</span>)</span><br><span class="line">            EnQueue(Q,p-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若已知以下三种序列组合，则可以唯一的确定一颗二叉树</p>
+<ul>
+<li>先序和中序序列（前序为进栈序列，中序为出栈序列）</li>
+<li>后序和中序序列</li>
+<li>层次和中序序列</li>
+</ul>
+<br>
+
+
+
+<blockquote>
+<ul>
+<li><p>若非空二叉树先序序列和后序序列正好相反，则二叉树形态是什么?</p>
+<p>每层只有一个结点，高度=结点个数</p>
+</li>
+<li><p>若非空二叉树先序序列和后序序列正好相同，则二叉树形态是什么？</p>
+<p>只有根节点</p>
+</li>
+</ul>
+</blockquote>
+<br>
+
+
+
+<h1 id="五、二叉树相关递归算法"><a href="#五、二叉树相关递归算法" class="headerlink" title="五、二叉树相关递归算法"></a>五、二叉树相关递归算法</h1><h2 id="1-统计二叉树中度为2的结点个数"><a href="#1-统计二叉树中度为2的结点个数" class="headerlink" title="1. 统计二叉树中度为2的结点个数"></a>1. 统计二叉树中度为2的结点个数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Dnode</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild &amp;&amp; T-&gt;rchild)</span><br><span class="line">        <span class="keyword">return</span> Dnode(T-&gt;lchild)+Dnode(T-&gt;rchild) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> Dnode(T-&gt;lchild)+Dnode(T-&gt;rchild);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-统计二叉树中度为1的结点个数"><a href="#2-统计二叉树中度为1的结点个数" class="headerlink" title="2. 统计二叉树中度为1的结点个数"></a>2. 统计二叉树中度为1的结点个数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Lnode</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild==<span class="literal">NULL</span>&amp;&amp;T-&gt;rchild!=<span class="literal">NULL</span> || T-&gt;lchild!=<span class="literal">NULL</span>&amp;&amp;T-&gt;rchild==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> Lnode(T-&gt;rchild)+Lnode(T-&gt;lchild)+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> Lnode(T-&gt;rchild) + Lnode(T-&gt;lchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-统计二叉树中度为0的结点个数-叶子"><a href="#3-统计二叉树中度为0的结点个数-叶子" class="headerlink" title="3. 统计二叉树中度为0的结点个数(叶子)"></a>3. 统计二叉树中度为0的结点个数(叶子)</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Leaves</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;lchild==<span class="literal">NULL</span> &amp;&amp; T-&gt;rchild==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> Leaves(T-&gt;rchild) + Leaves(T-&gt;lchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-统计二叉树的高度"><a href="#4-统计二叉树的高度" class="headerlink" title="4. 统计二叉树的高度"></a>4. 统计二叉树的高度</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Height</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!T-&gt;lchild &amp;&amp; !T-&gt;rchild)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> hl = Height(T-&gt;lchild);</span><br><span class="line">        <span class="keyword">int</span> hr = Height(T-&gt;rchild);</span><br><span class="line">        <span class="keyword">return</span> (hl&gt;hr?hl:hr) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-统计二叉树的宽度"><a href="#5-统计二叉树的宽度" class="headerlink" title="5. 统计二叉树的宽度"></a>5. 统计二叉树的宽度</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先序遍历，每递归一次就深入一层</span></span><br><span class="line"><span class="keyword">int</span> count[<span class="number">100</span>]; <span class="comment">//记录每层的宽度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Width</span><span class="params">(BiTree T,<span class="keyword">int</span> k)</span></span>&#123; <span class="comment">//K表示第几层</span></span><br><span class="line">    <span class="keyword">int</span> max = <span class="number">-1</span>;  <span class="comment">//最大宽度</span></span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    count[k] ++; <span class="comment">//第k层宽度++</span></span><br><span class="line">    <span class="keyword">if</span>(max&lt;count[k])</span><br><span class="line">        max = count[k];</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Width(T-&gt;lchild,k+<span class="number">1</span>);</span><br><span class="line">        Width(T-&gt;rchild,k+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-计算指定结点-p所在层次"><a href="#6-计算指定结点-p所在层次" class="headerlink" title="6. 计算指定结点*p所在层次"></a>6. 计算指定结点*p所在层次</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Level</span><span class="params">(BiTree T, BiTNode *p, <span class="keyword">int</span> level)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;data == p-&gt;data)</span><br><span class="line">        <span class="keyword">return</span> level;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = Level(T-&gt;lchild,p,level+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(l!=<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> l;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> Level(T-&gt;rchild,p,level+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-交换二叉树中每个结点的两个子女"><a href="#7-交换二叉树中每个结点的两个子女" class="headerlink" title="7. 交换二叉树中每个结点的两个子女"></a>7. 交换二叉树中每个结点的两个子女</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先交换左右孩子的左右子树，再交换左右孩子</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T)&#123;</span><br><span class="line">        swap(T-&gt;lchild);</span><br><span class="line">        swap(T-&gt;rchild);</span><br><span class="line">        <span class="keyword">int</span> temp = T-&gt;lchild;</span><br><span class="line">        T-&gt;lchild = T-&gt;rchild;</span><br><span class="line">        T-&gt;rchild = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="六、二叉排序树BST-二叉查找树"><a href="#六、二叉排序树BST-二叉查找树" class="headerlink" title="六、二叉排序树BST /  二叉查找树"></a>六、二叉排序树BST /  二叉查找树</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h2><p>二叉排序树又称二叉查找树，它或者是一颗空树，或者满足一下性质的二叉树：</p>
+<ul>
+<li>若左子树不空，则左子树上所有结点的值均小于根节点的值；</li>
+<li>若右子树不空，则右子树上所有结点的值均大于根节点的值；</li>
+<li>左右子树也分别是二叉排序树。</li>
+</ul>
+<p><strong>递归的数据结构，左&lt;根&lt;右 ，中序遍历为递增序列</strong></p>
+<h2 id="2-插入和删除操作"><a href="#2-插入和删除操作" class="headerlink" title="2. 插入和删除操作"></a>2. 插入和删除操作</h2><ul>
+<li><p><strong>插入</strong></p>
+<p>插入的结点一定是某个叶结点</p>
+</li>
+</ul>
+<ul>
+<li><strong>删除</strong><ul>
+<li>被删除结点时叶子结点，直接删除；</li>
+<li>被删除结点z只有一棵左子树或者右子树，则删除z,令z的子树成为z父结点的子树<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666281-a439627b-8ae8-45b1-bc84-c8540ea160c8.png" alt="img"></li>
+<li>被删除结点z有两棵子树，则交换z的 <strong>直接后继（中序遍历）</strong> 和z的位置，转换为第二种情况删除z<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666293-34a93357-6200-4dc2-bd09-14adabfa2d24.png" alt="img"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>查找效率分析</strong><ul>
+<li>最好情况：平衡二叉树 O(log2n)<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666351-d5958c36-e1dc-48f0-a367-0acf75c22244.png" alt="img"></li>
+<li>最坏情况：输入序列有序 O(n)<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666352-f8ec3220-09b0-4281-87bc-9ab648622fca.png" alt="img"></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-二叉排序树的判定"><a href="#3-二叉排序树的判定" class="headerlink" title="3. 二叉排序树的判定"></a>3. 二叉排序树的判定</h2><p>思路：二叉排序树的中序遍历序列一定为递增序列</p>
+<p>代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用中序遍历为递增</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isBST</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> bl = isBST(T-&gt;lchild);</span><br><span class="line">        <span class="keyword">if</span>(bl==<span class="literal">false</span> || pre&gt;T-&gt;data)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        pre = T-&gt;data;</span><br><span class="line">        <span class="keyword">bool</span> br = isBST(T-&gt;rchild);</span><br><span class="line">        <span class="keyword">return</span> br;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="七、平衡二叉树AVL"><a href="#七、平衡二叉树AVL" class="headerlink" title="七、平衡二叉树AVL"></a>七、平衡二叉树AVL</h1><h2 id="1-定义-1"><a href="#1-定义-1" class="headerlink" title="1. 定义"></a>1. 定义</h2><p>为避免树的高度增长过快，降低二叉排序树的性能，</p>
+<p>规定插入和删除时 <strong>任意结点的左右子树高度差的绝对值不超过1</strong> 。</p>
+<p>平衡二叉树是特殊的二叉排序树</p>
+<h2 id="2-插入操作（每次调整对象都是最小不平衡子树）"><a href="#2-插入操作（每次调整对象都是最小不平衡子树）" class="headerlink" title="2. 插入操作（每次调整对象都是最小不平衡子树）"></a>2. 插入操作（每次调整对象都是最小不平衡子树）</h2><ol>
+<li>LL右单旋：（在结点A的左孩子的左子树插入新结点导致A失衡）<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666320-1c792825-44e0-45c2-847f-2f8c25786d9f.png" alt="img"></li>
+<li>RR左单旋：（在结点A的右孩子的右子树插入新结点导致A失衡）<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666368-05f4c54f-0ef4-4632-ab9a-029c538d3033.png" alt="img"></li>
+<li>LR左右双旋：（在结点A的左孩子的右子树插入新结点导致A失衡）<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666346-59ec1657-b716-4c68-b8c2-98a0de925251.png" alt="img"></li>
+<li>RL右左双旋：（在结点A的右孩子的左子树插入新结点导致A失衡）<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666391-c37b319d-dd0d-4fc4-9473-9de453cd55d6.png" alt="img"></li>
+</ol>
+<h2 id="3-平衡二叉树的判定"><a href="#3-平衡二叉树的判定" class="headerlink" title="3. 平衡二叉树的判定"></a>3. 平衡二叉树的判定</h2><p>思路：平衡二叉树的每一个结点都是平衡的，利用<strong>后序遍历</strong>按照左右根的次序依次判断是否平衡二叉树</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isAVL</span><span class="params">(BiTree T,<span class="keyword">int</span> &amp;h,<span class="keyword">int</span> &amp;balance)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> bl,br,hl,hr; <span class="comment">//左右子树的高度和平衡性</span></span><br><span class="line">    <span class="keyword">if</span>(T==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        balance = <span class="number">1</span>;</span><br><span class="line">        h = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(!T-&gt;lchild &amp;&amp; !T-&gt;rchild)&#123; <span class="comment">//左右孩子均不存在</span></span><br><span class="line">        balance = <span class="number">1</span>;</span><br><span class="line">        h = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        isAVL(T-&gt;lchild,hl,bl); <span class="comment">//判定左子树</span></span><br><span class="line">        isAVL(T-&gt;rchild,hr,br); <span class="comment">//判定右子树</span></span><br><span class="line">        h = hl&gt;hr?hl:hr;</span><br><span class="line">        <span class="keyword">if</span>(bl&amp;&amp;br &amp;&amp; <span class="built_in">abs</span>(hl-hr)&lt;<span class="number">2</span>) <span class="comment">//若左右子树均平衡且高度差小于等于1</span></span><br><span class="line">            balance = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            balance = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-完全二叉树的判定"><a href="#4-完全二叉树的判定" class="headerlink" title="4. 完全二叉树的判定"></a>4. 完全二叉树的判定</h2><p><strong>思路：</strong> 完全二叉树的结点编码是连续的，根据<strong>层次遍历</strong>，把所有结点依次入队，包括空结点，若空结点之后还有非空结点，就不是完全二叉树</p>
+<p>代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isComplete</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!T)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    InitQueue(Q);</span><br><span class="line">    BiTNode *p = T;</span><br><span class="line">    EnQueue(Q,T);</span><br><span class="line">    <span class="keyword">while</span>(!isEmpty(Q))&#123;</span><br><span class="line">        DeQueue(Q,p);</span><br><span class="line">        <span class="keyword">if</span>(p)&#123;</span><br><span class="line">            EnQueue(Q,p-&gt;lchild);</span><br><span class="line">            EnQueue(Q,p-&gt;rchild);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(!isEmpty(Q))&#123;</span><br><span class="line">                DeQueue(Q,p);</span><br><span class="line">                <span class="keyword">if</span>(p)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="八、哈夫曼树（最优二叉树）和哈夫曼编码"><a href="#八、哈夫曼树（最优二叉树）和哈夫曼编码" class="headerlink" title="八、哈夫曼树（最优二叉树）和哈夫曼编码"></a>八、哈夫曼树（最优二叉树）和哈夫曼编码</h1><h2 id="1-定义-2"><a href="#1-定义-2" class="headerlink" title="1. 定义"></a>1. 定义</h2><p>给定n个权值作为n个叶子结点，构造一棵二叉树，<strong>若带权路径长度达到最小</strong>，称这样的二叉树为最优二叉树，也称为哈夫曼树(Huffman tree)</p>
+<p><u>带权路径长度：结点到根结点之间的路径长度与该结点上权的乘积</u></p>
+<h2 id="2-构造方法"><a href="#2-构造方法" class="headerlink" title="2. 构造方法"></a>2. 构造方法</h2><p>每次选取两棵根结点权值最小的树作为新结点的左右子树</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666382-3e0fa698-479d-4344-a014-d5bc58235c7b.png" alt="img"></p>
+<h2 id="3-哈夫曼编码"><a href="#3-哈夫曼编码" class="headerlink" title="3. 哈夫曼编码"></a>3. 哈夫曼编码</h2><p><strong>前缀编码</strong>：没有一个编码是另一个编码的前缀，比如：01 011 010 就不是前缀编码，因为01是011的前缀，根据01不能唯一确定用哪个编码。</p>
+<p><strong>哈夫曼编码就是长度最短的前缀编码</strong>，减少编码的长度。</p>
+<br>
+
+
+
+<h1 id="九、树、森林、二叉树的转换"><a href="#九、树、森林、二叉树的转换" class="headerlink" title="九、树、森林、二叉树的转换"></a>九、树、森林、二叉树的转换</h1><h2 id="1-树转化为二叉树"><a href="#1-树转化为二叉树" class="headerlink" title="1. 树转化为二叉树"></a>1. 树转化为二叉树</h2><p>二叉树中遵循 <strong>左孩子右兄弟</strong> 的原则</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666397-52152221-b062-4c4d-8ad2-90ad68ef782f.png" alt="img"></p>
+<h2 id="2-森林转化为二叉树"><a href="#2-森林转化为二叉树" class="headerlink" title="2. 森林转化为二叉树"></a>2. 森林转化为二叉树</h2><ul>
+<li>将第一棵树的根作为转换后的二叉树的根；</li>
+<li>将第一棵左子树作为转换后二叉树根的左子树；</li>
+<li>将第二棵树作为转化后二叉树的右子树……….</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666442-bf4e4f2b-fc5f-4376-b2b3-2da92e1db8d7.png" alt="img"></p>
+<h2 id="3-二叉树转化为森林"><a href="#3-二叉树转化为森林" class="headerlink" title="3. 二叉树转化为森林"></a>3. 二叉树转化为森林</h2><ul>
+<li>二叉树的根及其左子树作为第一棵树；</li>
+<li>右子树作为第二棵树；</li>
+<li>直到产生一棵没有右子树的二叉树为止<br> <img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586069666491-4b67e2f9-b5b3-4667-8128-8da74f4f4b12.png" alt="img"></li>
+</ul>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/03/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3-%E6%A0%91/" data-id="ckeof1fxb001l2cud4af15zdj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4-%E5%9B%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    图
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/03/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2-%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">栈和队列</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '树',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

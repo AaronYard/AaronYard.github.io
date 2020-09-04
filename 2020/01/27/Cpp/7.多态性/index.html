@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>多态性 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="7.多态性">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多态性">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2020&#x2F;01&#x2F;27&#x2F;Cpp&#x2F;7.%E5%A4%9A%E6%80%81%E6%80%A7&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="7.多态性">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153149687-4e9cbd7d-7259-407b-b3c7-742a06d0505b.png#align=left&amp;display=inline&amp;height=54&amp;originHeight=54&amp;originWidth=606&amp;size=0&amp;status=done&amp;style=none&amp;width=606">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153149725-dd968cb3-2be3-4faa-a838-e408f3c5acc0.png#align=left&amp;display=inline&amp;height=206&amp;originHeight=206&amp;originWidth=619&amp;size=0&amp;status=done&amp;style=none&amp;width=619">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153149706-0b258fcc-1088-4754-94ce-cdbc8c13012a.png#align=left&amp;display=inline&amp;height=163&amp;originHeight=163&amp;originWidth=611&amp;size=0&amp;status=done&amp;style=none&amp;width=611">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153149803-7cfc1028-b534-44b6-bd26-ab6206c8631f.png#align=left&amp;display=inline&amp;height=245&amp;originHeight=245&amp;originWidth=625&amp;size=0&amp;status=done&amp;style=none&amp;width=625">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153149800-79adf856-b2a9-48fa-b98a-6673e31fe510.png#align=left&amp;display=inline&amp;height=628&amp;originHeight=628&amp;originWidth=793&amp;size=0&amp;status=done&amp;style=none&amp;width=793">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153149724-5050f457-d64f-401b-911f-cd87d7cef7ba.png#align=left&amp;display=inline&amp;height=108&amp;originHeight=108&amp;originWidth=247&amp;size=0&amp;status=done&amp;style=none&amp;width=247">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153149829-2dcc81c7-0043-4e4b-86ee-bdc37db3ff30.png#align=left&amp;display=inline&amp;height=518&amp;originHeight=518&amp;originWidth=679&amp;size=0&amp;status=done&amp;style=none&amp;width=679">
+<meta property="og:updated_time" content="2020-09-04T15:07:33.377Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2020&#x2F;png&#x2F;1237282&#x2F;1586153149687-4e9cbd7d-7259-407b-b3c7-742a06d0505b.png#align=left&amp;display=inline&amp;height=54&amp;originHeight=54&amp;originWidth=606&amp;size=0&amp;status=done&amp;style=none&amp;width=606">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                61
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                14
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Cpp/7.多态性" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            多态性
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/01/27/Cpp/7.%E5%A4%9A%E6%80%81%E6%80%A7/">
+            <time datetime="2020-01-27T14:02:45.000Z" itemprop="datePublished">2020-01-27</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=1.6k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈7分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="一、多态的实现"><a href="#一、多态的实现" class="headerlink" title="一、多态的实现"></a>一、多态的实现</h1><ul>
+<li>绑定机制：<br /><br>绑定是将一个标识符名和一个存储地址联系在一起的过程</li>
+<li>编译时的多态通过<strong>静态绑定</strong>实现<br /><br>绑定工作在程序编译连接阶段运行</li>
+<li>运行时的多态通过<strong>动态绑定</strong>实现<br /><br>绑定工作在程序运行阶段运行</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="二、运算符重载（静态绑定）"><a href="#二、运算符重载（静态绑定）" class="headerlink" title="二、运算符重载（静态绑定）"></a>二、运算符重载（静态绑定）</h1><p>函数重载同样也是静态绑定<br /></p>
+<h2 id="1-重载为类成员函数"><a href="#1-重载为类成员函数" class="headerlink" title="1. 重载为类成员函数"></a>1. 重载为类成员函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">函数类型  <span class="keyword">operator</span> 运算符（形参） &#123;        </span><br><span class="line">		...... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />参数个数=原操作数个数-1 （后置++，– 除外）<br /></p>
+<h3 id="双目运算符重载规则-（1个参数-对象）"><a href="#双目运算符重载规则-（1个参数-对象）" class="headerlink" title="双目运算符重载规则 （1个参数 对象）"></a>双目运算符重载规则 （1个参数 对象）</h3><p><br /><strong>重载B为类成员函数，使之能够实现 oprd1 B oprd2;</strong><br /><br><br />以 <code>+</code> 举例<br />经重载后，表达式 <code>a + b</code> 相当于 <code>a.operator +(b)</code><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Complex <span class="keyword">operator</span> + (<span class="keyword">const</span> Complex &amp;c2) <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">Complex Complex::<span class="keyword">operator</span>+(<span class="keyword">const</span> Complex &amp;c2)&#123;</span><br><span class="line">	<span class="comment">//创建一个临时无名对象作为返回值</span></span><br><span class="line">	<span class="keyword">return</span> Complex(real + c2.real, imag + c2.imag);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="前置单目运算符重载规则（无参）"><a href="#前置单目运算符重载规则（无参）" class="headerlink" title="前置单目运算符重载规则（无参）"></a>前置单目运算符重载规则（无参）</h3><p><strong>重载B为类成员函数，使之能实现 B oprd，无形参</strong><br /><br><br />以 <code>前置++</code> 为例：<br />经重载后，<code>++ a</code> 相当于 <code>a.operaotr ++()</code><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Point &amp;<span class="keyword">operator</span>++();   <span class="comment">//前置++</span></span><br><span class="line"></span><br><span class="line">Point &amp;Point::<span class="keyword">operator</span>++()&#123;</span><br><span class="line">	x++;</span><br><span class="line">	y++;</span><br><span class="line">	<span class="comment">//++a = b; =&gt; 左边的值先增加再做运算，所以返回修改后的值</span></span><br><span class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="后置单目运算符-和–重载规则-（1个参数-int"><a href="#后置单目运算符-和–重载规则-（1个参数-int" class="headerlink" title="后置单目运算符++和–重载规则 （1个参数 int)"></a>后置单目运算符++和–重载规则 （1个参数 int)</h3><p>如果要重载 ++ 或者 – 为类成员函数，使之能够实现表达式 oprd ++ 或 oprd –，其中oprd为A类对象，则 ++ Huon – 应该被重载为A类的成员函数，<strong>且具有一个 int 形参</strong><br /><br><br />以 <code>后置++</code> 为例：</p>
+<p>经重载后，<code>a ++</code>  相当于 <code>a.operaotr ++(0)</code><br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Point <span class="keyword">operator</span>++(<span class="keyword">int</span>); <span class="comment">//后置++</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//后置运算符不能作为左值 a++ = b得到的a的值为a++的结果</span></span><br><span class="line">Point Point::<span class="keyword">operator</span>++(<span class="keyword">int</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Point temp = *<span class="keyword">this</span>;</span><br><span class="line">    ++*<span class="keyword">this</span>; <span class="comment">//调用前置++</span></span><br><span class="line">    <span class="comment">//a++ = b; =&gt; 左边的值先做运算再增加，所以返回增加前的值（本身）</span></span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-重载为非成员函数"><a href="#2-重载为非成员函数" class="headerlink" title="2. 重载为非成员函数"></a>2. 重载为非成员函数</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153149687-4e9cbd7d-7259-407b-b3c7-742a06d0505b.png#align=left&display=inline&height=54&originHeight=54&originWidth=606&size=0&status=done&style=none&width=606" alt=""><br /><br><br />参数个数=原操作数个数（后置++，– 除外）<br /></p>
+<h3 id="双目运算符重载规则（2个参数-对象）"><a href="#双目运算符重载规则（2个参数-对象）" class="headerlink" title="双目运算符重载规则（2个参数 对象）"></a>双目运算符重载规则（2个参数 对象）</h3><p>两个操作数都是类的引用<br /></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">friend</span> Complex <span class="keyword">operator</span> + (<span class="keyword">const</span> Complex &amp;c1, <span class="keyword">const</span> Complex &amp;c2);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="前置单目运算符重载规则-1个参数-对象）"><a href="#前置单目运算符重载规则-1个参数-对象）" class="headerlink" title="前置单目运算符重载规则 (1个参数 对象）"></a>前置单目运算符重载规则 (1个参数 对象）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">friend</span> Complex <span class="keyword">operator</span> ++(Complex &amp;c1);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="后置单目运算符-和–重载规则-（2个参数-对象，0）"><a href="#后置单目运算符-和–重载规则-（2个参数-对象，0）" class="headerlink" title="后置单目运算符++和–重载规则 （2个参数 对象，0）"></a>后置单目运算符++和–重载规则 （2个参数 对象，0）</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">friend</span> Complex <span class="keyword">operator</span> ++(Complex &amp;c1, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="三、运算符重载实例"><a href="#三、运算符重载实例" class="headerlink" title="三、运算符重载实例"></a>三、运算符重载实例</h1><p>① <strong>对Point类重载++（自增）、–（自减）运算符，同时重载前缀和后缀形式</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span></span><br><span class="line"><span class="class">	&#123;</span></span><br><span class="line">	<span class="keyword">private</span>:</span><br><span class="line">	    <span class="keyword">int</span> x, y;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">	    Point(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span><br><span class="line">	    &#123;</span><br><span class="line">	        x = a;</span><br><span class="line">	        y = b;</span><br><span class="line">	    &#125;</span><br><span class="line">	    Point &amp;<span class="keyword">operator</span>++();   <span class="comment">//前置++</span></span><br><span class="line">	    Point <span class="keyword">operator</span>++(<span class="keyword">int</span>); <span class="comment">//后置++</span></span><br><span class="line">	    Point &amp;<span class="keyword">operator</span>--();   <span class="comment">//前置--</span></span><br><span class="line">	    Point <span class="keyword">operator</span>--(<span class="keyword">int</span>); <span class="comment">//后置--</span></span><br><span class="line">	    <span class="function"><span class="keyword">int</span> <span class="title">getx</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	    </span>&#123;</span><br><span class="line">	        <span class="keyword">return</span> x;</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="function"><span class="keyword">int</span> <span class="title">gety</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	    </span>&#123;</span><br><span class="line">	        <span class="keyword">return</span> y;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	Point &amp;Point::<span class="keyword">operator</span>++()</span><br><span class="line">	&#123;</span><br><span class="line">	    x++;</span><br><span class="line">	    y++;</span><br><span class="line">	    <span class="comment">//++a = b; =&gt; 左边的值先增加再做运算，所以返回修改后的值</span></span><br><span class="line">	    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//后置运算符不能作为左值 a++ = b得到的a的值为a++的结果</span></span><br><span class="line">	Point Point::<span class="keyword">operator</span>++(<span class="keyword">int</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	    Point temp = *<span class="keyword">this</span>;</span><br><span class="line">	    ++*<span class="keyword">this</span>; <span class="comment">//调用前置++</span></span><br><span class="line">	    <span class="comment">//a++ = b; =&gt; 左边的值先做运算再增加，所以返回增加前的值（本身）</span></span><br><span class="line">	    <span class="keyword">return</span> temp;</span><br><span class="line">	&#125;</span><br><span class="line">	Point &amp;Point::<span class="keyword">operator</span>--()</span><br><span class="line">	&#123;</span><br><span class="line">	    x--;</span><br><span class="line">	    y--;</span><br><span class="line">	    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Point Point::<span class="keyword">operator</span>--(<span class="keyword">int</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	    Point temp = *<span class="keyword">this</span>;</span><br><span class="line">	    --*<span class="keyword">this</span>; <span class="comment">//调用前置--</span></span><br><span class="line">	    <span class="keyword">return</span> temp;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>② <strong>高精度算法</strong>：定义HugeInt类能处理20亿以上的整数并重载+和&lt;&lt;</p>
+<blockquote>
+<p>32位整数的机器所能表示的整数范围大概是-20亿~20亿</p>
+</blockquote>
+<p><strong>思路：将大数存入数组，再对数组进行逐位操作</strong></p>
+<p>代码实现：👇 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::ostream;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HugeInt</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    HugeInt(<span class="keyword">long</span> val = <span class="number">0</span>);            <span class="comment">// long型数转换构造为HugeInt型</span></span><br><span class="line">    HugeInt(<span class="keyword">const</span> <span class="keyword">char</span> *s);        <span class="comment">// 字符存储的大数转换构造为HugeInt型</span></span><br><span class="line">    HugeInt <span class="keyword">operator</span> +(HugeInt &amp;rhs);  <span class="comment">// +重载</span></span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span> &lt;&lt;(ostream &amp;os, HugeInt &amp;rhs); <span class="comment">// &lt;&lt;重载</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">short</span> integer[<span class="number">30</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换构造函数</span></span><br><span class="line">HugeInt::HugeInt(<span class="keyword">long</span> val)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">29</span>; i++)</span><br><span class="line">        integer[i] = <span class="number">0</span>; <span class="comment">// 将数组初始化为0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">29</span>; val != <span class="number">0</span> &amp;&amp; i &gt;= <span class="number">0</span>; i --)</span><br><span class="line">    &#123;<span class="comment">//从后往前依次填入数组，不满30位的前面补0</span></span><br><span class="line">        integer[i] = val % <span class="number">10</span>;</span><br><span class="line">        val /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">HugeInt::HugeInt(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">29</span>; i++)</span><br><span class="line">        integer[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">30</span> - <span class="built_in">strlen</span>(s), j = <span class="number">0</span>; i &lt;= <span class="number">29</span>; i++, j++)</span><br><span class="line">        integer[i] = s[j]-<span class="string">'0'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 巨型整数相加</span></span><br><span class="line">HugeInt HugeInt::<span class="keyword">operator</span> +(HugeInt &amp;op2)</span><br><span class="line">&#123;</span><br><span class="line">    HugeInt temp;</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>; <span class="comment">//进位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">29</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        temp.integer[i] = integer[i] + op2.integer[i] + carry;</span><br><span class="line">        <span class="keyword">if</span> (temp.integer[i] &gt; <span class="number">9</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            temp.integer[i] %= <span class="number">10</span>;</span><br><span class="line">            carry = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            carry = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line">ostream &amp;<span class="keyword">operator</span> &lt;&lt;(ostream &amp;output, HugeInt &amp;num)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; (num.integer[i] == <span class="number">0</span>) &amp;&amp; (i &lt;= <span class="number">29</span>); i++)</span><br><span class="line">        ; <span class="comment">// 跳过前导0</span></span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">30</span>)</span><br><span class="line">        output &lt;&lt; <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">for</span> (; i &lt;= <span class="number">29</span>; i++)</span><br><span class="line">            output &lt;&lt; num.integer[i];</span><br><span class="line">    <span class="keyword">return</span> output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line">    <span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    HugeInt n1(7654321),n2(1234567);  //测试long型</span><br><span class="line">    HugeInt n3("12345678987654321"), n4("12345678987654321"); //测试字符串型</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"n1 is "</span> &lt;&lt; n1 &lt;&lt; <span class="string">"\nn2 is "</span> &lt;&lt; n2 &lt;&lt; <span class="string">"\nn3 is "</span> &lt;&lt; n3 &lt;&lt; <span class="string">"\nn4 is "</span> &lt;&lt; n4 &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    HugeInt n5 = n1+n2;</span><br><span class="line">    HugeInt n6 = n3+n4;</span><br><span class="line">    HugeInt n7 = n3 + n1;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; <span class="string">"n1+n2="</span>&lt;&lt;n5&lt;&lt;<span class="built_in">endl</span>;  <span class="comment">//测试long型大数相加</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; <span class="string">"n3+n4="</span>&lt;&lt;n6&lt;&lt;<span class="built_in">endl</span>;  <span class="comment">//测试字符串型大数相加</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; <span class="string">"n1+n3="</span> &lt;&lt; n7 &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">//测试long型和字符串型相加</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<h1 id="四、虚函数（动态绑定）"><a href="#四、虚函数（动态绑定）" class="headerlink" title="四、虚函数（动态绑定）"></a>四、虚函数（动态绑定）</h1><h2 id="初始虚函数"><a href="#初始虚函数" class="headerlink" title="初始虚函数"></a>初始虚函数</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153149725-dd968cb3-2be3-4faa-a838-e408f3c5acc0.png#align=left&display=inline&height=206&originHeight=206&originWidth=619&size=0&status=done&style=none&width=619" alt=""><br />多态是不同对象对同一消息有不同的行为特性，虚函数作为运行过程中多态的基础，主要是针对对象的，而构造函数是在对象产生之前运行的，<strong>因此虚构造函数没有意义</strong>。<br /></p>
+<h2 id="一般虚函数成员"><a href="#一般虚函数成员" class="headerlink" title="一般虚函数成员"></a>一般虚函数成员</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153149706-0b258fcc-1088-4754-94ce-cdbc8c13012a.png#align=left&display=inline&height=163&originHeight=163&originWidth=611&size=0&status=done&style=none&width=611" alt=""></p>
+<h2 id="virtual-关键字"><a href="#virtual-关键字" class="headerlink" title="virtual 关键字"></a>virtual 关键字</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153149803-7cfc1028-b534-44b6-bd26-ab6206c8631f.png#align=left&display=inline&height=245&originHeight=245&originWidth=625&size=0&status=done&style=none&width=625" alt=""><br /></p>
+<h2 id="虚表与动态绑定"><a href="#虚表与动态绑定" class="headerlink" title="虚表与动态绑定"></a>虚表与动态绑定</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153149800-79adf856-b2a9-48fa-b98a-6673e31fe510.png#align=left&display=inline&height=628&originHeight=628&originWidth=793&size=0&status=done&style=none&width=793" alt=""></p>
+<h2 id="虚函数实例"><a href="#虚函数实例" class="headerlink" title="虚函数实例"></a>虚函数实例</h2><p>定义一个基类BaseClass，从它派生出类DerivedClass，BaseClass有成员函数fn1()、fn2()，fn1()是虚函数，DerivedClass也有成员函数fn1()、fn2()，在主程序中定义一个DerivedClass的对象，分别用BaseClass和DerivedClass的指针来调用fn1()、fn2()，观察运行结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseClass</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fn1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fn2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> BaseClass::fn1()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"调用基类的虚函数fn1()"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> BaseClass::fn2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"调用基类的非虚函数fn2()"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DerivedClass</span> :</span> <span class="keyword">public</span> BaseClass</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fn1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fn2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">void</span> DerivedClass::fn1()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"调用派生类的函数fn1()"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> DerivedClass::fn2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"调用派生类的函数fn2()"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DerivedClass aDerivedClass;</span><br><span class="line">    DerivedClass *pDerivedClass = &amp;aDerivedClass;</span><br><span class="line">    BaseClass *pBaseClass = &amp;aDerivedClass;</span><br><span class="line">    pBaseClass-&gt;fn1();</span><br><span class="line">    pBaseClass-&gt;fn2(); </span><br><span class="line">    pDerivedClass-&gt;fn1();</span><br><span class="line">    pDerivedClass-&gt;fn2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153149724-5050f457-d64f-401b-911f-cd87d7cef7ba.png#align=left&display=inline&height=108&originHeight=108&originWidth=247&size=0&status=done&style=none&width=247" alt=""></p>
+<br>
+
+
+
+<h1 id="五、纯虚函数与抽象类"><a href="#五、纯虚函数与抽象类" class="headerlink" title="五、纯虚函数与抽象类"></a>五、纯虚函数与抽象类</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153149829-2dcc81c7-0043-4e4b-86ee-bdc37db3ff30.png#align=left&display=inline&height=518&originHeight=518&originWidth=679&size=0&status=done&style=none&width=679" alt=""></p>
+
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/01/27/Cpp/7.%E5%A4%9A%E6%80%81%E6%80%A7/" data-id="ckeodenbx002btwud35gu9g67" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/01/28/Cpp/8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    函数模板和类模板
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/01/26/Cpp/6.%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%B4%BE%E7%94%9F/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">类的继承与派生</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/08/17/ConclusionAndProspect/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a></p>
+                            <p class="item-title"><a href="/2020/08/17/ConclusionAndProspect/" class="title">自省和展望</a></p>
+                            <p class="item-date"><time datetime="2020-08-17T14:40:27.000Z" itemprop="datePublished">2020-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
+                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/07/LeetCode-2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/07/LeetCode-2/" class="title">LeetCode刷题（二）</a></p>
+                            <p class="item-date"><time datetime="2020-07-07T15:39:12.000Z" itemprop="datePublished">2020-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/07/06/LeetCode-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2020/07/06/LeetCode-1/" class="title">LeetCode刷题（一）</a></p>
+                            <p class="item-date"><time datetime="2020-07-06T14:58:26.000Z" itemprop="datePublished">2020-07-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2020/04/13/GameAI/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2020/04/13/GameAI/" class="title">游戏项目中的AI</a></p>
+                            <p class="item-date"><time datetime="2020-04-13T04:52:53.000Z" itemprop="datePublished">2020-04-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%CC%BD%EF%BF%BD%EF%BF%BD/">����̽��</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" rel="tag">���ݿ�</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 13.33px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.67px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.33px;">C++</a> <a href="/tags/LeetCode/" style="font-size: 11.67px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 13.33px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a> <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%DD%BF%EF%BF%BD/" style="font-size: 10px;">���ݿ�</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2020 汪震<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice" target="_blank" rel="noopener">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '多态性',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
