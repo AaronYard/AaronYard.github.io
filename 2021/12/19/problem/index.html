@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="汪震|个人博客">
 <meta property="og:description" content="小阶段沉淀及总结近期发现了一些自己知识点的薄弱之处，利用加班的工作之余零碎的时间提升自己，顺便将其总结为本篇文章。（连续上半个月的班，每天还加班到深夜甚至凌晨，脑瓜子真的是嗡嗡的！！！） 大纲1.算法总结2.四叉树 （一）五大算法总结1）分治算法基本思想分而治之，把一个复杂的问题分成两个或更多的相同或相似的子问题，再把子问题分成更小的子问题……直到最后子问题可以简单的直接求解，原问题的解即子问题的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-12-19T14:22:57.817Z">
+<meta property="og:updated_time" content="2021-12-31T10:25:26.000Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -159,7 +159,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                65
+                66
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -235,8 +235,8 @@
     </div>
 
                     </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=2.6k字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈8分钟</span></font>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=4.1k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈14分钟</span></font>
                 
             </header>
         
@@ -297,8 +297,31 @@
 <p>（2）贪心策略：选取重量最小。它的反例与第一种策略的反例差不多。</p>
 <p>（3）贪心策略：选取单位重量价值最大的物品。反例：</p>
 <pre><code>W=30   物品：A B C      重量：28 20 10      价值：28 20 10</code></pre><p>根据策略，三种物品单位重量价值一样，程序无法依据现有策略作出判断，如果选择A，则答案错误。</p>
-<h2 id="四）回溯法（DFS）"><a href="#四）回溯法（DFS）" class="headerlink" title="四）回溯法（DFS）"></a>四）回溯法（DFS）</h2><h3 id="基本思想-3"><a href="#基本思想-3" class="headerlink" title="基本思想"></a>基本思想</h3><p>在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。而满足回溯条件的某个状态的点称为“回溯点”。</p>
-<h1 id="暂时么得时间继续了，加班加的实在是脑瓜疼，脑袋都快转不动了。待续。。。"><a href="#暂时么得时间继续了，加班加的实在是脑瓜疼，脑袋都快转不动了。待续。。。" class="headerlink" title="暂时么得时间继续了，加班加的实在是脑瓜疼，脑袋都快转不动了。待续。。。"></a>暂时么得时间继续了，加班加的实在是脑瓜疼，脑袋都快转不动了。待续。。。</h1>
+<h2 id="四）回溯法（DFS）"><a href="#四）回溯法（DFS）" class="headerlink" title="四）回溯法（DFS）"></a>四）回溯法（DFS）</h2><h3 id="基本思想-3"><a href="#基本思想-3" class="headerlink" title="基本思想"></a>基本思想</h3><p>在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。而满足回溯条件的某个状态的点称为“回溯点”。若用回溯法求问题的所有解时，要回溯到根，且根结点的所有可行的子树都要已被搜索遍才结束。而若使用回溯法求任一个解时，只要搜索到问题的一个解就可以结束。</p>
+<h3 id="基本思路-1"><a href="#基本思路-1" class="headerlink" title="基本思路"></a>基本思路</h3><p>①针对所给问题，确定问题的解空间：首先应明确定义问题的解空间，问题的解空间应至少包含问题的一个（最优）解；</p>
+<p>②确定结点的扩展搜索规则；</p>
+<p>③以深度优先方式搜索解空间，并在搜索过程中用剪枝函数避免无效搜索。</p>
+<h3 id="基本框架"><a href="#基本框架" class="headerlink" title="基本框架"></a>基本框架</h3><p>设问题的解是一个n维向量(a1,a2,………,an),约束条件是ai(i=1,2,3,…..,n)之间满足某种条件，记为f(ai)。</p>
+<h4 id="非递归回溯框架"><a href="#非递归回溯框架" class="headerlink" title="非递归回溯框架"></a>非递归回溯框架</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">  int a[n],i;</span><br><span class="line">  初始化数组a[];</span><br><span class="line">  i = 1;</span><br><span class="line">  <span class="keyword">while</span> (i&gt;0(有路可走)   and  (未达到目标))  // 还未回溯到头</span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">if</span>(i &gt; n)                                              // 搜索到叶结点</span><br><span class="line">	&#123;   </span><br><span class="line">             搜索到一个解，输出；</span><br><span class="line">	&#125;</span><br><span class="line">      <span class="keyword">else</span>                                                   // 处理第i个元素</span><br><span class="line">	&#123; </span><br><span class="line">            a[i]第一个可能的值；</span><br><span class="line">            <span class="keyword">while</span>(a[i]在不满足约束条件且在搜索空间内)</span><br><span class="line">           &#123;</span><br><span class="line">                a[i]下一个可能的值；</span><br><span class="line">           &#125;</span><br><span class="line">            <span class="keyword">if</span>(a[i]在搜索空间内)</span><br><span class="line">           &#123;</span><br><span class="line">                标识占用的资源；</span><br><span class="line">                i = i+1;                              // 扩展下一个结点</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span> </span><br><span class="line">		&#123;</span><br><span class="line">                清理所占的状态空间；            // 回溯</span><br><span class="line">                i = i –1; </span><br><span class="line">           &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="递归的算法框架"><a href="#递归的算法框架" class="headerlink" title="递归的算法框架"></a>递归的算法框架</h5><p>回溯法是对解空间的深度优先搜索，在一般情况下使用递归函数来实现回溯法比较简单，其中i为搜索的深度，框架如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int a[n];</span><br><span class="line">   try(int i)</span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">if</span>(i&gt;n)</span><br><span class="line">         输出结果;</span><br><span class="line">       <span class="keyword">else</span></span><br><span class="line">       &#123;</span><br><span class="line">          <span class="keyword">for</span>(j = 下界; j &lt;= 上界; j=j+1)  // 枚举i所有可能的路径</span><br><span class="line">          &#123;</span><br><span class="line">             <span class="keyword">if</span>(fun(j))                 // 满足限界函数和约束条件</span><br><span class="line">               &#123;</span><br><span class="line">                  a[i] = j;</span><br><span class="line">                ...                         // 其他操作,如回溯前的清理工作（如a[i]置空值等）;</span><br><span class="line">                  try(i+1);</span><br><span class="line">                </span><br><span class="line">                &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五）分支限界法（BFS）"><a href="#五）分支限界法（BFS）" class="headerlink" title="五）分支限界法（BFS）"></a>五）分支限界法（BFS）</h2><h3 id="基本思想-4"><a href="#基本思想-4" class="headerlink" title="基本思想"></a>基本思想</h3><p>在问题的解空间树T上搜索问题解的算法，分支限界法的求解目标则是找出满足约束条件的一个解，或是在满足约束条件的解中找出使某一目标函数值达到极大或极小的解，即在某种意义下的最优解。</p>
+<h3 id="基本思路-2"><a href="#基本思路-2" class="headerlink" title="基本思路"></a>基本思路</h3><p>分支限界法的搜索策略：在扩展结点处，先生成其所有的儿子结点（分支），然后再从当前的活结点表中选择下一个扩展对点。为了有效地选择下一扩展结点，以加速搜索的进程，在每一活结点处，计算一个函数值（限界），并根据这些已计算出的函数值，从当前活结点表中选择一个最有利的结点作为扩展结点，使搜索朝着解空间树上有最优解的分支推进，以便尽快地找出一个最优解。在分支限界法中，每一个活结点只有一次机会成为扩展结点。活结点一旦成为扩展结点，就一次性产生其所有儿子结点。在这些儿子结点中，那些导致不可行解或导致非最优解的儿子结点被舍弃，其余儿子结点被子加入活结点表中。此后，从活结点表中取下一结点成为当前扩展结点，并重复上述结点扩展过程。这个过程一直持续到找到所求的解或活结点表为空时为止。</p>
+<h3 id="回溯法和分支限界法的区别"><a href="#回溯法和分支限界法的区别" class="headerlink" title="回溯法和分支限界法的区别"></a>回溯法和分支限界法的区别</h3><p>回溯法深度优先搜索堆栈活结点的所有可行子结点被遍历后才被从栈中弹出找出满足约束条件的所有解。</p>
+<p>分支限界法广度优先或最小消耗优先搜索队列、优先队列每个结点只有一次成为活结点的机会找出满足约束条件的一个解或特定意义下的最优解。</p>
+<h1 id="（二）四叉树"><a href="#（二）四叉树" class="headerlink" title="（二）四叉树"></a>（二）四叉树</h1><p>四叉树及其变种常用在碰撞检测以及地图块加载的案例中。近期看了一个技术分享，一款MMO开放大世界的手游，在玩家跳转场景时，把跳转的时间压制在1秒，大大的减少了玩家等待的时间。他们是怎么做到的呢？首先是根据玩家身上的跨场景任务进行预加载，其次，他们把场景地图分为一个个的小块tile，通过四叉树，同步加载玩家坐标周边的地块以及NPC，异步加载场景中的其它物体。这样玩家的就不会长时间进行等待，而是一秒后便可以进入场景，游戏体验极好。</p>
+<h4 id="插入、更新、删除、查询的过程"><a href="#插入、更新、删除、查询的过程" class="headerlink" title="插入、更新、删除、查询的过程"></a>插入、更新、删除、查询的过程</h4><h5 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">插入一个物体，插入时分割空间直到能容纳改物体的最小空间，插入该物体到结点</span><br><span class="line"><span class="keyword">if</span> 这个节点是能容纳该物体的最小节点，放入这个节点</span><br><span class="line"><span class="keyword">else</span> 分割这个节点，找到合适的子节点执行插入操作</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">找到该物体的所属的结点，删除该物体，如果结点不再包含物体并且不含有叶子节点，删除该节点</span><br><span class="line">获取给定物体在节点中的空间划分</span><br><span class="line">获取给定物体在当前节点的空间信息，即4象限信息</span><br></pre></td></tr></table></figure>
+
+<h5 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h5><p>查询是否包含给定物体</p>
+<h5 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">当物体的位置、大小发生变化，更新4叉树中该物体的信息</span><br><span class="line">一般是删除该物体后重新插入</span><br><span class="line">获取某节点下所有物体</span><br></pre></td></tr></table></figure>
+
+<h4 id="单个空间节点为什么要设置成超过8个元素才往下继续划分空间？"><a href="#单个空间节点为什么要设置成超过8个元素才往下继续划分空间？" class="headerlink" title="单个空间节点为什么要设置成超过8个元素才往下继续划分空间？"></a>单个空间节点为什么要设置成超过8个元素才往下继续划分空间？</h4><p>因为要平衡查询、与更新的性能</p>
+<h4 id="为什么要设置一个looseness松散值让空间节点之间有重合？"><a href="#为什么要设置一个looseness松散值让空间节点之间有重合？" class="headerlink" title="为什么要设置一个looseness松散值让空间节点之间有重合？"></a>为什么要设置一个looseness松散值让空间节点之间有重合？</h4><p>因为要防止边缘元素频繁进更换空间节点，加大更新的性能消耗</p>
+
         
         </div>
 		
@@ -309,7 +332,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2021/12/19/problem/" data-id="ckxdbu49c001izoud440f2beg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2021/12/19/problem/" data-id="cky08jnk0001nxwudcjv70jsg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -384,6 +407,15 @@
         
 <nav id="article-nav">
     
+        <a href="/2022/01/03/MMORPG/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    MMORPG手游项目优化分享总结
+                
+            </div>
+        </a>
+    
     
         <a href="/2021/05/30/LeetCode-4/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
@@ -414,6 +446,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2022/01/03/MMORPG/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2022/01/03/MMORPG/" class="title">MMORPG手游项目优化分享总结</a></p>
+                            <p class="item-date"><time datetime="2022-01-03T14:01:12.000Z" itemprop="datePublished">2022-01-03</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -491,25 +542,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <!-- <div class="item-thumbnail">
-                            <a href="/2020/07/08/LeetCode-3/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div> -->
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
-                            <p class="item-title"><a href="/2020/07/08/LeetCode-3/" class="title">LeetCode刷题（三）</a></p>
-                            <p class="item-date"><time datetime="2020-07-08T15:23:31.000Z" itemprop="datePublished">2020-07-08</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -519,7 +551,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">54</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">55</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -528,7 +560,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/202/06/">六月 0202</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/202/06/">六月 0202</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -537,7 +569,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fighting/" rel="tag">Fighting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B2%89%E6%B7%80%E6%80%BB%E7%BB%93/" rel="tag">沉淀总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fighting/" rel="tag">Fighting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B2%89%E6%B7%80%E6%80%BB%E7%BB%93/" rel="tag">沉淀总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -546,7 +578,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/3D-Client/" style="font-size: 14.29px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 11.43px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.57px;">C++</a> <a href="/tags/Fighting/" style="font-size: 10px;">Fighting</a> <a href="/tags/LeetCode/" style="font-size: 12.86px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 14.29px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15.71px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E6%B2%89%E6%B7%80%E6%80%BB%E7%BB%93/" style="font-size: 10px;">沉淀总结</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 17.14px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
+            <a href="/tags/3D-Client/" style="font-size: 15px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 12.5px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.75px;">C++</a> <a href="/tags/Fighting/" style="font-size: 10px;">Fighting</a> <a href="/tags/LeetCode/" style="font-size: 13.75px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 16.25px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E6%B2%89%E6%B7%80%E6%80%BB%E7%BB%93/" style="font-size: 11.25px;">沉淀总结</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 17.5px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
         </div>
     </div>
 
@@ -583,7 +615,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2021 汪震<br>
+            &copy; 2022 汪震<br>
             粤ICP备2020112664号-1 <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">
         </div>
 		<div style="width:300px;margin:0 auto; padding:20px 0;">
