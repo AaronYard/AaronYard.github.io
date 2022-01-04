@@ -196,6 +196,142 @@
 
             
             <section id="main">
+    <article id="post-Cpp/8.函数模板和类模板" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/01/28/Cpp/8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/">函数模板和类模板</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/01/28/Cpp/8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/">
+            <time datetime="2020-01-28T14:02:45.000Z" itemprop="datePublished">2020-01-28</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/C/" rel="tag">C++</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=846字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈4分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="一、函数模板"><a href="#一、函数模板" class="headerlink" title="一、函数模板"></a>一、函数模板</h1><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1237282/1586153172112-78e87516-f8c4-4c77-abdf-4c8bcbbccca3.png#align=left&display=inline&height=490&originHeight=490&originWidth=565&size=0&status=done&style=none&width=565" alt=""><br /></p>
+<p><a name="f61ba1a5"></a></p>
+<h1 id="二、类模板"><a href="#二、类模板" class="headerlink" title="二、类模板"></a>二、类模板</h1><p>直接上示例<br /><br><br />类模板示例<br /></p></p>
+            <p class="article-more-link">
+                <a href="/2020/01/28/Cpp/8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/#more">查看更多</a>
+            </p>
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/01/28/Cpp/8.%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/" data-id="cky09wnxe0032iwudbzpebxmp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-Cpp/7.多态性" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -258,7 +394,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/01/27/Cpp/7.%E5%A4%9A%E6%80%81%E6%80%A7/" data-id="cky08jnm2002xxwudh9412cku" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/01/27/Cpp/7.%E5%A4%9A%E6%80%81%E6%80%A7/" data-id="cky09wnxd002yiwud4vpi7gai" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -393,7 +529,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/01/26/Cpp/6.%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%B4%BE%E7%94%9F/" data-id="cky08jnm30030xwud39yu316s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/01/26/Cpp/6.%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF%E4%B8%8E%E6%B4%BE%E7%94%9F/" data-id="cky09wnxa002riwudf1sbbvbk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -529,7 +665,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/01/25/Cpp/5.%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/" data-id="cky08jnlz002rxwudelfi31gw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/01/25/Cpp/5.%E6%95%B0%E7%BB%84%E4%B8%8E%E6%8C%87%E9%92%88/" data-id="cky09wnxb002viwud64mhgc2w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -669,7 +805,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/01/24/Cpp/4.%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E4%B8%8E%E4%BF%9D%E6%8A%A4/" data-id="cky08jnlw002oxwud5f7c56rv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/01/24/Cpp/4.%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB%E4%B8%8E%E4%BF%9D%E6%8A%A4/" data-id="cky09wnx7002oiwuddlbcb7di" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -808,7 +944,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/01/23/Cpp/3.%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="cky08jnlu002nxwud6nkl63bk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/01/23/Cpp/3.%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-id="cky09wnx9002piwudbpz1cby5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -949,7 +1085,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/01/22/Cpp/2.%E5%87%BD%E6%95%B0/" data-id="cky08jnm0002txwuddg20dksx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/01/22/Cpp/2.%E5%87%BD%E6%95%B0/" data-id="cky09wnx6002miwudhg0wcq6s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1086,7 +1222,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/01/21/Cpp/1.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86+%E5%AD%97%E7%AC%A6%E4%B8%B2string%E7%B1%BB/" data-id="cky08jnly002qxwud4akrhgn6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/01/21/Cpp/1.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86+%E5%AD%97%E7%AC%A6%E4%B8%B2string%E7%B1%BB/" data-id="cky09wnx5002liwud5iy8ep6d" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1212,7 +1348,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/12/05/GameChangeClothe/" data-id="cky08jnjj000sxwud2vfj6bq7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2019/12/05/GameChangeClothe/" data-id="cky09wnvs000yiwud39177ih1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1350,144 +1486,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2019/11/30/GameUpdate/" data-id="cky08jnjx001kxwudh0yy0yn6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-History-of-quantum-physics-1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/11/28/History-of-quantum-physics-1/">上帝掷骰子吗？（一）</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2019/11/28/History-of-quantum-physics-1/">
-            <time datetime="2019-11-28T14:53:10.000Z" itemprop="datePublished">2019-11-28</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a>
-    </div>
-
-                    </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=1.4k字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈4分钟</span></font>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>回归到搭建这篇博客的初衷，我要开始写下一些关于量子物理的有趣的事情。</p>
-<h2 id="物理学的黄金时代"><a href="#物理学的黄金时代" class="headerlink" title="物理学的黄金时代"></a>物理学的黄金时代</h2><p>一些关于在确立量子物理这个时代主题之前的事情，这个“之前”，就要从19世纪末说起了。那是物理学的黄金时代，那时还在争论光的本质到底是什么、一个科学与神共存的时代。</p>
-<p>在那个时代，关于光的本质的问题，物理学上的大佬们喋喋不休的争论了前后几百年。两个主要派系分别主导着这场没有硝烟的战争：微粒派和波动派。</p>
-<p>在微粒派和波动派彻底成形之前，远古以来，对于光的猜测一直没有停歇。</p></p>
-            <p class="article-more-link">
-                <a href="/2019/11/28/History-of-quantum-physics-1/#more">查看更多</a>
-            </p>
-        
-        </div>
-		
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://aaronyard.github.io/2019/11/28/History-of-quantum-physics-1/" data-id="cky08jnjv001gxwudgv8e7e19" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2019/11/30/GameUpdate/" data-id="cky09wnw00017iwudbwrrhtes" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1690,7 +1689,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/202/06/">六月 0202</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 

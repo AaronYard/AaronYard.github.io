@@ -255,7 +255,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2022/01/03/MMORPG/" data-id="cky08jnk3001rxwudbzkm01hw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2022/01/03/MMORPG/" data-id="cky09wnwa001siwud8lu0b452" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -391,7 +391,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2021/12/19/problem/" data-id="cky08jnk0001nxwudcjv70jsg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2021/12/19/problem/" data-id="cky09wnwd001ziwud4kl8anzg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -526,7 +526,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2021/05/30/LeetCode-4/" data-id="cky08jnjs0019xwud4nwl8lyo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2021/05/30/LeetCode-4/" data-id="cky09wnw6001liwudabjy3qec" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -661,7 +661,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2021/05/29/Development2020To2021/" data-id="cky08jnj40008xwud2mwlcu4a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2021/05/29/Development2020To2021/" data-id="cky09wnvo000wiwudbd1k3j77" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -798,7 +798,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/08/17/ConclusionAndProspect/" data-id="cky08jnja000exwud2xgd1cib" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/08/17/ConclusionAndProspect/" data-id="cky09wnuv000biwudc3rw1jkw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -935,7 +935,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/07/08/LeetCode-3/" data-id="cky08jnjn000zxwud7ggeglvn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/07/08/LeetCode-3/" data-id="cky09wnw7001niwud8l44alb6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1070,7 +1070,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/07/07/LeetCode-2/" data-id="cky08jnjp0013xwud3l936jr9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/07/07/LeetCode-2/" data-id="cky09wnw5001hiwudg5bi5l3x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1206,7 +1206,144 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/07/06/LeetCode-1/" data-id="cky08jnjl000wxwud1rlug99m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/07/06/LeetCode-1/" data-id="cky09wnw3001eiwudher99w2v" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-LeetCodeEasy-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/06/22/LeetCodeEasy-1/">LeetCode刷题（简单版1）</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/06/22/LeetCodeEasy-1/">
+            <time datetime="2020-06-22T15:55:28.000Z" itemprop="datePublished">2020-06-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=302字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈1分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><h1 id="7-整数反转"><a href="#7-整数反转" class="headerlink" title="[7] 整数反转"></a>[7] 整数反转</h1><p>给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。</p>
+<p>如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。</p>
+<p>假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<h2 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 123</span><br><span class="line">输出：321</span><br></pre></td></tr></table></figure></p>
+            <p class="article-more-link">
+                <a href="/2020/06/22/LeetCodeEasy-1/#more">查看更多</a>
+            </p>
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2020/06/22/LeetCodeEasy-1/" data-id="cky09wnw9001qiwudgf902sej" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1343,150 +1480,7 @@
 
 </div>
 
-    <a data-url="https://aaronyard.github.io/2020/04/13/GameAI/" data-id="cky08jnje000jxwude0krhs50" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-GameEventSys" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/04/11/GameEventSys/">游戏项目中的事件系统</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/04/11/GameEventSys/">
-            <time datetime="2020-04-11T13:52:53.000Z" itemprop="datePublished">2020-04-11</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/3D-Client/" rel="tag">3D Client</a>
-    </div>
-
-                    </div>
-					<font color="#E56048"><span class="post-count">🗨️字数统计=1.1k字</span></font>
-					<font color="#E56048"><span class="post-count">⏳阅读时长≈5分钟</span></font>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h2 id="项目中的事件系统"><a href="#项目中的事件系统" class="headerlink" title="项目中的事件系统"></a>项目中的事件系统</h2><p>成熟的项目中对自己的事件都会进行封装，使得过程透明，使用者不必去了解其构成，只需要关心分发出来的事件，而事件的发出者也不关心谁会用到，只需要将事件发出即可。事件系统维系着项目中所有事件的分发，将游戏逻辑解耦，使得项目逻辑清晰，代码简单易懂。</p>
-<p>通常事件系统并不复杂，反而很简单，包含了三个核心的方法：</p>
-<ul>
-<li><p>注册 AddHander</p>
-</li>
-<li><p>注销 RemoveHander</p>
-</li>
-<li><p>发送 SendEvent</p>
-</li>
-</ul></p>
-            <p class="article-more-link">
-                <a href="/2020/04/11/GameEventSys/#more">查看更多</a>
-            </p>
-        
-        </div>
-		
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://aaronyard.github.io/2020/04/11/GameEventSys/" data-id="cky08jnjg000lxwud16hu4qnu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://aaronyard.github.io/2020/04/13/GameAI/" data-id="cky09wnuw000diwudfbeo6a41" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1689,7 +1683,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/202/06/">六月 0202</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
