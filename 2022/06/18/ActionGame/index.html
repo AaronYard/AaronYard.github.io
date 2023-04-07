@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>游戏战斗方向总结 | 汪震|个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="带领你了解已上线的3D动作游戏">
+<meta name="keywords" content="游戏战斗">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏战斗方向总结">
+<meta property="og:url" content="https:&#x2F;&#x2F;aaronyard.github.io&#x2F;2022&#x2F;06&#x2F;18&#x2F;ActionGame&#x2F;index.html">
+<meta property="og:site_name" content="汪震|个人博客">
+<meta property="og:description" content="带领你了解已上线的3D动作游戏">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2023-04-07T15:59:55.889Z">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/avatar.png" />
+    
+	
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="汪震|个人博客" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">汪震|个人博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;" target="_blank" rel="noopener">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="profile-fixed">
+    <div class="inner profile-inner">
+		    <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">汪震</h2>
+            <h3 id="title">IT技术工程狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>中国, 深圳</span>
+			<img id="avatar" src="/css/images/kirito_wechat.jpg" />
+            <a id="follow" target="_blank" href="https://github.com/AaronYard">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                67
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                16
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AaronYard" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/wechat.png" target="_blank" title="wechat" class=tooltip>
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/css/images/qqgroup.png" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-ActionGame" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            游戏战斗方向总结
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2022/06/18/ActionGame/">
+            <time datetime="2022-06-18T15:17:16.000Z" itemprop="datePublished">2022-06-18</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%B8%B8%E6%88%8F%E6%88%98%E6%96%97/" rel="tag">游戏战斗</a>
+    </div>
+
+                    </div>
+					<font color="#E56048"><span class="post-count">🗨️字数统计=5.4k字</span></font>
+					<font color="#E56048"><span class="post-count">⏳阅读时长≈18分钟</span></font>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>这段时间花了几个月的时间回顾了从入行以来经历的项目以及开发经验，总结了MMO中涉及到的战斗方向中的知识点。若有误区，希望大家批评指正。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>MMO手游是指可以支持多人在线的网络游戏，具有极强的交互性，玩家可以在游戏中进行强烈的互动，这也导致了相关的战斗也需要做的生动逼真，打击感强烈，最近经历的项目又是无双割草类，这方面的要求更甚。</p>
+<p>游戏中战斗并不是单一的画面的表现，其涉及到方方面面，是多方面的融合，想要做好游戏战斗，需要极强的综合素质。</p>
+<p>工欲善其事必先利其器！先从战斗编辑器说起吧。战斗编辑器涉及到以下部分，如有缺漏，请联系我补充。</p>
+<h2 id="战斗编辑器涉及要素（技能效果类型）"><a href="#战斗编辑器涉及要素（技能效果类型）" class="headerlink" title="战斗编辑器涉及要素（技能效果类型）"></a>战斗编辑器涉及要素（技能效果类型）</h2><p>Animation、WeaponAnims、Damage、FXEffect、Warning、Ghost、Slow、CameraAnimation、CameraPitch–调整相机俯仰角、CameraUp–调整相机垂直高度、CameraTranslate–调整相机水平移动、CameraZoom–调整相机拉近拉远、CameraShake–相机震动、MeshDisappear–武器消失、SceneDisappear–场景消失、LightDown–变暗、Sound、RadialBlur–镜头模糊效果、Bullet、Buff、PositionMove、ShowWindow、BulletTime–子弹时间、HideOperationUI、CallMinion、SkillInfo。</p>
+<a id="more"></a>
+
+<h3 id="SkillInfo"><a href="#SkillInfo" class="headerlink" title="SkillInfo"></a>SkillInfo</h3><p>SkillInfo技能信息是最为基础的元素，任何技能都必须携带该项元素。</p>
+<p>描述：技能相关的描述，用于向玩家介绍该技能。</p>
+<p>技能图标：技能对应显示的icon</p>
+<p>战斗施放距离：自动战斗功能时技能的施放距离，不同技能拥有不同的释放距离，对应了游戏术语中的手长和手短，远程和近战技能施放的距离是不同的。</p>
+<p>锁定施放距离：自动锁定会锁定周围离自己距离最近的敌人，一般情况下自动锁定的距离会略大于自动战斗施放技能的距离。</p>
+<p>锁定范围角：锁定一定范围内的敌人，一般为360度（普攻）以及当前方向（冲刺）。仅锁定类型为最近时有效。</p>
+<p>转向开始时间：不填代表全程都可以旋转（如进场技能）。</p>
+<p>转向结束时间：技能施放过程中可以用转向的结束时间。</p>
+<p>技能施放过程中的转向速度：转身速度，单位 度/秒。每帧实现时可以使用插值进行平滑处理。</p>
+<p>技能优先级：<br>‘’’ shell<br>0：采集、回城<br>1：普攻<br>2：蓄力技能<br>3：切换武器、召唤伙伴、qte<br>4：大招<br>5：闪避<br>‘’’</p>
+<p>是否是骑乘技能：若为骑乘状态技能，不适用移动僵直，并改变特效挂点为马的骨骼点</p>
+<p>施放大招所需技能量：施放大招时所需要的怒气值。</p>
+<p>打断时间配置（硬直时间）：<br>‘’’ shell<br>动作不被打断的开始时间<br>动作不被技能动作打断的时间<br>动作不被非技能动作打断结束时间（砍到最后的时间）<br>技能保护时间（一般技能的CD）<br>‘’’</p>
+<p>输入时间配置：<br>‘’’ shell<br>输入开始时间：开始砍的时间。<br>输入结束时间：收刀结束时间。<br>AI输入结束时间：AI机器人砍到最后的时间。<br>清除连招信息时间：一般默认与收刀结束时间一致。<br>‘’’</p>
+<h3 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h3><p>生效时间：动画的时长，包括开始时间与结束时间，其中结束时间一般与动作不被非技能动作打断结束时间一致。<br>动画名：用于加载相应动画（通过hashcode的形式加载）。<br>是否无视动作融合：是否与上一个动作融合过渡。</p>
+<h3 id="WeaponAnims"><a href="#WeaponAnims" class="headerlink" title="WeaponAnims"></a>WeaponAnims</h3><p>生效时间：武器动画的时长（timeline中开始和结束的时间）。</p>
+<p>WeaponAnimID：武器动画ID。</p>
+<p>动画名：武器动画对应的动画名称（通过hashcode的形式加载）。</p>
+<h3 id="Damage"><a href="#Damage" class="headerlink" title="Damage"></a>Damage</h3><p>生效时间：攻击的时长（timeline中开始和结束的时间）。</p>
+<p>DamageID：攻击信息的ID。</p>
+<p>伤害循环次数：如果伤害的循环次数大于一次，那么实际生效时间将会加倍。</p>
+<p>实际生效时间：基于原生效时长以及伤害循环次数。</p>
+<p>循环伤害是否互斥：循环伤害是否会进行重复伤害，如火焰灼烧等。</p>
+<p>伤害互斥组：同组之间不会重复伤害。</p>
+<p>攻击信息保留开启时间：某时刻之后若该技能被打断，是否继续产生伤害。</p>
+<p>公共设置：<br>‘’’ shell<br>技能方向[用于受击方位判断]：”随机”, “顺时针”, “逆时针”, “向外”, “向里”, “特效位置”, “只区分左右”。</p>
+<p>可伤害阵营：”仅对敌方”, “友方和自己”, “敌方和友方（不包括自己)”。</p>
+<p>击中特效：放置受击时的特效，在适当的时候实例化显示该特效。</p>
+<p>击杀特效：放置受击死亡时的特效，在适当的时候实例化显示该特效。</p>
+<p>击中音效资源</p>
+<p>碰撞盒击中特效及碰撞盒击中特效高度：受击特效，用做射线检测，将受击特效加载在正确的位置。</p>
+<p>伤害飘字类型：分为不同系统玩法的飘字。<br>‘’’</p>
+<p>伤害形态设置：<br>‘’’ shell<br>伤害形态：”武器”, “圆形”, “扇形”, “矩形”, “特效碰撞”, “碰撞后圆形”, “追踪目标”, “分段扇形”, “击飞锁定”, “范围内参考特效位置”。</p>
+<p>圆形伤害形态：中心点偏移（前方向x,右方向z），圆形半径，技能高度的范围（-∞,+∞）。</p>
+<p>扇形伤害形态：中心点偏移（前方向x,右方向z），扇形半径，扇形角度，初始偏移角度，技能高度的范围（-∞,+∞）。</p>
+<p>矩形伤害形态：中心点偏移（前方向x,右方向z），矩形长宽，技能高度的范围（-∞,+∞）。</p>
+<p>分段扇形伤害形态：中心点偏移（前方向x,右方向z），扇形半径，扇形角度，初始偏移角度，扇形分割数量，是否是顺时针，技能高度的范围（-∞,+∞）。<br>‘’’</p>
+<p>伤害公式设置：技能的伤害计算公式，如伤害系数、等级相关等。<br>‘’’ shell<br>公式ID：对应公式的ID。</p>
+<p>系数列表：霸体系数、格挡减少系数或格挡减少固定值、破霸体的等级强度、等级、伤害系数。</p>
+<p>基础公式：如 伤害 = 等级*系数1/1000+系数2/1000<br>‘’’</p>
+<p>硬直参数设置：分为小型、中型、大型、硬直效果-BOSS崩溃时（只要有霸体槽的怪都是崩溃硬直，无视体型）、硬直效果-BOSS崩溃浮空时、硬直效果-小型怪和中型怪浮空时、硬直效果-PVP、浮空硬直效果-floatingPVP。<br>‘’’ shell<br>硬直效果： “无硬直效果”, “受击”, “击退”, “击倒”, “击飞”, “吸附”, “旋风”, “地面吸附”, “圆心击退”, “圆心击飞”, “无双恐惧时间”, “擒技”, “特效吸附”, “强化击飞”,”强化圆心击飞”, “大硬直”</p>
+<p>硬直时间</p>
+<p>水平初速度</p>
+<p>水平速度修正</p>
+<p>水平加速度持续变化量:针对水平速度修正（减速度）进行每帧变化调整。公式：当前帧水平速度修正=上一帧水平速度修正-水平加速度持续变化量（支持负值）</p>
+<p>水平最大距离</p>
+<p>竖直初速度</p>
+<p>竖直速度修正</p>
+<p>击飞最大高度<br>‘’’</p>
+<p>其它设置：<br>‘’’shell<br>顿帧时间</p>
+<p>仇恨系数</p>
+<p>触发器：</p>
+<ul>
+<li>触发器类型：”无触发器”, “触发按键输入”, “目标选取”。</li>
+<li>触发器string参数</li>
+<li>触发器int参数</li>
+<li>触发器目标选取：”无”, “单体”, “单体距离优先”, “单体品质优先”, “过滤无硬直怪”, “过滤霸体怪”, “过滤小型怪”, “过滤中型怪”, “过滤大型怪”。</li>
+</ul>
+<p>伤害延迟时间：命中后伤害生效延迟（秒）但受击特效先播</p>
+<p>击退最大距离衰减系数：</p>
+<ul>
+<li>目标距离越远，击退的最大位移越小，该参数控制衰减快慢，越大衰减越快。</li>
+<li>设x为主角据目标距离，a为击退最大距离衰减系数</li>
+<li>实际击退距离=击退最大距离<em>（1-a</em>x^2）。</li>
+</ul>
+<p>击飞竖直初速度衰减系数：</p>
+<ul>
+<li>目标距离越远，击飞的竖直速度衰减越快。</li>
+<li>设x为主角据目标距离，b为竖直初速度衰减系数</li>
+<li>实际竖直初速度=竖直初速度<em>（1-b</em>x^2）*竖直速度衰减随机值。</li>
+</ul>
+<p>击飞竖直速度衰减随机值：此随机值对竖直初速度衰减系数进行随机修正（可以不随机）。</p>
+<p>是否忽略击飞弹起</p>
+<p>叫声：</p>
+<ul>
+<li>命中后对面受击叫声强度：”强”, “中”, “弱”。</li>
+<li>受击叫声播放权重</li>
+</ul>
+<p>吸附：</p>
+<ul>
+<li>吸附类型：”不吸附”, “会超出吸附点”, “不会超出吸附点”。</li>
+<li>吸附坐标旋转偏移：偏移角度，跟偏移距离一起作用得出具体坐标点偏移位置。</li>
+<li>吸附坐标距离：偏移直线距离。</li>
+<li>是否更新吸附位置：0、不更新1、更新坐标与方向2、仅更新方向（不更新是指在技能的第一次伤害触发点就决定好吸附坐标，更新坐标与方向是指每造成一次伤害就以当前角色坐标计算吸附位置，仅更新方向指以放技能瞬间的初始坐标点根据人物面向更新方向）</li>
+</ul>
+<p>技能调整：用于替换效果，比如修改段数、附加buff、解锁某项功能后伤害变了等等</p>
+<ul>
+<li>技能调整分类标签</li>
+<li>技能调整ID列表</li>
+</ul>
+<p>浮空伤害减免：</p>
+<ul>
+<li>是否浮空伤害减免</li>
+<li>是否计入浮空受身次数</li>
+<li>是否引起格挡反击</li>
+</ul>
+<p>弱点标识：</p>
+<ul>
+<li>破弱点标识<br>‘’’</li>
+</ul>
+<p>BUFF设置：内含伤害触发buff列表。<br>‘’’shell</p>
+<ul>
+<li>伤害触发buff ID:1、先造成伤害，进入硬直后再添加buff。2、每个命中单位独立计算，不是所有命中单位统一计算。</li>
+<li>添加buff概率</li>
+<li>添加buff概率公式：与 添加buff概率 互斥，如果有公式就按照公式进行计算。</li>
+<li>添加buff时长</li>
+<li>添加buff时长公式：与 添加buff时长 互斥，如果有公式就按照公式进行计算。<br>‘’’</li>
+</ul>
+<h3 id="FXEffect"><a href="#FXEffect" class="headerlink" title="FXEffect"></a>FXEffect</h3><p>生效时间：特效的时长（timeline中开始和结束的时间）。</p>
+<p>特效类型：”跟随节点”,”跟随位置（旋转不变）”,”特效放在目标位置”,”目标位置半径随机”,”自主控制”,”将自己作为特效碰撞”,”指定范围内特效随机出现”,”UI”,”特效停留在出生时玩家位置”。</p>
+<p>特效资源：对应的特效预制。</p>
+<p>特效挂载骨骼：挂载在预制的哪个节点上。（仅特效类型为跟随节点生效）</p>
+<p>是否忽略Delay时间</p>
+<p>当timeline播放时，对应的粒子特效界面会计算并实时显示：</p>
+<ul>
+<li>当前粒子颗数：遍历并求和子节点中的ParticleSystem组件中携带的粒子数量particleCount，每帧计算数量。</li>
+<li>当前粒子发射器使用情况：遍历并求和子节点中的ParticleSystem组件的数量。</li>
+<li>同屏粒子发射器峰值：遍历并求和子节点中的ParticleSystem组件中的携带的粒子数量particleCount大于0的情况。</li>
+<li>非法材质：对子节点中shader名错误的ParticleSystemRenderer组件及MeshRenderer组件进行计数。</li>
+<li>Animator数量：对子节点中Animator组件的数量进行求和。</li>
+<li>Mesh层数：对子节点中MeshRenderer组件的数量进行求和。</li>
+</ul>
+<h3 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h3><p>生效时间：预警的时长（timeline中开始和结束的时间）。</p>
+<p>预警类型：用于在施放AOE招式时向玩家进行提前警示，分为圆形、矩形、线、扇形。</p>
+<p>预警特效资源：如果不是扇形，会加载对应的预警资源。如果是扇形，就需要填写扇形预警角度。</p>
+<p>位置偏移</p>
+<p>缩放</p>
+<p>最大预警显示范围</p>
+<p>预警显示目标位置：”预警显示在自己脚下”,”预警显示在目标位置”。</p>
+<p>扇形预警角度：仅预警类型为扇形时会生效。</p>
+<h3 id="Ghost"><a href="#Ghost" class="headerlink" title="Ghost"></a>Ghost</h3><p>生效时间：残影的时长（timeline中开始和结束的时间）。</p>
+<p>残影类型：拖尾残影、技能收缩效果。</p>
+<p>跟随速度：技能残影收起速度。</p>
+<p>残影数量：一般默认为3个。</p>
+<h3 id="Slow"><a href="#Slow" class="headerlink" title="Slow"></a>Slow</h3><p>生效时间：慢放的时长（timeline中开始和结束的时间）。</p>
+<p>慢放速度</p>
+<p>慢放结束恢复时间</p>
+<p>慢放期间添加buff</p>
+<p>慢放特效：</p>
+<ul>
+<li>慢放特效的开始和结束时间。</li>
+<li>慢放特效的特效资源。</li>
+<li>慢放特效的挂载节点。</li>
+</ul>
+<h3 id="CameraAnimation"><a href="#CameraAnimation" class="headerlink" title="CameraAnimation"></a>CameraAnimation</h3><p>生效时间：时长（timeline中开始和结束的时间）。</p>
+<p>如果是美术镜头：</p>
+<ul>
+<li>运镜名称</li>
+<li>运镜结束后是否设置主摄像机</li>
+<li>运镜结束后播放的主摄像机动画</li>
+<li>运镜时摄像机视域夹角</li>
+</ul>
+<p>如果不是美术镜头：</p>
+<ul>
+<li>普通镜头名称</li>
+</ul>
+<h3 id="CameraPitch"><a href="#CameraPitch" class="headerlink" title="CameraPitch"></a>CameraPitch</h3><p>生效时间：时长（timeline中开始和结束的时间）。</p>
+<p>摄像机仰俯角变化</p>
+<ul>
+<li>旋转角度</li>
+</ul>
+<h3 id="CameraUp"><a href="#CameraUp" class="headerlink" title="CameraUp"></a>CameraUp</h3><p>生效时间：时长（timeline中开始和结束的时间）。</p>
+<p>摄像机抬起</p>
+<ul>
+<li>移动距离</li>
+</ul>
+<h3 id="CameraTranslate"><a href="#CameraTranslate" class="headerlink" title="CameraTranslate"></a>CameraTranslate</h3><p>生效时间：时长（timeline中开始和结束的时间）。 </p>
+<p>摄像机平移</p>
+<ul>
+<li>移动距离</li>
+</ul>
+<h3 id="CameraZoom"><a href="#CameraZoom" class="headerlink" title="CameraZoom"></a>CameraZoom</h3><p>生效时间：时长（timeline中开始和结束的时间）。</p>
+<p>摄像机推拉</p>
+<ul>
+<li>移动距离</li>
+</ul>
+<h3 id="CameraShake"><a href="#CameraShake" class="headerlink" title="CameraShake"></a>CameraShake</h3><p>生效时间：时长（timeline中开始和结束的时间）。</p>
+<p>摄像机震动</p>
+<ul>
+<li>震动角度</li>
+<li>震动范围</li>
+<li>震动幅度</li>
+<li>单次震动频率</li>
+<li>震动随机度</li>
+<li>震动强度衰减系数</li>
+<li>击中时触发震动的持续时间</li>
+<li>前后震动强度</li>
+<li>晃动角度</li>
+<li>强度偏移</li>
+</ul>
+<h3 id="MeshDisappear"><a href="#MeshDisappear" class="headerlink" title="MeshDisappear"></a>MeshDisappear</h3><p>生效时间：时长（timeline中开始和结束的时间）。</p>
+<p>材质隐藏：</p>
+<ul>
+<li>隐藏类型：”不隐藏”,”隐藏人物和武器”,”只隐藏左手武器”,”只隐藏右手武器”,”隐藏双手武器”。</li>
+</ul>
+<h3 id="SceneDisappear"><a href="#SceneDisappear" class="headerlink" title="SceneDisappear"></a>SceneDisappear</h3><p>生效时间：时长（timeline中开始和结束的时间）。</p>
+<p>场景消失范围角度</p>
+<p>场景消失范围半径</p>
+<h3 id="LightDown"><a href="#LightDown" class="headerlink" title="LightDown"></a>LightDown</h3><p>生效时间：场景灯光亮度渐变时长（timeline中开始和结束的时间）。</p>
+<p>场景灯光变暗目标亮度</p>
+<h3 id="Sound"><a href="#Sound" class="headerlink" title="Sound"></a>Sound</h3><p>生效时间：音效播放时长（timeline中开始和结束的时间）。</p>
+<p>音效资源</p>
+<p>是否循环播放</p>
+<h3 id="RadialBlur"><a href="#RadialBlur" class="headerlink" title="RadialBlur"></a>RadialBlur</h3><p>生效时间：径向模糊时长（timeline中开始和结束的时间）。</p>
+<p>径向模糊最大值：加速运动的画面感。</p>
+<p>径向模糊范围：</p>
+<h3 id="Bullet"><a href="#Bullet" class="headerlink" title="Bullet"></a>Bullet</h3><p>生效时间：飞弹生效时长（timeline中开始和结束的时间）。</p>
+<p>飞弹ID</p>
+<p>飞弹类型：</p>
+<ul>
+<li>“无目标”：向下加速度、指定射击点坐标偏移、优先仰角、旋转坐标轴。</li>
+<li>“有目标”：向下加速度、优先仰角。</li>
+<li>“贝塞尔曲线”：贝塞尔曲线路径关键点、路程区间速度设置。</li>
+<li>“追踪弹”</li>
+<li>“环绕飞弹”：环绕飞弹方向顺时针。</li>
+<li><ul>
+<li>指定射击点坐标偏移:1、表示确定飞弹速度、向下加速度后，飞弹飞行路径中必须要经过的相对发射单位偏移的坐标（x,y,z）。2、当配置了该字段后，飞弹发射角度字段无效，真实的发射角度由公式计算得出。3、当发射单位已经选取了目标时，该偏移相当于选取目标的位置偏移坐标（坐标轴朝向还是发射单位的朝向）</li>
+</ul>
+</li>
+<li><ul>
+<li>优先仰角:仅当指定了射击坐标点时或选定目标时生效。0、优先高射炮。1、优先低射炮。</li>
+</ul>
+</li>
+<li><ul>
+<li>旋转坐标轴：用于整体旋转飞弹运动轨迹。</li>
+</ul>
+</li>
+<li><ul>
+<li>路程区间速度设置：在区间段内的速度。区间终点为表示路程上的占比。当2个相邻数组的路程终点一样时，则该路程速度表示在该点的停留时间。</li>
+</ul>
+</li>
+</ul>
+<p>循环生成次数</p>
+<p>重复生成间隔</p>
+<p>飞弹标签</p>
+<p>同飞弹标签上限制</p>
+<p>同标签伤害互斥</p>
+<p>同标签飞弹到达上限后叠加方式：”不生成新的飞弹，当前同tag飞弹不受影响”,”新飞弹正常出现，移除超出数量的最早生成的同tag飞弹”,”新飞弹不出现，刷新所有同标签旧飞弹的存在时间”。</p>
+<p>新飞弹替换该标签指定的旧飞弹</p>
+<p>新飞弹替换旧飞弹的方式</p>
+<ul>
+<li>以目标标签的各飞弹为中心，生成该飞弹，同时目标标签飞弹消失；以各飞弹朝向为正朝向</li>
+<li>以目标标签的各飞弹为中心，生成该飞弹，目标标签飞弹不受影响；以各飞弹朝向为正朝向</li>
+<li>以目标标签的各飞弹为中心，生成该飞弹，同时目标标签飞弹消失；以玩家朝向为正朝向</li>
+<li>以目标标签的各飞弹为中心，生成该飞弹，目标标签飞弹不受影响；以玩家朝向为正朝向</li>
+</ul>
+<p>飞弹特效资源</p>
+<p>飞弹击中特效资源</p>
+<p>飞弹击中特效持续时间</p>
+<p>飞弹消失时特效资源</p>
+<p>飞弹消失特效持续时间</p>
+<p>飞弹碰撞开启时间：用于控制飞弹什么时间开始计算碰撞，在飞弹初始化延迟前就开始计算了。</p>
+<p>飞弹持续时间</p>
+<p>命中时伤害信息索引</p>
+<p>消失时伤害信息索引</p>
+<p>飞弹命中消失方式：”命中不消失”,”命中敌方消失”,”命中阻挡或地面消失”。</p>
+<p>命中、消失时伤害是否互斥</p>
+<p>飞弹伤害判定中心：”以飞弹发射着为中心”,”以飞弹的位置为中心”。</p>
+<p>飞弹朝向：”朝向当前移动方向”,”始终保持出生时的方向”。</p>
+<p>飞弹跟随方式：”位置及旋转跟随”,”位置跟随”,”指定骨头点”,”敌人位置”,”敌人位置随机”,”前一个特效碰撞点”,”追踪目标而去”,”运动镜头”,”围绕主角移动”,”挂于摇杆UI预制上”</p>
+<p>飞弹速度</p>
+<p>发射位置偏移</p>
+<p>飞弹发射角度</p>
+<p>飞弹目标区域预警特效半径：对于有目标和追踪类型飞弹，预警生成位置为筛选到的目标位置。对于无目标类型飞弹，预警位置为飞弹生成时相对于飞弹发射单位的targetpoint字段值</p>
+<p>目标区域预警延迟生效时间</p>
+<p>目标区域预警持续时间</p>
+<p>筛选范围类型：圆形、扇形、矩形。</p>
+<p>飞弹目标选取范围：仅针对有目标的飞弹类型。</p>
+<p>飞弹目标筛选规则：仅针对有目标的飞弹类型。</p>
+<p>飞弹路径类型：”直线”,”曲线”。</p>
+<h3 id="Buff"><a href="#Buff" class="headerlink" title="Buff"></a>Buff</h3><p>生效时间：buff的时长（timeline中开始和结束的时间）。</p>
+<p>buffID</p>
+<p>添加buff的概率</p>
+<p>buff与技能时长绑定</p>
+<h3 id="PositionMove"><a href="#PositionMove" class="headerlink" title="PositionMove"></a>PositionMove</h3><p>生效时间：技能位移的时长（timeline中开始和结束的时间）。</p>
+<p>技能位移类型：释放技能过程中产生位移</p>
+<ul>
+<li>位移到目标位置</li>
+<li>位移到目标中心</li>
+<li>位移到目标后方</li>
+<li>跟随玩家进行位移</li>
+</ul>
+<h3 id="ShowWindow"><a href="#ShowWindow" class="headerlink" title="ShowWindow"></a>ShowWindow</h3><p>生效时间：分镜特写的时长（timeline中开始和结束的时间）。</p>
+<p>分镜特写类型：三人合体特写框、两人合体特写框。</p>
+<p>分镜框A英雄ID</p>
+<h3 id="BulletTime"><a href="#BulletTime" class="headerlink" title="BulletTime"></a>BulletTime</h3><p>生效时间：子弹时间的时长（timeline中开始和结束的时间）。</p>
+<p>子弹时间持续时长<br>‘’’shell<br>1、该字段的作用是用于决定子弹时间是否只在命中时触发<br>2、此时常规配置的子弹时间开始时间和结束时间正常情况下不触发，只在这段时间内有伤害命中才会触发，触发时长为该字段持续时长<br>3、可触发多次，但前一个没结束后一个触发也不生效<br>4、根据子弹开始和结束的时间段内有多少次攻击信息来决定最多可以触发几次，暂时没判断互斥的情况</p>
+<p>触发情况：<br>情况1： 存在后半部分伤害信息在判定时间段内<br>触发方式：该伤害在判定时间段外命中了敌人，则等待到判定起始帧触发子弹时间；<br>该伤害在判定时间段内命中了敌人，则什么时候命中什么时候触发子弹时间</p>
+<p>情况2： 全部伤害信息在判定时间段内<br>触发方式：什么时候命中什么时候触发子弹时间</p>
+<p>情况3： 存在前半部分伤害信息在判定时间段内<br>触发方式：该伤害在判定时间段外命中了敌人，则不触发；<br>该伤害在判定时间段内命中了敌人，则什么时候命中什么时候触发子弹时间</p>
+<p>情况4： 存在中间部分伤害信息在判定时间段内<br>触发方式：结合情况1与情况3处理方式</p>
+<p>情况5：伤害信息完全在判定时间段外<br>触发方式：不触发<br>‘’’</p>
+<p>伤害触发时被放大的时间</p>
+<h3 id="HideOperationUI"><a href="#HideOperationUI" class="headerlink" title="HideOperationUI"></a>HideOperationUI</h3><p>生效时间：隐藏操作界面的时长（timeline中开始和结束的时间）。</p>
+<h3 id="CallMinion"><a href="#CallMinion" class="headerlink" title="CallMinion"></a>CallMinion</h3><p>生效时间：召唤仆从的时长（timeline中开始和结束的时间）。</p>
+<p>仆从ID</p>
+<h2 id="技能编辑器总结"><a href="#技能编辑器总结" class="headerlink" title="技能编辑器总结"></a>技能编辑器总结</h2><p>技能编辑器总体分为这三个部分：1.左侧技能列表。2.中间timeline可视化编辑。3.右侧技能参数复制。</p>
+<p>在timeline中将技能每帧涉及到的元素集成，并且可以播放进行预览。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+        
+        </div>
+		
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://aaronyard.github.io/2022/06/18/ActionGame/" data-id="clg6qdktx0006hosa1eeh5ebc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2022/01/03/MMORPG/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">MMORPG手游项目优化分享总结</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2022/06/18/ActionGame/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2022/06/18/ActionGame/" class="title">游戏战斗方向总结</a></p>
+                            <p class="item-date"><time datetime="2022-06-18T15:17:16.000Z" itemprop="datePublished">2022-06-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2022/01/03/MMORPG/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a></p>
+                            <p class="item-title"><a href="/2022/01/03/MMORPG/" class="title">MMORPG手游项目优化分享总结</a></p>
+                            <p class="item-date"><time datetime="2022-01-03T14:01:12.000Z" itemprop="datePublished">2022-01-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2021/12/19/problem/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2021/12/19/problem/" class="title">薄弱处总结</a></p>
+                            <p class="item-date"><time datetime="2021-12-19T14:01:12.000Z" itemprop="datePublished">2021-12-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2021/05/30/LeetCode-4/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a></p>
+                            <p class="item-title"><a href="/2021/05/30/LeetCode-4/" class="title">LeetCode刷题（四）</a></p>
+                            <p class="item-date"><time datetime="2021-05-30T15:02:26.000Z" itemprop="datePublished">2021-05-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <!-- <div class="item-thumbnail">
+                            <a href="/2021/05/29/Development2020To2021/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div> -->
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a></p>
+                            <p class="item-title"><a href="/2021/05/29/Development2020To2021/" class="title">随笔</a></p>
+                            <p class="item-date"><time datetime="2021-05-29T15:35:14.000Z" itemprop="datePublished">2021-05-29</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E7%AC%94/">个人随笔</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/">技术探索</a><span class="category-list-count">56</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E9%98%85%E8%AF%BB/">日常阅读</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E6%8F%90%E5%8D%87/">算法提升</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E6%88%91%E6%8F%90%E5%8D%87/">自我提升</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Client/" rel="tag">3D Client</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/3D-Engine/" rel="tag">3D Engine</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fighting/" rel="tag">Fighting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" rel="tag">个人发展</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" rel="tag">博客建站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" rel="tag">新技能Get√</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B2%89%E6%B7%80%E6%80%BB%E7%BB%93/" rel="tag">沉淀总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E6%88%98%E6%96%97/" rel="tag">游戏战斗</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" rel="tag">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" rel="tag">量子物理史话</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/3D-Client/" style="font-size: 15px;">3D Client</a> <a href="/tags/3D-Engine/" style="font-size: 12.5px;">3D Engine</a> <a href="/tags/C/" style="font-size: 18.75px;">C++</a> <a href="/tags/Fighting/" style="font-size: 10px;">Fighting</a> <a href="/tags/LeetCode/" style="font-size: 13.75px;">LeetCode</a> <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%8F%91%E5%B1%95/" style="font-size: 10px;">个人发展</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E7%AB%99/" style="font-size: 10px;">博客建站</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 15px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 16.25px;">数据结构</a> <a href="/tags/%E6%96%B0%E6%8A%80%E8%83%BDGet%E2%88%9A/" style="font-size: 10px;">新技能Get√</a> <a href="/tags/%E6%B2%89%E6%B7%80%E6%80%BB%E7%BB%93/" style="font-size: 11.25px;">沉淀总结</a> <a href="/tags/%E6%B8%B8%E6%88%8F%E6%88%98%E6%96%97/" style="font-size: 10px;">游戏战斗</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 17.5px;">计算机网络</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" style="font-size: 10px;">软件工程</a> <a href="/tags/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%8F%B2%E8%AF%9D/" style="font-size: 10px;">量子物理史话</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://www.cnkirito.moe/" target="_blank" rel="noopener">徐靖峰</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.jiangxinlingdu.com/" target="_blank" rel="noopener">匠心零度</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://haoji.me/" target="_blank" rel="noopener">小茗同学</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2023 汪震<br>
+            <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">粤ICP备2020112664号-1</a>
+        </div>
+		<div style="width:300px;margin:0 auto; padding:20px 0;">
+		<img src="/css/images/beian.png">
+		 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502006639" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">粤公网安备 44030502006639号</p></a>
+		 	</div>
+    </div>
+</footer>
+
+
+        
+    
+	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+	<script src="https://billts.site/js/gitment.js"></script>
+	<script>
+		var gitment = new Gitment({
+			id: '游戏战斗方向总结',
+			owner: 'AaronYard',
+			repo: 'AaronYard.github.io',
+			oauth: {
+				client_id: '6b0d12d0b7b1c15abf12',
+				client_secret: '58b0857649f913187b3f615237f72110b4663b40',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/unitychan.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
